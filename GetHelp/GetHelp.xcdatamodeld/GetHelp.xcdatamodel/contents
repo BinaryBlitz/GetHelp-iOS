@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
-    <elements/>
+    <entity name="ExpressHelpRequest" representedClassName=".ExpressHelpRequest" parentEntity="HelpRequest" syncable="YES"/>
+    <entity name="HelpRequest" representedClassName=".HelpRequest" syncable="YES">
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HomeTaskHelpRequest" representedClassName=".HomeTaskHelpRequest" parentEntity="HelpRequest" syncable="YES"/>
+    <elements>
+        <element name="HelpRequest" positionX="-1296" positionY="-3663" width="144" height="58"/>
+        <element name="HomeTaskHelpRequest" positionX="-1431" positionY="-3573" width="135" height="43"/>
+        <element name="ExpressHelpRequest" positionX="-1152" positionY="-3573" width="144" height="43"/>
+    </elements>
 </model>
