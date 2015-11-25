@@ -2,16 +2,23 @@
 //  HelpRequest.swift
 //  GetHelp
 //
-//  Created by Dan Shevlyuk on 22/11/15.
+//  Created by Dan Shevlyuk on 25/11/2015.
 //  Copyright © 2015 BinaryBlitz. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
 
+class HelpRequest: Object {
+  
+  dynamic var id = ""
+  dynamic var subject = ""
+  dynamic var cource = ""
+  dynamic var school = ""
+  dynamic var faculty = ""
+  dynamic var helpDescription = ""
+  dynamic var deadline: NSDate?
 
-class HelpRequest: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+  override class func primaryKey() -> String? {
+    return "id"
+  }
 }

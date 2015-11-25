@@ -8,17 +8,60 @@
 
 import UIKit
 
+enum HelpType: String {
+  case Normal = "normal"
+  case Express = "express"
+}
+
+enum HelpRequestStatus {
+  case InReview
+  case WatingForPayment(price: Double)
+  case Accepted
+  case Rejected
+  case Done
+}
+
+protocol RequestPresenter {
+  var type: String  { get }
+  var name: String { get }
+}
+
+protocol HelpReqestStatusPresenter {
+  var status: String { get }
+  var indicatorColor: UIColor { get }
+}
+
+protocol DatePresenter {
+  var date: String { get }
+  var time: String { get }
+}
+
+typealias HelpRequestPresenter = protocol<RequestPresenter, DatePresenter, HelpReqestStatusPresenter>
+
 class HelpRequestTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  @IBOutlet weak var indicatorViewWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var indicatorImageView: UIImageView!
+  @IBOutlet weak var timeLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var statusLabel: UILabel!
+  @IBOutlet weak var typeLabel: UILabel!
+  @IBOutlet weak var nameLabel: UILabel!
+  var helpStatus: HelpRequestStatus?
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+  override func setSelected(selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
+  
+  func configure(presenter: HelpRequestPresenter) {
+    indicatorImageView.tintColor = presenter.indicatorColor
+    timeLabel.text = presenter.time
+    dateLabel.text = presenter.date
+    typeLabel.text = presenter.type
+    nameLabel.text = presenter.name
+  }
 }

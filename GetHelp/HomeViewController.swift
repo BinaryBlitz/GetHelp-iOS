@@ -1,17 +1,23 @@
 //
+//  HomeViewController.swift
+//  GetHelp
+//
 // Created by Dan Shevlyuk on 22/11/15.
 // Copyright (c) 2015 BinaryBlitz. All rights reserved.
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var createRequestButton: UIButton!
   
-  var helpRequests: [String] = ["help me #1", "help me #2", "help me #3"]
-//  var helpRequests: [HelpRequest] = []
+  var helpRequests: Results<HelpRequest> {
+    let realm  = try! Realm()
+    return realm.objects(HelpRequest)
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -64,7 +70,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     //TODO: Set up cell
-    cell.textLabel?.text = helpRequests[indexPath.row]
+    cell.textLabel?.text = helpRequests[indexPath.row].id
 
     return cell
   }

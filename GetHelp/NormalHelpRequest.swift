@@ -1,5 +1,5 @@
 //
-//  ExpressHelpRequest.swift
+//  NormalHelpRequest.swift
 //  GetHelp
 //
 //  Created by Dan Shevlyuk on 25/11/2015.
@@ -8,8 +8,7 @@
 
 import RealmSwift
 
-class ExpressHelpRequest: HelpRequest {
+class NormalHelpRequest: HelpRequest {
 
-  dynamic var duration = 0 // in minutes
-  dynamic var activityType = ""
+  dynamic var email = ""
 }

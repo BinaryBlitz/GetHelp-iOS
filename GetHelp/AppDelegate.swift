@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import MagicalRecord
 import Fabric
 import Crashlytics
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,9 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    MagicalRecord.setupAutoMigratingCoreDataStack()
-    MagicalRecord.enableShorthandMethods()
     Fabric.with([Crashlytics.self])
+
+    // Realm configuration and migration
+    let realmDefaultConfig = Realm.Configuration(
+    schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+              if oldSchemaVersion < 1 {}
+            }
+    )
+    Realm.Configuration.defaultConfiguration = realmDefaultConfig
+
     
     return true
   }
