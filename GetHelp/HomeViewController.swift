@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
 
     fetchHelpRequests()
 
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "reload:",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:",
             name: HelpRequestUpdatedNotification, object: nil)
   }
 
@@ -48,6 +48,18 @@ class HomeViewController: UIViewController {
 
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
+  //MARK: - Refresh
+  
+  func refresh(sender: AnyObject) {
+    beginRefreshWithComplition { () -> Void in
+      self.tableView.reloadData()
+    }
+  }
+  
+  func beginRefreshWithComplition(complition: () -> Void) {
+    // request
   }
 
   //MARK: - Tools
