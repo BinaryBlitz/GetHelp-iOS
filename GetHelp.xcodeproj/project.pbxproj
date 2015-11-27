@@ -16,6 +16,7 @@
 		37ADE3441C061EED00CC3CE2 /* CreateNewRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE3431C061EED00CC3CE2 /* CreateNewRequestViewController.swift */; };
 		37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */; };
 		37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */; };
+		37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */; };
 		37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */; };
 		37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B751BFB60FF00B450E0 /* Main.storyboard */; };
 		37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B781BFB60FF00B450E0 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		37ADE3431C061EED00CC3CE2 /* CreateNewRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewRequestViewController.swift; sourceTree = "<group>"; };
 		37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateNewRequest.storyboard; sourceTree = "<group>"; };
 		37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManagerConfiguration.swift; sourceTree = "<group>"; };
+		37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+GetHelp.swift"; sourceTree = "<group>"; };
 		37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CC9B761BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			name = HelpRequestTableViewCell;
 			sourceTree = "<group>";
 		};
+		37B889C81C09121A00EA02D8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		37CC9B651BFB60FF00B450E0 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 				37F171BC1BFB6D020016433D /* Controllers */,
 				37ADE33C1C0608B000CC3CE2 /* Models */,
 				37F171C01BFB6D2B0016433D /* UI */,
+				37B889C81C09121A00EA02D8 /* Extensions */,
 				37F171C21BFB6D330016433D /* Supporting files */,
 				37CC9B781BFB60FF00B450E0 /* Assets.xcassets */,
 			);
@@ -375,6 +386,7 @@
 				37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */,
 				37ADE3401C0609A300CC3CE2 /* NormalHelpRequest.swift in Sources */,
 				18391D92B940B76766394B71 /* ServerManager.swift in Sources */,
+				37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

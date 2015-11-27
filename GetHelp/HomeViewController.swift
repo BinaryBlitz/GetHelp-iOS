@@ -24,9 +24,10 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    createRequestButton.layer.borderWidth = 2
+    createRequestButton.layer.borderWidth = 1
     createRequestButton.layer.cornerRadius = 5
-    createRequestButton.layer.borderColor = UIColor.blueColor().CGColor
+    createRequestButton.layer.borderColor = UIColor.orangeSecondaryColor().CGColor
+    createRequestButton.tintColor = UIColor.orangeSecondaryColor()
 
     let helpRequestCellNib = UINib(nibName: "HelpRequestTableViewCell", bundle: nil)
     tableView.tableFooterView = UIView()

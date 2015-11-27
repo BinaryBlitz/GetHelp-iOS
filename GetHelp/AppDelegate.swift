@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
     )
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
-//    setTestDbData()
-
+    configureNavigationBar()
     
     return true
   }
@@ -50,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         realm.create(HelpRequest)
       }
     }
+  }
+  
+  func configureNavigationBar() {
+    UINavigationBar.appearance().tintColor = UIColor.orangeSecondaryColor()
   }
 
   func applicationWillResignActive(application: UIApplication) {
