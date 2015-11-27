@@ -29,9 +29,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
     )
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
+//    setTestDbData()
 
     
     return true
+  }
+  
+  func dropDatabaseData() {
+    let realm = try! Realm()
+    try? realm.write {
+      realm.deleteAll()
+    }
+  }
+  
+  func setTestDbData() {
+    let realm = try! Realm()
+    
+    try! realm.write { () -> Void in
+      for _ in 1..<10 {
+        realm.create(HelpRequest)
+      }
+    }
   }
 
   func applicationWillResignActive(application: UIApplication) {

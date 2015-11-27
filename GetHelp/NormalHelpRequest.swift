@@ -8,6 +8,7 @@
 
 import RealmSwift
 
+/// Describes hometask help requests and not urgent stuff
 class NormalHelpRequest: HelpRequest {
 
   dynamic var email = ""

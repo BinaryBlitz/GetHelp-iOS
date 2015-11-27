@@ -9,15 +9,17 @@
 import UIKit
 import RealmSwift
 
+let HelpRequestUpdatedNotification = "HelpRequestUpdatedNotification"
+
 class HomeViewController: UIViewController {
 
+  @IBOutlet weak var backgroundView: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var createRequestButton: UIButton!
   
-  var helpRequests: Results<HelpRequest> {
-    let realm  = try! Realm()
-    return realm.objects(HelpRequest)
-  }
+  var helpRequests: Results<HelpRequest>?
+
+  //MARK: - Livecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,17 +29,42 @@ class HomeViewController: UIViewController {
     createRequestButton.layer.borderColor = UIColor.blueColor().CGColor
 
     let helpRequestCellNib = UINib(nibName: "HelpRequestTableViewCell", bundle: nil)
+    tableView.tableFooterView = UIView()
+    tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
     tableView.registerNib(helpRequestCellNib, forCellReuseIdentifier: "helpRequestCell")
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 80
+
+    fetchHelpRequests()
+
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "reload:",
+            name: HelpRequestUpdatedNotification, object: nil)
   }
-  
+
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.reloadData()
+  }
+
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+
+  //MARK: - Tools
+
+  func fetchHelpRequests(serverManager: ServerManager = ServerManager()) {
+    let realm  = try! Realm()
+    helpRequests = realm.objects(HelpRequest)
+  }
+
   //MARK: - Actions
   
   @IBAction func profileBarButtonAction(sender: AnyObject) {
-    
+    tableView.reloadData()
   }
   
   @IBAction func addBarButtonAction(sender: AnyObject) {
-    
+    performSegueWithIdentifier("createNewRequest", sender: self)
   }
 }
 
@@ -46,10 +73,8 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
 
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
-
 }
 
 //MARK: - UITableViewDataSource
@@ -57,10 +82,16 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-    tableView.hidden = helpRequests.count == 0
-
-    return helpRequests.count
+    guard let requests = helpRequests else {
+      tableView.hidden = true
+      backgroundView.hidden = false
+      return 0
+    }
+    
+    let shouldHideTableView = requests.count == 0
+    tableView.hidden = shouldHideTableView
+    backgroundView.hidden = !shouldHideTableView
+    return requests.count
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -69,8 +100,9 @@ extension HomeViewController: UITableViewDataSource {
       return UITableViewCell()
     }
 
-    //TODO: Set up cell
-    cell.textLabel?.text = helpRequests[indexPath.row].id
+    //TODO: configure cell
+    cell.nameLabel.text = helpRequests?[indexPath.row].subject
+    cell.indicatorImageView.tintColor = UIColor.orangeColor()
 
     return cell
   }

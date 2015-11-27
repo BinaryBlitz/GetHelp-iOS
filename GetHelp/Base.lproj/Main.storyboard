@@ -89,13 +89,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundView" destination="WB8-0W-3v5" id="kH7-bu-Qka"/>
                         <outlet property="createRequestButton" destination="31X-sA-EUb" id="KIG-fM-6nf"/>
                         <outlet property="tableView" destination="F4B-eg-Ba6" id="Dte-Vc-vZk"/>
+                        <segue destination="k2f-WE-5f9" kind="showDetail" identifier="createNewRequest" id="xFw-vS-laE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybX-VA-0Kr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1006" y="78"/>
+        </scene>
+        <!--CreateNewRequest-->
+        <scene sceneID="sIR-te-NLi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateNewRequest" id="k2f-WE-5f9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BYY-fh-kp0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1526.5" y="78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DyA-hu-UyS">

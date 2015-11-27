@@ -8,6 +8,7 @@
 
 import RealmSwift
 
+/// Describes help on exam and other urgent stuff
 class ExpressHelpRequest: HelpRequest {
 
   dynamic var duration = 0 // in minutes

@@ -55,6 +55,7 @@ class HelpRequestTableViewCell: UITableViewCell {
 
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+    indicatorImageView.image  = indicatorImageView?.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
   }
   
   func configure(presenter: HelpRequestPresenter) {

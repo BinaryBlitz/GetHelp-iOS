@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Nq-UM-ePa">
-                        <rect key="frame" x="0.0" y="-1" width="34" height="171.5"/>
+                        <rect key="frame" x="0.0" y="-1" width="40" height="171.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" translatesAutoresizingMaskIntoConstraints="NO" id="9P9-th-qbM">
-                                <rect key="frame" x="5" y="74" width="24" height="24"/>
+                                <rect key="frame" x="8" y="74" width="24" height="24"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9P9-th-qbM" secondAttribute="height" multiplier="1:1" id="KY1-3d-zlg"/>
@@ -32,39 +32,39 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9P9-th-qbM" firstAttribute="centerY" secondItem="1Nq-UM-ePa" secondAttribute="centerY" id="Fh8-SG-MN4"/>
-                            <constraint firstAttribute="width" constant="34" id="UJv-aT-E1e"/>
+                            <constraint firstAttribute="width" constant="40" id="UJv-aT-E1e"/>
                             <constraint firstItem="9P9-th-qbM" firstAttribute="centerX" secondItem="1Nq-UM-ePa" secondAttribute="centerX" id="f1g-yZ-G64"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Срочная помощь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09B-O0-35D">
-                        <rect key="frame" x="43" y="14" width="115" height="17"/>
+                        <rect key="frame" x="40" y="14" width="115" height="17"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.10.2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCc-xd-dhJ">
-                        <rect key="frame" x="303" y="14" width="73" height="18"/>
+                        <rect key="frame" x="312" y="14" width="73" height="18"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Статистические и эмпирические методы компьютинга" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emn-JB-SNV">
-                        <rect key="frame" x="43" y="38" width="192" height="61"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Статистические и эмпирические методы компьютинга" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emn-JB-SNV">
+                        <rect key="frame" x="40" y="38" width="192" height="61"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидает подтверждения" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-Wu-oAs">
-                        <rect key="frame" x="43" y="133" width="204" height="20.5"/>
+                        <rect key="frame" x="40" y="133" width="204" height="20.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSf-o4-yXd">
-                        <rect key="frame" x="337" y="39" width="38.5" height="18"/>
+                        <rect key="frame" x="346" y="39" width="38.5" height="18"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
@@ -78,11 +78,12 @@
                     <constraint firstItem="1Nq-UM-ePa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8.5" id="Mic-4p-wGa"/>
                     <constraint firstAttribute="bottomMargin" secondItem="dkH-Wu-oAs" secondAttribute="bottom" constant="10" id="Moi-Vs-vTN"/>
                     <constraint firstItem="emn-JB-SNV" firstAttribute="top" secondItem="09B-O0-35D" secondAttribute="bottom" constant="7" id="Tk8-Ex-l54"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hCc-xd-dhJ" secondAttribute="trailing" constant="9" id="UYl-ap-FXV"/>
+                    <constraint firstItem="dkH-Wu-oAs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="bottom" constant="5" id="UQR-3c-5ZA"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hCc-xd-dhJ" secondAttribute="trailing" id="UYl-ap-FXV"/>
                     <constraint firstItem="1Nq-UM-ePa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="ZSB-k9-QHa"/>
                     <constraint firstItem="HSf-o4-yXd" firstAttribute="trailing" secondItem="hCc-xd-dhJ" secondAttribute="trailing" id="auw-Ss-Bgp"/>
                     <constraint firstItem="dkH-Wu-oAs" firstAttribute="leading" secondItem="emn-JB-SNV" secondAttribute="leading" id="d5X-ti-kgr"/>
-                    <constraint firstItem="09B-O0-35D" firstAttribute="leading" secondItem="1Nq-UM-ePa" secondAttribute="trailing" constant="9" id="h17-V2-X8I"/>
+                    <constraint firstItem="09B-O0-35D" firstAttribute="leading" secondItem="1Nq-UM-ePa" secondAttribute="trailing" id="h17-V2-X8I"/>
                     <constraint firstItem="hCc-xd-dhJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="l4E-Je-GkU"/>
                     <constraint firstItem="09B-O0-35D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="vHF-qu-sEM"/>
                     <constraint firstItem="hCc-xd-dhJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="trailing" constant="5" id="vM4-2w-Pi7"/>

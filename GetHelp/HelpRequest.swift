@@ -8,6 +8,7 @@
 
 import RealmSwift
 
+/// Contains basic fields for help request
 class HelpRequest: Object {
   
   dynamic var id = ""
@@ -18,7 +19,7 @@ class HelpRequest: Object {
   dynamic var helpDescription = ""
   dynamic var deadline: NSDate?
 
-  override class func primaryKey() -> String? {
-    return "id"
-  }
+//  override class func primaryKey() -> String? {
+//    return "id"
+//  }
 }

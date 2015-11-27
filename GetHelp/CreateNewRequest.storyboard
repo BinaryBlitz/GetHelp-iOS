@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sg1-jT-g5p">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <scenes>
+        <!--Create New Request View Controller-->
+        <scene sceneID="BRU-Dy-xdk">
+            <objects>
+                <viewController id="2no-qc-sg7" customClass="CreateNewRequestViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zxn-1v-qXu"/>
+                        <viewControllerLayoutGuide type="bottom" id="tkY-aN-AQ1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qZQ-sy-Yn2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-Bk-zkJ">
+                                <rect key="frame" x="230" y="197" width="140" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Домашнее задание"/>
+                                <connections>
+                                    <action selector="normalRequestButtonAction:" destination="2no-qc-sg7" eventType="touchUpInside" id="lcQ-PJ-gHX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNz-tC-jTb">
+                                <rect key="frame" x="239" y="276" width="123" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Срочная помощь"/>
+                                <connections>
+                                    <action selector="expressRequestButtonAction:" destination="2no-qc-sg7" eventType="touchUpInside" id="ksN-hI-EYA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ogc-Bk-zkJ" firstAttribute="centerX" secondItem="qZQ-sy-Yn2" secondAttribute="centerX" id="PF1-Xw-RHs"/>
+                            <constraint firstItem="ogc-Bk-zkJ" firstAttribute="top" secondItem="Zxn-1v-qXu" secondAttribute="bottom" constant="133" id="mgO-Hd-h4x"/>
+                            <constraint firstItem="qNz-tC-jTb" firstAttribute="centerX" secondItem="ogc-Bk-zkJ" secondAttribute="centerX" id="mgx-Km-Omv"/>
+                            <constraint firstItem="qNz-tC-jTb" firstAttribute="top" secondItem="ogc-Bk-zkJ" secondAttribute="bottom" constant="49" id="xVV-fb-625"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EJh-8F-5wM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="JJc-cl-f57">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="2no-qc-sg7" id="WmM-3o-wIV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="stX-yF-2G4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1035" y="347"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZJJ-gw-sz9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sg1-jT-g5p" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xAh-ZU-4uQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2no-qc-sg7" kind="relationship" relationship="rootViewController" id="keU-mt-p6h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oki-GE-RYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="223" y="347"/>
+        </scene>
+    </scenes>
+</document>
