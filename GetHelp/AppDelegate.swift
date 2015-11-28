@@ -21,7 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     Fabric.with([Crashlytics.self])
 
-    // Realm configuration and migration
+    configureRealm()
+    configureNavigationBar()
+    
+    return true
+  }
+  
+  func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
     schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
@@ -29,14 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
     )
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
-    configureNavigationBar()
-    
-    return true
   }
   
   func dropDatabaseData() {
     let realm = try! Realm()
-    try? realm.write {
+    try! realm.write {
       realm.deleteAll()
     }
   }
