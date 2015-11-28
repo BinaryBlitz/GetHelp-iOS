@@ -11,12 +11,14 @@ import RealmSwift
 
 let HelpRequestUpdatedNotification = "HelpRequestUpdatedNotification"
 
+/// Home screen with list of created requests
 class HomeViewController: UIViewController {
 
   @IBOutlet weak var backgroundView: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var createRequestButton: UIButton!
   
+  let refreshControl = UIRefreshControl()
   var helpRequests: Results<HelpRequest>?
 
   //MARK: - Livecycle
@@ -24,18 +26,9 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    createRequestButton.layer.borderWidth = 1
-    createRequestButton.layer.cornerRadius = 5
-    createRequestButton.layer.borderColor = UIColor.orangeSecondaryColor().CGColor
-    createRequestButton.tintColor = UIColor.orangeSecondaryColor()
-
-    let helpRequestCellNib = UINib(nibName: "HelpRequestTableViewCell", bundle: nil)
-    tableView.tableFooterView = UIView()
-    tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-    tableView.registerNib(helpRequestCellNib, forCellReuseIdentifier: "helpRequestCell")
-    tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 80
-
+    refreshControl.addTarget(self, action: "refresh:", forControlEvents: .PrimaryActionTriggered)
+    configureCreateButton()
+    configureTableView()
     fetchHelpRequests()
 
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:",
@@ -51,16 +44,37 @@ class HomeViewController: UIViewController {
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
+  //MARK: - Initialize
+
+  func configureTableView() {
+    let helpRequestCellNib = UINib(nibName: "HelpRequestTableViewCell", bundle: nil)
+    tableView.tableFooterView = UIView()
+    tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+    tableView.registerNib(helpRequestCellNib, forCellReuseIdentifier: "helpRequestCell")
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 80
+    tableView.addSubview(refreshControl)
+  }
+
+  func configureCreateButton() {
+    createRequestButton.layer.borderWidth = 1
+    createRequestButton.layer.cornerRadius = 5
+    createRequestButton.layer.borderColor = UIColor.orangeSecondaryColor().CGColor
+    createRequestButton.tintColor = UIColor.orangeSecondaryColor()
+  }
+  
   //MARK: - Refresh
   
   func refresh(sender: AnyObject) {
     beginRefreshWithComplition { () -> Void in
       self.tableView.reloadData()
+      self.refreshControl.endRefreshing()
     }
   }
   
   func beginRefreshWithComplition(complition: () -> Void) {
-    // request
+    //TODO: Reresh request
+    complition()
   }
 
   //MARK: - Tools
@@ -115,7 +129,7 @@ extension HomeViewController: UITableViewDataSource {
 
     //TODO: configure cell
     cell.nameLabel.text = helpRequests?[indexPath.row].subject
-    cell.indicatorImageView.tintColor = UIColor.orangeColor()
+    cell.indicatorImageView.tintColor = UIColor.orangeSecondaryColor()
 
     return cell
   }
