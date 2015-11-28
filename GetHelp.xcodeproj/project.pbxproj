@@ -11,8 +11,6 @@
 		18391D92B940B76766394B71 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18391B43C5FC3324F6E1F8EF /* ServerManager.swift */; };
 		1DB8ECC420E83CDA723B2B3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E7324B98E69E4DAA1DE665 /* Pods.framework */; };
 		37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */; };
-		37ADE3401C0609A300CC3CE2 /* NormalHelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE33F1C0609A300CC3CE2 /* NormalHelpRequest.swift */; };
-		37ADE3421C0609B400CC3CE2 /* ExpressHelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE3411C0609B400CC3CE2 /* ExpressHelpRequest.swift */; };
 		37ADE3441C061EED00CC3CE2 /* CreateNewRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE3431C061EED00CC3CE2 /* CreateNewRequestViewController.swift */; };
 		37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */; };
 		37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */; };
@@ -41,8 +39,6 @@
 		18391B43C5FC3324F6E1F8EF /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
-		37ADE33F1C0609A300CC3CE2 /* NormalHelpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalHelpRequest.swift; sourceTree = "<group>"; };
-		37ADE3411C0609B400CC3CE2 /* ExpressHelpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressHelpRequest.swift; sourceTree = "<group>"; };
 		37ADE3431C061EED00CC3CE2 /* CreateNewRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewRequestViewController.swift; sourceTree = "<group>"; };
 		37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateNewRequest.storyboard; sourceTree = "<group>"; };
 		37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManagerConfiguration.swift; sourceTree = "<group>"; };
@@ -86,8 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */,
-				37ADE33F1C0609A300CC3CE2 /* NormalHelpRequest.swift */,
-				37ADE3411C0609B400CC3CE2 /* ExpressHelpRequest.swift */,
 				18391B43C5FC3324F6E1F8EF /* ServerManager.swift */,
 				37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */,
 			);
@@ -378,13 +372,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */,
-				37ADE3421C0609B400CC3CE2 /* ExpressHelpRequest.swift in Sources */,
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,
 				37ADE3441C061EED00CC3CE2 /* CreateNewRequestViewController.swift in Sources */,
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
 				18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */,
 				37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */,
-				37ADE3401C0609A300CC3CE2 /* NormalHelpRequest.swift in Sources */,
 				18391D92B940B76766394B71 /* ServerManager.swift in Sources */,
 				37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */,
 			);
