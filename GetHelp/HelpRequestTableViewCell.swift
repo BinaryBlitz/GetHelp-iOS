@@ -8,19 +8,6 @@
 
 import UIKit
 
-enum HelpType: String {
-  case Normal = "normal"
-  case Express = "express"
-}
-
-enum HelpRequestStatus {
-  case InReview
-  case WatingForPayment(price: Double)
-  case Accepted
-  case Rejected
-  case Done
-}
-
 protocol RequestPresenter {
   var type: String  { get }
   var name: String { get }
