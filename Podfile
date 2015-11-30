@@ -1,4 +1,4 @@
-platform :ios, '8.4'
+platform :ios, '8.0'
 use_frameworks!
 
 pod 'Alamofire'
@@ -6,4 +6,4 @@ pod 'SwiftyJSON'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'RealmSwift'
-pod 'RPFloatingPlaceholders'
+pod 'Eureka'
