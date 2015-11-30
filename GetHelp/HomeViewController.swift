@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    refreshControl.addTarget(self, action: "refresh:", forControlEvents: .PrimaryActionTriggered)
+    refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
     configureCreateButton()
     configureTableView()
     fetchHelpRequests()

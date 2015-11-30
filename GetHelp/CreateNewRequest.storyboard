@@ -5,56 +5,36 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--Create New Request View Controller-->
-        <scene sceneID="BRU-Dy-xdk">
+        <!--Request Form Table View Controller-->
+        <scene sceneID="1fu-gu-ibh">
             <objects>
-                <viewController id="2no-qc-sg7" customClass="CreateNewRequestViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Zxn-1v-qXu"/>
-                        <viewControllerLayoutGuide type="bottom" id="tkY-aN-AQ1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qZQ-sy-Yn2">
+                <tableViewController id="PQ3-uh-uPt" customClass="RequestFormTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" id="yhF-dn-wQ0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-Bk-zkJ">
-                                <rect key="frame" x="230" y="197" width="140" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Домашнее задание"/>
-                                <connections>
-                                    <action selector="normalRequestButtonAction:" destination="2no-qc-sg7" eventType="touchUpInside" id="lcQ-PJ-gHX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNz-tC-jTb">
-                                <rect key="frame" x="239" y="276" width="123" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Срочная помощь"/>
-                                <connections>
-                                    <action selector="expressRequestButtonAction:" destination="2no-qc-sg7" eventType="touchUpInside" id="ksN-hI-EYA"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ogc-Bk-zkJ" firstAttribute="centerX" secondItem="qZQ-sy-Yn2" secondAttribute="centerX" id="PF1-Xw-RHs"/>
-                            <constraint firstItem="ogc-Bk-zkJ" firstAttribute="top" secondItem="Zxn-1v-qXu" secondAttribute="bottom" constant="133" id="mgO-Hd-h4x"/>
-                            <constraint firstItem="qNz-tC-jTb" firstAttribute="centerX" secondItem="ogc-Bk-zkJ" secondAttribute="centerX" id="mgx-Km-Omv"/>
-                            <constraint firstItem="qNz-tC-jTb" firstAttribute="top" secondItem="ogc-Bk-zkJ" secondAttribute="bottom" constant="49" id="xVV-fb-625"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="EJh-8F-5wM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="JJc-cl-f57">
-                            <connections>
-                                <action selector="cancelButtonAction:" destination="2no-qc-sg7" id="WmM-3o-wIV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="stX-yF-2G4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="101" id="qsg-ff-SA5">
+                                <rect key="frame" x="0.0" y="92" width="600" height="101"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qsg-ff-SA5" id="bo5-9D-s6h">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="101"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PQ3-uh-uPt" id="Dn7-GS-7Ra"/>
+                            <outlet property="delegate" destination="PQ3-uh-uPt" id="g9C-RF-dJV"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9bM-mP-6tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1035" y="347"/>
+            <point key="canvasLocation" x="1740" y="347"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZJJ-gw-sz9">
@@ -68,12 +48,64 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2no-qc-sg7" kind="relationship" relationship="rootViewController" id="keU-mt-p6h"/>
+                        <segue destination="Sym-9y-nTd" kind="relationship" relationship="rootViewController" id="Eb5-xw-1Fj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oki-GE-RYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="223" y="347"/>
+        </scene>
+        <!--Заявка-->
+        <scene sceneID="BVc-o4-haY">
+            <objects>
+                <tableViewController id="Sym-9y-nTd" customClass="CreateNewRequestTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="72" sectionHeaderHeight="18" sectionFooterHeight="18" id="fI0-ZT-kNM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="typeOptionCell" textLabel="Cbg-sH-M8J" rowHeight="70" style="IBUITableViewCellStyleDefault" id="rjU-O5-DFf">
+                                <rect key="frame" x="0.0" y="114" width="600" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rjU-O5-DFf" id="eCG-Wu-cK2">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cbg-sH-M8J">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="70"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Sym-9y-nTd" id="ZRA-OO-BhS"/>
+                            <outlet property="delegate" destination="Sym-9y-nTd" id="VBN-5G-QMa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Заявка" id="0hW-IQ-Eza">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="OgH-ly-pzG">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="Sym-9y-nTd" id="pXA-p8-v2l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="PQ3-uh-uPt" kind="show" identifier="fillTheForm" id="W7c-T9-Yxc"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LCI-Ra-cgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="347"/>
         </scene>
     </scenes>
 </document>
