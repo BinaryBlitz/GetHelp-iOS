@@ -167,6 +167,13 @@
 			path = GetHelpTests;
 			sourceTree = "<group>";
 		};
+		37EDF9401C0CCBC600927D68 /* RequestFormCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RequestFormCells;
+			sourceTree = "<group>";
+		};
 		37F171BC1BFB6D020016433D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +187,7 @@
 		37F171BE1BFB6D0F0016433D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				37EDF9401C0CCBC600927D68 /* RequestFormCells */,
 				37B889C31C08EF4D00EA02D8 /* HelpRequestTableViewCell */,
 			);
 			name = Views;
