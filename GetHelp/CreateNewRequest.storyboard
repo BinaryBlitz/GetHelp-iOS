@@ -3,39 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Request Form Table View Controller-->
-        <scene sceneID="1fu-gu-ibh">
-            <objects>
-                <tableViewController id="PQ3-uh-uPt" customClass="RequestFormTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" id="yhF-dn-wQ0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qsg-ff-SA5">
-                                <rect key="frame" x="0.0" y="114" width="600" height="55"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qsg-ff-SA5" id="bo5-9D-s6h">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="PQ3-uh-uPt" id="Dn7-GS-7Ra"/>
-                            <outlet property="delegate" destination="PQ3-uh-uPt" id="g9C-RF-dJV"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9bM-mP-6tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1740" y="347"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZJJ-gw-sz9">
             <objects>
@@ -100,12 +70,58 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="PQ3-uh-uPt" kind="show" identifier="fillTheForm" id="W7c-T9-Yxc"/>
+                        <segue destination="0qs-eZ-dQs" kind="show" identifier="fillTheForm" id="jvj-J4-UuI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCI-Ra-cgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="954" y="347"/>
+        </scene>
+        <!--Request Form View Controller-->
+        <scene sceneID="RDJ-GH-1mf">
+            <objects>
+                <viewController id="0qs-eZ-dQs" customClass="RequestFormViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dSe-na-Wck"/>
+                        <viewControllerLayoutGuide type="bottom" id="yvj-kh-aK5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A04-wP-Cb8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bz7-gF-flL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="0qs-eZ-dQs" id="kU9-bm-1hk"/>
+                                    <outlet property="delegate" destination="0qs-eZ-dQs" id="9bE-pG-x0w"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bz7-gF-flL" firstAttribute="leading" secondItem="A04-wP-Cb8" secondAttribute="leadingMargin" constant="-20" id="WnY-mp-1SN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bz7-gF-flL" secondAttribute="trailing" constant="-20" id="jNN-zj-d7B"/>
+                            <constraint firstItem="bz7-gF-flL" firstAttribute="top" secondItem="dSe-na-Wck" secondAttribute="bottom" id="s79-9Q-Mha"/>
+                            <constraint firstItem="yvj-kh-aK5" firstAttribute="top" secondItem="bz7-gF-flL" secondAttribute="bottom" id="u6P-jX-VyV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xy8-pe-ZAy">
+                        <barButtonItem key="rightBarButtonItem" title="Отправить" id="tMu-Jf-T51">
+                            <connections>
+                                <action selector="submitButtonAction:" destination="0qs-eZ-dQs" id="5G4-iz-Ihm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="bz7-gF-flL" id="nzi-O8-dQW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hpZ-Oh-qj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1716" y="347"/>
         </scene>
     </scenes>
 </document>

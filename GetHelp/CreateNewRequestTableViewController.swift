@@ -65,11 +65,11 @@ class CreateNewRequestTableViewController: UITableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     guard let indexPath = sender as? NSIndexPath,
-        destination = segue.destinationViewController as? RequestFormTableViewController else {
+        destination = segue.destinationViewController as? RequestFormViewController else {
       return
     }
     
-    let presenter = typePresenters[indexPath.row]
+    let presenter = typePresenters[indexPath.section]
     destination.type = presenter.type
   }
 }
