@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import RealmSwift
 
 class RequestFormViewController: FormViewController {
   
@@ -29,17 +30,17 @@ class RequestFormViewController: FormViewController {
     
     switch type {
     case .Normal:
-      form +++= DateTimeInlineRow("Дата и время сдачи") {
-        $0.title = $0.tag
+      form +++= DateTimeInlineRow("dateTimeRow") {
+        $0.title = "Дата и время сдачи"
         $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
       }
     case .Express:
-      form +++= DateTimeInlineRow("Начало работы") {
-        $0.title = $0.tag
+      form +++= DateTimeInlineRow("dateTimeRow") {
+        $0.title = "Дата и время сдачи"
         $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
       }
-      <<< TimeInlineRow("Конец работы") {
-        $0.title = $0.tag
+      <<< TimeInlineRow("timeRow") {
+        $0.title = "Конец работы"
         $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 3)
       }
     }
@@ -48,14 +49,14 @@ class RequestFormViewController: FormViewController {
     
     switch type {
     case .Normal:
-      form +++= TextFloatLabelRow() {
+      form +++= TextFloatLabelRow("subjectRow") {
         $0.title = "Предмет"
       }
     case .Express:
-      form +++= TextFloatLabelRow() {
+      form +++= TextFloatLabelRow("subjectRow") {
         $0.title = "Предмет"
       }
-      <<< TextFloatLabelRow() {
+      <<< TextFloatLabelRow("activityTypeRow") {
         $0.title = "Тип работы"
       }
     }
@@ -63,26 +64,27 @@ class RequestFormViewController: FormViewController {
     //MARK: - Section 3 (university info)
     
     form +++= Section()
-    <<< PushRow<String>() {
+    <<< PushRow<String>("schoolRow") {
       $0.title = "Вуз"
       $0.options = ["ВШЭ", "МГУ"] //TODO: список вузов
       $0.value = "ВШЭ"
       $0.selectorTitle = "Выберите вуз"
     }
-    <<< TextFloatLabelRow() {
-      $0.title = "Тип работы"
+    <<< TextFloatLabelRow("facilityRow") {
+      $0.title = "Факультет"
     }
 
     //MARK: - Section 4 (Add content)
     
-    form +++= ImageRow("Приложить фотографии") { row in
+    //TODO: Multiple photo selection. Alert with options. Create custome cell.
+    form +++= ImageRow("photoRow") { row in
       row.title = "Приложить фотографии"
     }
     
     //MARK: - Section 5 (description)
     
     form +++= Section("Описание работы")
-    <<< TextAreaRow() {
+    <<< TextAreaRow("desctiptionRow") {
       $0.placeholder = "Что это за работа?"
     }
   }
@@ -99,6 +101,24 @@ class RequestFormViewController: FormViewController {
   }
   
   @IBAction func submitButtonAction(sender: AnyObject) {
-    print("Submit!")
+    guard let subject = form.rowByTag("subjectRow")?.baseValue as? String else {
+      return
+    }
+    
+    let helpRequest = HelpRequest()
+    
+    helpRequest.type = type.rawValue
+    helpRequest.subject = subject
+    
+    let realm = try! Realm()
+    do {
+      try realm.write {
+        realm.add(helpRequest)
+      }
+      presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    } catch {
+      //Something is really wrong. 
+      //TODO: Alert about error
+    }
   }
 }
