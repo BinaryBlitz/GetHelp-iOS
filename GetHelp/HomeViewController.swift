@@ -127,9 +127,10 @@ extension HomeViewController: UITableViewDataSource {
       return UITableViewCell()
     }
 
-    //TODO: configure cell
-    cell.nameLabel.text = helpRequests?[indexPath.row].subject
-    cell.indicatorImageView.tintColor = UIColor.orangeSecondaryColor()
+    let request = helpRequests?[indexPath.row]
+    if let presenter = request?.presenter() {
+      cell.configure(presenter)
+    }
 
     return cell
   }
