@@ -23,6 +23,8 @@ class RequestFormViewController: FormViewController {
   
   func initialiseForm() {
     
+    rowsSetup()
+    
     //MARK: - Section 1 (date and time)
     
     switch type {
@@ -34,12 +36,11 @@ class RequestFormViewController: FormViewController {
     case .Express:
       form +++= DateTimeInlineRow("Начало работы") {
         $0.title = $0.tag
-        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24)
+        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
       }
       <<< TimeInlineRow("Конец работы") {
-          
         $0.title = $0.tag
-        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24)
+        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 3)
       }
     }
     
@@ -74,11 +75,26 @@ class RequestFormViewController: FormViewController {
 
     //MARK: - Section 4 (Add content)
     
+    form +++= ImageRow("Приложить фотографии") { row in
+      row.title = "Приложить фотографии"
+    }
+    
     //MARK: - Section 5 (description)
     
     form +++= Section("Описание работы")
     <<< TextAreaRow() {
       $0.placeholder = "Что это за работа?"
+    }
+  }
+  
+  func rowsSetup() {
+    
+    DateTimeInlineRow.defaultCellSetup = { cell, _ in
+      cell.tintColor = UIColor.orangeSecondaryColor()
+    }
+    
+    TimeInlineRow.defaultCellSetup = { cell, _ in
+      cell.tintColor = UIColor.orangeSecondaryColor()
     }
   }
   
