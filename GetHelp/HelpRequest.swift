@@ -11,7 +11,7 @@ import RealmSwift
 /// Contains basic fields for help request
 class HelpRequest: Object {
   
-  dynamic var id = ""
+//  dynamic var id = ""
   dynamic var subject = ""
   dynamic var cource = ""
   dynamic var school = ""
@@ -30,16 +30,7 @@ class HelpRequest: Object {
   }
   
   func presenter() -> HelpRequestPresenter? {
-    guard let type = typeEnum else {
-      return nil
-    }
-    
-    switch type {
-    case .Normal:
-      return NormalHelpRequestPresenter(helpRequest: self)
-    case .Express:
-      return ExpressHelpRequestPresenter(helpRequest: self)
-    }
+    return Presenter(helpRequest: self)
   }
 
 //  override class func primaryKey() -> String? {
@@ -49,72 +40,29 @@ class HelpRequest: Object {
 
 extension HelpRequest {
   
-  //MARK: - NormalHelpRequestPresenter
-  
-  private class NormalHelpRequestPresenter: HelpRequestPresenter {
+  private class Presenter: HelpRequestPresenter {
     
     private var helpRequest: HelpRequest
     private let dateFormatter: NSDateFormatter
     private let timeFormatter: NSDateFormatter
+    private var helpTypePresenter: HelpTypePresenter!
     
-    init(helpRequest: HelpRequest) {
+    init?(helpRequest: HelpRequest) {
       self.helpRequest = helpRequest
       dateFormatter = NSDateFormatter()
       dateFormatter.dateFormat = "dd.MM.yyyy"
       timeFormatter = NSDateFormatter()
       timeFormatter.dateFormat = "hh:mm"
+      
+      if let type = helpRequest.typeEnum {
+        helpTypePresenter = HelpTypePresenter(type: type)
+      } else {
+        return nil
+      }
     }
 
     var type: String {
-      return helpRequest.type
-    }
-    
-    var name: String {
-      return helpRequest.subject
-    }
-
-    var status: String {
-      return helpRequest.type
-      
-    }
-    var indicatorColor: UIColor {
-      return UIColor.orangeSecondaryColor()
-    }
-
-    var date: String {
-      guard let date = helpRequest.deadline else {
-        return ""
-      }
-      
-      return dateFormatter.stringFromDate(date)
-    }
-    
-    var time: String {
-      guard let date = helpRequest.deadline else {
-        return ""
-      }
-      
-      return timeFormatter.stringFromDate(date)
-    }
-  }
-  
-  //MARK: - ExpressHelpRequestPresenter
-  
-  private class ExpressHelpRequestPresenter: HelpRequestPresenter {
-    private var helpRequest: HelpRequest
-    private let dateFormatter: NSDateFormatter
-    private let timeFormatter: NSDateFormatter
-    
-    init(helpRequest: HelpRequest) {
-      self.helpRequest = helpRequest
-      dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "dd.MM.yyyy"
-      timeFormatter = NSDateFormatter()
-      timeFormatter.dateFormat = "hh:mm"
-    }
-
-    var type: String {
-      return helpRequest.type
+      return helpTypePresenter.name
     }
     
     var name: String {
