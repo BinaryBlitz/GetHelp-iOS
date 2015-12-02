@@ -10,6 +10,8 @@
 		18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839149E49C96059858B99D7 /* HomeViewController.swift */; };
 		18391D92B940B76766394B71 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18391B43C5FC3324F6E1F8EF /* ServerManager.swift */; };
 		1DB8ECC420E83CDA723B2B3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E7324B98E69E4DAA1DE665 /* Pods.framework */; };
+		3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Profile.storyboard */; };
+		3729DA7A1C0F0FFB007DB48C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */; };
 		37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */; };
 		37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */; };
 		37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */; };
@@ -47,6 +49,8 @@
 		1839149E49C96059858B99D7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18391B43C5FC3324F6E1F8EF /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
+		3729DA771C0F0F1D007DB48C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFormViewController.swift; sourceTree = "<group>"; };
 		37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpType.swift; sourceTree = "<group>"; };
 		37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestStatus.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				1839149E49C96059858B99D7 /* HomeViewController.swift */,
 				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
 				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
+				3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 			children = (
 				37CC9B751BFB60FF00B450E0 /* Main.storyboard */,
 				37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */,
+				3729DA771C0F0F1D007DB48C /* Profile.storyboard */,
 				37CC9B7A1BFB60FF00B450E0 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
@@ -339,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */,
@@ -422,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3729DA7A1C0F0FFB007DB48C /* ProfileTableViewController.swift in Sources */,
 				37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */,
 				37A7CB951C0CC0DD004CFB14 /* HelpTypePresenter.swift in Sources */,
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,
