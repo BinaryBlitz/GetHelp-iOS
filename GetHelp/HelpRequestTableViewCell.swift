@@ -8,23 +8,6 @@
 
 import UIKit
 
-protocol RequestPresenter {
-  var type: String  { get }
-  var name: String { get }
-}
-
-protocol HelpReqestStatusPresenter {
-  var status: String { get }
-  var indicatorColor: UIColor { get }
-}
-
-protocol DatePresenter {
-  var date: String { get }
-  var time: String { get }
-}
-
-typealias HelpRequestPresenter = protocol<RequestPresenter, DatePresenter, HelpReqestStatusPresenter>
-
 class HelpRequestTableViewCell: UITableViewCell {
 
   @IBOutlet weak var indicatorViewWidthConstraint: NSLayoutConstraint!
@@ -45,7 +28,7 @@ class HelpRequestTableViewCell: UITableViewCell {
     indicatorImageView.image  = indicatorImageView?.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
   }
   
-  func configure(presenter: HelpRequestPresenter) {
+  func configure(presenter: HelpRequestPresentable) {
     indicatorImageView.tintColor = presenter.indicatorColor
     timeLabel.text = presenter.time
     dateLabel.text = presenter.date

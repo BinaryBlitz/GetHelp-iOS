@@ -26,6 +26,11 @@
 		37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B781BFB60FF00B450E0 /* Assets.xcassets */; };
 		37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B7A1BFB60FF00B450E0 /* LaunchScreen.storyboard */; };
 		37CC9B871BFB60FF00B450E0 /* GetHelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC9B861BFB60FF00B450E0 /* GetHelpTests.swift */; };
+		37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5001C10C2B7009F734B /* HelpRequestPresenter.swift */; };
+		37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5051C10C434009F734B /* RequestPresentable.swift */; };
+		37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5071C10C44A009F734B /* StatusPresentable.swift */; };
+		37CFD50A1C10C474009F734B /* DatePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5091C10C474009F734B /* DatePresentable.swift */; };
+		37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */; };
 		37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */; };
 		37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E8B3861C01E88900778C6B /* HelpRequestTableViewCell.xib */; };
 		37EDF9431C0CE9DB00927D68 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF9421C0CE9DB00927D68 /* FloatLabelTextField.swift */; };
@@ -69,6 +74,11 @@
 		37CC9B821BFB60FF00B450E0 /* GetHelpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetHelpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B861BFB60FF00B450E0 /* GetHelpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHelpTests.swift; sourceTree = "<group>"; };
 		37CC9B881BFB60FF00B450E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37CFD5001C10C2B7009F734B /* HelpRequestPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestPresenter.swift; sourceTree = "<group>"; };
+		37CFD5051C10C434009F734B /* RequestPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPresentable.swift; sourceTree = "<group>"; };
+		37CFD5071C10C44A009F734B /* StatusPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusPresentable.swift; sourceTree = "<group>"; };
+		37CFD5091C10C474009F734B /* DatePresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePresentable.swift; sourceTree = "<group>"; };
+		37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestPresentable.swift; sourceTree = "<group>"; };
 		37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestTableViewCell.swift; sourceTree = "<group>"; };
 		37E8B3861C01E88900778C6B /* HelpRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestTableViewCell.xib; sourceTree = "<group>"; };
 		37EDF9421C0CE9DB00927D68 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
@@ -103,6 +113,8 @@
 		37A7CB911C0CB426004CFB14 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				37A7CB941C0CC0DD004CFB14 /* HelpTypePresenter.swift */,
+				37CFD5001C10C2B7009F734B /* HelpRequestPresenter.swift */,
 			);
 			name = Presenters;
 			sourceTree = "<group>";
@@ -111,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */,
-				37A7CB941C0CC0DD004CFB14 /* HelpTypePresenter.swift */,
 				18391B43C5FC3324F6E1F8EF /* ServerManager.swift */,
 				37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */,
 				37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */,
@@ -164,6 +175,7 @@
 				37F171BC1BFB6D020016433D /* Controllers */,
 				37ADE33C1C0608B000CC3CE2 /* Models */,
 				37A7CB911C0CB426004CFB14 /* Presenters */,
+				37CFD5041C10C41B009F734B /* Protocols */,
 				37F171C01BFB6D2B0016433D /* UI */,
 				37B889C81C09121A00EA02D8 /* Extensions */,
 				37F171C21BFB6D330016433D /* Supporting files */,
@@ -181,11 +193,15 @@
 			path = GetHelpTests;
 			sourceTree = "<group>";
 		};
-		37EDF9401C0CCBC600927D68 /* RequestFormCells */ = {
+		37CFD5041C10C41B009F734B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				37CFD5051C10C434009F734B /* RequestPresentable.swift */,
+				37CFD5071C10C44A009F734B /* StatusPresentable.swift */,
+				37CFD5091C10C474009F734B /* DatePresentable.swift */,
+				37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */,
 			);
-			name = RequestFormCells;
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		37EDF9481C0CEB4C00927D68 /* FloatTextField */ = {
@@ -214,7 +230,6 @@
 		37F171BE1BFB6D0F0016433D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				37EDF9401C0CCBC600927D68 /* RequestFormCells */,
 				37B889C31C08EF4D00EA02D8 /* HelpRequestTableViewCell */,
 				37EDF9481C0CEB4C00927D68 /* FloatTextField */,
 			);
@@ -434,18 +449,23 @@
 				37A7CB951C0CC0DD004CFB14 /* HelpTypePresenter.swift in Sources */,
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,
 				37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */,
+				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
+				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
 				37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */,
 				37EDF94A1C0CEC2F00927D68 /* TextFloatLabelRow.swift in Sources */,
 				37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */,
+				37CFD50A1C10C474009F734B /* DatePresentable.swift in Sources */,
 				37EDF9451C0CEA6F00927D68 /* FolatFieldRow.swift in Sources */,
 				37EDF9431C0CE9DB00927D68 /* FloatLabelTextField.swift in Sources */,
 				37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */,
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
 				37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */,
 				18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */,
+				37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */,
 				37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */,
 				18391D92B940B76766394B71 /* ServerManager.swift in Sources */,
 				37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */,
+				37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */,
 				37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
