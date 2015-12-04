@@ -118,6 +118,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3778B6321C123A0400A9C05D /* RequestDetails */ = {
+			isa = PBXGroup;
+			children = (
+				37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */,
+				376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */,
+				376C4D9C1C11B68400970316 /* ConversationViewController.swift */,
+			);
+			name = RequestDetails;
+			sourceTree = "<group>";
+		};
+		3778B6331C123A1800A9C05D /* CreateNewRequest */ = {
+			isa = PBXGroup;
+			children = (
+				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
+				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
+			);
+			name = CreateNewRequest;
+			sourceTree = "<group>";
+		};
 		37A7CB911C0CB426004CFB14 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,12 +247,9 @@
 			isa = PBXGroup;
 			children = (
 				1839149E49C96059858B99D7 /* HomeViewController.swift */,
-				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
-				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
 				3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */,
-				37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */,
-				376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */,
-				376C4D9C1C11B68400970316 /* ConversationViewController.swift */,
+				3778B6331C123A1800A9C05D /* CreateNewRequest */,
+				3778B6321C123A0400A9C05D /* RequestDetails */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
