@@ -25,6 +25,8 @@ class HomeViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: "")
 
     refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
     configureCreateButton()
@@ -93,6 +95,12 @@ class HomeViewController: UIViewController {
   @IBAction func addBarButtonAction(sender: AnyObject) {
     performSegueWithIdentifier("createNewRequest", sender: self)
   }
+  
+  //MARK: Navigation
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+  }
 }
 
 //MARK: - UITableViewDelegate
@@ -100,6 +108,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
 
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    performSegueWithIdentifier("showDetails", sender: indexPath)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 }

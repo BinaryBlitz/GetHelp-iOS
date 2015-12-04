@@ -6,13 +6,21 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--RequestDetails-->
+        <scene sceneID="8Dl-oT-yTV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RequestDetails" id="2MA-Es-jo8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B0d-1O-wbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557.5" y="78"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="PC5-JY-J9Y">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="a1O-Ww-Zv0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3w-aq-he3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511" y="-29"/>
+            <point key="canvasLocation" x="1519" y="-10"/>
         </scene>
         <!--Get Help-->
         <scene sceneID="guC-XF-w4R">
@@ -102,6 +110,7 @@
                         <outlet property="createRequestButton" destination="31X-sA-EUb" id="KIG-fM-6nf"/>
                         <outlet property="tableView" destination="F4B-eg-Ba6" id="Dte-Vc-vZk"/>
                         <segue destination="k2f-WE-5f9" kind="showDetail" identifier="createNewRequest" id="xFw-vS-laE"/>
+                        <segue destination="2MA-Es-jo8" kind="show" identifier="showDetails" id="0lP-Ky-m76"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybX-VA-0Kr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -114,7 +123,7 @@
                 <viewControllerPlaceholder storyboardName="CreateNewRequest" id="k2f-WE-5f9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYY-fh-kp0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1549.5" y="185"/>
+            <point key="canvasLocation" x="1557.5" y="202"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DyA-hu-UyS">

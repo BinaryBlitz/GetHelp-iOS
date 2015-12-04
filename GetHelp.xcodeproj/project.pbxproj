@@ -12,6 +12,8 @@
 		1DB8ECC420E83CDA723B2B3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E7324B98E69E4DAA1DE665 /* Pods.framework */; };
 		3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Profile.storyboard */; };
 		3729DA7A1C0F0FFB007DB48C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */; };
+		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
+		376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9C1C11B68400970316 /* ConversationViewController.swift */; };
 		37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */; };
 		37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */; };
 		37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */; };
@@ -21,6 +23,8 @@
 		37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */; };
 		37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */; };
 		37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */; };
+		37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */; };
+		37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */; };
 		37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */; };
 		37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B751BFB60FF00B450E0 /* Main.storyboard */; };
 		37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B781BFB60FF00B450E0 /* Assets.xcassets */; };
@@ -56,6 +60,8 @@
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		3729DA771C0F0F1D007DB48C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
+		376C4D9C1C11B68400970316 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFormViewController.swift; sourceTree = "<group>"; };
 		37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpType.swift; sourceTree = "<group>"; };
 		37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestStatus.swift; sourceTree = "<group>"; };
@@ -65,6 +71,8 @@
 		37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateNewRequest.storyboard; sourceTree = "<group>"; };
 		37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManagerConfiguration.swift; sourceTree = "<group>"; };
 		37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+GetHelp.swift"; sourceTree = "<group>"; };
+		37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RequestDetails.storyboard; sourceTree = "<group>"; };
+		37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailsViewController.swift; sourceTree = "<group>"; };
 		37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CC9B761BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -223,6 +231,9 @@
 				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
 				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
 				3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */,
+				37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */,
+				376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */,
+				376C4D9C1C11B68400970316 /* ConversationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 			children = (
 				37CC9B751BFB60FF00B450E0 /* Main.storyboard */,
 				37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */,
+				37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */,
 				3729DA771C0F0F1D007DB48C /* Profile.storyboard */,
 				37CC9B7A1BFB60FF00B450E0 /* LaunchScreen.storyboard */,
 			);
@@ -361,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */,
+				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */,
@@ -451,13 +464,16 @@
 				37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */,
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
+				37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */,
 				37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */,
 				37EDF94A1C0CEC2F00927D68 /* TextFloatLabelRow.swift in Sources */,
+				376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */,
 				37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */,
 				37CFD50A1C10C474009F734B /* DatePresentable.swift in Sources */,
 				37EDF9451C0CEA6F00927D68 /* FolatFieldRow.swift in Sources */,
 				37EDF9431C0CE9DB00927D68 /* FloatLabelTextField.swift in Sources */,
 				37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */,
+				376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */,
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
 				37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */,
 				18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */,
