@@ -18,10 +18,10 @@ extension UIColor {
   }
   
   static func greenAccentColor() -> UIColor {
-    return UIColor(r: 228, g: 30, b: 30)
+    return UIColor(r: 59, g: 155, b: 54)
   }
   
   static func redAccentColor() -> UIColor {
-    return UIColor(r: 59, g: 155, b: 54)
+    return UIColor(r: 228, g: 30, b: 30)
   }
 }

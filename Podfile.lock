@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.1.3)
+  - CCGrowingTextView (0.7)
   - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
   - DGRunkeeperSwitch (1.1.1)
@@ -15,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CCGrowingTextView
   - Crashlytics
   - DGRunkeeperSwitch
   - Eureka
@@ -25,6 +27,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  CCGrowingTextView: cd7e27d7f92e54de43fc607e146c16b3a3bb3950
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   DGRunkeeperSwitch: da12f199532a99958a1e87ec0a5af61efdba11ec
   Eureka: aa7059d2a30e1b206a581f0aabfcf903ece6beae

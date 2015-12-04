@@ -28,6 +28,9 @@ class RequestDetailsViewController: UIViewController {
       return
     }
     
+    //hide keyboard
+    view.endEditing(true)
+    
     switch segmentedControl.selectedSegmentIndex {
     case infoIndex:
       requestInfoView.hidden = false
