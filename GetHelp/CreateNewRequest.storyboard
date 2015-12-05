@@ -29,21 +29,21 @@
         <scene sceneID="BVc-o4-haY">
             <objects>
                 <tableViewController id="Sym-9y-nTd" customClass="CreateNewRequestTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="55" sectionHeaderHeight="18" sectionFooterHeight="18" id="fI0-ZT-kNM">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="66" sectionHeaderHeight="18" sectionFooterHeight="18" id="fI0-ZT-kNM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="typeOptionCell" textLabel="Cbg-sH-M8J" style="IBUITableViewCellStyleDefault" id="rjU-O5-DFf">
-                                <rect key="frame" x="0.0" y="114" width="600" height="55"/>
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rjU-O5-DFf" id="eCG-Wu-cK2">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cbg-sH-M8J">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="54.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
