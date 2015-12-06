@@ -37,7 +37,7 @@ class ConversationViewController: UIViewController {
     message2.sender = "user"
 
     messages = List<Message>()
-    messages!.append(message1)
+//    messages!.append(message1)
     messages!.append(message2)
 
     setUpButtons()
@@ -50,6 +50,11 @@ class ConversationViewController: UIViewController {
   func setUpTableView() {
     tableView.tableFooterView = UIView()
     tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    let userCellNib = UINib(nibName: "UserMessageTableViewCell", bundle: nil)
+//    let operatorCellNib = UINib(nibName: "OperatorMessageCell", bundle: nil)
+    tableView.registerNib(userCellNib, forCellReuseIdentifier: "userMessageCell")
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 50
   }
   
   func setUpRefreshControl() {
@@ -152,9 +157,10 @@ extension ConversationViewController: UITableViewDataSource {
       return UITableViewCell()
     }
 
-    cell.textLabel?.text = message.content
-    cell.layer.cornerRadius = 10
-    
+    if let configurableCell = cell as? ConfigurableMessageCell {
+      configurableCell.configure(MessagePresenter(message: message))
+    }
+
     return cell
   }
 }
