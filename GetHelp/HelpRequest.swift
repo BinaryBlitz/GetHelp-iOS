@@ -28,6 +28,8 @@ class HelpRequest: Object {
   var typeEnum: HelpType? {
     return HelpType(rawValue: type)
   }
+
+  let messages = List<Message>()
   
   func presenter() -> HelpRequestPresentable? {
     return HelpRequestPresenter(helpRequest: self)

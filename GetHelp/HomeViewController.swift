@@ -99,7 +99,10 @@ class HomeViewController: UIViewController {
   //MARK: Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
+    if let destination = segue.destinationViewController as? RequestDetailsViewController,
+        indexPath = sender as? NSIndexPath {
+      destination.helpRequest = helpRequests?[indexPath.row]
+    }
   }
 }
 

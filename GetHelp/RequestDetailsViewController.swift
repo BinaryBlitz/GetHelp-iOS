@@ -17,6 +17,8 @@ class RequestDetailsViewController: UIViewController {
   @IBOutlet weak var conversationView: UIView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
 
+  var helpRequest: HelpRequest!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -40,6 +42,17 @@ class RequestDetailsViewController: UIViewController {
       return
     }
   }
+
+  //MARK: - Navigation
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let infoViewController = segue.destinationViewController as? RequestInfoTableViewController {
+      infoViewController.helpRequest = helpRequest
+    } else if let conversationViewController = segue.destinationViewController as? ConversationViewController {
+      conversationViewController.helpRequest = helpRequest
+    }
+  }
+
 }
 
 extension UISegmentedControl {

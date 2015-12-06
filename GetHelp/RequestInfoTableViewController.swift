@@ -10,6 +10,8 @@ import UIKit
 
 class RequestInfoTableViewController: UITableViewController {
 
+  var helpRequest: HelpRequest!
+
   override func viewDidLoad() {
     super.viewDidLoad()
   }

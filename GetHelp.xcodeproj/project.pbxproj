@@ -25,6 +25,9 @@
 		37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */; };
 		37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */; };
 		37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */; };
+		37C69D9F1C135A7C009D7755 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69D9E1C135A7C009D7755 /* Message.swift */; };
+		37C69DA11C145583009D7755 /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DA01C145583009D7755 /* MessageSender.swift */; };
+		37C69DA31C145A33009D7755 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DA21C145A33009D7755 /* Image.swift */; };
 		37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */; };
 		37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B751BFB60FF00B450E0 /* Main.storyboard */; };
 		37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B781BFB60FF00B450E0 /* Assets.xcassets */; };
@@ -73,6 +76,9 @@
 		37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+GetHelp.swift"; sourceTree = "<group>"; };
 		37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RequestDetails.storyboard; sourceTree = "<group>"; };
 		37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailsViewController.swift; sourceTree = "<group>"; };
+		37C69D9E1C135A7C009D7755 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		37C69DA01C145583009D7755 /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
+		37C69DA21C145A33009D7755 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CC9B761BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */,
+				37C69D9E1C135A7C009D7755 /* Message.swift */,
+				37C69DA01C145583009D7755 /* MessageSender.swift */,
+				37C69DA21C145A33009D7755 /* Image.swift */,
 				18391B43C5FC3324F6E1F8EF /* ServerManager.swift */,
 				37B889C41C08F80D00EA02D8 /* ServerManagerConfiguration.swift */,
 				37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */,
@@ -477,6 +486,7 @@
 				37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */,
 				37A7CB951C0CC0DD004CFB14 /* HelpTypePresenter.swift in Sources */,
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,
+				37C69DA31C145A33009D7755 /* Image.swift in Sources */,
 				37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */,
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
@@ -494,8 +504,10 @@
 				37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */,
 				18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */,
 				37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */,
+				37C69D9F1C135A7C009D7755 /* Message.swift in Sources */,
 				37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */,
 				18391D92B940B76766394B71 /* ServerManager.swift in Sources */,
+				37C69DA11C145583009D7755 /* MessageSender.swift in Sources */,
 				37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */,
 				37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */,
 				37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */,

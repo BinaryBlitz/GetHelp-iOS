@@ -90,7 +90,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cet-jU-HTs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="operatorMessageCell" id="cet-jU-HTs">
                                         <rect key="frame" x="0.0" y="28" width="570" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cet-jU-HTs" id="gq4-nz-zRv">
@@ -99,8 +99,24 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userMessageCell" id="Lsx-Wd-EGN">
+                                        <rect key="frame" x="0.0" y="72" width="570" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lsx-Wd-EGN" id="N2z-AL-z6w">
+                                            <rect key="frame" x="0.0" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="0.071741149340000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UyY-Pl-ncA" id="2UE-BS-1TQ"/>
+                                    <outlet property="delegate" destination="UyY-Pl-ncA" id="a7e-I4-voU"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-ct-rBq">
                                 <rect key="frame" x="15" y="565" width="570" height="35"/>
@@ -164,6 +180,7 @@
                     <connections>
                         <outlet property="attachButton" destination="wOd-7A-ZLg" id="15k-qe-XKe"/>
                         <outlet property="sendButton" destination="FRI-9G-cg4" id="Npq-nT-yPM"/>
+                        <outlet property="tableView" destination="IxS-fu-x8i" id="Wrk-Sg-Dtg"/>
                         <outlet property="textView" destination="QaL-KR-iep" id="oyK-Up-j0Y"/>
                         <outlet property="textViewContainerBottomConstraint" destination="stE-FK-X96" id="BaU-c0-z0Q"/>
                     </connections>
