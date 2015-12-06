@@ -1,5 +1,5 @@
 //
-//  UserMessageTableViewCell.swift
+//  OperatorMessageTableViewCell.swift
 //  GetHelp
 //
 //  Created by Dan Shevlyuk on 06/12/2015.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
+class OperatorMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
 
   @IBOutlet weak var attachmentStatusLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
@@ -19,7 +19,7 @@ class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    indicatorView.type = .Right
+    indicatorView.type = .Left
     cardView.layer.cornerRadius = 10
     cardView.layer.shadowColor = UIColor.blackColor().CGColor
     cardView.layer.shadowOpacity = 0.37

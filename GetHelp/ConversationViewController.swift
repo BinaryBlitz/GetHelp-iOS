@@ -36,9 +36,19 @@ class ConversationViewController: UIViewController {
     message2.content = "Pong"
     message2.sender = "user"
 
+    let message3 = Message()
+    message3.content = "Очень длинное сообение, чтобы понять как будет смотреться большой текст в карточке сообщения, а ещё посмотреть как это все вместе вообще будет смотреться. Вот."
+    message3.sender = "user"
+    
+    let message4 = Message()
+    message4.content = "Ну даже не знаю. Это смотрится странно, нужно поменять тени и цвет у штуку, где нужно вводить текст."
+    message4.sender = "operator"
+
     messages = List<Message>()
-//    messages!.append(message1)
-    messages!.append(message2)
+    messages?.append(message1)
+    messages?.append(message2)
+    messages?.append(message3)
+    messages?.append(message4)
 
     setUpButtons()
     setUpKeyboard()
@@ -49,17 +59,17 @@ class ConversationViewController: UIViewController {
   
   func setUpTableView() {
     tableView.tableFooterView = UIView()
-    tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     let userCellNib = UINib(nibName: "UserMessageTableViewCell", bundle: nil)
-//    let operatorCellNib = UINib(nibName: "OperatorMessageCell", bundle: nil)
+    let operatorCellNib = UINib(nibName: "OperatorMessageTableViewCell", bundle: nil)
     tableView.registerNib(userCellNib, forCellReuseIdentifier: "userMessageCell")
+    tableView.registerNib(operatorCellNib, forCellReuseIdentifier: "operatorMessageCell")
     tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 50
+    tableView.estimatedRowHeight = 100
   }
   
   func setUpRefreshControl() {
     refreshControl = UIRefreshControl()
-    refreshControl?.triggerVerticalOffset = 100
+//    refreshControl?.triggerVerticalOffset = 100
     refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
     tableView.bottomRefreshControl = refreshControl
   }
@@ -90,7 +100,7 @@ class ConversationViewController: UIViewController {
   }
   
   func scrollToBottom() {
-    let numberOfRows = tableView.numberOfRowsInSection(1)
+    let numberOfRows = tableView.numberOfRowsInSection(0)
     let indexPath = NSIndexPath(forRow: numberOfRows - 1, inSection: 0)
     tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
   }
@@ -101,12 +111,15 @@ class ConversationViewController: UIViewController {
     beginRefreshWithComplition { () -> Void in
       self.tableView.reloadData()
       self.refreshControl?.endRefreshing()
+      self.scrollToBottom()
     }
   }
   
   func beginRefreshWithComplition(complition: () -> Void) {
     //TODO: Reresh request
-    complition()
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+      complition()
+    }
   }
 
   //MARK: - IBActions

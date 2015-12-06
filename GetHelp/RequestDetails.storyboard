@@ -88,8 +88,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-fu-x8i">
                                 <rect key="frame" x="15" y="0.0" width="570" height="565"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="UyY-Pl-ncA" id="2UE-BS-1TQ"/>
                                     <outlet property="delegate" destination="UyY-Pl-ncA" id="a7e-I4-voU"/>
@@ -144,7 +143,6 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="OIr-ct-rBq" secondAttribute="leading" constant="5" id="3aG-PV-Ana"/>
                             <constraint firstAttribute="leadingMargin" secondItem="IxS-fu-x8i" secondAttribute="leading" constant="5" id="Kkh-vG-If5"/>

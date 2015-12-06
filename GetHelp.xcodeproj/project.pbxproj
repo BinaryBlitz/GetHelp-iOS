@@ -15,6 +15,8 @@
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
 		376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9C1C11B68400970316 /* ConversationViewController.swift */; };
 		378639EB1C14896100FF7CEE /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378639EA1C14896100FF7CEE /* IndicatorView.swift */; };
+		378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */; };
+		378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */; };
 		37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */; };
 		37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */; };
 		37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */; };
@@ -74,6 +76,8 @@
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9C1C11B68400970316 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		378639EA1C14896100FF7CEE /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorMessageTableViewCell.swift; sourceTree = "<group>"; };
+		378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OperatorMessageTableViewCell.xib; sourceTree = "<group>"; };
 		37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFormViewController.swift; sourceTree = "<group>"; };
 		37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpType.swift; sourceTree = "<group>"; };
 		37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestStatus.swift; sourceTree = "<group>"; };
@@ -159,6 +163,24 @@
 			name = CreateNewRequest;
 			sourceTree = "<group>";
 		};
+		378639F01C1497E400FF7CEE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				37C69DA61C1467FB009D7755 /* UserMessageTableViewCell.swift */,
+				37C69DA71C1467FB009D7755 /* UserMessageTableViewCell.xib */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		378639F21C1497F100FF7CEE /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */,
+				378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */,
+			);
+			name = Operator;
+			sourceTree = "<group>";
+		};
 		37A7CB911C0CB426004CFB14 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,8 +227,8 @@
 		37C69DA51C1467A6009D7755 /* MessagesCells */ = {
 			isa = PBXGroup;
 			children = (
-				37C69DA61C1467FB009D7755 /* UserMessageTableViewCell.swift */,
-				37C69DA71C1467FB009D7755 /* UserMessageTableViewCell.xib */,
+				378639F01C1497E400FF7CEE /* User */,
+				378639F21C1497F100FF7CEE /* Operator */,
 				378639EA1C14896100FF7CEE /* IndicatorView.swift */,
 			);
 			name = MessagesCells;
@@ -434,6 +456,7 @@
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */,
+				378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */,
 				37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */,
 				37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */,
 				37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */,
@@ -530,6 +553,7 @@
 				376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */,
 				37C69DAF1C146C22009D7755 /* MessagePresentable.swift in Sources */,
 				37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */,
+				378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */,
 				37CFD50A1C10C474009F734B /* DateTimePresentable.swift in Sources */,
 				37C69DA81C1467FB009D7755 /* UserMessageTableViewCell.swift in Sources */,
 				37EDF9451C0CEA6F00927D68 /* FolatFieldRow.swift in Sources */,
