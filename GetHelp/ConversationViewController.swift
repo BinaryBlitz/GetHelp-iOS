@@ -40,23 +40,23 @@ class ConversationViewController: UIViewController {
   func appendTestMessages() {
     let message1 = Message()
     message1.content = "Ping"
-    message1.sender = "operator"
+    message1.sender = .Operator
 
     let message2 = Message()
     message2.content = "Pong"
-    message2.sender = "user"
+    message2.sender = .User
 
     let message3 = Message()
     message3.content = "Очень длинное сообение, чтобы понять как будет смотреться большой текст в карточке сообщения, а ещё посмотреть как это все вместе вообще будет смотреться. Вот."
-    message3.sender = "user"
+    message3.sender = .User
 
     let message4 = Message()
     message4.content = "Ну даже не знаю. Это смотрится странно, нужно поменять тени и цвет у штуку, где нужно вводить текст."
-    message4.sender = "operator"
+    message4.sender = .Operator
 
     let message5 = Message()
     message5.content = "О, вот теперь все норм. Мне нравится :3"
-    message5.sender = "user"
+    message5.sender = .User
 
     messages = List<Message>()
     messages?.append(message1)
@@ -134,6 +134,18 @@ class ConversationViewController: UIViewController {
   //MARK: - IBActions
 
   @IBAction func sendButtonAction(sender: AnyObject) {
+    guard textView.text != "" else {
+      return
+    }
+    
+    let message = Message()
+    message.content = textView.text
+    message.dateCreated = NSDate()
+    message.sender = .User
+    messages?.append(message)
+    textView.text = ""
+    tableView.reloadData()
+    scrollToBottom()
   }
   
   @IBAction func attachButtonAction(sender: AnyObject) {
@@ -160,15 +172,13 @@ extension ConversationViewController: UITableViewDataSource {
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    guard let message = messages?[indexPath.row],
-              sender = message.senderEnum
-    else {
+    guard let message = messages?[indexPath.row] else {
       return UITableViewCell()
     }
 
     let cellIdentifier: String
     
-    switch sender {
+    switch message.sender {
     case .Operator:
       cellIdentifier = "operatorMessageCell"
     case .User:

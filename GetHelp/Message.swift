@@ -10,12 +10,17 @@ import RealmSwift
 
 class Message: Object {
   dynamic var content: String = ""
-  dynamic var sender: String = ""
+  private dynamic var _sender: String = "user"
   let imagesLinks = List<Image>()
   dynamic var dateCreated: NSDate = NSDate()
   dynamic var helpReuqest: HelpRequest?
 
-  var senderEnum: MessageSender? {
-    return MessageSender(rawValue: sender)
+  var sender: MessageSender {
+    get {
+      return MessageSender(rawValue: _sender)!
+    }
+    set(newSender) {
+      _sender = newSender.rawValue
+    }
   }
 }
