@@ -5,6 +5,9 @@ PODS:
   - CCGrowingTextView (0.7)
   - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
+  - DKImagePickerController (2.4.1):
+    - DKImagePickerController/Camera (= 2.4.1)
+  - DKImagePickerController/Camera (2.4.1)
   - Eureka (1.2.0)
   - Fabric (1.6.1)
   - JSBadgeView (1.4.1)
@@ -21,6 +24,7 @@ DEPENDENCIES:
   - CCBottomRefreshControl
   - CCGrowingTextView
   - Crashlytics
+  - DKImagePickerController
   - Eureka
   - Fabric
   - JSBadgeView
@@ -32,6 +36,7 @@ SPEC CHECKSUMS:
   CCBottomRefreshControl: 57a596348855260f627ffc2b311328ed15b94877
   CCGrowingTextView: cd7e27d7f92e54de43fc607e146c16b3a3bb3950
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
+  DKImagePickerController: f14f320fd164ca45ff95aecc943c75bc5323d518
   Eureka: aa7059d2a30e1b206a581f0aabfcf903ece6beae
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
