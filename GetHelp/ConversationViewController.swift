@@ -27,7 +27,17 @@ class ConversationViewController: UIViewController {
     super.viewDidLoad()
 
 //    messages = helpRequest.messages
-    // set up test messages
+
+    appendTestMessages()
+
+    setUpButtons()
+    setUpKeyboard()
+    setUpTextView()
+    setUpTableView()
+    setUpRefreshControl()
+  }
+
+  func appendTestMessages() {
     let message1 = Message()
     message1.content = "Ping"
     message1.sender = "operator"
@@ -39,22 +49,21 @@ class ConversationViewController: UIViewController {
     let message3 = Message()
     message3.content = "Очень длинное сообение, чтобы понять как будет смотреться большой текст в карточке сообщения, а ещё посмотреть как это все вместе вообще будет смотреться. Вот."
     message3.sender = "user"
-    
+
     let message4 = Message()
     message4.content = "Ну даже не знаю. Это смотрится странно, нужно поменять тени и цвет у штуку, где нужно вводить текст."
     message4.sender = "operator"
+
+    let message5 = Message()
+    message5.content = "О, вот теперь все норм. Мне нравится :3"
+    message5.sender = "user"
 
     messages = List<Message>()
     messages?.append(message1)
     messages?.append(message2)
     messages?.append(message3)
     messages?.append(message4)
-
-    setUpButtons()
-    setUpKeyboard()
-    setUpTextView()
-    setUpTableView()
-    setUpRefreshControl()
+    messages?.append(message5)
   }
   
   func setUpTableView() {
