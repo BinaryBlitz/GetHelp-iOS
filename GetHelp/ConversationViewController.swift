@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import DKImagePickerController
 
 class ConversationViewController: UIViewController {
 
@@ -19,17 +20,16 @@ class ConversationViewController: UIViewController {
   var badgeView: JSBadgeView?
   
   var helpRequest: HelpRequest!
-  var messages: List<Message>?
-  
+
   var refreshControl: UIRefreshControl?
+  var selectedAssets: [DKAsset]?
+
+  private var imagePickerController: DKImagePickerController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
-//    messages = helpRequest.messages
-
     appendTestMessages()
-
     setUpButtons()
     setUpKeyboard()
     setUpTextView()
@@ -58,12 +58,14 @@ class ConversationViewController: UIViewController {
     message5.content = "О, вот теперь все норм. Мне нравится :3"
     message5.sender = .User
 
-    messages = List<Message>()
-    messages?.append(message1)
-    messages?.append(message2)
-    messages?.append(message3)
-    messages?.append(message4)
-    messages?.append(message5)
+    let realm = try! Realm()
+    try! realm.write() {
+      self.helpRequest.messages.append(message1)
+      self.helpRequest.messages.append(message2)
+      self.helpRequest.messages.append(message3)
+      self.helpRequest.messages.append(message4)
+      self.helpRequest.messages.append(message5)
+    }
   }
   
   func setUpTableView() {
@@ -110,6 +112,10 @@ class ConversationViewController: UIViewController {
   
   func scrollToBottom() {
     let numberOfRows = tableView.numberOfRowsInSection(0)
+    if numberOfRows == 0 {
+      return
+    }
+
     let indexPath = NSIndexPath(forRow: numberOfRows - 1, inSection: 0)
     tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
   }
@@ -142,17 +148,43 @@ class ConversationViewController: UIViewController {
     message.content = textView.text
     message.dateCreated = NSDate()
     message.sender = .User
-    messages?.append(message)
+
+
+    let realm = try! Realm()
+    try! realm.write {
+      self.helpRequest.messages.append(message)
+      self.selectedAssets?.forEach { asset in
+        let image = Image()
+        message.images.append(image)
+        realm.add(image)
+      }
+      realm.add(message)
+    }
+
+    selectedAssets = nil
+    imagePickerController = nil
+    
     textView.text = ""
+    badgeView?.badgeText = nil
     tableView.reloadData()
     scrollToBottom()
   }
   
   @IBAction func attachButtonAction(sender: AnyObject) {
-    if badgeView?.badgeText == "2" {
-      badgeView?.badgeText = nil
+    presentImagePickerController()
+  }
+
+  func presentImagePickerController() {
+    if let imagePicker = imagePickerController {
+      presentViewController(imagePicker, animated: true, completion: nil)
     } else {
-      badgeView?.badgeText = "2"
+      imagePickerController = DKImagePickerController()
+      imagePickerController?.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
+        self.badgeView?.badgeText = assets.count != 0 ? "\(assets.count)" : nil
+        self.selectedAssets = assets
+      }
+      imagePickerController?.maxSelectableCount = 5
+      presentViewController(imagePickerController!, animated: true, completion: nil)
     }
   }
 }
@@ -162,9 +194,7 @@ class ConversationViewController: UIViewController {
 extension ConversationViewController: UITableViewDataSource {
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let messages = messages else {
-      return 0
-    }
+    let messages = helpRequest.messages
     
     tableView.hidden = messages.count == 0
 
@@ -172,9 +202,8 @@ extension ConversationViewController: UITableViewDataSource {
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    guard let message = messages?[indexPath.row] else {
-      return UITableViewCell()
-    }
+    let messages = helpRequest.messages
+    let message = messages[indexPath.row]
 
     let cellIdentifier: String
     

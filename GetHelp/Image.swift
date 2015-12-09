@@ -7,7 +7,15 @@
 //
 
 import RealmSwift
+import DKImagePickerController
 
 class Image: Object {
-  var owner: Message?
+//  var owner: Message?
+  dynamic var link: String? = nil
+  dynamic var assets: [DKAsset] = []
+//  dynamic var imageData: NSData?
+
+  override static func ignoredProperties() -> [String] {
+    return ["assets"]
+  }
 }

@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
     Fabric.with([Crashlytics.self])
@@ -29,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-    schemaVersion: 3,
+    schemaVersion: 5,
             migrationBlock: { migration, oldSchemaVersion in
               if oldSchemaVersion < 1 {}
             }

@@ -144,6 +144,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		370130B01C1854E50099AD1E /* HelpRequestInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = HelpRequestInfoCell;
+			sourceTree = "<group>";
+		};
+		370130B11C1854F80099AD1E /* Request Screen */ = {
+			isa = PBXGroup;
+			children = (
+				370130B01C1854E50099AD1E /* HelpRequestInfoCell */,
+				37C69DA51C1467A6009D7755 /* MessagesCells */,
+			);
+			name = "Request Screen";
+			sourceTree = "<group>";
+		};
 		3778B6321C123A0400A9C05D /* RequestDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,7 +335,7 @@
 		37F171BE1BFB6D0F0016433D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				37C69DA51C1467A6009D7755 /* MessagesCells */,
+				370130B11C1854F80099AD1E /* Request Screen */,
 				37B889C31C08EF4D00EA02D8 /* HelpRequestTableViewCell */,
 				37EDF9481C0CEB4C00927D68 /* FloatTextField */,
 			);

@@ -19,7 +19,18 @@ struct MessagePresenter: MessagePresentable {
   }
   
   var attachmentStatus: String? {
-    return nil
+    let imagesCount = message.images.count
+    if imagesCount == 0 {
+      return nil
+    }
+
+    if imagesCount <= 1 {
+      return "+\(imagesCount) фотография"
+    } else if imagesCount <= 4 {
+      return "+\(imagesCount) фотографии"
+    } else {
+      return "+\(imagesCount) фотографий"
+    }
   }
 
   //MARK: - DateTimePresentable
