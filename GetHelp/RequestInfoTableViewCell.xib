@@ -44,16 +44,9 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email для отправки:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4u-6H-TnG">
-                        <rect key="frame" x="7.5" y="139.5" width="157" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Vmn-F1-3mF" firstAttribute="leading" secondItem="wnF-pm-DZH" secondAttribute="leading" id="17r-CS-tBH"/>
-                    <constraint firstItem="B4u-6H-TnG" firstAttribute="leading" secondItem="wnF-pm-DZH" secondAttribute="leading" id="7UD-Dc-45W"/>
                     <constraint firstItem="wnF-pm-DZH" firstAttribute="top" secondItem="Afj-ZQ-JEM" secondAttribute="bottom" constant="7.5" id="JAO-Nx-ujC"/>
                     <constraint firstAttribute="topMargin" secondItem="ZdL-6x-cR9" secondAttribute="top" constant="-10" id="KFS-rN-iFe"/>
                     <constraint firstAttribute="leadingMargin" secondItem="ZdL-6x-cR9" secondAttribute="leading" constant="-10" id="RWL-ri-Dyz"/>
@@ -64,14 +57,8 @@
                     <constraint firstItem="wnF-pm-DZH" firstAttribute="leading" secondItem="Afj-ZQ-JEM" secondAttribute="leading" id="hGq-Au-vW8"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="lgS-e4-coj" secondAttribute="trailing" id="j4t-ZI-19h"/>
                     <constraint firstItem="Afj-ZQ-JEM" firstAttribute="leading" secondItem="lgS-e4-coj" secondAttribute="leading" id="keZ-zK-mdc"/>
-                    <constraint firstItem="B4u-6H-TnG" firstAttribute="top" secondItem="wnF-pm-DZH" secondAttribute="bottom" constant="8" id="mRI-q2-4Md"/>
                     <constraint firstItem="Afj-ZQ-JEM" firstAttribute="top" secondItem="lgS-e4-coj" secondAttribute="bottom" constant="7.5" id="yRB-oP-Hqd"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="subviews">
-                        <exclude reference="B4u-6H-TnG"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateTimeLabel" destination="Afj-ZQ-JEM" id="o2s-CA-l9k"/>
