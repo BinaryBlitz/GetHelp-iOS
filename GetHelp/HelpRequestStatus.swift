@@ -6,10 +6,10 @@
 //  Copyright © 2015 BinaryBlitz. All rights reserved.
 //
 
-enum HelpRequestStatus {
-  case InReview
-  case WatingForPayment(price: Double)
-  case Accepted
-  case Rejected
-  case Done
+enum HelpRequestStatus: String {
+  case InReview = "in_review"
+  case WatingForPayment = "wating_for_payment"
+  case Accepted = "accepetd"
+  case Rejected = "rejected"
+  case Done = "done"
 }

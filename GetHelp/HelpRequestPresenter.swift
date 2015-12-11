@@ -13,18 +13,13 @@ class HelpRequestPresenter: HelpRequestPresentable {
   private let timeFormatter: NSDateFormatter
   private var helpTypePresenter: HelpTypePresenter!
   
-  init?(helpRequest: HelpRequest) {
+  init(helpRequest: HelpRequest) {
     self.helpRequest = helpRequest
     dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "dd.MM.yyyy"
     timeFormatter = NSDateFormatter()
     timeFormatter.dateFormat = "hh:mm"
-    
-    if let type = helpRequest.typeEnum {
-      helpTypePresenter = HelpTypePresenter(type: type)
-    } else {
-      return nil
-    }
+    helpTypePresenter = HelpTypePresenter(type: helpRequest.type)
   }
 
   var type: String {
@@ -35,12 +30,20 @@ class HelpRequestPresenter: HelpRequestPresentable {
     return helpRequest.subject
   }
 
+  var schoolInfo: String {
+    return "\(helpRequest.school), \(helpRequest.faculty), \(helpRequest.cource) курс"
+  }
+
+  var email: String {
+    return helpRequest.email
+  }
+
   var status: String {
-    return helpRequest.type
+    return helpRequest.status.rawValue
     
   }
   var indicatorColor: UIColor {
-    return UIColor.orangeSecondaryColor()
+    return UIColor.greenAccentColor()
   }
 
   var date: String {
@@ -57,5 +60,9 @@ class HelpRequestPresenter: HelpRequestPresentable {
     }
     
     return timeFormatter.stringFromDate(date)
+  }
+  
+  var dateTime: String {
+    return "\(date) \(time)"
   }
 }

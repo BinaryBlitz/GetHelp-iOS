@@ -29,7 +29,7 @@ class ConversationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    appendTestMessages()
+//    appendTestMessages()
     setUpButtons()
     setUpKeyboard()
     setUpTextView()

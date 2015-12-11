@@ -9,4 +9,6 @@
 protocol RequestPresentale {
   var type: String  { get }
   var name: String { get }
+  var schoolInfo: String { get }
+  var email: String { get }
 }

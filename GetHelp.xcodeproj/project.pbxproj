@@ -10,6 +10,10 @@
 		18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839149E49C96059858B99D7 /* HomeViewController.swift */; };
 		18391D92B940B76766394B71 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18391B43C5FC3324F6E1F8EF /* ServerManager.swift */; };
 		1DB8ECC420E83CDA723B2B3F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E7324B98E69E4DAA1DE665 /* Pods.framework */; };
+		370130B41C1858D50099AD1E /* RequestInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370130B21C1858D50099AD1E /* RequestInfoTableViewCell.swift */; };
+		370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B31C1858D50099AD1E /* RequestInfoTableViewCell.xib */; };
+		370130BA1C1870BE0099AD1E /* RequestStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */; };
+		370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */; };
 		3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Profile.storyboard */; };
 		3729DA7A1C0F0FFB007DB48C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
@@ -70,6 +74,10 @@
 /* Begin PBXFileReference section */
 		1839149E49C96059858B99D7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18391B43C5FC3324F6E1F8EF /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		370130B21C1858D50099AD1E /* RequestInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewCell.swift; sourceTree = "<group>"; };
+		370130B31C1858D50099AD1E /* RequestInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestInfoTableViewCell.xib; sourceTree = "<group>"; };
+		370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestStatusTableViewCell.swift; sourceTree = "<group>"; };
+		370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestStatusTableViewCell.xib; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		3729DA771C0F0F1D007DB48C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +155,8 @@
 		370130B01C1854E50099AD1E /* HelpRequestInfoCell */ = {
 			isa = PBXGroup;
 			children = (
+				370130B21C1858D50099AD1E /* RequestInfoTableViewCell.swift */,
+				370130B31C1858D50099AD1E /* RequestInfoTableViewCell.xib */,
 			);
 			name = HelpRequestInfoCell;
 			sourceTree = "<group>";
@@ -156,8 +166,18 @@
 			children = (
 				370130B01C1854E50099AD1E /* HelpRequestInfoCell */,
 				37C69DA51C1467A6009D7755 /* MessagesCells */,
+				370130BC1C1871140099AD1E /* RequestStatusTebleViewCell */,
 			);
 			name = "Request Screen";
+			sourceTree = "<group>";
+		};
+		370130BC1C1871140099AD1E /* RequestStatusTebleViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */,
+				370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */,
+			);
+			name = RequestStatusTebleViewCell;
 			sourceTree = "<group>";
 		};
 		3778B6321C123A0400A9C05D /* RequestDetails */ = {
@@ -468,10 +488,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */,
+				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */,
+				370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */,
 				378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */,
 				37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */,
 				37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */,
@@ -571,6 +593,7 @@
 				37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */,
 				378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */,
 				37CFD50A1C10C474009F734B /* DateTimePresentable.swift in Sources */,
+				370130B41C1858D50099AD1E /* RequestInfoTableViewCell.swift in Sources */,
 				37C69DA81C1467FB009D7755 /* UserMessageTableViewCell.swift in Sources */,
 				37EDF9451C0CEA6F00927D68 /* FolatFieldRow.swift in Sources */,
 				37EDF9431C0CE9DB00927D68 /* FloatLabelTextField.swift in Sources */,
@@ -583,6 +606,7 @@
 				37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */,
 				37C69D9F1C135A7C009D7755 /* Message.swift in Sources */,
 				37C69DB31C146F7D009D7755 /* ConfigurableMessageCell.swift in Sources */,
+				370130BA1C1870BE0099AD1E /* RequestStatusTableViewCell.swift in Sources */,
 				37B889C51C08F80D00EA02D8 /* ServerManagerConfiguration.swift in Sources */,
 				18391D92B940B76766394B71 /* ServerManager.swift in Sources */,
 				37C69DA11C145583009D7755 /* MessageSender.swift in Sources */,

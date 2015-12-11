@@ -9,4 +9,5 @@
 protocol DateTimePresentable {
   var date: String { get }
   var time: String { get }
+  var dateTime: String { get }
 }

@@ -107,8 +107,13 @@ class RequestFormViewController: FormViewController {
     
     let helpRequest = HelpRequest()
     
-    helpRequest.type = type.rawValue
+    helpRequest.type = type
     helpRequest.subject = subject
+    helpRequest.school = "ВШЭ"
+    helpRequest.faculty = "Программная инженерия"
+    helpRequest.email = "foo@bar.com"
+    helpRequest.deadline = NSDate()
+    helpRequest.activityType = "Контрольная"
     
     let realm = try! Realm()
     do {

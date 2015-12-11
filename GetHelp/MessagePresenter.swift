@@ -41,4 +41,8 @@ struct MessagePresenter: MessagePresentable {
   var time: String {
     return dateFormatter.stringFromDate(message.dateCreated)
   }
+  
+  var dateTime: String {
+    return "\(date) \(time)"
+  }
 }

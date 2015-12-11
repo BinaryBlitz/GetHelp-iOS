@@ -18,20 +18,28 @@ class HelpRequest: Object {
   dynamic var faculty = ""
   dynamic var helpDescription = ""
   dynamic var deadline: NSDate?
-  dynamic var status = ""
+  dynamic var _status = "in_review"
+  var status: HelpRequestStatus {
+    return HelpRequestStatus(rawValue: _status)!
+  }
   
   // oops
   dynamic var email = ""
   dynamic var duration = 0 // in minutes
   dynamic var activityType = ""
-  dynamic var type = ""
-  var typeEnum: HelpType? {
-    return HelpType(rawValue: type)
+  dynamic var _type = "normal"
+  var type: HelpType {
+    get {
+      return HelpType(rawValue: _type)!
+    }
+    set(newType) {
+      self._type = newType.rawValue
+    }
   }
 
   let messages = List<Message>()
   
-  func presenter() -> HelpRequestPresentable? {
+  func presenter() -> HelpRequestPresentable {
     return HelpRequestPresenter(helpRequest: self)
   }
 
