@@ -25,11 +25,17 @@ class ConversationViewController: UIViewController {
   var selectedAssets: [DKAsset]?
 
   private var imagePickerController: DKImagePickerController?
-  
+
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+
+    scrollToBottom()
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    appendTestMessages()
+//    appendTestMessages()
     setUpButtons()
     setUpKeyboard()
     setUpTextView()
@@ -76,6 +82,7 @@ class ConversationViewController: UIViewController {
     tableView.registerNib(operatorCellNib, forCellReuseIdentifier: "operatorMessageCell")
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100
+    scrollToBottom()
   }
   
   func setUpRefreshControl() {
