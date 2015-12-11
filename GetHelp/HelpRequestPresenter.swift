@@ -39,11 +39,29 @@ class HelpRequestPresenter: HelpRequestPresentable {
   }
 
   var status: String {
-    return helpRequest.status.rawValue
-    
+    switch helpRequest.status {
+    case .Accepted:
+      return "Принят"
+    case .Done:
+      return "Завершен"
+    case .InReview:
+      return "Рассматривается"
+    case .Rejected:
+      return "Отклонен"
+    case .WatingForPayment:
+      return "Ожидает оплаты"
+    }
   }
+
   var indicatorColor: UIColor {
-    return UIColor.greenAccentColor()
+    switch helpRequest.status {
+    case .Accepted, .WatingForPayment:
+      return UIColor.greenAccentColor()
+    case .Done, .InReview:
+      return UIColor.lightGrayColor()
+    case .Rejected:
+      return UIColor.redAccentColor()
+    }
   }
 
   var date: String {
