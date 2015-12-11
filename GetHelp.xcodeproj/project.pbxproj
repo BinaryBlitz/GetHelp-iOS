@@ -18,7 +18,6 @@
 		3729DA7A1C0F0FFB007DB48C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
 		376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9C1C11B68400970316 /* ConversationViewController.swift */; };
-		378639EB1C14896100FF7CEE /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378639EA1C14896100FF7CEE /* IndicatorView.swift */; };
 		378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */; };
 		378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */; };
 		37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */; };
@@ -83,7 +82,6 @@
 		3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9C1C11B68400970316 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		378639EA1C14896100FF7CEE /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorMessageTableViewCell.swift; sourceTree = "<group>"; };
 		378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OperatorMessageTableViewCell.xib; sourceTree = "<group>"; };
 		37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFormViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 			children = (
 				378639F01C1497E400FF7CEE /* User */,
 				378639F21C1497F100FF7CEE /* Operator */,
-				378639EA1C14896100FF7CEE /* IndicatorView.swift */,
 			);
 			name = MessagesCells;
 			sourceTree = "<group>";
@@ -600,7 +597,6 @@
 				37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */,
 				376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */,
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
-				378639EB1C14896100FF7CEE /* IndicatorView.swift in Sources */,
 				37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */,
 				18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */,
 				37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */,

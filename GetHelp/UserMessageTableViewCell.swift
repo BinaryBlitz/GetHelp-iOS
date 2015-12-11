@@ -14,17 +14,14 @@ class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var contentLabel: UILabel!
   @IBOutlet weak var cardView: UIView!
-  @IBOutlet weak var indicatorView: IndicatorView!
+  @IBOutlet weak var indicatorView: UIView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    indicatorView.type = .Right
     cardView.layer.cornerRadius = 10
-    cardView.layer.shadowColor = UIColor.blackColor().CGColor
-    cardView.layer.shadowOpacity = 0.37
-    cardView.layer.shadowRadius = 2.3
-    cardView.layer.shadowOffset = CGSize()
+    cardView.layer.borderWidth = 2
+    cardView.layer.borderColor = UIColor(white: 0.86, alpha: 1).CGColor
   }
 
   func configure(presenter: MessagePresentable) {

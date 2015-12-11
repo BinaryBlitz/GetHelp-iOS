@@ -36,8 +36,10 @@ class RequestDetailsViewController: UIViewController {
     switch segmentedControl.selectedSegmentIndex {
     case infoIndex:
       requestInfoView.hidden = false
+      conversationView.hidden = true
     case conversationIndex:
       requestInfoView.hidden = true
+      conversationView.hidden = false
     default:
       return
     }
