@@ -1,0 +1,24 @@
+//
+//  WalletInfoTableViewCell.swift
+//  GetHelp
+//
+//  Created by Dan Shevlyuk on 12/12/2015.
+//  Copyright © 2015 BinaryBlitz. All rights reserved.
+//
+
+import UIKit
+
+class WalletInfoTableViewCell: UITableViewCell {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+}

@@ -14,12 +14,14 @@
 		370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B31C1858D50099AD1E /* RequestInfoTableViewCell.xib */; };
 		370130BA1C1870BE0099AD1E /* RequestStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */; };
 		370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */; };
+		371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */; };
+		371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */; };
+		3729DA781C0F0F1D007DB48C /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Wallet.storyboard */; };
+		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
 		376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9C1C11B68400970316 /* ConversationViewController.swift */; };
 		378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */; };
 		378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */; };
-		3729DA781C0F0F1D007DB48C /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Wallet.storyboard */; };
-		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
 		37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */; };
 		37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */; };
 		37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */; };
@@ -78,12 +80,14 @@
 		370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestStatusTableViewCell.swift; sourceTree = "<group>"; };
 		370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestStatusTableViewCell.xib; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
+		371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoTableViewCell.swift; sourceTree = "<group>"; };
+		371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletInfoTableViewCell.xib; sourceTree = "<group>"; };
+		3729DA771C0F0F1D007DB48C /* Wallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
+		3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9C1C11B68400970316 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorMessageTableViewCell.swift; sourceTree = "<group>"; };
 		378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OperatorMessageTableViewCell.xib; sourceTree = "<group>"; };
-		3729DA771C0F0F1D007DB48C /* Wallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
-		3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
 		37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFormViewController.swift; sourceTree = "<group>"; };
 		37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpType.swift; sourceTree = "<group>"; };
 		37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestStatus.swift; sourceTree = "<group>"; };
@@ -178,6 +182,15 @@
 			name = RequestStatusTebleViewCell;
 			sourceTree = "<group>";
 		};
+		371DA86B1C1C8B00007847ED /* WalletInfoTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */,
+				371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */,
+			);
+			name = WalletInfoTableViewCell;
+			sourceTree = "<group>";
+		};
 		3778B6321C123A0400A9C05D /* RequestDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,8 +204,6 @@
 		3778B6331C123A1800A9C05D /* CreateNewRequest */ = {
 			isa = PBXGroup;
 			children = (
-				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
-				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
 			);
 			name = CreateNewRequest;
 			sourceTree = "<group>";
@@ -357,6 +368,7 @@
 				370130B11C1854F80099AD1E /* Request Screen */,
 				37B889C31C08EF4D00EA02D8 /* HelpRequestTableViewCell */,
 				37EDF9481C0CEB4C00927D68 /* FloatTextField */,
+				371DA86B1C1C8B00007847ED /* WalletInfoTableViewCell */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -490,6 +502,7 @@
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
 				3729DA781C0F0F1D007DB48C /* Wallet.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
+				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */,
 				370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */,
@@ -609,6 +622,7 @@
 				18391D92B940B76766394B71 /* ServerManager.swift in Sources */,
 				37C69DA11C145583009D7755 /* MessageSender.swift in Sources */,
 				37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */,
+				371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */,
 				37C69DB51C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift in Sources */,
 				37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */,
 				37C69DB11C146C7C009D7755 /* MessagePresenter.swift in Sources */,
