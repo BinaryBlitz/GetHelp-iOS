@@ -14,12 +14,12 @@
 		370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B31C1858D50099AD1E /* RequestInfoTableViewCell.xib */; };
 		370130BA1C1870BE0099AD1E /* RequestStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */; };
 		370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */; };
-		3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Profile.storyboard */; };
-		3729DA7A1C0F0FFB007DB48C /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
 		376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9C1C11B68400970316 /* ConversationViewController.swift */; };
 		378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */; };
 		378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */; };
+		3729DA781C0F0F1D007DB48C /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Wallet.storyboard */; };
+		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
 		37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */; };
 		37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */; };
 		37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */; };
@@ -78,12 +78,12 @@
 		370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestStatusTableViewCell.swift; sourceTree = "<group>"; };
 		370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestStatusTableViewCell.xib; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
-		3729DA771C0F0F1D007DB48C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9C1C11B68400970316 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorMessageTableViewCell.swift; sourceTree = "<group>"; };
 		378639ED1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OperatorMessageTableViewCell.xib; sourceTree = "<group>"; };
+		3729DA771C0F0F1D007DB48C /* Wallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
+		3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
 		37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFormViewController.swift; sourceTree = "<group>"; };
 		37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpType.swift; sourceTree = "<group>"; };
 		37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestStatus.swift; sourceTree = "<group>"; };
@@ -342,9 +342,11 @@
 			isa = PBXGroup;
 			children = (
 				1839149E49C96059858B99D7 /* HomeViewController.swift */,
-				3729DA791C0F0FFB007DB48C /* ProfileTableViewController.swift */,
 				3778B6331C123A1800A9C05D /* CreateNewRequest */,
 				3778B6321C123A0400A9C05D /* RequestDetails */,
+				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
+				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
+				3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,7 +367,7 @@
 				37CC9B751BFB60FF00B450E0 /* Main.storyboard */,
 				37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */,
 				37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */,
-				3729DA771C0F0F1D007DB48C /* Profile.storyboard */,
+				3729DA771C0F0F1D007DB48C /* Wallet.storyboard */,
 				37CC9B7A1BFB60FF00B450E0 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
@@ -484,9 +486,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3729DA781C0F0F1D007DB48C /* Profile.storyboard in Resources */,
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
+				3729DA781C0F0F1D007DB48C /* Wallet.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */,
@@ -573,7 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3729DA7A1C0F0FFB007DB48C /* ProfileTableViewController.swift in Sources */,
+				3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */,
 				37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */,
 				37A7CB951C0CC0DD004CFB14 /* HelpTypePresenter.swift in Sources */,
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,

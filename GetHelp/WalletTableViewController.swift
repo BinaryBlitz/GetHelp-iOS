@@ -1,5 +1,5 @@
 //
-//  ProfileTableViewController.swift
+//  WalletTableViewController.swift
 //  GetHelp
 //
 //  Created by Dan Shevlyuk on 02/12/2015.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class WalletTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
