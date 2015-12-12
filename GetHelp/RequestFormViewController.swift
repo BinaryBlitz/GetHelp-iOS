@@ -173,14 +173,14 @@ class RequestFormViewController: FormViewController {
       helpRequest.duration = Int(endTime.timeIntervalSinceDate(deadline) / (60 * 60)) // in minutes
     }
 
-    if let activityType = form.rowByTag("activityTypeRow")?.baseValue as? String
-        where type == .Express {
-
-      helpRequest.activityType = activityType
-    } else {
-      print("activity type")
-      presentAlertWithMessage("Вы не указали тип работы")
-      return
+    if type == .Express {
+      if let activityType = form.rowByTag("activityTypeRow")?.baseValue as? String {
+        helpRequest.activityType = activityType
+      } else {
+        print("activity type")
+        presentAlertWithMessage("Вы не указали тип работы")
+        return
+      }
     }
 
     let realm = try! Realm()
