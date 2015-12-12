@@ -9,16 +9,12 @@
 class HelpRequestPresenter: HelpRequestPresentable {
   
   private var helpRequest: HelpRequest
-  private let dateFormatter: NSDateFormatter
-  private let timeFormatter: NSDateFormatter
   private var helpTypePresenter: HelpTypePresenter!
+  private lazy var dateFormatter = NSDateFormatter(dateFormat: "dd.MM.yyyy")
+  private lazy var timeFormatter = NSDateFormatter(dateFormat: "hh:mm")
   
   init(helpRequest: HelpRequest) {
     self.helpRequest = helpRequest
-    dateFormatter = NSDateFormatter()
-    dateFormatter.dateFormat = "dd.MM.yyyy"
-    timeFormatter = NSDateFormatter()
-    timeFormatter.dateFormat = "hh:mm"
     helpTypePresenter = HelpTypePresenter(type: helpRequest.type)
   }
 
