@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Greeting View Controller-->
         <scene sceneID="EMC-6t-8Za">
             <objects>
-                <viewController id="6mK-GS-dRc" sceneMemberID="viewController">
+                <viewController id="6mK-GS-dRc" customClass="GreetingViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7OW-Mk-h7f"/>
                         <viewControllerLayoutGuide type="bottom" id="6P2-cA-er8"/>
@@ -36,10 +36,10 @@
             </objects>
             <point key="canvasLocation" x="291" y="350"/>
         </scene>
-        <!--View Controller-->
+        <!--Phone Numbe Input View Controller-->
         <scene sceneID="gbD-mQ-4gw">
             <objects>
-                <viewController id="yqe-yb-r3N" sceneMemberID="viewController">
+                <viewController id="yqe-yb-r3N" customClass="PhoneNumbeInputViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FTQ-Xk-qHu"/>
                         <viewControllerLayoutGuide type="bottom" id="LI1-yS-uJY"/>
@@ -47,12 +47,46 @@
                     <view key="view" contentMode="scaleToFill" id="UWh-Dh-S3P">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1G-lt-371" customClass="REFormattedNumberField">
+                                <rect key="frame" x="198" y="285" width="204" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="204" id="0g7-xv-Jpl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq8-Mp-zbS">
+                                <rect key="frame" x="285" y="343" width="30" height="30"/>
+                                <state key="normal" title="OK"/>
+                                <connections>
+                                    <segue destination="w7G-Cm-fEJ" kind="show" id="VLY-rJ-Ilk"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="A1G-lt-371" firstAttribute="centerX" secondItem="UWh-Dh-S3P" secondAttribute="centerX" id="5Km-di-jOi"/>
+                            <constraint firstItem="hq8-Mp-zbS" firstAttribute="centerX" secondItem="A1G-lt-371" secondAttribute="centerX" id="Cqq-bT-FXA"/>
+                            <constraint firstItem="hq8-Mp-zbS" firstAttribute="top" secondItem="A1G-lt-371" secondAttribute="bottom" constant="28" id="NeF-Eq-k9H"/>
+                            <constraint firstItem="A1G-lt-371" firstAttribute="centerY" secondItem="UWh-Dh-S3P" secondAttribute="centerY" id="Y6G-6S-ScG"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumberTextField" destination="A1G-lt-371" id="fBL-An-l3B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmJ-SS-w7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="350"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="c5e-rT-O2M">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="w7G-Cm-fEJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jHM-SY-CYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1459" y="350"/>
         </scene>
     </scenes>
 </document>

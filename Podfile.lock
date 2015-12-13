@@ -17,6 +17,7 @@ PODS:
   - Realm/Headers (0.96.2)
   - RealmSwift (0.96.2):
     - Realm (= 0.96.2)
+  - REFormattedNumberField (1.1.5)
   - SwiftyJSON (2.3.1)
 
 DEPENDENCIES:
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - Fabric
   - JSBadgeView
   - RealmSwift
+  - REFormattedNumberField
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
   RealmSwift: 485599fe54e35461c4a0daa7d01d8fbf11424873
+  REFormattedNumberField: be3d55dd709f65541fb26b7e1709da07903147f8
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
 
 COCOAPODS: 0.39.0
