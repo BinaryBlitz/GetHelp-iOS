@@ -22,6 +22,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     configureRealm()
     configureNavigationBar()
+    configureServerManager()
+    
+    let navigation: UINavigationController
+    
+    if !ServerManager.sharedInstance.authenticated {
+      let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+      let loginViewController = loginStoryboard.instantiateInitialViewController()!
+      navigation = UINavigationController(rootViewController: loginViewController)
+    } else {
+      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let homeViewController = mainStoryboard.instantiateInitialViewController()!
+      navigation = UINavigationController(rootViewController: homeViewController)
+    }
+
+    window?.rootViewController = navigation
     
     return true
   }
@@ -34,6 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
     )
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
+  }
+  
+  func configureServerManager() {
+    let manager = ServerManager.sharedInstance
+    
+    if let token = NSUserDefaults.standardUserDefaults().objectForKey("apiToken") as? String {
+      manager.apiToken = token
+    } else {
+      manager.apiToken = "foobar"
+    }
   }
   
   func dropDatabaseData() {

@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
 
   //MARK: - Tools
 
-  func fetchHelpRequests(serverManager: ServerManager = ServerManager()) {
+  func fetchHelpRequests() {
     let realm  = try! Realm()
     helpRequests = realm.objects(HelpRequest)
   }
