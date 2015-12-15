@@ -35,7 +35,9 @@ class ConversationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-//    appendTestMessages()
+    if helpRequest.messages.count == 0 {
+      appendTestMessages()
+    }
     setUpButtons()
     setUpKeyboard()
     setUpTextView()
@@ -45,24 +47,22 @@ class ConversationViewController: UIViewController {
 
   func appendTestMessages() {
     let message1 = Message()
-    message1.content = "Ping"
+    message1.content = "Ваша заявка принята. Оплатите её пожалуйста в личном кабинете"
     message1.sender = .Operator
 
     let message2 = Message()
-    message2.content = "Pong"
+    message2.content = "Оплатил. Скоро скину фото заданий."
     message2.sender = .User
 
     let message3 = Message()
-    message3.content = "Очень длинное сообение, чтобы понять как будет смотреться большой текст в карточке сообщения, а ещё посмотреть как это все вместе вообще будет смотреться. Вот."
+    message3.content = "Вот задание. 3 задачу вообще невозможно решить."
     message3.sender = .User
-
+    message3.images.append(Image())
+    message3.images.append(Image())
+    
     let message4 = Message()
-    message4.content = "Ну даже не знаю. Это смотрится странно, нужно поменять тени и цвет у штуку, где нужно вводить текст."
+    message4.content = "Получили, решаем"
     message4.sender = .Operator
-
-    let message5 = Message()
-    message5.content = "О, вот теперь все норм. Мне нравится :3"
-    message5.sender = .User
 
     let realm = try! Realm()
     try! realm.write() {
@@ -70,7 +70,6 @@ class ConversationViewController: UIViewController {
       self.helpRequest.messages.append(message2)
       self.helpRequest.messages.append(message3)
       self.helpRequest.messages.append(message4)
-      self.helpRequest.messages.append(message5)
     }
   }
   

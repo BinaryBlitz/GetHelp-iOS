@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="1519" y="-10"/>
         </scene>
-        <!--Title-->
+        <!--GettHelp-->
         <scene sceneID="guC-XF-w4R">
             <objects>
                 <viewController id="kn5-6k-ScU" customClass="HomeViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,7 +87,7 @@
                             <constraint firstItem="F4B-eg-Ba6" firstAttribute="leading" secondItem="f0Q-Xi-uUh" secondAttribute="leadingMargin" constant="-20" id="vmK-Bq-44O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Dav-va-CEw">
+                    <navigationItem key="navigationItem" title="GettHelp" id="Dav-va-CEw">
                         <barButtonItem key="leftBarButtonItem" title="Профиль" id="hYt-Jm-jlm">
                             <connections>
                                 <action selector="profileBarButtonAction:" destination="kn5-6k-ScU" id="AmB-5L-FOU"/>
