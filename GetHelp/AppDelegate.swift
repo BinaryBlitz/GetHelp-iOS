@@ -22,21 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     configureRealm()
     configureNavigationBar()
+    configureTabBar()
     configureServerManager()
-    
-    let navigation: UINavigationController
+    UIApplication.sharedApplication().statusBarHidden = false
     
     if !ServerManager.sharedInstance.authenticated {
       let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
       let loginViewController = loginStoryboard.instantiateInitialViewController()!
-      navigation = UINavigationController(rootViewController: loginViewController)
+      let navigation = UINavigationController(rootViewController: loginViewController)
+      window?.rootViewController = navigation
     } else {
       let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
       let homeViewController = mainStoryboard.instantiateInitialViewController()!
-      navigation = UINavigationController(rootViewController: homeViewController)
+      window?.rootViewController = homeViewController
     }
-
-    window?.rootViewController = navigation
     
     return true
   }
@@ -57,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if let token = NSUserDefaults.standardUserDefaults().objectForKey("apiToken") as? String {
       manager.apiToken = token
     } else {
-//      manager.apiToken = "foobar"
+      manager.apiToken = "foobar"
     }
   }
   
@@ -79,9 +78,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func configureNavigationBar() {
-    UINavigationBar.appearance().tintColor = UIColor.orangeSecondaryColor()
+    UINavigationBar.appearance().barTintColor = UIColor.orangeSecondaryColor()
+    UINavigationBar.appearance().translucent = false
+    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)]
+    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
   }
 
+  func configureTabBar() {
+    UITabBar.appearance().tintColor = UIColor.orangeSecondaryColor()
+  }
+  
   func applicationWillResignActive(application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

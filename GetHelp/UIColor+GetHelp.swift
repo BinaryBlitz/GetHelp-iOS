@@ -14,7 +14,7 @@ extension UIColor {
   }
   
   static func orangeSecondaryColor() -> UIColor {
-    return UIColor(r: 232, g: 77, b: 27)
+    return UIColor(r: 243, g: 108, b: 18)
   }
   
   static func greenAccentColor() -> UIColor {

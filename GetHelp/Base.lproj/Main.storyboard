@@ -42,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Создайте свой первый запрос на помощь" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4v-mN-rJA">
-                                        <rect key="frame" x="50" y="128" width="500" height="22"/>
+                                        <rect key="frame" x="50" y="128" width="500" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -129,7 +129,7 @@
         <scene sceneID="S8s-hs-ZwA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fiM-AE-6W3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Заказы" image="Circle" id="jq9-R2-fUC"/>
+                    <tabBarItem key="tabBarItem" title="Заказы" image="OrdersTab" id="jq9-R2-fUC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rX3-Jq-pxE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -152,7 +152,7 @@
         <scene sceneID="D7J-WP-Q2Q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QWv-X2-Awd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Кошелек" image="Circle" id="GNc-wB-PRn"/>
+                    <tabBarItem key="tabBarItem" title="Кошелек" image="WalletTab" id="GNc-wB-PRn"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GwI-Ps-xKH">
@@ -168,7 +168,7 @@
             </objects>
             <point key="canvasLocation" x="2021" y="35"/>
         </scene>
-        <!--Wallet Table View Controller-->
+        <!--Кошелек-->
         <scene sceneID="RLc-6i-Rwz">
             <objects>
                 <tableViewController id="Ts6-xr-xeT" customClass="WalletTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
@@ -178,7 +178,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="requestBillCell" textLabel="mup-LI-NJK" detailTextLabel="Hm5-Pi-RcK" style="IBUITableViewCellStyleValue1" id="KCj-iU-thj">
-                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KCj-iU-thj" id="GcD-hb-jhI">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -207,7 +207,7 @@
                             <outlet property="delegate" destination="Ts6-xr-xeT" id="1h0-xS-fY4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="NeJ-04-FAT"/>
+                    <navigationItem key="navigationItem" title="Кошелек" id="NeJ-04-FAT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQk-FY-KVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,7 +226,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NNd-sl-g3r" id="ZPu-co-9wM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -246,7 +246,7 @@
         <scene sceneID="ZMW-sJ-iOs">
             <objects>
                 <navigationController id="7bY-Mu-yqP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Информация" image="Circle" id="BSV-Wo-Tnr"/>
+                    <tabBarItem key="tabBarItem" title="Информация" image="InfoTab" id="BSV-Wo-Tnr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ov7-5s-wiQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -262,6 +262,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Circle" width="30" height="30"/>
+        <image name="InfoTab" width="25" height="25"/>
+        <image name="OrdersTab" width="25" height="25"/>
+        <image name="WalletTab" width="25" height="25"/>
     </resources>
 </document>
