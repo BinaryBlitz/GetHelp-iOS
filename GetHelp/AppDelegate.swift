@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if let token = NSUserDefaults.standardUserDefaults().objectForKey("apiToken") as? String {
       manager.apiToken = token
     } else {
-      manager.apiToken = "foobar"
+//      manager.apiToken = "foobar"
     }
   }
   

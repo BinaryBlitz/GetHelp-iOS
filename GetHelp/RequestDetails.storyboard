@@ -10,7 +10,7 @@
         <!--Request Details View Controller-->
         <scene sceneID="m5N-fh-52Y">
             <objects>
-                <viewController id="tyk-W5-Uvb" customClass="RequestDetailsViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="tyk-W5-Uvb" customClass="RequestDetailsViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sdm-cY-Bm8"/>
                         <viewControllerLayoutGuide type="bottom" id="hmy-4Z-e6d"/>
@@ -109,8 +109,8 @@
                                             <action selector="sendButtonAction:" destination="UyY-Pl-ncA" eventType="touchUpInside" id="FJH-8a-DDw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOd-7A-ZLg">
-                                        <rect key="frame" x="9" y="-6.5" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOd-7A-ZLg">
+                                        <rect key="frame" x="9" y="-7" width="30" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wOd-7A-ZLg" secondAttribute="height" multiplier="1:1" id="H8s-yd-9RB"/>
                                             <constraint firstAttribute="width" constant="30" id="iIt-Qw-eBu"/>

@@ -88,10 +88,6 @@ class HomeViewController: UIViewController {
 
   //MARK: - Actions
   
-  @IBAction func profileBarButtonAction(sender: AnyObject) {
-    tableView.reloadData()
-  }
-  
   @IBAction func addBarButtonAction(sender: AnyObject) {
     performSegueWithIdentifier("createNewRequest", sender: self)
   }

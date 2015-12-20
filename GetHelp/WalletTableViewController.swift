@@ -143,10 +143,4 @@ class WalletTableViewController: UITableViewController {
       return nil
     }
   }
-
-  //MARK: - IBActions
-  
-  @IBAction func closeButtonAction(sender: AnyObject) {
-    dismissViewControllerAnimated(true, completion: nil)
-  }
 }

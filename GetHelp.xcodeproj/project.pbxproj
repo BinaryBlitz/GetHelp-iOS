@@ -16,7 +16,6 @@
 		370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */; };
 		371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */; };
 		371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */; };
-		3729DA781C0F0F1D007DB48C /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729DA771C0F0F1D007DB48C /* Wallet.storyboard */; };
 		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
 		3756CD3D1C1DE3CA001684E7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3756CD3C1C1DE3CA001684E7 /* Login.storyboard */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
@@ -65,6 +64,7 @@
 		37EFF3FE1C1E0AB1008D020F /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFF3FD1C1E0AB1008D020F /* GreetingViewController.swift */; };
 		37EFF4001C1E0ACA008D020F /* PhoneNumbeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFF3FF1C1E0ACA008D020F /* PhoneNumbeInputViewController.swift */; };
 		37EFF4021C1E0AE8008D020F /* LogInCodeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFF4011C1E0AE8008D020F /* LogInCodeCheckViewController.swift */; };
+		37F5D97C1C2712DF00938308 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,6 @@
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoTableViewCell.swift; sourceTree = "<group>"; };
 		371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletInfoTableViewCell.xib; sourceTree = "<group>"; };
-		3729DA771C0F0F1D007DB48C /* Wallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
 		3756CD3C1C1DE3CA001684E7 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +139,7 @@
 		37EFF3FD1C1E0AB1008D020F /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		37EFF3FF1C1E0ACA008D020F /* PhoneNumbeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbeInputViewController.swift; sourceTree = "<group>"; };
 		37EFF4011C1E0AE8008D020F /* LogInCodeCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInCodeCheckViewController.swift; sourceTree = "<group>"; };
+		37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		6D01969020F3224FD97D6806 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0DE6B581FF3E526EE01838 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F5E7324B98E69E4DAA1DE665 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,13 +209,6 @@
 				376C4D9C1C11B68400970316 /* ConversationViewController.swift */,
 			);
 			name = RequestDetails;
-			sourceTree = "<group>";
-		};
-		3778B6331C123A1800A9C05D /* CreateNewRequest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CreateNewRequest;
 			sourceTree = "<group>";
 		};
 		378639F01C1497E400FF7CEE /* User */ = {
@@ -372,13 +365,10 @@
 		37F171BC1BFB6D020016433D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1839149E49C96059858B99D7 /* HomeViewController.swift */,
-				3778B6331C123A1800A9C05D /* CreateNewRequest */,
-				3778B6321C123A0400A9C05D /* RequestDetails */,
 				37EFF3FC1C1E0A71008D020F /* Login */,
-				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
-				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
-				3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */,
+				37F5D9771C27126400938308 /* Home */,
+				37F5D9791C27129700938308 /* Wallet */,
+				37F5D97A1C2712A000938308 /* Info */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -401,7 +391,6 @@
 				3756CD3C1C1DE3CA001684E7 /* Login.storyboard */,
 				37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */,
 				37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */,
-				3729DA771C0F0F1D007DB48C /* Wallet.storyboard */,
 				37CC9B7A1BFB60FF00B450E0 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
@@ -416,6 +405,41 @@
 				37CC9B7D1BFB60FF00B450E0 /* Info.plist */,
 			);
 			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		37F5D9771C27126400938308 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1839149E49C96059858B99D7 /* HomeViewController.swift */,
+				37F5D9781C27128900938308 /* Create new */,
+				3778B6321C123A0400A9C05D /* RequestDetails */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		37F5D9781C27128900938308 /* Create new */ = {
+			isa = PBXGroup;
+			children = (
+				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
+				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
+			);
+			name = "Create new";
+			sourceTree = "<group>";
+		};
+		37F5D9791C27129700938308 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */,
+			);
+			name = Wallet;
+			sourceTree = "<group>";
+		};
+		37F5D97A1C2712A000938308 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */,
+			);
+			name = Info;
 			sourceTree = "<group>";
 		};
 		8BE62FC6A2B95A5B086687F5 /* Pods */ = {
@@ -523,7 +547,6 @@
 			files = (
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
-				3729DA781C0F0F1D007DB48C /* Wallet.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
@@ -631,6 +654,7 @@
 				37EFF4021C1E0AE8008D020F /* LogInCodeCheckViewController.swift in Sources */,
 				37C69DAF1C146C22009D7755 /* MessagePresentable.swift in Sources */,
 				37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */,
+				37F5D97C1C2712DF00938308 /* InfoTableViewController.swift in Sources */,
 				378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */,
 				37CFD50A1C10C474009F734B /* DateTimePresentable.swift in Sources */,
 				370130B41C1858D50099AD1E /* RequestInfoTableViewCell.swift in Sources */,

@@ -60,7 +60,7 @@
                                 <rect key="frame" x="285" y="343" width="30" height="30"/>
                                 <state key="normal" title="OK"/>
                                 <connections>
-                                    <segue destination="w7G-Cm-fEJ" kind="show" id="VLY-rJ-Ilk"/>
+                                    <action selector="okButtonAction:" destination="yqe-yb-r3N" eventType="touchUpInside" id="qZJ-8Q-t3i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -79,14 +79,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmJ-SS-w7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="350"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="c5e-rT-O2M">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="w7G-Cm-fEJ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jHM-SY-CYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1459" y="350"/>
         </scene>
     </scenes>
 </document>

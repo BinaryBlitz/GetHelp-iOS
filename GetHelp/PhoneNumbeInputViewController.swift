@@ -17,4 +17,11 @@ class PhoneNumbeInputViewController: UIViewController {
 
     phoneNumberTextField.format = "+X (XXX) XXX-XX-XX"
   }
+  
+  @IBAction func okButtonAction(sender: AnyObject) {
+    let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
+    if let initialController = mainStroryboard.instantiateInitialViewController() {
+      presentViewController(initialController, animated: true, completion: nil)
+    }
+  }
 }
