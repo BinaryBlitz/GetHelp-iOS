@@ -44,14 +44,14 @@ class HelpRequestPresenter: HelpRequestPresentable {
       return "Рассматривается"
     case .Rejected:
       return "Отклонен"
-    case .WatingForPayment:
+    case .WaitingForPayment:
       return "Ожидает оплаты"
     }
   }
 
   var indicatorColor: UIColor {
     switch helpRequest.status {
-    case .Accepted, .WatingForPayment:
+    case .Accepted, .WaitingForPayment:
       return UIColor.greenAccentColor()
     case .Done, .InReview:
       return UIColor.lightGrayColor()

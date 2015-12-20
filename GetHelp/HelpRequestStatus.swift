@@ -8,7 +8,7 @@
 
 enum HelpRequestStatus: String {
   case InReview = "in_review"
-  case WatingForPayment = "wating_for_payment"
+  case WaitingForPayment = "waiting_for_payment"
   case Accepted = "accepetd"
   case Rejected = "rejected"
   case Done = "done"
