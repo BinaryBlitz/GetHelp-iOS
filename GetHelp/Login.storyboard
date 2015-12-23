@@ -18,8 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-XM-QKr">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-MZ-d4h">
-                                <rect key="frame" x="251.5" y="404" width="97" height="36"/>
+                                <rect key="frame" x="251" y="404" width="97" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="jYe-we-dnb"/>
                                 </constraints>
@@ -41,19 +44,26 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-XM-QKr">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нажимая кнопку &quot;Начать&quot;, вы принимаете пользовательское соглашение" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytt-tl-bsB" customClass="TTTAttributedLabel">
+                                <rect key="frame" x="35" y="448" width="530" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ytt-tl-bsB" firstAttribute="top" secondItem="fd3-MZ-d4h" secondAttribute="bottom" constant="8" id="0EH-sp-8s2"/>
                             <constraint firstItem="fd3-MZ-d4h" firstAttribute="centerX" secondItem="qrv-i5-9qa" secondAttribute="centerX" id="1IJ-Yu-kkh"/>
                             <constraint firstItem="Feq-XM-QKr" firstAttribute="leading" secondItem="qrv-i5-9qa" secondAttribute="leadingMargin" constant="-20" id="8Kj-OU-wdz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ytt-tl-bsB" secondAttribute="trailing" constant="15" id="Cig-vg-26R"/>
                             <constraint firstItem="Kfp-7T-lqN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qrv-i5-9qa" secondAttribute="leadingMargin" constant="10" id="LAm-kl-DGx"/>
+                            <constraint firstItem="Ytt-tl-bsB" firstAttribute="centerX" secondItem="fd3-MZ-d4h" secondAttribute="centerX" id="NCJ-nK-JVb"/>
                             <constraint firstItem="8G6-Az-hfs" firstAttribute="centerY" secondItem="qrv-i5-9qa" secondAttribute="centerY" constant="-20" id="Npq-sG-loo"/>
                             <constraint firstItem="6P2-cA-er8" firstAttribute="top" secondItem="Feq-XM-QKr" secondAttribute="bottom" id="PX5-Zc-e74"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Kfp-7T-lqN" secondAttribute="trailing" constant="10" id="Rdh-8a-QFz"/>
                             <constraint firstItem="8G6-Az-hfs" firstAttribute="centerX" secondItem="qrv-i5-9qa" secondAttribute="centerX" id="WwQ-yG-7v4"/>
+                            <constraint firstItem="Ytt-tl-bsB" firstAttribute="leading" secondItem="qrv-i5-9qa" secondAttribute="leadingMargin" constant="15" id="bnm-Hn-wyj"/>
                             <constraint firstItem="Feq-XM-QKr" firstAttribute="top" secondItem="7OW-Mk-h7f" secondAttribute="bottom" id="fNw-0X-1bV"/>
                             <constraint firstItem="Kfp-7T-lqN" firstAttribute="centerX" secondItem="8G6-Az-hfs" secondAttribute="centerX" id="gGh-yo-E1i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Feq-XM-QKr" secondAttribute="trailing" constant="-20" id="knh-7k-IBW"/>
@@ -63,6 +73,7 @@
                     </view>
                     <connections>
                         <outlet property="signUpButton" destination="fd3-MZ-d4h" id="eho-AR-dqN"/>
+                        <outlet property="userAgreement" destination="Ytt-tl-bsB" id="CqE-BU-Bqh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udl-HF-dQP" userLabel="First Responder" sceneMemberID="firstResponder"/>

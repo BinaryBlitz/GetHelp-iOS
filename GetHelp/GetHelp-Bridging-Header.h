@@ -2,3 +2,4 @@
 @import JSBadgeView;
 @import CCBottomRefreshControl;
 @import REFormattedNumberField;
+@import TTTAttributedLabel;
