@@ -29,6 +29,7 @@
 		37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */; };
 		37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */; };
 		37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */; };
+		37AE79681C2AD14D00AC62DD /* signup_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37AE79671C2AD14D00AC62DD /* signup_bg.jpg */; };
 		37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */; };
 		37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */; };
 		37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */; };
@@ -100,6 +101,7 @@
 		37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
 		37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewRequestTableViewController.swift; sourceTree = "<group>"; };
 		37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateNewRequest.storyboard; sourceTree = "<group>"; };
+		37AE79671C2AD14D00AC62DD /* signup_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = signup_bg.jpg; sourceTree = "<group>"; };
 		37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+GetHelp.swift"; sourceTree = "<group>"; };
 		37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RequestDetails.storyboard; sourceTree = "<group>"; };
 		37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailsViewController.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 		37F171C21BFB6D330016433D /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				37AE79671C2AD14D00AC62DD /* signup_bg.jpg */,
 				37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */,
 				37E6B3191C1CC6F500DA19A8 /* Constants.swift */,
 				371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */,
@@ -551,6 +554,7 @@
 				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */,
+				37AE79681C2AD14D00AC62DD /* signup_bg.jpg in Resources */,
 				370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */,
 				378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */,
 				3756CD3D1C1DE3CA001684E7 /* Login.storyboard in Resources */,

@@ -24,14 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     configureNavigationBar()
     configureTabBar()
     configureServerManager()
-    UIApplication.sharedApplication().statusBarHidden = false
     
     if !ServerManager.sharedInstance.authenticated {
+      UIApplication.sharedApplication().statusBarHidden = true
       let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
       let loginViewController = loginStoryboard.instantiateInitialViewController()!
       let navigation = UINavigationController(rootViewController: loginViewController)
+      navigation.navigationBarHidden = true
       window?.rootViewController = navigation
     } else {
+      UIApplication.sharedApplication().statusBarHidden = false
       let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
       let homeViewController = mainStoryboard.instantiateInitialViewController()!
       window?.rootViewController = homeViewController
@@ -56,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if let token = NSUserDefaults.standardUserDefaults().objectForKey("apiToken") as? String {
       manager.apiToken = token
     } else {
-      manager.apiToken = "foobar"
+//      manager.apiToken = "foobar"
     }
   }
   
