@@ -20,6 +20,7 @@ PODS:
   - RealmSwift (0.97.0):
     - Realm (= 0.97.0)
   - REFormattedNumberField (1.1.5)
+  - SVWebViewController (1.0)
   - SwiftyJSON (2.3.2)
   - TTTAttributedLabel (1.13.4)
 
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - JSBadgeView
   - RealmSwift
   - REFormattedNumberField
+  - SVWebViewController
   - SwiftyJSON
   - TTTAttributedLabel
 
@@ -50,6 +52,7 @@ SPEC CHECKSUMS:
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
   RealmSwift: d014810dec75c9a3f1a33926d2dabfed855c582c
   REFormattedNumberField: be3d55dd709f65541fb26b7e1709da07903147f8
+  SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
 

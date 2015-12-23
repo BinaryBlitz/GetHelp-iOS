@@ -31,12 +31,12 @@ class GreetingViewController: UIViewController {
 
 extension GreetingViewController: TTTAttributedLabelDelegate {
   func attributedLabel(label: TTTAttributedLabel, didSelectLinkWithURL url: NSURL) {
-    print("yo")
     if #available(iOS 9.0, *) {
       let safariController = SFSafariViewController(URL: url)
       presentViewController(safariController, animated: true, completion: nil)
     } else {
-      
+      let webViewController = SVModalWebViewController(URL: url)
+      presentViewController(webViewController, animated: true, completion: nil)
     }
   }
 }
