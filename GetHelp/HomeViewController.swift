@@ -56,6 +56,7 @@ class HomeViewController: UIViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 80
     tableView.addSubview(refreshControl)
+    tableView.sendSubviewToBack(refreshControl)
   }
 
   func configureCreateButton() {
