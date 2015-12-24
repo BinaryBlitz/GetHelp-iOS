@@ -57,6 +57,7 @@
 		37E6B31A1C1CC6F500DA19A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6B3191C1CC6F500DA19A8 /* Constants.swift */; };
 		37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */; };
 		37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E8B3861C01E88900778C6B /* HelpRequestTableViewCell.xib */; };
+		37EB11191C2C720F00879A05 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EB11181C2C720F00879A05 /* MessageUI.framework */; };
 		37EDF9431C0CE9DB00927D68 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF9421C0CE9DB00927D68 /* FloatLabelTextField.swift */; };
 		37EDF9451C0CEA6F00927D68 /* FloatLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF9441C0CEA6F00927D68 /* FloatLabelCell.swift */; };
 		37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF9461C0CEB1100927D68 /* TextFloatLabelCell.swift */; };
@@ -133,6 +134,7 @@
 		37E6B3191C1CC6F500DA19A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestTableViewCell.swift; sourceTree = "<group>"; };
 		37E8B3861C01E88900778C6B /* HelpRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestTableViewCell.xib; sourceTree = "<group>"; };
+		37EB11181C2C720F00879A05 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		37EDF9421C0CE9DB00927D68 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		37EDF9441C0CEA6F00927D68 /* FloatLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelCell.swift; sourceTree = "<group>"; };
 		37EDF9461C0CEB1100927D68 /* TextFloatLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFloatLabelCell.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37EB11191C2C720F00879A05 /* MessageUI.framework in Frameworks */,
 				1DB8ECC420E83CDA723B2B3F /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +460,7 @@
 		97B1F842E4CD121DD6B03A5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37EB11181C2C720F00879A05 /* MessageUI.framework */,
 				F5E7324B98E69E4DAA1DE665 /* Pods.framework */,
 			);
 			name = Frameworks;
