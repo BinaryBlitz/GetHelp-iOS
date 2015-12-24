@@ -15,22 +15,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="410" height="216.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Баланс" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqs-fb-eSa">
-                        <rect key="frame" x="165.5" y="14" width="80" height="29"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Баланс" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqs-fb-eSa">
+                        <rect key="frame" x="166" y="14" width="80" height="29"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTu-ME-U0i">
-                        <rect key="frame" x="158.5" y="145" width="93" height="34"/>
+                        <rect key="frame" x="130" y="137" width="151" height="42"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="42" id="bap-HF-k9a"/>
+                            <constraint firstAttribute="width" constant="151" id="kBB-mK-rmw"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <state key="normal" title="Пополнить"/>
+                        <state key="normal" title="ПОПОЛНИТЬ"/>
                         <connections>
                             <action selector="addFundsAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wjn-6v-RqD"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,000₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="34" translatesAutoresizingMaskIntoConstraints="NO" id="usR-HP-gJK">
-                        <rect key="frame" x="100.5" y="47.5" width="209.5" height="81.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2,000₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="34" translatesAutoresizingMaskIntoConstraints="NO" id="usR-HP-gJK">
+                        <rect key="frame" x="101" y="48" width="209" height="81"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="68"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>

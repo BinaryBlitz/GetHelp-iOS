@@ -18,7 +18,10 @@ class WalletInfoTableViewCell: UITableViewCell {
 
     layer.borderWidth = 0.5
     layer.borderColor = UIColor.orangeSecondaryColor().CGColor
-    addFundsButton.tintColor = UIColor.orangeSecondaryColor()
+    addFundsButton.tintColor = UIColor.blackColor()
+    addFundsButton.layer.borderColor = UIColor.orangeColor().CGColor
+    addFundsButton.layer.borderWidth = 2
+    addFundsButton.layer.cornerRadius = 5
   }
 
   private func updateWalletBalance(balance: Int) {
