@@ -42,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Создайте свой первый запрос на помощь" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4v-mN-rJA">
-                                        <rect key="frame" x="50" y="128" width="500" height="21.5"/>
+                                        <rect key="frame" x="50" y="128" width="500" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Заказы" id="Dav-va-CEw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jFr-ZX-8ly">
+                        <barButtonItem key="rightBarButtonItem" image="Post" id="jFr-ZX-8ly">
                             <connections>
                                 <action selector="addBarButtonAction:" destination="kn5-6k-ScU" id="ORp-5f-dK2"/>
                             </connections>
@@ -178,7 +178,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="requestBillCell" textLabel="mup-LI-NJK" detailTextLabel="Hm5-Pi-RcK" style="IBUITableViewCellStyleValue1" id="KCj-iU-thj">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KCj-iU-thj" id="GcD-hb-jhI">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -226,7 +226,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NNd-sl-g3r" id="ZPu-co-9wM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -264,6 +264,7 @@
     <resources>
         <image name="InfoTab" width="25" height="25"/>
         <image name="OrdersTab" width="25" height="25"/>
+        <image name="Post" width="44" height="44"/>
         <image name="WalletTab" width="25" height="25"/>
     </resources>
 </document>
