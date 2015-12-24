@@ -10,28 +10,30 @@ import UIKit
 
 class HelpRequestTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var indicatorViewWidthConstraint: NSLayoutConstraint!
-  @IBOutlet weak var indicatorImageView: UIImageView!
-  @IBOutlet weak var timeLabel: UILabel!
-  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var cardView: UIView!
+  
+  @IBOutlet weak var orderNumberLabel: UILabel!
   @IBOutlet weak var statusLabel: UILabel!
-  @IBOutlet weak var typeLabel: UILabel!
+  @IBOutlet weak var separatorView: UIView!
+  
   @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var typeLabel: UILabel!
+  @IBOutlet weak var dateTimeLabel: UILabel!
+  
   var helpStatus: HelpRequestStatus?
   
   override func awakeFromNib() {
     super.awakeFromNib()
-  }
-
-  override func setSelected(selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    indicatorImageView.image  = indicatorImageView?.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+    
+    cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
+    cardView.layer.borderWidth = 1.4
+    cardView.layer.cornerRadius = 10
   }
   
   func configure(presenter: HelpRequestPresentable) {
-    indicatorImageView.tintColor = presenter.indicatorColor
-    timeLabel.text = presenter.time
-    dateLabel.text = presenter.date
+    dateTimeLabel.text = presenter.dateTime
+    statusLabel.text = presenter.status
+    statusLabel.textColor = presenter.indicatorColor
     typeLabel.text = presenter.type
     nameLabel.text = presenter.name
   }
