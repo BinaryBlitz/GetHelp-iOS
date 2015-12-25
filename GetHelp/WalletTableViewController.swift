@@ -43,6 +43,9 @@ class WalletTableViewController: UITableViewController {
   func setUpTableView() {
     let walletInfoNib = UINib(nibName: "WalletInfoTableViewCell", bundle: nil)
     tableView.registerNib(walletInfoNib, forCellReuseIdentifier: kWalletInfoCellIdentifier)
+    
+    let billCellNib = UINib(nibName: "BillTableViewCell", bundle: nil)
+    tableView.registerNib(billCellNib, forCellReuseIdentifier: kRequestBillCellIdentifire)
 
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 370
@@ -95,14 +98,14 @@ class WalletTableViewController: UITableViewController {
       
       return cell
     case 1:
-      guard let cell = tableView.dequeueReusableCellWithIdentifier(kRequestBillCellIdentifire) else {
+      guard let cell = tableView.dequeueReusableCellWithIdentifier(kRequestBillCellIdentifire) as? BillTableViewCell else {
         return UITableViewCell()
       }
 
       let request = activeRequests?[indexPath.row]
       let presenter = request?.presenter()
-      cell.textLabel?.text = presenter?.name
-      cell.detailTextLabel?.text = "1000\(rubleSign)"
+      cell.titleLabel.text = presenter?.name
+      cell.detailsLabel.text = "1000\(rubleSign)"
 
       return cell
     case 3:
@@ -142,6 +145,9 @@ class WalletTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 15
+    }
     return 0.01
   }
   
