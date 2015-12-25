@@ -11,8 +11,9 @@ import RealmSwift
 
 class WalletTableViewController: UITableViewController {
 
-  let kWalletInfoCellIdentifier = "walletInfoCell"
-  let kRequestBillCellIdentifire = "requestBillCell"
+  private let kWalletInfoCellIdentifier = "walletInfoCell"
+  private let kRequestBillCellIdentifire = "requestBillCell"
+  private let kNoDataMessageCellIdentifire = "noDataMessageCell"
 
   var activeRequests: Results<HelpRequest>? = nil
   var completedRequests:  Results<HelpRequest>? = nil //TODO: Create type for bills
@@ -76,6 +77,8 @@ class WalletTableViewController: UITableViewController {
       return activeRequests?.count ?? 0
     case 2:
       return completedRequests?.count ?? 0
+    case 3:
+      return 1
     default:
       return 0
     }
@@ -102,6 +105,12 @@ class WalletTableViewController: UITableViewController {
       cell.detailTextLabel?.text = "1000\(rubleSign)"
 
       return cell
+    case 3:
+      guard let cell = tableView.dequeueReusableCellWithIdentifier(kNoDataMessageCellIdentifire) else {
+        return UITableViewCell()
+      }
+      
+      return cell
     default:
       return UITableViewCell()
     }
@@ -110,7 +119,8 @@ class WalletTableViewController: UITableViewController {
   //MARK: - UITableViewDelegate
   
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 3
+    let contentRowsCount = (activeRequests?.count ?? 0) + (completedRequests?.count ?? 0)
+    return contentRowsCount == 0 ? 4 : 3
   }
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -129,6 +139,10 @@ class WalletTableViewController: UITableViewController {
     default:
       return super.tableView(tableView, heightForHeaderInSection: section)
     }
+  }
+  
+  override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0.01
   }
   
   override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
