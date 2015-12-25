@@ -116,13 +116,13 @@
 		37C69DB01C146C7C009D7755 /* MessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
 		37C69DB21C146F7D009D7755 /* ConfigurableMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableMessageCell.swift; sourceTree = "<group>"; };
 		37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormater+initWithDateFormat.swift"; sourceTree = "<group>"; };
-		37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37CC9B6E1BFB60FF00B450E0 /* GettHelp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GettHelp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CC9B761BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37CC9B781BFB60FF00B450E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37CC9B7B1BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37CC9B7D1BFB60FF00B450E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37CC9B821BFB60FF00B450E0 /* GetHelpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetHelpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37CC9B821BFB60FF00B450E0 /* GettHelp-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GettHelp-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B861BFB60FF00B450E0 /* GetHelpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHelpTests.swift; sourceTree = "<group>"; };
 		37CC9B881BFB60FF00B450E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37CFD5001C10C2B7009F734B /* HelpRequestPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestPresenter.swift; sourceTree = "<group>"; };
@@ -299,8 +299,8 @@
 		37CC9B6F1BFB60FF00B450E0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */,
-				37CC9B821BFB60FF00B450E0 /* GetHelpTests.xctest */,
+				37CC9B6E1BFB60FF00B450E0 /* GettHelp-iOS.app */,
+				37CC9B821BFB60FF00B450E0 /* GettHelp-iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -469,9 +469,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		37CC9B6D1BFB60FF00B450E0 /* GetHelp */ = {
+		37CC9B6D1BFB60FF00B450E0 /* GettHelp-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37CC9B8B1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GetHelp" */;
+			buildConfigurationList = 37CC9B8B1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GettHelp-iOS" */;
 			buildPhases = (
 				B4329C1E38842E5D8996FE7C /* Check Pods Manifest.lock */,
 				37CC9B6A1BFB60FF00B450E0 /* Sources */,
@@ -485,14 +485,14 @@
 			);
 			dependencies = (
 			);
-			name = GetHelp;
+			name = "GettHelp-iOS";
 			productName = GetHelp;
-			productReference = 37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */;
+			productReference = 37CC9B6E1BFB60FF00B450E0 /* GettHelp-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		37CC9B811BFB60FF00B450E0 /* GetHelpTests */ = {
+		37CC9B811BFB60FF00B450E0 /* GettHelp-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37CC9B8E1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GetHelpTests" */;
+			buildConfigurationList = 37CC9B8E1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GettHelp-iOSTests" */;
 			buildPhases = (
 				37CC9B7E1BFB60FF00B450E0 /* Sources */,
 				37CC9B7F1BFB60FF00B450E0 /* Frameworks */,
@@ -503,9 +503,9 @@
 			dependencies = (
 				37CC9B841BFB60FF00B450E0 /* PBXTargetDependency */,
 			);
-			name = GetHelpTests;
+			name = "GettHelp-iOSTests";
 			productName = GetHelpTests;
-			productReference = 37CC9B821BFB60FF00B450E0 /* GetHelpTests.xctest */;
+			productReference = 37CC9B821BFB60FF00B450E0 /* GettHelp-iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -528,7 +528,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 37CC9B691BFB60FF00B450E0 /* Build configuration list for PBXProject "GetHelp" */;
+			buildConfigurationList = 37CC9B691BFB60FF00B450E0 /* Build configuration list for PBXProject "GettHelp-iOS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -541,8 +541,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				37CC9B6D1BFB60FF00B450E0 /* GetHelp */,
-				37CC9B811BFB60FF00B450E0 /* GetHelpTests */,
+				37CC9B6D1BFB60FF00B450E0 /* GettHelp-iOS */,
+				37CC9B811BFB60FF00B450E0 /* GettHelp-iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -703,7 +703,7 @@
 /* Begin PBXTargetDependency section */
 		37CC9B841BFB60FF00B450E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 37CC9B6D1BFB60FF00B450E0 /* GetHelp */;
+			target = 37CC9B6D1BFB60FF00B450E0 /* GettHelp-iOS */;
 			targetProxy = 37CC9B831BFB60FF00B450E0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -821,7 +821,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GetHelp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "GettHelp-iOS";
 				SWIFT_OBJC_BRIDGING_HEADER = "GetHelp/GetHelp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -839,7 +839,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GetHelp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "GettHelp-iOS";
 				SWIFT_OBJC_BRIDGING_HEADER = "GetHelp/GetHelp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -852,8 +852,8 @@
 				INFOPLIST_FILE = GetHelpTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GetHelpTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetHelp.app/GetHelp";
+				PRODUCT_NAME = "GettHelp-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GettHelp-iOS.app/GettHelp-iOS";
 			};
 			name = Debug;
 		};
@@ -864,15 +864,15 @@
 				INFOPLIST_FILE = GetHelpTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GetHelpTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetHelp.app/GetHelp";
+				PRODUCT_NAME = "GettHelp-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GettHelp-iOS.app/GettHelp-iOS";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		37CC9B691BFB60FF00B450E0 /* Build configuration list for PBXProject "GetHelp" */ = {
+		37CC9B691BFB60FF00B450E0 /* Build configuration list for PBXProject "GettHelp-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37CC9B891BFB60FF00B450E0 /* Debug */,
@@ -881,7 +881,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37CC9B8B1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GetHelp" */ = {
+		37CC9B8B1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GettHelp-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37CC9B8C1BFB60FF00B450E0 /* Debug */,
@@ -890,7 +890,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37CC9B8E1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GetHelpTests" */ = {
+		37CC9B8E1BFB60FF00B450E0 /* Build configuration list for PBXNativeTarget "GettHelp-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37CC9B8F1BFB60FF00B450E0 /* Debug */,

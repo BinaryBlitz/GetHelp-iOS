@@ -17,7 +17,7 @@
         <!--Заказы-->
         <scene sceneID="guC-XF-w4R">
             <objects>
-                <viewController id="kn5-6k-ScU" customClass="HomeViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kn5-6k-ScU" customClass="HomeViewController" customModule="GettHelp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MXG-MO-WPW"/>
                         <viewControllerLayoutGuide type="bottom" id="4KT-uE-UHx"/>
@@ -171,7 +171,7 @@
         <!--Кошелек-->
         <scene sceneID="RLc-6i-Rwz">
             <objects>
-                <tableViewController id="Ts6-xr-xeT" customClass="WalletTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ts6-xr-xeT" customClass="WalletTableViewController" customModule="GettHelp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="zPK-Cs-ayU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,7 +216,7 @@
         <!--Информация-->
         <scene sceneID="Ugn-WV-Ndw">
             <objects>
-                <tableViewController id="0QT-ey-dfn" customClass="InfoTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="0QT-ey-dfn" customClass="InfoTableViewController" customModule="GettHelp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="PXp-wi-pDP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
