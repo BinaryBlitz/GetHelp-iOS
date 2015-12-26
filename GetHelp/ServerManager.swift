@@ -17,7 +17,12 @@ class ServerManager {
   private let baseURL = "http://getthelp.herokuapp.com/"
   private var manager = Manager.sharedInstance
   
-  var apiToken: String?
+  var apiToken: String? {
+    didSet {
+      print("Api token updated: \(apiToken)")
+    }
+  }
+  
   var authenticated: Bool {
     return apiToken != nil
   }
@@ -27,6 +32,10 @@ class ServerManager {
     case InternalServerError
     case UnspecifiedError
     case InvalidData
+  }
+  
+  func saveApiToken() {
+    NSUserDefaults.standardUserDefaults().setObject(apiToken, forKey: "apiToken")
   }
   
   private func request(method: Alamofire.Method, path: String, parameters: [String : AnyObject]?, encoding: ParameterEncoding) throws -> Request {

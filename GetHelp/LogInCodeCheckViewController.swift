@@ -56,13 +56,16 @@ class LogInCodeCheckViewController: UIViewController {
     
     ServerManager.sharedInstance.verifyPhoneNumberWith(code, forPhoneNumber: phoneNumber, andToken: token) { (error) -> Void in
       if error == nil {
+        ServerManager.sharedInstance.saveApiToken()
         let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
         if let initialController = mainStroryboard.instantiateInitialViewController() {
           UIApplication.sharedApplication().statusBarHidden = false
           self.presentViewController(initialController, animated: true, completion: nil)
         }
       } else {
-        print("Nooooooooooo")
+        self.codeTextField.shakeWithDuration(0.07)
+        self.codeTextField.text = ""
+        self.codeTextField.becomeFirstResponder()
       }
     }
   }
