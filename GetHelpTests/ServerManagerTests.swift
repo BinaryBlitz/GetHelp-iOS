@@ -19,7 +19,7 @@ class ServerManagerTests: XCTestCase {
     super.tearDown()
   }
   
-  func authentifictionTest() {
+  func authenticationTest() {
   }
   
   func testPerformanceExample() {
