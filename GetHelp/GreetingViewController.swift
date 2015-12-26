@@ -14,6 +14,7 @@ class GreetingViewController: UIViewController {
 
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var userAgreement: TTTAttributedLabel!
+  var delegate: LoginNavigationDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,6 +28,10 @@ class GreetingViewController: UIViewController {
     let linkRange = (userAgreement.text! as NSString).rangeOfString("пользовательское соглашение")
     userAgreement.addLinkToURL(NSURL(string: "http://google.com/"), withRange: linkRange)
   }
+  
+  @IBAction func signUpButtonAction(sender: AnyObject) {
+    delegate?.moveForward()
+  }
 }
 
 extension GreetingViewController: TTTAttributedLabelDelegate {
@@ -38,5 +43,15 @@ extension GreetingViewController: TTTAttributedLabelDelegate {
       let webViewController = SVModalWebViewController(URL: url)
       presentViewController(webViewController, animated: true, completion: nil)
     }
+  }
+}
+
+extension GreetingViewController: ContainerPresentable {
+  var viewController: UIViewController {
+    return self
+  }
+  
+  func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
+    self.delegate = delegate
   }
 }

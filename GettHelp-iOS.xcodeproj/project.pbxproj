@@ -14,10 +14,14 @@
 		370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B31C1858D50099AD1E /* RequestInfoTableViewCell.xib */; };
 		370130BA1C1870BE0099AD1E /* RequestStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */; };
 		370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */; };
+		370694921C2EBF0100C5A689 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370694911C2EBF0100C5A689 /* Login.storyboard */; };
+		370694971C2EBF8E00C5A689 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694931C2EBF8E00C5A689 /* GreetingViewController.swift */; };
+		370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694941C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift */; };
+		370694991C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694951C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift */; };
+		3706949A1C2EBF8E00C5A689 /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694961C2EBF8E00C5A689 /* LoginBaseViewController.swift */; };
 		371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */; };
 		371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */; };
 		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
-		3756CD3D1C1DE3CA001684E7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3756CD3C1C1DE3CA001684E7 /* Login.storyboard */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
 		376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9C1C11B68400970316 /* ConversationViewController.swift */; };
 		378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */; };
@@ -65,9 +69,6 @@
 		37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF9461C0CEB1100927D68 /* TextFloatLabelCell.swift */; };
 		37EDF94A1C0CEC2F00927D68 /* TextFloatLabelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF9491C0CEC2F00927D68 /* TextFloatLabelRow.swift */; };
 		37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */; };
-		37EFF3FE1C1E0AB1008D020F /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFF3FD1C1E0AB1008D020F /* GreetingViewController.swift */; };
-		37EFF4001C1E0ACA008D020F /* PhoneNumbeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFF3FF1C1E0ACA008D020F /* PhoneNumbeInputViewController.swift */; };
-		37EFF4021C1E0AE8008D020F /* LogInCodeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EFF4011C1E0AE8008D020F /* LogInCodeCheckViewController.swift */; };
 		37F5D97C1C2712DF00938308 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,11 +89,15 @@
 		370130B31C1858D50099AD1E /* RequestInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestInfoTableViewCell.xib; sourceTree = "<group>"; };
 		370130B81C1870BE0099AD1E /* RequestStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestStatusTableViewCell.swift; sourceTree = "<group>"; };
 		370130B91C1870BE0099AD1E /* RequestStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestStatusTableViewCell.xib; sourceTree = "<group>"; };
+		370694911C2EBF0100C5A689 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		370694931C2EBF8E00C5A689 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
+		370694941C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbeInputViewController.swift; sourceTree = "<group>"; };
+		370694951C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInCodeCheckViewController.swift; sourceTree = "<group>"; };
+		370694961C2EBF8E00C5A689 /* LoginBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoTableViewCell.swift; sourceTree = "<group>"; };
 		371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletInfoTableViewCell.xib; sourceTree = "<group>"; };
 		3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
-		3756CD3C1C1DE3CA001684E7 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9C1C11B68400970316 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		378639EC1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorMessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -144,9 +149,6 @@
 		37EDF9461C0CEB1100927D68 /* TextFloatLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFloatLabelCell.swift; sourceTree = "<group>"; };
 		37EDF9491C0CEC2F00927D68 /* TextFloatLabelRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFloatLabelRow.swift; sourceTree = "<group>"; };
 		37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatFieldRow.swift; sourceTree = "<group>"; };
-		37EFF3FD1C1E0AB1008D020F /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
-		37EFF3FF1C1E0ACA008D020F /* PhoneNumbeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbeInputViewController.swift; sourceTree = "<group>"; };
-		37EFF4011C1E0AE8008D020F /* LogInCodeCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInCodeCheckViewController.swift; sourceTree = "<group>"; };
 		37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		6D01969020F3224FD97D6806 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8E0DE6B581FF3E526EE01838 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -373,9 +375,10 @@
 		37EFF3FC1C1E0A71008D020F /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				37EFF3FD1C1E0AB1008D020F /* GreetingViewController.swift */,
-				37EFF3FF1C1E0ACA008D020F /* PhoneNumbeInputViewController.swift */,
-				37EFF4011C1E0AE8008D020F /* LogInCodeCheckViewController.swift */,
+				370694931C2EBF8E00C5A689 /* GreetingViewController.swift */,
+				370694941C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift */,
+				370694951C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift */,
+				370694961C2EBF8E00C5A689 /* LoginBaseViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -407,7 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				37CC9B751BFB60FF00B450E0 /* Main.storyboard */,
-				3756CD3C1C1DE3CA001684E7 /* Login.storyboard */,
+				370694911C2EBF0100C5A689 /* Login.storyboard */,
 				37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */,
 				37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */,
 				37CC9B7A1BFB60FF00B450E0 /* LaunchScreen.storyboard */,
@@ -568,6 +571,7 @@
 			files = (
 				37EB111D1C2D656C00879A05 /* BillTableViewCell.xib in Resources */,
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
+				370694921C2EBF0100C5A689 /* Login.storyboard in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
@@ -576,7 +580,6 @@
 				37AE79681C2AD14D00AC62DD /* signup_bg.jpg in Resources */,
 				370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */,
 				378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */,
-				3756CD3D1C1DE3CA001684E7 /* Login.storyboard in Resources */,
 				37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */,
 				37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */,
 				37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */,
@@ -663,19 +666,17 @@
 				37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */,
 				37A7CB951C0CC0DD004CFB14 /* HelpTypePresenter.swift in Sources */,
 				37EB111C1C2D656C00879A05 /* BillTableViewCell.swift in Sources */,
-				37EFF4001C1E0ACA008D020F /* PhoneNumbeInputViewController.swift in Sources */,
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,
 				37C69DA31C145A33009D7755 /* Image.swift in Sources */,
 				37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */,
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
-				37EFF3FE1C1E0AB1008D020F /* GreetingViewController.swift in Sources */,
+				370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */,
 				37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */,
 				37C69DAB1C146BD8009D7755 /* MessageContentPresentable.swift in Sources */,
 				37A7CB8E1C0CA913004CFB14 /* RequestFormViewController.swift in Sources */,
 				37EDF94A1C0CEC2F00927D68 /* TextFloatLabelRow.swift in Sources */,
 				376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */,
-				37EFF4021C1E0AE8008D020F /* LogInCodeCheckViewController.swift in Sources */,
 				37C69DAF1C146C22009D7755 /* MessagePresentable.swift in Sources */,
 				37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */,
 				37F5D97C1C2712DF00938308 /* InfoTableViewController.swift in Sources */,
@@ -684,11 +685,14 @@
 				370130B41C1858D50099AD1E /* RequestInfoTableViewCell.swift in Sources */,
 				37C69DA81C1467FB009D7755 /* UserMessageTableViewCell.swift in Sources */,
 				37EDF9451C0CEA6F00927D68 /* FloatLabelCell.swift in Sources */,
+				370694991C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift in Sources */,
 				37EDF9431C0CE9DB00927D68 /* FloatLabelTextField.swift in Sources */,
 				37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */,
 				376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */,
+				370694971C2EBF8E00C5A689 /* GreetingViewController.swift in Sources */,
 				37E6B31A1C1CC6F500DA19A8 /* Constants.swift in Sources */,
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
+				3706949A1C2EBF8E00C5A689 /* LoginBaseViewController.swift in Sources */,
 				37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */,
 				18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */,
 				37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */,
