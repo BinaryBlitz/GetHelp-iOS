@@ -12,6 +12,7 @@ class LogInCodeCheckViewController: UIViewController {
 
   @IBOutlet weak var okButton: UIButton!
   @IBOutlet weak var backButton: UIButton!
+  @IBOutlet weak var codeTextField: UITextField!
   
   var delegate: LoginNavigationDelegate?
   
@@ -19,7 +20,14 @@ class LogInCodeCheckViewController: UIViewController {
     super.viewDidLoad()
     
     setUpButtons()
+    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard:"))
   }
+ 
+  override func viewWillDisappear(animated: Bool) {
+    codeTextField.text = ""
+  }
+  
+  //MARK: - Set up methods
   
   func setUpButtons() {
     okButton.backgroundColor = UIColor.orangeSecondaryColor()
@@ -32,6 +40,8 @@ class LogInCodeCheckViewController: UIViewController {
     backButton.layer.cornerRadius = 4
   }
   
+  //MARK: - IBActions
+  
   @IBAction func backButtonAction(sender: AnyObject) {
     delegate?.moveBackward()
   }
@@ -43,7 +53,15 @@ class LogInCodeCheckViewController: UIViewController {
 //      presentViewController(initialController, animated: true, completion: nil)
 //    }
   }
+  
+  //MARK: - Keyboard stuff
+  
+  func dismissKeyboard(sender: AnyObject) {
+    view.endEditing(true)
+  }
 }
+
+//MARK: - ContainerPresentable
 
 extension LogInCodeCheckViewController: ContainerPresentable {
   var viewController: UIViewController {

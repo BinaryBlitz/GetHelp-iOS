@@ -21,8 +21,11 @@ class PhoneNumbeInputViewController: UIViewController {
 
     setUpButtons()
     view.backgroundColor = UIColor.clearColor()
+    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard:"))
     phoneNumberTextField.format = "+X (XXX) XXX-XX-XX"
   }
+  
+  //MARK: - Set up methods
   
   func setUpButtons() {
     okButton.backgroundColor = UIColor.orangeSecondaryColor()
@@ -34,6 +37,8 @@ class PhoneNumbeInputViewController: UIViewController {
     okButton.layer.cornerRadius = 4
     backButton.layer.cornerRadius = 4
   }
+  
+  //MARK: - IBActions
 
   @IBAction func okButtonAction(sender: AnyObject) {
     delegate?.moveForward()
@@ -42,7 +47,15 @@ class PhoneNumbeInputViewController: UIViewController {
   @IBAction func backButtonAction(sender: AnyObject) {
     delegate?.moveBackward()
   }
+  
+  //MARK: - Keyboard stuff
+  
+  func dismissKeyboard(sender: AnyObject) {
+    view.endEditing(true)
+  }
 }
+
+//MARK: - ContainerPresentable
 
 extension PhoneNumbeInputViewController: ContainerPresentable {
   var viewController: UIViewController {

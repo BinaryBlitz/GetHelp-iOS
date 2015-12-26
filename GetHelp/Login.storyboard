@@ -162,7 +162,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="253" id="ZJk-zv-ccq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7W-0E-IMf">
                                 <rect key="frame" x="173" y="352" width="253" height="50"/>
@@ -219,6 +219,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="N2L-is-3eb" id="F38-Uo-Z5E"/>
+                        <outlet property="codeTextField" destination="xF9-Ra-gnh" id="FoH-Fa-bYd"/>
                         <outlet property="okButton" destination="Rjy-Fn-4e2" id="Xcx-pG-gAd"/>
                     </connections>
                 </viewController>
