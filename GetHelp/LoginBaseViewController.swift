@@ -11,11 +11,12 @@ import UIKit
 protocol ContainerPresentable {
   var viewController: UIViewController { get }
   func updateNavigationDelegate(delegate: LoginNavigationDelegate)
+  func setData(data: AnyObject?)
 }
 
 protocol LoginNavigationDelegate {
-  func moveForward()
-  func moveBackward()
+  func moveForward(data: AnyObject?)
+  func moveBackward(data: AnyObject?)
 }
 
 class LoginBaseViewController: UIViewController {
@@ -56,7 +57,7 @@ class LoginBaseViewController: UIViewController {
     }
   }
   
-  func presentViewControllerWithIndex(index: Int, withOptions moveOption: MoveOption) {
+  func presentViewControllerWithIndex(index: Int, withOptions moveOption: MoveOption, andData data: AnyObject?) {
     guard let viewControllerToPresent = viewControllerAtIndex(index) else {
       return
     }
@@ -78,6 +79,7 @@ class LoginBaseViewController: UIViewController {
     
     if let contentToPresent = viewControllerToPresent as? ContainerPresentable {
       contentToPresent.updateNavigationDelegate(self)
+      contentToPresent.setData(data)
     }
     viewControllerToPresent.view.frame = currentController.view.frame
     
@@ -115,19 +117,19 @@ class LoginBaseViewController: UIViewController {
 }
 
 extension LoginBaseViewController: LoginNavigationDelegate {
-  func moveForward() {
+  func moveForward(data: AnyObject?) {
     if presentingIndex + 1 >= numberOfPages {
       return
     }
     
     presentingIndex += 1
-    presentViewControllerWithIndex(presentingIndex, withOptions: .Forward)
+    presentViewControllerWithIndex(presentingIndex, withOptions: .Forward, andData: data)
   }
   
-  func moveBackward() {
+  func moveBackward(data: AnyObject?) {
     if presentingIndex - 1 < 0 { return }
     
     presentingIndex -= 1
-    presentViewControllerWithIndex(presentingIndex, withOptions: .Backward)
+    presentViewControllerWithIndex(presentingIndex, withOptions: .Backward, andData: data)
   }
 }

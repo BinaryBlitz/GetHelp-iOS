@@ -61,7 +61,7 @@ class ServerManager {
   
   func createVerificationTokenFor(phoneNumber: String, complition: ((token: String?, error: GHError?) -> Void)? = nil) -> Request {
     let parameters = ["phone_number" : phoneNumber]
-    let req = manager.request(.POST, "verification_tokens/", parameters: parameters, encoding: .JSON)
+    let req = manager.request(.POST, baseURL + "verification_tokens/", parameters: parameters, encoding: .JSON)
     
     req.responseJSON { (response) -> Void in
       guard let resultValue = response.result.value else {
@@ -86,7 +86,7 @@ class ServerManager {
       andToken token: String, complition: ((error: GHError?) -> Void)? = nil) -> Request {
         
     let parameters = ["phone_number": phoneNumber, "code": code]
-    let req = manager.request(.PATCH, "verification_tokens/\(token)/", parameters: parameters, encoding: .JSON)
+    let req = manager.request(.PATCH, baseURL + "verification_tokens/\(token)/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
       guard let resultValue = response.result.value else {
         complition?(error: .InvalidData)
@@ -111,7 +111,7 @@ class ServerManager {
   
   func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: GHError?) -> Void)?) -> Request {
     let parameters = ["user": ["phone_number": phoneNumber, "verification_token": token]]
-    let req = manager.request(.POST, "user/", parameters: parameters, encoding: .JSON)
+    let req = manager.request(.POST, baseURL + "user/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
       guard let resultValue = response.result.value else {
         complition?(error: .InvalidData)

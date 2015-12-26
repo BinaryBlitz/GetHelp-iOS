@@ -14,6 +14,7 @@ class GreetingViewController: UIViewController {
 
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var userAgreement: TTTAttributedLabel!
+  
   var delegate: LoginNavigationDelegate?
   
   override func viewDidLoad() {
@@ -30,7 +31,7 @@ class GreetingViewController: UIViewController {
   }
   
   @IBAction func signUpButtonAction(sender: AnyObject) {
-    delegate?.moveForward()
+    delegate?.moveForward(nil)
   }
 }
 
@@ -53,5 +54,9 @@ extension GreetingViewController: ContainerPresentable {
   
   func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
     self.delegate = delegate
+  }
+  
+  func setData(data: AnyObject?) {
+    // stuff
   }
 }

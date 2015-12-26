@@ -14,6 +14,9 @@ class LogInCodeCheckViewController: UIViewController {
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var codeTextField: UITextField!
   
+  var phoneNumber: String!
+  var token: String!
+  
   var delegate: LoginNavigationDelegate?
   
   override func viewDidLoad() {
@@ -43,15 +46,25 @@ class LogInCodeCheckViewController: UIViewController {
   //MARK: - IBActions
   
   @IBAction func backButtonAction(sender: AnyObject) {
-    delegate?.moveBackward()
+    delegate?.moveBackward(nil)
   }
   
   @IBAction func okButtonAction(sender: AnyObject) {
-//    let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
-//    if let initialController = mainStroryboard.instantiateInitialViewController() {
-//      UIApplication.sharedApplication().statusBarHidden = false
-//      presentViewController(initialController, animated: true, completion: nil)
-//    }
+    guard let code = codeTextField.text else {
+      return
+    }
+    
+    ServerManager.sharedInstance.verifyPhoneNumberWith(code, forPhoneNumber: phoneNumber, andToken: token) { (error) -> Void in
+      if error == nil {
+        let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let initialController = mainStroryboard.instantiateInitialViewController() {
+          UIApplication.sharedApplication().statusBarHidden = false
+          self.presentViewController(initialController, animated: true, completion: nil)
+        }
+      } else {
+        print("Nooooooooooo")
+      }
+    }
   }
   
   //MARK: - Keyboard stuff
@@ -70,5 +83,13 @@ extension LogInCodeCheckViewController: ContainerPresentable {
   
   func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
     self.delegate = delegate
+  }
+  
+  func setData(data: AnyObject?) {
+    if let pair = data as? PhoneTokenPair {
+//      self.phoneNumber = phoneNumber
+      self.phoneNumber = pair.phoneNumber
+      self.token =  pair.token
+    }
   }
 }

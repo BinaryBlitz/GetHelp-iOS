@@ -19,6 +19,7 @@
 		370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694941C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift */; };
 		370694991C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694951C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift */; };
 		3706949A1C2EBF8E00C5A689 /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694961C2EBF8E00C5A689 /* LoginBaseViewController.swift */; };
+		3706949C1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */; };
 		371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */; };
 		371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */; };
 		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
@@ -94,6 +95,7 @@
 		370694941C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbeInputViewController.swift; sourceTree = "<group>"; };
 		370694951C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInCodeCheckViewController.swift; sourceTree = "<group>"; };
 		370694961C2EBF8E00C5A689 /* LoginBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
+		3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITestField+ShakeAnimation.swift"; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoTableViewCell.swift; sourceTree = "<group>"; };
 		371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletInfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */,
 				37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */,
+				3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */,
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
+				3706949C1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift in Sources */,
 				370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */,
 				37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */,
 				37C69DAB1C146BD8009D7755 /* MessageContentPresentable.swift in Sources */,
