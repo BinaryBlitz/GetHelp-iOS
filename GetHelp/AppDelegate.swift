@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       request1.duration = 50
       request1.status = HelpRequestStatus.InReview
       request1.deadline = NSDate().dateByAddingTimeInterval(10000)
+      request1.email = "foobar@gmail.com"
       
       let request2 = HelpRequest()
       request2.id = 124
@@ -81,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       request2.type = .Normal
       request2.status = HelpRequestStatus.Accepted
       request2.deadline = NSDate().dateByAddingTimeInterval(5000)
+      request2.email = "foobar@gmail.com"
       
       let request3 = HelpRequest()
       request3.id = 150
@@ -93,6 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       request3.status = HelpRequestStatus.WaitingForPayment
       request3.deadline = NSDate().dateByAddingTimeInterval(30000)
       request3.price = 2000
+      request3.email = "foobar@gmail.com"
       
       realm.add(request3)
       realm.add(request1)
