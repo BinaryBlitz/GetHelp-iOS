@@ -214,6 +214,33 @@
 			name = WalletInfoTableViewCell;
 			sourceTree = "<group>";
 		};
+		3726C74A1C30902A00487828 /* Create new */ = {
+			isa = PBXGroup;
+			children = (
+				37EDF9481C0CEB4C00927D68 /* FloatTextField */,
+			);
+			name = "Create new";
+			sourceTree = "<group>";
+		};
+		3726C74B1C30905300487828 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				370130B11C1854F80099AD1E /* Request Screen */,
+				37B889C31C08EF4D00EA02D8 /* HelpRequestTableViewCell */,
+				3726C74A1C30902A00487828 /* Create new */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		3726C74C1C30905B00487828 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				371DA86B1C1C8B00007847ED /* WalletInfoTableViewCell */,
+				37EB111E1C2D657300879A05 /* BillTableViewCell */,
+			);
+			name = Wallet;
+			sourceTree = "<group>";
+		};
 		3778B6321C123A0400A9C05D /* RequestDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,11 +427,8 @@
 		37F171BE1BFB6D0F0016433D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				370130B11C1854F80099AD1E /* Request Screen */,
-				37B889C31C08EF4D00EA02D8 /* HelpRequestTableViewCell */,
-				37EDF9481C0CEB4C00927D68 /* FloatTextField */,
-				371DA86B1C1C8B00007847ED /* WalletInfoTableViewCell */,
-				37EB111E1C2D657300879A05 /* BillTableViewCell */,
+				3726C74B1C30905300487828 /* Home */,
+				3726C74C1C30905B00487828 /* Wallet */,
 			);
 			name = Views;
 			sourceTree = "<group>";
