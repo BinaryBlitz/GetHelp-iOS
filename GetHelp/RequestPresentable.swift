@@ -12,4 +12,5 @@ protocol RequestPresentale {
   var name: String { get }
   var schoolInfo: String { get }
   var email: String { get }
+  var price: String  { get }
 }

@@ -92,10 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       request3.type = .Normal
       request3.status = HelpRequestStatus.WaitingForPayment
       request3.deadline = NSDate().dateByAddingTimeInterval(30000)
+      request3.price = 2000
       
+      realm.add(request3)
       realm.add(request1)
       realm.add(request2)
-      realm.add(request3)
     }
   }
   
@@ -103,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-    schemaVersion: 7,
+    schemaVersion: 8,
             migrationBlock: { migration, oldSchemaVersion in
               if oldSchemaVersion < 1 {}
             }

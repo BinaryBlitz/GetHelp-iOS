@@ -9,4 +9,5 @@
 protocol StatusPresentable {
   var status: String { get }
   var indicatorColor: UIColor { get }
+  func isPayable() -> Bool
 }

@@ -41,7 +41,8 @@ class HelpRequest: Object {
       self._type = newType.rawValue
     }
   }
-
+  dynamic var price = 0
+  
   let messages = List<Message>()
   
   func presenter() -> HelpRequestPresentable {

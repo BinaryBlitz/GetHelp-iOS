@@ -3,7 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -19,42 +21,58 @@
                         <rect key="frame" x="11" y="3" width="404" height="196"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заказ #123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a80-CB-Bgf">
-                                <rect key="frame" x="12" y="15" width="88" height="20.5"/>
+                                <rect key="frame" x="12" y="15" width="88" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидает подтверждения" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-Wu-oAs">
-                                <rect key="frame" x="188" y="15" width="204" height="20.5"/>
+                                <rect key="frame" x="188" y="15" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rY-UC-ZdG">
-                                <rect key="frame" x="12" y="39.5" width="392" height="1"/>
+                                <rect key="frame" x="12" y="40" width="392" height="1"/>
                                 <color key="backgroundColor" white="0.89716547818791959" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="aPC-BB-iC8"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Срочная помощь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09B-O0-35D">
-                                <rect key="frame" x="12" y="98.5" width="130" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Срочная помощь" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09B-O0-35D">
+                                <rect key="frame" x="12" y="120" width="130" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.10.2015 15:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCc-xd-dhJ">
-                                <rect key="frame" x="12" y="133" width="121" height="19.5"/>
+                                <rect key="frame" x="12" y="155" width="121" height="19"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" text="Статистические и эмпирические методы компьютинга" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emn-JB-SNV">
-                                <rect key="frame" x="12" y="50.5" width="355.5" height="43"/>
+                                <rect key="frame" x="12" y="51" width="198" height="64"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 p" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="lPP-Z1-eOn">
+                                <rect key="frame" x="310" y="51" width="82" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwb-DB-2I9">
+                                <rect key="frame" x="266" y="104" width="126" height="33"/>
+                                <color key="backgroundColor" red="1" green="0.93849887460000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Kwb-DB-2I9" secondAttribute="height" multiplier="153:40" id="uTL-lN-4By"/>
+                                </constraints>
+                                <state key="normal" title="Оплатить">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -65,16 +83,29 @@
                             <constraint firstItem="4rY-UC-ZdG" firstAttribute="top" secondItem="dkH-Wu-oAs" secondAttribute="bottom" constant="4" id="BxR-Rp-EJc"/>
                             <constraint firstItem="dkH-Wu-oAs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a80-CB-Bgf" secondAttribute="trailing" id="Chy-xU-OAD"/>
                             <constraint firstItem="emn-JB-SNV" firstAttribute="leading" secondItem="4rY-UC-ZdG" secondAttribute="leading" id="F4W-Xv-QVH"/>
+                            <constraint firstItem="Kwb-DB-2I9" firstAttribute="trailing" secondItem="lPP-Z1-eOn" secondAttribute="trailing" id="Fsb-Al-uTb"/>
                             <constraint firstAttribute="trailing" secondItem="4rY-UC-ZdG" secondAttribute="trailing" id="HDw-Nz-4bS"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="trailing" constant="20" id="ILH-CB-loH"/>
+                            <constraint firstItem="Kwb-DB-2I9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="trailing" constant="5" id="NeW-pz-4kx"/>
                             <constraint firstItem="hCc-xd-dhJ" firstAttribute="top" secondItem="09B-O0-35D" secondAttribute="bottom" constant="15" id="OKE-Tw-cOj"/>
                             <constraint firstItem="emn-JB-SNV" firstAttribute="top" secondItem="4rY-UC-ZdG" secondAttribute="bottom" constant="10" id="T6P-E5-ig7"/>
                             <constraint firstItem="a80-CB-Bgf" firstAttribute="top" secondItem="slA-jX-q1f" secondAttribute="top" constant="15" id="Ugr-71-KBY"/>
+                            <constraint firstItem="Kwb-DB-2I9" firstAttribute="top" secondItem="lPP-Z1-eOn" secondAttribute="bottom" constant="22" id="cQS-vE-zuf"/>
+                            <constraint firstItem="lPP-Z1-eOn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="trailing" constant="5" id="eWy-aQ-IVD"/>
+                            <constraint firstItem="lPP-Z1-eOn" firstAttribute="top" secondItem="4rY-UC-ZdG" secondAttribute="bottom" constant="10" id="gjy-aJ-DaH"/>
                             <constraint firstAttribute="trailing" secondItem="dkH-Wu-oAs" secondAttribute="trailing" constant="12" id="kjc-FC-lNG"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hCc-xd-dhJ" secondAttribute="bottom" constant="20" id="m88-14-goj"/>
+                            <constraint firstItem="Kwb-DB-2I9" firstAttribute="width" secondItem="lPP-Z1-eOn" secondAttribute="width" multiplier="20:13" id="myP-Qg-vNK"/>
                             <constraint firstItem="09B-O0-35D" firstAttribute="leading" secondItem="emn-JB-SNV" secondAttribute="leading" id="q5G-HZ-g6V"/>
+                            <constraint firstItem="lPP-Z1-eOn" firstAttribute="trailing" secondItem="dkH-Wu-oAs" secondAttribute="trailing" id="qpf-lR-SPp"/>
+                            <constraint firstItem="Kwb-DB-2I9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="09B-O0-35D" secondAttribute="trailing" constant="5" id="sUb-2p-dKx"/>
                             <constraint firstItem="4rY-UC-ZdG" firstAttribute="leading" secondItem="slA-jX-q1f" secondAttribute="leading" constant="12" id="xQ0-aP-btM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ILH-CB-loH"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,6 +121,8 @@
                 <outlet property="dateTimeLabel" destination="hCc-xd-dhJ" id="mhi-Oj-cgv"/>
                 <outlet property="nameLabel" destination="emn-JB-SNV" id="KVb-vW-AVG"/>
                 <outlet property="orderNumberLabel" destination="a80-CB-Bgf" id="Nxo-ex-c9r"/>
+                <outlet property="payButton" destination="Kwb-DB-2I9" id="Kaa-1R-KjF"/>
+                <outlet property="priceLabel" destination="lPP-Z1-eOn" id="Jx3-8W-lQs"/>
                 <outlet property="separatorView" destination="4rY-UC-ZdG" id="yTU-jA-HAr"/>
                 <outlet property="statusLabel" destination="dkH-Wu-oAs" id="3kn-9f-ogZ"/>
                 <outlet property="typeLabel" destination="09B-O0-35D" id="MNF-fv-oRk"/>

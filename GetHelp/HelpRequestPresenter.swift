@@ -19,7 +19,7 @@ class HelpRequestPresenter: HelpRequestPresentable {
   }
   
   var id: String {
-    return "\(helpRequest.id)"
+    return "#\(helpRequest.id)"
   }
 
   var type: String {
@@ -51,6 +51,19 @@ class HelpRequestPresenter: HelpRequestPresentable {
     case .WaitingForPayment:
       return "Ожидает оплаты"
     }
+  }
+  
+  func isPayable() -> Bool {
+    switch helpRequest.status {
+    case .WaitingForPayment:
+      return true
+    default:
+      return false
+    }
+  }
+  
+  var price: String {
+    return "\(helpRequest.price) \(rubleSign)"
   }
 
   var indicatorColor: UIColor {
