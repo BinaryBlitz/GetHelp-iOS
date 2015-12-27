@@ -9,7 +9,7 @@
         <!--Login Base View Controller-->
         <scene sceneID="EMC-6t-8Za">
             <objects>
-                <viewController id="6mK-GS-dRc" customClass="LoginBaseViewController" customModule="GettHelp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6mK-GS-dRc" customClass="LoginBaseViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7OW-Mk-h7f"/>
                         <viewControllerLayoutGuide type="bottom" id="6P2-cA-er8"/>
@@ -51,7 +51,7 @@
         <!--Phone Numbe Input View Controller-->
         <scene sceneID="gbD-mQ-4gw">
             <objects>
-                <viewController storyboardIdentifier="PhoneNumberViewController" id="yqe-yb-r3N" customClass="PhoneNumbeInputViewController" customModule="GettHelp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneNumberViewController" id="yqe-yb-r3N" customClass="PhoneNumbeInputViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FTQ-Xk-qHu"/>
                         <viewControllerLayoutGuide type="bottom" id="LI1-yS-uJY"/>
@@ -61,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваш номер телефона" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm5-f0-sc3">
-                                <rect key="frame" x="175" y="235" width="250.5" height="30"/>
+                                <rect key="frame" x="175" y="235" width="251" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
         <!--Log In Code Check View Controller-->
         <scene sceneID="Y0G-Ed-CTE">
             <objects>
-                <viewController storyboardIdentifier="CodeViewController" id="5zs-xg-dii" customClass="LogInCodeCheckViewController" customModule="GettHelp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CodeViewController" id="5zs-xg-dii" customClass="LogInCodeCheckViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="loz-4h-vC2"/>
                         <viewControllerLayoutGuide type="bottom" id="zaT-cu-wC1"/>
@@ -230,7 +230,7 @@
         <!--Greeting View Controller-->
         <scene sceneID="nVf-Fq-7Zr">
             <objects>
-                <viewController storyboardIdentifier="GreetingViewController" id="T83-6z-SEd" customClass="GreetingViewController" customModule="GettHelp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GreetingViewController" id="T83-6z-SEd" customClass="GreetingViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w9v-Ku-lLr"/>
                         <viewControllerLayoutGuide type="bottom" id="UKS-77-L65"/>
@@ -239,7 +239,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cY4-VR-FGn">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cY4-VR-FGn">
                                 <rect key="frame" x="251" y="322" width="97" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="eKO-gf-GD1"/>
@@ -250,20 +250,20 @@
                                     <action selector="signUpButtonAction:" destination="T83-6z-SEd" eventType="touchUpInside" id="YqJ-jz-bqq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добро пожаловать!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-9h-sQX">
-                                <rect key="frame" x="135" y="239" width="328.5" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Добро пожаловать!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-9h-sQX">
+                                <rect key="frame" x="135" y="239" width="329" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нажимая кнопку &quot;Начать&quot;, вы принимаете пользовательское соглашение" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxm-K7-4rm" customClass="TTTAttributedLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Нажимая кнопку &quot;Начать&quot;, вы принимаете пользовательское соглашение" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxm-K7-4rm" customClass="TTTAttributedLabel">
                                 <rect key="frame" x="35" y="366" width="530" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GettHelp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7Y-oM-74B">
-                                <rect key="frame" x="251" y="214" width="97" height="31.5"/>
+                                <rect key="frame" x="251" y="214" width="97" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

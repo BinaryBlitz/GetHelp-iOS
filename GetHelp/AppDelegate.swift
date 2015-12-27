@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     configureTabBar()
     configureServerManager()
     
+    // testing
+    dropDatabaseData()
+    setTestDbData()
+    
     if !ServerManager.sharedInstance.authenticated {
       UIApplication.sharedApplication().statusBarHidden = true
       let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
@@ -42,9 +46,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
+  //MARK: Testing methods
+  
+  private func dropDatabaseData() {
+    let realm = try! Realm()
+    try! realm.write {
+      realm.deleteAll()
+    }
+  }
+  
+  func setTestDbData() {
+    let realm = try! Realm()
+    
+    try! realm.write { () -> Void in
+      let request1 = HelpRequest()
+      request1.id = 123
+      request1.subject = "Математический анализ"
+      request1.cource = "1"
+      request1.school = "МГУ"
+      request1.faculty = "Экономики"
+      request1.helpDescription = "оолололол"
+      request1.type = .Express
+      request1.duration = 50
+      request1.status = HelpRequestStatus.InReview
+      request1.deadline = NSDate().dateByAddingTimeInterval(10000)
+      
+      let request2 = HelpRequest()
+      request2.id = 124
+      request2.subject = "Эконометрика"
+      request2.cource = "3"
+      request2.school = "ВШЭ"
+      request2.faculty = "Математики"
+      request2.helpDescription = "оолололол"
+      request2.type = .Normal
+      request2.status = HelpRequestStatus.Accepted
+      request2.deadline = NSDate().dateByAddingTimeInterval(5000)
+      
+      let request3 = HelpRequest()
+      request3.id = 150
+      request3.subject = "Операционные системы"
+      request3.cource = "3"
+      request3.school = "ВШЭ"
+      request3.faculty = "Компьютерных наук"
+      request3.helpDescription = "ололоыуаошыоашыоа"
+      request3.type = .Normal
+      request3.status = HelpRequestStatus.WaitingForPayment
+      request3.deadline = NSDate().dateByAddingTimeInterval(30000)
+      
+      realm.add(request1)
+      realm.add(request2)
+      realm.add(request3)
+    }
+  }
+  
+  //MARK: - App configuration
+  
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-    schemaVersion: 6,
+    schemaVersion: 7,
             migrationBlock: { migration, oldSchemaVersion in
               if oldSchemaVersion < 1 {}
             }
@@ -60,26 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
-  func dropDatabaseData() {
-    let realm = try! Realm()
-    try! realm.write {
-      realm.deleteAll()
-    }
-  }
-  
-  func setTestDbData() {
-    let realm = try! Realm()
-    
-    try! realm.write { () -> Void in
-      for _ in 1..<10 {
-        let request = HelpRequest()
-//        request. = HelpRequestStatus.WaitingForPayment
-        
-        realm.create(HelpRequest)
-      }
-    }
-  }
-  
   func configureNavigationBar() {
     UINavigationBar.appearance().barTintColor = UIColor.orangeSecondaryColor()
     UINavigationBar.appearance().translucent = false
@@ -91,6 +130,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func configureTabBar() {
     UITabBar.appearance().tintColor = UIColor.orangeSecondaryColor()
   }
+  
+  //MARK: - Application delegate
   
   func applicationWillResignActive(application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -31,6 +31,7 @@ class HelpRequestTableViewCell: UITableViewCell {
   }
   
   func configure(presenter: HelpRequestPresentable) {
+    orderNumberLabel.text = "#" + presenter.id
     dateTimeLabel.text = presenter.dateTime
     statusLabel.text = presenter.status
     statusLabel.textColor = presenter.indicatorColor

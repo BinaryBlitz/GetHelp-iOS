@@ -57,6 +57,9 @@ class HomeViewController: UIViewController {
     tableView.estimatedRowHeight = 80
     tableView.addSubview(refreshControl)
     tableView.sendSubviewToBack(refreshControl)
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 5))
+    headerView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+    tableView.tableHeaderView = headerView
   }
 
   func configureCreateButton() {

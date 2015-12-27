@@ -7,6 +7,7 @@
 //
 
 protocol RequestPresentale {
+  var id: String { get }
   var type: String  { get }
   var name: String { get }
   var schoolInfo: String { get }

@@ -11,7 +11,7 @@ import RealmSwift
 /// Contains basic fields for help request
 class HelpRequest: Object {
   
-//  dynamic var id = ""
+  dynamic var id = 0
   dynamic var subject = ""
   dynamic var cource = ""
   dynamic var school = ""

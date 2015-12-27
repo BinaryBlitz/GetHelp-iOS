@@ -17,6 +17,10 @@ class HelpRequestPresenter: HelpRequestPresentable {
     self.helpRequest = helpRequest
     helpTypePresenter = HelpTypePresenter(type: helpRequest.type)
   }
+  
+  var id: String {
+    return "\(helpRequest.id)"
+  }
 
   var type: String {
     return helpTypePresenter.name
@@ -51,8 +55,10 @@ class HelpRequestPresenter: HelpRequestPresentable {
 
   var indicatorColor: UIColor {
     switch helpRequest.status {
-    case .Accepted, .WaitingForPayment:
+    case .Accepted:
       return UIColor.greenAccentColor()
+    case .WaitingForPayment:
+      return UIColor.yellowAccentColor()
     case .Done:
       return UIColor.lightGrayColor()
     case .InReview:
