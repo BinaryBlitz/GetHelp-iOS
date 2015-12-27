@@ -53,8 +53,10 @@ class HelpRequestPresenter: HelpRequestPresentable {
     switch helpRequest.status {
     case .Accepted, .WaitingForPayment:
       return UIColor.greenAccentColor()
-    case .Done, .InReview:
+    case .Done:
       return UIColor.lightGrayColor()
+    case .InReview:
+      return UIColor.blueAccentColor()
     case .Rejected:
       return UIColor.redAccentColor()
     }
