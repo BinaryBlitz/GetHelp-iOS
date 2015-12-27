@@ -20,7 +20,12 @@ class HelpRequest: Object {
   dynamic var deadline: NSDate?
   dynamic var _status = "in_review"
   var status: HelpRequestStatus {
-    return HelpRequestStatus(rawValue: _status)!
+    get {
+      return HelpRequestStatus(rawValue: _status)!
+    }
+    set(newStatus) {
+      self._status = newStatus.rawValue
+    }
   }
   
   // oops
