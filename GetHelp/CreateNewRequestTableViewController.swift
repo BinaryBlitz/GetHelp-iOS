@@ -19,6 +19,11 @@ class CreateNewRequestTableViewController: UITableViewController {
     typePresenters = HelpType.avaliableTypes().map { (type) -> HelpTypePresenter in
       return HelpTypePresenter(type: type)
     }
+    
+    let typeCellNib = UINib(nibName: "RequestTypeTableViewCell", bundle: nil)
+    tableView.registerNib(typeCellNib, forCellReuseIdentifier: "typeOptionCell")
+    tableView.rowHeight = UIScreen.mainScreen().bounds.height / 3
+//    tableView.estimatedRowHeight = 250
   }
 
   //MARK: - UITableViewDataSource
@@ -28,13 +33,12 @@ class CreateNewRequestTableViewController: UITableViewController {
   }
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCellWithIdentifier("typeOptionCell") else {
+    guard let cell = tableView.dequeueReusableCellWithIdentifier("typeOptionCell") as? RequestTypeTableViewCell else {
       return UITableViewCell()
     }
 
     let presenter = typePresenters[indexPath.section]
-    cell.textLabel?.text = presenter.name
-    cell.imageView?.image = presenter.image
+    cell.configureWith(presenter)
 
     return cell
   }
@@ -49,12 +53,7 @@ class CreateNewRequestTableViewController: UITableViewController {
     performSegueWithIdentifier("fillTheForm", sender: indexPath)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
-
-  override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-    let presenter = typePresenters[section]
-    return presenter.description
-  }
-
+  
   //MARK: - IBActions
 
   @IBAction func cancelButtonAction(sender: AnyObject) {

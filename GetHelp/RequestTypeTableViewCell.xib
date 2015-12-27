@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="303" id="KGk-i7-Jjw" customClass="RequestTypeTableViewCell" customModule="GetHelp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="303"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="302.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Домашнее задание" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeK-0N-aeq">
+                        <rect key="frame" x="71" y="13" width="178" height="23"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Помощь с домашним заданием к определенному дню" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok4-xC-FVf">
+                        <rect key="frame" x="31" y="154" width="259" height="41"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="NormalHelp.png" translatesAutoresizingMaskIntoConstraints="NO" id="X78-to-X9H">
+                        <rect key="frame" x="94" y="44" width="133" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="Ldq-EE-nai"/>
+                            <constraint firstAttribute="width" secondItem="X78-to-X9H" secondAttribute="height" multiplier="197:148" id="QiV-uX-sPG"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ok4-xC-FVf" firstAttribute="top" secondItem="X78-to-X9H" secondAttribute="bottom" constant="10" id="3wp-XK-ccl"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="X78-to-X9H" secondAttribute="trailing" constant="30" id="5jK-Ov-VHh"/>
+                    <constraint firstItem="X78-to-X9H" firstAttribute="centerX" secondItem="SeK-0N-aeq" secondAttribute="centerX" id="7Rq-Zy-U91"/>
+                    <constraint firstItem="ok4-xC-FVf" firstAttribute="centerX" secondItem="X78-to-X9H" secondAttribute="centerX" id="CMj-lM-vIL"/>
+                    <constraint firstItem="SeK-0N-aeq" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="IV1-cV-tbc"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ok4-xC-FVf" secondAttribute="trailing" constant="20" id="RE9-58-dLg"/>
+                    <constraint firstItem="X78-to-X9H" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="UE0-qK-JUh"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="ok4-xC-FVf" secondAttribute="bottom" constant="10" id="UaE-nN-qq9"/>
+                    <constraint firstItem="ok4-xC-FVf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="X1g-Jg-k0b"/>
+                    <constraint firstItem="X78-to-X9H" firstAttribute="top" secondItem="SeK-0N-aeq" secondAttribute="bottom" constant="8" id="pm8-o1-WpC"/>
+                    <constraint firstItem="SeK-0N-aeq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="wso-0q-L7U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="ok4-xC-FVf" id="jOX-3I-0Ak"/>
+                <outlet property="iconImageView" destination="X78-to-X9H" id="ZN0-7O-7n4"/>
+                <outlet property="titleLabel" destination="SeK-0N-aeq" id="gX4-iS-vrF"/>
+            </connections>
+            <point key="canvasLocation" x="315" y="434.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="NormalHelp.png" width="197" height="148"/>
+    </resources>
+</document>

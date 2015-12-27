@@ -22,6 +22,10 @@
 		3706949C1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */; };
 		371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */; };
 		371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */; };
+		3726C7501C30954200487828 /* RequestTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726C74E1C30954200487828 /* RequestTypeTableViewCell.swift */; };
+		3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3726C74F1C30954200487828 /* RequestTypeTableViewCell.xib */; };
+		3726C7541C30970400487828 /* ExpressHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3726C7521C30970400487828 /* ExpressHelp.png */; };
+		3726C7551C30970400487828 /* NormalHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3726C7531C30970400487828 /* NormalHelp.png */; };
 		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
 		376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9C1C11B68400970316 /* ConversationViewController.swift */; };
@@ -99,6 +103,10 @@
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoTableViewCell.swift; sourceTree = "<group>"; };
 		371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletInfoTableViewCell.xib; sourceTree = "<group>"; };
+		3726C74E1C30954200487828 /* RequestTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTypeTableViewCell.swift; sourceTree = "<group>"; };
+		3726C74F1C30954200487828 /* RequestTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestTypeTableViewCell.xib; sourceTree = "<group>"; };
+		3726C7521C30970400487828 /* ExpressHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExpressHelp.png; sourceTree = "<group>"; };
+		3726C7531C30970400487828 /* NormalHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NormalHelp.png; sourceTree = "<group>"; };
 		3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
 		376C4D9C1C11B68400970316 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +225,7 @@
 		3726C74A1C30902A00487828 /* Create new */ = {
 			isa = PBXGroup;
 			children = (
+				3726C74D1C30950800487828 /* RequestTypeCell */,
 				37EDF9481C0CEB4C00927D68 /* FloatTextField */,
 			);
 			name = "Create new";
@@ -239,6 +248,15 @@
 				37EB111E1C2D657300879A05 /* BillTableViewCell */,
 			);
 			name = Wallet;
+			sourceTree = "<group>";
+		};
+		3726C74D1C30950800487828 /* RequestTypeCell */ = {
+			isa = PBXGroup;
+			children = (
+				3726C74E1C30954200487828 /* RequestTypeTableViewCell.swift */,
+				3726C74F1C30954200487828 /* RequestTypeTableViewCell.xib */,
+			);
+			name = RequestTypeCell;
 			sourceTree = "<group>";
 		};
 		3778B6321C123A0400A9C05D /* RequestDetails */ = {
@@ -448,6 +466,8 @@
 		37F171C21BFB6D330016433D /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				3726C7521C30970400487828 /* ExpressHelp.png */,
+				3726C7531C30970400487828 /* NormalHelp.png */,
 				37AE79671C2AD14D00AC62DD /* signup_bg.jpg */,
 				37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */,
 				37E6B3191C1CC6F500DA19A8 /* Constants.swift */,
@@ -598,8 +618,11 @@
 			files = (
 				37EB111D1C2D656C00879A05 /* BillTableViewCell.xib in Resources */,
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
+				3726C7551C30970400487828 /* NormalHelp.png in Resources */,
 				370694921C2EBF0100C5A689 /* Login.storyboard in Resources */,
+				3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
+				3726C7541C30970400487828 /* ExpressHelp.png in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
@@ -711,6 +734,7 @@
 				378639EE1C1497DB00FF7CEE /* OperatorMessageTableViewCell.swift in Sources */,
 				37CFD50A1C10C474009F734B /* DateTimePresentable.swift in Sources */,
 				370130B41C1858D50099AD1E /* RequestInfoTableViewCell.swift in Sources */,
+				3726C7501C30954200487828 /* RequestTypeTableViewCell.swift in Sources */,
 				37C69DA81C1467FB009D7755 /* UserMessageTableViewCell.swift in Sources */,
 				37EDF9451C0CEA6F00927D68 /* FloatLabelCell.swift in Sources */,
 				370694991C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift in Sources */,

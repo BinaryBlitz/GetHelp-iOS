@@ -12,9 +12,9 @@ struct HelpTypePresenter {
   var image: UIImage? {
     switch type {
     case .Normal:
-      return UIImage(named: "NormalRequestIcon")
+      return UIImage(named: "NormalHelp")
     case .Express:
-      return UIImage(named: "ExpressRequestIcon")
+      return UIImage(named: "ExpressHelp")
     }
   }
   
@@ -32,7 +32,7 @@ struct HelpTypePresenter {
     case .Normal:
       return "Помощь с домашним заданием к определенному дню"
     case .Express:
-      return "Помощь во время контрольной или экзамена"
+      return "Срочная помощь на контрольной или экзамене"
     }
   }
 }
