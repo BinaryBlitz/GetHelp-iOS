@@ -62,6 +62,7 @@
 		37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5071C10C44A009F734B /* StatusPresentable.swift */; };
 		37CFD50A1C10C474009F734B /* DateTimePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5091C10C474009F734B /* DateTimePresentable.swift */; };
 		37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */; };
+		37D134481C31F97400D16C69 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D134471C31F97400D16C69 /* logo.png */; };
 		37E6B3181C1CC6B300DA19A8 /* WalletInfoPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6B3171C1CC6B300DA19A8 /* WalletInfoPresentable.swift */; };
 		37E6B31A1C1CC6F500DA19A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6B3191C1CC6F500DA19A8 /* Constants.swift */; };
 		37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */; };
@@ -147,6 +148,7 @@
 		37CFD5071C10C44A009F734B /* StatusPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusPresentable.swift; sourceTree = "<group>"; };
 		37CFD5091C10C474009F734B /* DateTimePresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePresentable.swift; sourceTree = "<group>"; };
 		37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestPresentable.swift; sourceTree = "<group>"; };
+		37D134471C31F97400D16C69 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		37E6B3171C1CC6B300DA19A8 /* WalletInfoPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoPresentable.swift; sourceTree = "<group>"; };
 		37E6B3191C1CC6F500DA19A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestTableViewCell.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 		37F171C21BFB6D330016433D /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				37D134471C31F97400D16C69 /* logo.png */,
 				3726C7521C30970400487828 /* ExpressHelp.png */,
 				3726C7531C30970400487828 /* NormalHelp.png */,
 				37AE79671C2AD14D00AC62DD /* signup_bg.jpg */,
@@ -618,6 +621,7 @@
 			files = (
 				37EB111D1C2D656C00879A05 /* BillTableViewCell.xib in Resources */,
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
+				37D134481C31F97400D16C69 /* logo.png in Resources */,
 				3726C7551C30970400487828 /* NormalHelp.png in Resources */,
 				370694921C2EBF0100C5A689 /* Login.storyboard in Resources */,
 				3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */,
