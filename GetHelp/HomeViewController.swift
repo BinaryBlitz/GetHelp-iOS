@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    refresh(self)
     tableView.reloadData()
   }
 
@@ -80,7 +81,13 @@ class HomeViewController: UIViewController {
   
   func beginRefreshWithComplition(complition: () -> Void) {
     //TODO: Reresh request
-    complition()
+    ServerManager.sharedInstance.fetchHelpRequests { (success) -> Void in
+      if !success {
+        print("Error in ferching request")
+      }
+      
+      complition()
+    }
   }
 
   //MARK: - Tools

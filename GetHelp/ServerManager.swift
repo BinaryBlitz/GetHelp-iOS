@@ -139,4 +139,41 @@ class ServerManager {
     
     return req
   }
+  
+  //MARK: - Orders
+  
+  func fetchHelpRequests(complition: ((success: Bool) -> Void)? = nil) -> Request? {
+    
+    do {
+      let request = try get("orders/")
+      request.validate().responseJSON { (response) -> Void in
+        switch response.result {
+        case .Success(let resultValue):
+          let json = JSON(resultValue)
+          
+          for (_, orderJSON) in json {
+            HelpRequest.createFromJSON(orderJSON)
+          }
+          
+          complition?(success: true)
+        case .Failure(let error):
+          print("error \(error)")
+          complition?(success: false)
+        }
+      }
+      
+      return request
+    } catch GHError.Unauthorized {
+      print("Unauthorized")
+      complition?(success: false)
+    } catch GHError.InternalServerError {
+      print("InternalServerError")
+      complition?(success: false)
+    } catch {
+      print("wat")
+      complition?(success: false)
+    }
+    
+    return nil
+  }
 }

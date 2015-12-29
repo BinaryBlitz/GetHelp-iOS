@@ -25,9 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     configureTabBar()
     configureServerManager()
     
-    // testing
-    dropDatabaseData()
-    setTestDbData()
+    checkArguments()
     
     if !ServerManager.sharedInstance.authenticated {
       UIApplication.sharedApplication().statusBarHidden = true
@@ -44,6 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     return true
+  }
+  
+  //MARK: - Launch arguments
+  
+  private func checkArguments() {
+    for argument in Process.arguments {
+      switch argument {
+      case "--dont-login":
+        ServerManager.sharedInstance.apiToken = "4YdZnMy9TtnuWQotqhKhS3Dx"
+      case "--test-data":
+        dropDatabaseData()
+        setTestDbData()
+      default:
+        break
+      }
+    }
   }
   
   //MARK: Testing methods
@@ -107,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-    schemaVersion: 8,
+    schemaVersion: 9,
             migrationBlock: { migration, oldSchemaVersion in
               if oldSchemaVersion < 1 {}
             }

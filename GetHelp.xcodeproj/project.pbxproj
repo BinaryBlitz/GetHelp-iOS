@@ -63,6 +63,7 @@
 		37CFD50A1C10C474009F734B /* DateTimePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5091C10C474009F734B /* DateTimePresentable.swift */; };
 		37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */; };
 		37D134481C31F97400D16C69 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D134471C31F97400D16C69 /* logo.png */; };
+		37D1344A1C32D7F500D16C69 /* NSDate+CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D134491C32D7F500D16C69 /* NSDate+CreatedAt.swift */; };
 		37E6B3181C1CC6B300DA19A8 /* WalletInfoPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6B3171C1CC6B300DA19A8 /* WalletInfoPresentable.swift */; };
 		37E6B31A1C1CC6F500DA19A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6B3191C1CC6F500DA19A8 /* Constants.swift */; };
 		37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */; };
@@ -149,6 +150,7 @@
 		37CFD5091C10C474009F734B /* DateTimePresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePresentable.swift; sourceTree = "<group>"; };
 		37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestPresentable.swift; sourceTree = "<group>"; };
 		37D134471C31F97400D16C69 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		37D134491C32D7F500D16C69 /* NSDate+CreatedAt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+CreatedAt.swift"; sourceTree = "<group>"; };
 		37E6B3171C1CC6B300DA19A8 /* WalletInfoPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoPresentable.swift; sourceTree = "<group>"; };
 		37E6B3191C1CC6F500DA19A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestTableViewCell.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		37B889C81C09121A00EA02D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				37D134491C32D7F500D16C69 /* NSDate+CreatedAt.swift */,
 				37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */,
 				37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */,
 				3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */,
@@ -746,6 +749,7 @@
 				37A7CB931C0CB467004CFB14 /* HelpRequestStatus.swift in Sources */,
 				376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */,
 				370694971C2EBF8E00C5A689 /* GreetingViewController.swift in Sources */,
+				37D1344A1C32D7F500D16C69 /* NSDate+CreatedAt.swift in Sources */,
 				37E6B31A1C1CC6F500DA19A8 /* Constants.swift in Sources */,
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
 				3706949A1C2EBF8E00C5A689 /* LoginBaseViewController.swift in Sources */,

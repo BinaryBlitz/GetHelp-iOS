@@ -7,8 +7,8 @@
 //
 
 enum HelpType: String {
-  case Normal = "normal"
-  case Express = "express"
+  case Normal = "homework"
+  case Express = "urgent"
 
   var presenter: HelpTypePresenter {
     return HelpTypePresenter(type: self)
