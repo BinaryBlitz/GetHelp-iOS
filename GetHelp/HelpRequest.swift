@@ -49,7 +49,6 @@ class HelpRequest: Object {
   }
   
   static func createFromJSON(json: JSON) -> HelpRequest? {
-    print(json)
     guard let id = json["id"].int,
         subject = json["course"].string,
         cource = json["grade"].int,
