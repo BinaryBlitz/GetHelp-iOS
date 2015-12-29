@@ -72,7 +72,9 @@ class ServerManager {
     let parameters = ["phone_number" : phoneNumber]
     let req = manager.request(.POST, baseURL + "verification_tokens/", parameters: parameters, encoding: .JSON)
     
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     req.responseJSON { (response) -> Void in
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
         complition?(token: nil, error: .InvalidData)
         return
@@ -94,9 +96,11 @@ class ServerManager {
   func verifyPhoneNumberWith(code: String, forPhoneNumber phoneNumber: String,
       andToken token: String, complition: ((error: GHError?) -> Void)? = nil) -> Request {
         
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters = ["phone_number": phoneNumber, "code": code]
     let req = manager.request(.PATCH, baseURL + "verification_tokens/\(token)/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
         complition?(error: .InvalidData)
         return
@@ -119,9 +123,11 @@ class ServerManager {
   }
   
   func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: GHError?) -> Void)?) -> Request {
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters = ["user": ["phone_number": phoneNumber, "verification_token": token]]
     let req = manager.request(.POST, baseURL + "user/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
         complition?(error: .InvalidData)
         return
@@ -145,8 +151,10 @@ class ServerManager {
   func fetchHelpRequests(complition: ((success: Bool) -> Void)? = nil) -> Request? {
     
     do {
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
       let request = try get("orders/")
       request.validate().responseJSON { (response) -> Void in
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch response.result {
         case .Success(let resultValue):
           let json = JSON(resultValue)

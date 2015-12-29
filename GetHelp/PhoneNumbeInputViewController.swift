@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PhoneTokenPair {
   var phoneNumber: String
@@ -25,6 +26,7 @@ class PhoneNumbeInputViewController: UIViewController {
   @IBOutlet weak var phoneNumberTextField: REFormattedNumberField!
   
   var delegate: LoginNavigationDelegate?
+  var loginRequest: Request?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,6 +54,10 @@ class PhoneNumbeInputViewController: UIViewController {
   //MARK: - IBActions
 
   @IBAction func okButtonAction(sender: AnyObject) {
+    if let request = loginRequest {
+      request.cancel()
+    }
+    
     if let phoneNumber = phoneNumberTextField.text {
       let numberLength = phoneNumber.characters.count
       if numberLength != "+7 (123) 456-78-90".characters.count {
@@ -61,12 +67,13 @@ class PhoneNumbeInputViewController: UIViewController {
       }
       
       let rawPhoneNumber = formatPhoneNumberToRaw(phoneNumber)
-      ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { (token, error) -> Void in
+      let request = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
         print(token)
         if let token = token {
-          self.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
+          self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
         }
       }
+      loginRequest = request
     }
   }
   
