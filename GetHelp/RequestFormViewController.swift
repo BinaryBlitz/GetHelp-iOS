@@ -157,6 +157,12 @@ class RequestFormViewController: FormViewController {
       presentAlertWithMessage("Вы не выбрали дату работы")
       return
     }
+    
+    guard let email = form.rowByTag("emailRow")?.baseValue as? String else {
+      print("email")
+      presentAlertWithMessage("Вы не указали email для отправки решения")
+      return
+    }
 
     let helpRequest = HelpRequest()
 
@@ -164,8 +170,8 @@ class RequestFormViewController: FormViewController {
     helpRequest.subject = subject
     helpRequest.school = school
     helpRequest.faculty = facility
-    helpRequest.email = "foo@bar.com"
-    helpRequest.deadline = deadline
+    helpRequest.email = email
+    helpRequest.deadline =  deadline
     helpRequest.cource = cource
     helpRequest.helpDescription = helpDesctiption
 
