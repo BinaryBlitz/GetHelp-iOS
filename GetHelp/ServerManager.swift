@@ -146,7 +146,7 @@ class ServerManager {
     return req
   }
   
-  //MARK: - Orders
+  //MARK: - HelpRequests
   
   func fetchHelpRequests(complition: ((success: Bool) -> Void)? = nil) -> Request? {
     
@@ -179,6 +179,41 @@ class ServerManager {
       complition?(success: false)
     } catch {
       print("wat")
+      complition?(success: false)
+    }
+    
+    return nil
+  }
+  
+  func createNewHelpRequest(helpRequest: HelpRequest, complition: ((success: Bool) -> Void)? = nil) -> Request? {
+    
+    let order = helpRequest.convertToDict()
+    let parameters: [String: AnyObject] = ["order": order]
+    
+    do {
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+      
+      let request = try post("orders/", params: parameters)
+      request.validate().responseJSON { (response) -> Void in
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        switch response.result {
+        case .Success(let resultValue):
+          let json = JSON(resultValue)
+          
+          if let _ = HelpRequest.createFromJSON(json) {
+            complition?(success: true)
+          } else {
+            complition?(success: false)
+          }
+        case .Failure(let error):
+          print("error \(error)")
+          complition?(success: false)
+        }
+      }
+      
+      return request
+    } catch let error {
+      print("Error: \(error)")
       complition?(success: false)
     }
     

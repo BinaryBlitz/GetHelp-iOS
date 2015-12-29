@@ -76,38 +76,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let request1 = HelpRequest()
       request1.id = 123
       request1.subject = "Математический анализ"
-      request1.cource = "1"
+      request1.course = "1"
       request1.school = "МГУ"
       request1.faculty = "Экономики"
       request1.helpDescription = "оолололол"
       request1.type = .Express
-      request1.duration = 50
       request1.status = HelpRequestStatus.InReview
-      request1.deadline = NSDate().dateByAddingTimeInterval(10000)
+      request1.dueDate = NSDate().dateByAddingTimeInterval(10000)
+      request1.startDate = NSDate().dateByAddingTimeInterval(10000 - 7200)
       request1.email = "foobar@gmail.com"
       
       let request2 = HelpRequest()
       request2.id = 124
       request2.subject = "Эконометрика"
-      request2.cource = "3"
+      request2.course = "3"
       request2.school = "ВШЭ"
       request2.faculty = "Математики"
       request2.helpDescription = "оолололол"
       request2.type = .Normal
       request2.status = HelpRequestStatus.Accepted
-      request2.deadline = NSDate().dateByAddingTimeInterval(5000)
+      request2.dueDate = NSDate().dateByAddingTimeInterval(5000)
       request2.email = "foobar@gmail.com"
       
       let request3 = HelpRequest()
       request3.id = 150
       request3.subject = "Операционные системы"
-      request3.cource = "3"
+      request3.course = "3"
       request3.school = "ВШЭ"
       request3.faculty = "Компьютерных наук"
       request3.helpDescription = "ололоыуаошыоашыоа"
       request3.type = .Normal
       request3.status = HelpRequestStatus.WaitingForPayment
-      request3.deadline = NSDate().dateByAddingTimeInterval(30000)
+      request3.dueDate = NSDate().dateByAddingTimeInterval(30000)
       request3.price = 2000
       request3.email = "foobar@gmail.com"
       
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-    schemaVersion: 9,
+    schemaVersion: 10,
             migrationBlock: { migration, oldSchemaVersion in
               if oldSchemaVersion < 1 {}
             }

@@ -9,15 +9,24 @@
 import UIKit
 import Eureka
 import RealmSwift
+import Alamofire
 
 class RequestFormViewController: FormViewController {
 
   var type: HelpType = HelpType.Normal
+  
+  var createdRequest: Request?
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     initialiseForm()
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    if let request = createdRequest {
+      request.cancel()
+    }
   }
 
   //MARK: - Form
@@ -30,18 +39,18 @@ class RequestFormViewController: FormViewController {
 
     switch type {
     case .Normal:
-      form +++= DateTimeInlineRow("dateTimeRow") {
+      form +++= DateTimeInlineRow("dueDateRow") {
         $0.title = "Дата и время сдачи"
         $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
       }
     case .Express:
-      form +++= DateTimeInlineRow("dateTimeRow") {
-        $0.title = "Дата и время сдачи"
+      form +++= DateTimeInlineRow("startDateRow") {
+        $0.title = "Началo работы"
         $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
       }
-      <<< TimeInlineRow("timeRow") {
+      <<< DateTimeInlineRow("endDateRow") {
         $0.title = "Конец работы"
-        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 3)
+        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3 + 60 * 2)
       }
     }
 
@@ -73,7 +82,7 @@ class RequestFormViewController: FormViewController {
     <<< TextFloatLabelRow("facilityRow") {
       $0.title = "Факультет"
     }
-    <<< PushRow<String>("courceRow") {
+    <<< PushRow<String>("courseRow") {
       $0.title = "Курс"
       $0.options = ["1", "2", "3", "4", "5", "6"]
       $0.value = "1"
@@ -122,6 +131,10 @@ class RequestFormViewController: FormViewController {
   }
 
   @IBAction func submitButtonAction(sender: AnyObject) {
+    if let request = createdRequest {
+      request.cancel()
+    }
+    
     guard let subject = form.rowByTag("subjectRow")?.baseValue as? String else {
       print("subject!")
       presentAlertWithMessage("Вы не указали предмет")
@@ -140,8 +153,8 @@ class RequestFormViewController: FormViewController {
       return
     }
 
-    guard let cource = form.rowByTag("courceRow")?.baseValue as? String else {
-      print("cource")
+    guard let course = form.rowByTag("courseRow")?.baseValue as? String else {
+      print("course")
       presentAlertWithMessage("Вы не выбрали ваш курс")
       return
     }
@@ -152,31 +165,26 @@ class RequestFormViewController: FormViewController {
       return
     }
 
-    guard let deadline = form.rowByTag("dateTimeRow")?.baseValue as? NSDate else {
-      print("deadline")
-      presentAlertWithMessage("Вы не выбрали дату работы")
-      return
-    }
-    
-    guard let email = form.rowByTag("emailRow")?.baseValue as? String else {
-      print("email")
-      presentAlertWithMessage("Вы не указали email для отправки решения")
-      return
-    }
-
     let helpRequest = HelpRequest()
 
     helpRequest.type = type
     helpRequest.subject = subject
     helpRequest.school = school
     helpRequest.faculty = facility
-    helpRequest.email = email
-    helpRequest.deadline =  deadline
-    helpRequest.cource = cource
+    helpRequest.course = course
     helpRequest.helpDescription = helpDesctiption
-
-    if let endTime = form.rowByTag("timeRow")?.baseValue as? NSDate {
-      helpRequest.duration = Int(endTime.timeIntervalSinceDate(deadline) / (60 * 60)) // in minutes
+    
+    if let dueDate = form.rowByTag("dueDateRow")?.baseValue as? NSDate {
+      helpRequest.dueDate = dueDate
+    } else if let startDate = form.rowByTag("startDateRow")?.baseValue as? NSDate,
+          endDate =  form.rowByTag("endDateRow")?.baseValue as? NSDate {
+      if endDate.timeIntervalSinceDate(startDate) < 0 {
+        presentAlertWithMessage("Неверно указаны даты начала и конца")
+        return
+      }
+            
+      helpRequest.startDate = startDate
+      helpRequest.dueDate = endDate
     }
 
     if type == .Express {
@@ -187,18 +195,22 @@ class RequestFormViewController: FormViewController {
         presentAlertWithMessage("Вы не указали тип работы")
         return
       }
-    }
-
-    let realm = try! Realm()
-    do {
-      try realm.write {
-        realm.add(helpRequest)
+    } else {
+      if let email = form.rowByTag("emailRow")?.baseValue as? String {
+        helpRequest.email = email
+      } else {
+        print("email")
+        presentAlertWithMessage("Вы не указали email для отправки решения")
+        return
       }
-      presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-    } catch {
-      //Something is really wrong.
-      //TODO: Alert about error
-      print("Something is really wrong.")
+    }
+    
+    createdRequest = ServerManager.sharedInstance.createNewHelpRequest(helpRequest) { [weak self] (success) -> Void in
+      if success {
+        self?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+      } else {
+        self?.presentAlertWithMessage("Что-то не так! Попробуйте ещё раз позже")
+      }
     }
   }
 }

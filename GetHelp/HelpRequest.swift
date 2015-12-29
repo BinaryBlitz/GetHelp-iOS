@@ -14,15 +14,15 @@ class HelpRequest: Object {
   
   dynamic var id = 0
   dynamic var subject = ""
-  dynamic var cource = ""
+  dynamic var course = ""
   dynamic var school = ""
   dynamic var faculty = ""
   dynamic var helpDescription = ""
-  dynamic var deadline: NSDate?
-  dynamic var _status = HelpRequestStatus.InReview.rawValue
+  dynamic var dueDate: NSDate?
+  dynamic var startDate: NSDate?
   dynamic var email = ""
-  dynamic var duration = 0 // in minutes
   dynamic var activityType = ""
+  dynamic var _status = HelpRequestStatus.InReview.rawValue
   dynamic var _type = HelpType.Normal.rawValue
   dynamic var price = 0
   let messages = List<Message>()
@@ -48,6 +48,30 @@ class HelpRequest: Object {
     return HelpRequestPresenter(helpRequest: self)
   }
   
+  func convertToDict() -> [String: AnyObject] {
+    let dateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    var jsonData: [String: AnyObject] = [
+      "id": id,
+      "course": subject,
+      "grade": Int(course) ?? 1,
+      "category": type.rawValue,
+      "university": school,
+      "faculty": faculty,
+      "email": email,
+      "description": helpDescription
+    ]
+    
+    if let dueDate = dueDate {
+      jsonData["due_by"] = dateFormatter.stringFromDate(dueDate)
+    }
+    
+    if let startDate = startDate {
+      jsonData["starts_at"] = dateFormatter.stringFromDate(startDate)
+    }
+    
+    return jsonData
+  }
+  
   static func createFromJSON(json: JSON) -> HelpRequest? {
     guard let id = json["id"].int,
         subject = json["course"].string,
@@ -56,7 +80,8 @@ class HelpRequest: Object {
         university = json["university"].string,
         faculty = json["faculty"].string,
         email = json["email"].string,
-        deadlineDateString = json["due_by"].string
+        dueDateString = json["due_by"].string,
+        description = json["description"].string
     else {
       return nil
     }
@@ -64,12 +89,16 @@ class HelpRequest: Object {
     let helpRequest = HelpRequest()
     helpRequest.id = id
     helpRequest.subject = subject
-    helpRequest.cource = "\(cource)"
+    helpRequest.course = "\(cource)"
     helpRequest._type = type
     helpRequest.school = university
+    helpRequest.helpDescription = description
     helpRequest.faculty = faculty
     helpRequest.email = email
-    helpRequest.deadline = NSDate(dateString: deadlineDateString)
+    helpRequest.dueDate = NSDate(dateString: dueDateString)
+    if let startDate = json["starts_at"].string {
+      helpRequest.startDate = NSDate(dateString: startDate)
+    }
     
     do {
       let realm = try Realm()

@@ -31,7 +31,7 @@ class HelpRequestPresenter: HelpRequestPresentable {
   }
 
   var schoolInfo: String {
-    return "\(helpRequest.school), \(helpRequest.faculty), \(helpRequest.cource) курс"
+    return "\(helpRequest.school), \(helpRequest.faculty), \(helpRequest.course) курс"
   }
 
   var email: String {
@@ -82,19 +82,23 @@ class HelpRequestPresenter: HelpRequestPresentable {
   }
 
   var date: String {
-    guard let date = helpRequest.deadline else {
-      return ""
+    if let startDate = helpRequest.startDate {
+      return dateFormatter.stringFromDate(startDate)
+    } else if let dueDate = helpRequest.dueDate {
+      return dateFormatter.stringFromDate(dueDate)
     }
     
-    return dateFormatter.stringFromDate(date)
+    return ""
   }
   
   var time: String {
-    guard let date = helpRequest.deadline else {
-      return ""
+    if let startDate = helpRequest.startDate {
+      return timeFormatter.stringFromDate(startDate)
+    } else if let dueDate = helpRequest.dueDate {
+      return timeFormatter.stringFromDate(dueDate)
     }
     
-    return timeFormatter.stringFromDate(date)
+    return ""
   }
   
   var dateTime: String {
