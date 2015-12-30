@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
 
   func fetchHelpRequests() {
     let realm  = try! Realm()
-    helpRequests = realm.objects(HelpRequest)
+    helpRequests = realm.objects(HelpRequest).sorted("dueDate")
   }
 
   //MARK: - Actions
