@@ -26,6 +26,12 @@ class HelpRequest: Object {
   dynamic var _type = HelpType.Normal.rawValue
   dynamic var price = 0
   let messages = List<Message>()
+
+  override class func primaryKey() -> String? {
+    return "id"
+  }
+  
+  //MARK: - Properties
   
   var type: HelpType {
     get {
@@ -35,6 +41,7 @@ class HelpRequest: Object {
       self._type = newType.rawValue
     }
   }
+  
   var status: HelpRequestStatus {
     get {
       return HelpRequestStatus(rawValue: _status)!
@@ -44,9 +51,16 @@ class HelpRequest: Object {
     }
   }
   
+  //MARK: - Presentes stuff
+  
   func presenter() -> HelpRequestPresentable {
     return HelpRequestPresenter(helpRequest: self)
   }
+}
+
+//MARK: - ServerModelPresentable
+
+extension HelpRequest: ServerModelPresentable {
   
   func convertToDict() -> [String: AnyObject] {
     let dateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
@@ -100,21 +114,7 @@ class HelpRequest: Object {
       helpRequest.startDate = NSDate(dateString: startDate)
     }
     
-    do {
-      let realm = try Realm()
-      try realm.write {
-        realm.add(helpRequest, update: true)
-      }
-    } catch let error {
-      print("Error: \(error)")
-      return nil
-    }
-    
     return helpRequest
-  }
-
-  override class func primaryKey() -> String? {
-    return "id"
   }
 }
 

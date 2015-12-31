@@ -7,10 +7,11 @@
 //
 
 import RealmSwift
+import SwiftyJSON
 
 class Message: Object {
   dynamic var content: String = ""
-  private dynamic var _sender: String = "user"
+  private dynamic var _sender: String = MessageSender.User.rawValue
   dynamic var dateCreated: NSDate = NSDate()
   let images = List<Image>()
 
@@ -21,5 +22,19 @@ class Message: Object {
     set(newSender) {
       _sender = newSender.rawValue
     }
+  }
+}
+
+//MARK: - ServerModelPresentable
+
+extension Message: ServerModelPresentable {
+  
+  //TODO: implement protocol
+  static func createFromJSON(json: JSON) -> Message? {
+    return Message()
+  }
+  
+  func convertToDict() -> [String : AnyObject] {
+    return ["": ""]
   }
 }

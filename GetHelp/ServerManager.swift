@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 /// Provides communication with the application server
 class ServerManager {
@@ -161,8 +162,19 @@ class ServerManager {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           
-          for (_, orderJSON) in json {
-            HelpRequest.createFromJSON(orderJSON)
+          do {
+            let realm = try Realm()
+            try realm.write {
+              for (_, orderJSON) in json {
+                guard let helpRequest = HelpRequest.createFromJSON(orderJSON) else {
+                  continue
+                }
+                
+                realm.add(helpRequest, update: true)
+              }
+            }
+          } catch let error {
+            print("Error: \(error)")
           }
           
           complition?(success: true)
@@ -202,8 +214,17 @@ class ServerManager {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           
-          if let _ = HelpRequest.createFromJSON(json) {
-            complition?(success: true)
+          if let helpRequest = HelpRequest.createFromJSON(json) {
+            do {
+              let realm = try Realm()
+              try realm.write { () -> Void in
+                realm.add(helpRequest)
+              }
+              complition?(success: true)
+            } catch let error {
+              print("Error: \(error)")
+              complition?(success: false)
+            }
           } else {
             complition?(success: false)
           }
