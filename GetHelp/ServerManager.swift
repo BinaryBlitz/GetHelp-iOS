@@ -38,7 +38,9 @@ class ServerManager {
     NSUserDefaults.standardUserDefaults().setObject(apiToken, forKey: "apiToken")
   }
   
-  private func request(method: Alamofire.Method, path: String, parameters: [String : AnyObject]?, encoding: ParameterEncoding) throws -> Request {
+  private func request(method: Alamofire.Method, path: String,
+      parameters: [String : AnyObject]?,
+      encoding: ParameterEncoding) throws -> Request {
     let url = baseURL + path
     var parameters = parameters
     guard let token = apiToken else {
@@ -217,6 +219,58 @@ class ServerManager {
       complition?(success: false)
     }
     
+    return nil
+  }
+  
+  //MARK: - Messages
+  
+  func fetchAllMessagesForOrder(order: HelpRequest, complition: ((success: Bool) -> Void)? = nil) -> Request? {
+    
+    do {
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+      
+      let request = try get("orders/\(order.id)/messages/")
+      request.validate().responseJSON { (response) -> Void in
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        switch response.result {
+        case .Success(let resultValue):
+          let json = JSON(resultValue)
+          
+          for (_, messageData) in json {
+            //TODO: update ande create messages
+            print(messageData)
+          }
+          
+          complition?(success: true)
+        case .Failure(let error):
+          print("Error: \(error)")
+        }
+      }
+      
+      return request
+    } catch let error {
+      print("Error: \(error)")
+      complition?(success: false)
+    }
+    
+    return nil
+  }
+  
+  func sendMessage(message: Message, toOrder order: HelpRequest, complition: ((success: Bool) -> Void)? = nil) -> Request? {
+    
+    do {
+      let parameters: [String: AnyObject] = ["message": ["content": message.content]]
+      
+      let request = try post("orders/\(order.id)/messages", params: parameters)
+      request.validate().responseJSON { (response) -> Void in
+        // yo yo
+      }
+      
+      return request
+    } catch let error {
+      print("Error: \(error)")
+      complition?(success: false)
+    }
     return nil
   }
 }

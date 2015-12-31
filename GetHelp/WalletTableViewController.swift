@@ -30,9 +30,9 @@ class WalletTableViewController: UITableViewController {
 
   func fetchHelpRequests(serverManager: ServerManager = ServerManager()) {
     let realm  = try! Realm()
-//    activeRequests = realm.objects(HelpRequest).filter("_status == 'wating_for_payment'")
-  // just for test
-    activeRequests = realm.objects(HelpRequest).filter("_status != 'wating_for_payment'")
+    activeRequests = realm.objects(HelpRequest).filter("_status == 'wating_for_payment'")
+//  // just for test
+//    activeRequests = realm.objects(HelpRequest).filter("_status != 'wating_for_payment'")
   }
 
   func setUpRefreshControl() {
