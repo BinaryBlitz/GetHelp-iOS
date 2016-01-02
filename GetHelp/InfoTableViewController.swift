@@ -22,8 +22,8 @@ struct InfoLink {
 class InfoTableViewController: UITableViewController {
 
   let infoData = [
-    InfoLink(name: "Публичная оферта #1", urlString: "https://google.com"),
-    InfoLink(name: "Публичная оферта #2", urlString: "https://google.com"),
+    InfoLink(name: "Публичная оферта #1", urlString: "http://getthelp.ru/docs/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0%201.docx"),
+    InfoLink(name: "Публичная оферта #2", urlString: "http://getthelp.ru/docs/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0%202.docx"),
     InfoLink(name: "Пользовательское соглашение", urlString: "https://google.com"),
     InfoLink(name: "Как это работает?", urlString: "https://google.com"),
   ]
