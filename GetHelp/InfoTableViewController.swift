@@ -22,8 +22,10 @@ struct InfoLink {
 class InfoTableViewController: UITableViewController {
 
   let infoData = [
-    InfoLink(name: "Правила пользования", urlString: "https://google.com"),
-    InfoLink(name: "Пользовательское соглашение", urlString: "https://google.com")
+    InfoLink(name: "Публичная оферта #1", urlString: "https://google.com"),
+    InfoLink(name: "Публичная оферта #2", urlString: "https://google.com"),
+    InfoLink(name: "Пользовательское соглашение", urlString: "https://google.com"),
+    InfoLink(name: "Как это работает?", urlString: "https://google.com"),
   ]
   
   override func viewDidLoad() {
@@ -60,7 +62,7 @@ class InfoTableViewController: UITableViewController {
       }
       
       if let textLabel = cell.viewWithTag(1) as? UILabel {
-        textLabel.text = "Сообщить об ошибке"
+        textLabel.text = "Написать разработчикам"
       }
       
       return cell
