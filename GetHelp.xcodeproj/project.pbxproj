@@ -53,6 +53,7 @@
 		37C69DB11C146C7C009D7755 /* MessagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DB01C146C7C009D7755 /* MessagePresenter.swift */; };
 		37C69DB31C146F7D009D7755 /* ConfigurableMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DB21C146F7D009D7755 /* ConfigurableMessageCell.swift */; };
 		37C69DB51C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */; };
+		37C952C41C39BB590006B721 /* UIViewController+WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C952C31C39BB590006B721 /* UIViewController+WebViewController.swift */; };
 		37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */; };
 		37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B751BFB60FF00B450E0 /* Main.storyboard */; };
 		37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B781BFB60FF00B450E0 /* Assets.xcassets */; };
@@ -137,6 +138,7 @@
 		37C69DB01C146C7C009D7755 /* MessagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagePresenter.swift; sourceTree = "<group>"; };
 		37C69DB21C146F7D009D7755 /* ConfigurableMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableMessageCell.swift; sourceTree = "<group>"; };
 		37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormater+initWithDateFormat.swift"; sourceTree = "<group>"; };
+		37C952C31C39BB590006B721 /* UIViewController+WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+WebViewController.swift"; sourceTree = "<group>"; };
 		37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CC9B761BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */,
 				37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */,
 				3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */,
+				37C952C31C39BB590006B721 /* UIViewController+WebViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				37C69DA11C145583009D7755 /* MessageSender.swift in Sources */,
 				37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */,
 				371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */,
+				37C952C41C39BB590006B721 /* UIViewController+WebViewController.swift in Sources */,
 				37C69DB51C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift in Sources */,
 				37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */,
 				37C69DB11C146C7C009D7755 /* MessagePresenter.swift in Sources */,

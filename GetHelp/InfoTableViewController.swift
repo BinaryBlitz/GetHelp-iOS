@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import WebKit
-import SafariServices
 import MessageUI
 
 struct InfoLink {
@@ -91,12 +89,7 @@ class InfoTableViewController: UITableViewController {
         return
       }
       
-      if #available(iOS 9.0, *) {
-        let safariController = SFSafariViewController(URL: url)
-        presentViewController(safariController, animated: true, completion: nil)
-      } else {
-        UIApplication.sharedApplication().openURL(url)
-      }
+      self.presentWebViewControllerWithURL(url)
     case 1:
       let mailViewController = MFMailComposeViewController()
       mailViewController.setSubject("Ошибка")

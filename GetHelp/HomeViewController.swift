@@ -8,8 +8,6 @@
 
 import UIKit
 import RealmSwift
-import WebKit
-import SafariServices
 
 let HelpRequestUpdatedNotification = "HelpRequestUpdatedNotification"
 
@@ -184,13 +182,7 @@ extension HomeViewController: HelpRequestCellDelegate {
       print("\(paymentURL)")
       print("Error: \(error)")
       if let url = paymentURL {
-        if #available(iOS 9.0, *) {
-          let safariController = SFSafariViewController(URL: url)
-          self.presentViewController(safariController, animated: true, completion: nil)
-        } else {
-          let webViewController = SVModalWebViewController(URL: url)
-          self.presentViewController(webViewController, animated: true, completion: nil)
-        }
+        self.presentWebViewControllerWithURL(url)
       } else if let error = error {
         print("Error: \(error)")
         let alert = UIAlertController(
