@@ -294,4 +294,40 @@ class ServerManager {
     }
     return nil
   }
+  
+  //MARK: - Payments 
+  
+  func paymentsURLForOrderID(orderID: Int, complition: ((payemtURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
+    
+    do {
+      let request = try post("orders/\(orderID)/payments/")
+      request.validate().responseJSON { response in
+        switch response.result {
+        case .Success(let resultValue):
+          let json = JSON(resultValue)
+          guard let paymentURLString = json["url"].string else {
+            complition?(payemtURL: nil, error: GHError.InvalidData)
+            return
+          }
+          
+          guard let paymentURL = NSURL(string: paymentURLString) else {
+            complition?(payemtURL: nil, error: GHError.InvalidData)
+            return
+          }
+          
+          complition?(payemtURL: paymentURL, error: nil)
+          
+        case .Failure(let error):
+          complition?(payemtURL: nil, error: error)
+        }
+      }
+      
+      return request
+    } catch let error {
+      print("Error: \(error)")
+      complition?(payemtURL: nil, error: error)
+    }
+    
+    return nil
+  }
 }
