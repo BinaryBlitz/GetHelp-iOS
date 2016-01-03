@@ -20,6 +20,8 @@ class WalletTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationController?.navigationBar.barStyle = .BlackTranslucent
 
     fetchHelpRequests()
     setUpRefreshControl()

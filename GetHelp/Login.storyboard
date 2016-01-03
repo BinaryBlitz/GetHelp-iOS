@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-XM-QKr">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y87-2W-laT">
                                 <rect key="frame" x="0.0" y="60" width="600" height="500"/>
@@ -35,7 +35,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="y87-2W-laT" secondAttribute="trailing" constant="-20" id="BtM-BN-Fte"/>
                             <constraint firstItem="6P2-cA-er8" firstAttribute="top" secondItem="Feq-XM-QKr" secondAttribute="bottom" id="PX5-Zc-e74"/>
                             <constraint firstItem="6P2-cA-er8" firstAttribute="top" secondItem="y87-2W-laT" secondAttribute="bottom" constant="40" id="RhD-Vi-5Lk"/>
-                            <constraint firstItem="Feq-XM-QKr" firstAttribute="top" secondItem="7OW-Mk-h7f" secondAttribute="bottom" id="fNw-0X-1bV"/>
+                            <constraint firstItem="Feq-XM-QKr" firstAttribute="top" secondItem="7OW-Mk-h7f" secondAttribute="bottom" constant="-20" id="fNw-0X-1bV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Feq-XM-QKr" secondAttribute="trailing" constant="-20" id="knh-7k-IBW"/>
                             <constraint firstItem="y87-2W-laT" firstAttribute="leading" secondItem="qrv-i5-9qa" secondAttribute="leadingMargin" constant="-20" id="qqU-yl-JGa"/>
                         </constraints>

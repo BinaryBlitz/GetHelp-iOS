@@ -15,6 +15,7 @@ class CreateNewRequestTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
 
     typePresenters = HelpType.avaliableTypes().map { (type) -> HelpTypePresenter in
       return HelpTypePresenter(type: type)

@@ -31,6 +31,7 @@ class InfoTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationController?.navigationBar.barStyle = .BlackTranslucent
     tableView.tableFooterView = UIView()
   }
   

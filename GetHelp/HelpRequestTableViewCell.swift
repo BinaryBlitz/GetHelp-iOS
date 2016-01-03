@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HelpRequestCellDelegate: class {
+  func didTouchPayButtonInCell(cell: HelpRequestTableViewCell)
+}
+
 class HelpRequestTableViewCell: UITableViewCell {
 
   @IBOutlet weak var cardView: UIView!
@@ -22,6 +26,8 @@ class HelpRequestTableViewCell: UITableViewCell {
   
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var payButton: UIButton!
+  
+  weak var delegate: HelpRequestCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -60,5 +66,9 @@ class HelpRequestTableViewCell: UITableViewCell {
   private func setUpButtons() {
     payButton.layer.cornerRadius = (payButton.frame.height / 2) - 1
     payButton.backgroundColor = UIColor.yellowAccentColor()
+  }
+  
+  @IBAction func payButtonAction(sender: AnyObject) {
+    delegate?.didTouchPayButtonInCell(self)
   }
 }

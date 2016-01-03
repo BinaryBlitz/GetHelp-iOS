@@ -59,7 +59,6 @@ class LogInCodeCheckViewController: UIViewController {
         ServerManager.sharedInstance.saveApiToken()
         let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
         if let initialController = mainStroryboard.instantiateInitialViewController() {
-          UIApplication.sharedApplication().statusBarHidden = false
           self.presentViewController(initialController, animated: true, completion: nil)
         }
       } else {
