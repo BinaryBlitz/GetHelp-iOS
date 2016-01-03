@@ -67,10 +67,17 @@ class PhoneNumbeInputViewController: UIViewController {
       }
       
       let rawPhoneNumber = formatPhoneNumberToRaw(phoneNumber)
+      okButton.userInteractionEnabled = false
       let request = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
         print(token)
+        self?.okButton.userInteractionEnabled = true
         if let token = token {
           self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
+        } else if let error = error {
+          print("Error: \(error)")
+          let alert = UIAlertController(title: "Ошибка!", message: "Произошла ошибка! Проверьте ваше подключение к интернету и попробуйте позже", preferredStyle: .Alert)
+          alert.addAction(UIAlertAction(title: "ОК", style: .Default, handler: nil))
+          self?.presentViewController(alert, animated: true, completion: nil)
         }
       }
       loginRequest = request
