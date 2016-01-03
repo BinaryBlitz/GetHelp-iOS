@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       request3.type = .Normal
       request3.status = HelpRequestStatus.WaitingForPayment
       request3.dueDate = NSDate().dateByAddingTimeInterval(30000)
-      request3.price = 2000
+      request3.sum = 2000
       request3.email = "foobar@gmail.com"
       
       realm.add(request3)
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-    schemaVersion: 10,
+    schemaVersion: 11,
             migrationBlock: { migration, oldSchemaVersion in
               if oldSchemaVersion < 1 {}
             }

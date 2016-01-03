@@ -42,8 +42,6 @@ class HelpRequestPresenter: HelpRequestPresentable {
     switch helpRequest.status {
     case .Accepted:
       return "Принят"
-    case .Done:
-      return "Завершен"
     case .InReview:
       return "Рассматривается"
     case .Rejected:
@@ -63,7 +61,7 @@ class HelpRequestPresenter: HelpRequestPresentable {
   }
   
   var price: String {
-    return "\(helpRequest.price) \(rubleSign)"
+    return "\(helpRequest.sum) \(rubleSign)"
   }
 
   var indicatorColor: UIColor {
@@ -72,8 +70,6 @@ class HelpRequestPresenter: HelpRequestPresentable {
       return UIColor.greenAccentColor()
     case .WaitingForPayment:
       return UIColor.yellowAccentColor()
-    case .Done:
-      return UIColor.lightGrayColor()
     case .InReview:
       return UIColor.blueAccentColor()
     case .Rejected:

@@ -24,7 +24,7 @@ class HelpRequest: Object {
   dynamic var activityType = ""
   dynamic var _status = HelpRequestStatus.InReview.rawValue
   dynamic var _type = HelpType.Normal.rawValue
-  dynamic var price = 0
+  dynamic var sum = 0
   let messages = List<Message>()
 
   override class func primaryKey() -> String? {
@@ -95,7 +95,8 @@ extension HelpRequest: ServerModelPresentable {
         faculty = json["faculty"].string,
         email = json["email"].string,
         dueDateString = json["due_by"].string,
-        description = json["description"].string
+        description = json["description"].string,
+        status = json["status"].string
     else {
       return nil
     }
@@ -104,6 +105,7 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest.id = id
     helpRequest.subject = subject
     helpRequest.course = "\(cource)"
+    helpRequest._status = status
     helpRequest._type = type
     helpRequest.school = university
     helpRequest.helpDescription = description
@@ -112,6 +114,10 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest.dueDate = NSDate(dateString: dueDateString)
     if let startDate = json["starts_at"].string {
       helpRequest.startDate = NSDate(dateString: startDate)
+    }
+    
+    if let sum = json["sum"].int {
+      helpRequest.sum = sum
     }
     
     return helpRequest
