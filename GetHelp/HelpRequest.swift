@@ -20,6 +20,7 @@ class HelpRequest: Object {
   dynamic var helpDescription = ""
   dynamic var dueDate: NSDate?
   dynamic var startDate: NSDate?
+  dynamic var createdAt: NSDate?
   dynamic var email = ""
   dynamic var activityType = ""
   dynamic var _status = HelpRequestStatus.InReview.rawValue
@@ -95,9 +96,9 @@ extension HelpRequest: ServerModelPresentable {
         faculty = json["faculty"].string,
         email = json["email"].string,
         dueDateString = json["due_by"].string,
-        description = json["description"].string,
-        status = json["status"].string
-    else {
+        status = json["status"].string,
+        createdDateString = json["created_at"].string
+      else {
       return nil
     }
     
@@ -108,7 +109,10 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest._status = status
     helpRequest._type = type
     helpRequest.school = university
-    helpRequest.helpDescription = description
+    helpRequest.createdAt = NSDate(dateString: createdDateString)
+    if let description = json["description"].string {
+      helpRequest.helpDescription = description
+    }
     helpRequest.faculty = faculty
     helpRequest.email = email
     helpRequest.dueDate = NSDate(dateString: dueDateString)
