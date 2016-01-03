@@ -14,26 +14,20 @@ struct MessagePresenter: MessagePresentable {
 
   //MARK : - MessageContentPresentable
   
-  var content: String {
+  var content: String? {
     return message.content
   }
   
-  var attachmentStatus: String? {
-    let imagesCount = message.images.count
-    if imagesCount == 0 {
+  var imageURL: NSURL? {
+    guard let urlString = message.imageURLString else {
       return nil
     }
-
-    if imagesCount <= 1 {
-      return "+\(imagesCount) фотография"
-    } else if imagesCount <= 4 {
-      return "+\(imagesCount) фотографии"
-    } else {
-      return "+\(imagesCount) фотографий"
-    }
+    
+    return NSURL(string: urlString)
   }
-
+  
   //MARK: - DateTimePresentable
+  
   var date: String {
     return ""
   }

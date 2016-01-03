@@ -10,10 +10,11 @@ import RealmSwift
 import SwiftyJSON
 
 class Message: Object {
-  dynamic var content: String = ""
+  
+  dynamic var content: String?
+  dynamic var imageURLString: String?
   private dynamic var _sender: String = MessageSender.User.rawValue
   dynamic var dateCreated: NSDate = NSDate()
-  let images = List<Image>()
 
   var sender: MessageSender {
     get {

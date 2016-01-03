@@ -57,8 +57,6 @@ class ConversationViewController: UIViewController {
     let message3 = Message()
     message3.content = "Вот задание. 3 задачу вообще невозможно решить."
     message3.sender = .User
-    message3.images.append(Image())
-    message3.images.append(Image())
     
     let message4 = Message()
     message4.content = "Получили, решаем"
@@ -160,9 +158,7 @@ class ConversationViewController: UIViewController {
     try! realm.write {
       self.helpRequest.messages.append(message)
       self.selectedAssets?.forEach { asset in
-        let image = Image()
-        message.images.append(image)
-        realm.add(image)
+//        realm.add(image)
       }
       realm.add(message)
     }

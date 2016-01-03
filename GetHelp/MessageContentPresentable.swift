@@ -7,6 +7,6 @@
 //
 
 protocol MessageContentPresentable {
-  var content: String { get }
-  var attachmentStatus: String? { get }
+  var content: String? { get }
+  var imageURL: NSURL? { get }
 }
