@@ -280,7 +280,7 @@ class ServerManager {
   func sendMessage(message: Message, toOrder order: HelpRequest, complition: ((success: Bool) -> Void)? = nil) -> Request? {
     
     do {
-      let parameters: [String: AnyObject] = ["message": ["content": message.content]]
+      let parameters: [String: AnyObject] = ["message": ["content": message.content ?? ""]]
       
       let request = try post("orders/\(order.id)/messages", params: parameters)
       request.validate().responseJSON { (response) -> Void in

@@ -26,7 +26,6 @@ class OperatorMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
 
   func configure(presenter: MessagePresentable) {
     dateLabel.text = presenter.time
-    attachmentStatusLabel.text = presenter.attachmentStatus
     contentLabel.text = presenter.content
   }
 }
