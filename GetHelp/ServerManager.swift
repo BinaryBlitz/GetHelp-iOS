@@ -15,7 +15,7 @@ import RealmSwift
 class ServerManager {
   
   static var sharedInstance = ServerManager()
-  private let baseURL = "http://getthelp.herokuapp.com/"
+  let baseURL = "http://getthelp.herokuapp.com"
   private var manager = Manager.sharedInstance
   
   var apiToken: String? {
@@ -73,7 +73,7 @@ class ServerManager {
   
   func createVerificationTokenFor(phoneNumber: String, complition: ((token: String?, error: GHError?) -> Void)? = nil) -> Request {
     let parameters = ["phone_number" : phoneNumber]
-    let req = manager.request(.POST, baseURL + "verification_tokens/", parameters: parameters, encoding: .JSON)
+    let req = manager.request(.POST, baseURL + "/verification_tokens/", parameters: parameters, encoding: .JSON)
     
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     req.responseJSON { (response) -> Void in
@@ -101,7 +101,7 @@ class ServerManager {
         
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters = ["phone_number": phoneNumber, "code": code]
-    let req = manager.request(.PATCH, baseURL + "verification_tokens/\(token)/", parameters: parameters, encoding: .JSON)
+    let req = manager.request(.PATCH, baseURL + "/verification_tokens/\(token)/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
@@ -127,7 +127,7 @@ class ServerManager {
   
   func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: GHError?) -> Void)?) -> Request {
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    let parameters = ["user": ["phone_number": phoneNumber, "verification_token": token]]
+    let parameters = ["user": ["phone_number": phoneNumber, "/verification_token/": token]]
     let req = manager.request(.POST, baseURL + "user/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -155,7 +155,7 @@ class ServerManager {
     
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-      let request = try get("orders/")
+      let request = try get("/orders/")
       request.validate().responseJSON { (response) -> Void in
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch response.result {
@@ -207,7 +207,7 @@ class ServerManager {
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
       
-      let request = try post("orders/", params: parameters)
+      let request = try post("/orders/", params: parameters)
       request.validate().responseJSON { (response) -> Void in
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch response.result {
@@ -250,7 +250,7 @@ class ServerManager {
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
       
-      let request = try get("orders/\(order.id)/messages/")
+      let request = try get("/orders/\(order.id)/messages/")
       request.validate().responseJSON { (response) -> Void in
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch response.result {
@@ -291,7 +291,7 @@ class ServerManager {
     do {
       let parameters: [String: AnyObject] = ["message": ["content": content]]
       
-      let request = try post("orders/\(order.id)/messages", params: parameters)
+      let request = try post("/orders/\(order.id)/messages", params: parameters)
       request.validate().responseJSON { response in
         switch response.result {
         case .Success(let resultValue):
@@ -329,7 +329,7 @@ class ServerManager {
     do {
       let parameters: [String: AnyObject] = ["message": ["image": UIImagePNGRepresentation(image) ?? NSNull()]]
       
-      let request = try post("orders/\(order.id)/messages", params: parameters)
+      let request = try post("/orders/\(order.id)/messages", params: parameters)
       request.validate().responseJSON { response in
         switch response.result {
         case .Success(let resultValue):
@@ -367,7 +367,7 @@ class ServerManager {
   func paymentsURLForOrderID(orderID: Int, complition: ((paymentURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
-      let request = try post("orders/\(orderID)/payments/")
+      let request = try post("/orders/\(orderID)/payments/")
       request.validate().responseJSON { response in
         switch response.result {
         case .Success(let resultValue):
