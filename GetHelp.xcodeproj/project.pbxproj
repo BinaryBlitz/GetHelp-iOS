@@ -45,7 +45,6 @@
 		37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */; };
 		37C69D9F1C135A7C009D7755 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69D9E1C135A7C009D7755 /* Message.swift */; };
 		37C69DA11C145583009D7755 /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DA01C145583009D7755 /* MessageSender.swift */; };
-		37C69DA31C145A33009D7755 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DA21C145A33009D7755 /* Image.swift */; };
 		37C69DA81C1467FB009D7755 /* UserMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DA61C1467FB009D7755 /* UserMessageTableViewCell.swift */; };
 		37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C69DA71C1467FB009D7755 /* UserMessageTableViewCell.xib */; };
 		37C69DAB1C146BD8009D7755 /* MessageContentPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DAA1C146BD8009D7755 /* MessageContentPresentable.swift */; };
@@ -54,6 +53,8 @@
 		37C69DB31C146F7D009D7755 /* ConfigurableMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DB21C146F7D009D7755 /* ConfigurableMessageCell.swift */; };
 		37C69DB51C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */; };
 		37C952C41C39BB590006B721 /* UIViewController+WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C952C31C39BB590006B721 /* UIViewController+WebViewController.swift */; };
+		37C952C71C39BF990006B721 /* UserImageMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C952C51C39BF990006B721 /* UserImageMessageTableViewCell.swift */; };
+		37C952C81C39BF990006B721 /* UserImageMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C952C61C39BF990006B721 /* UserImageMessageTableViewCell.xib */; };
 		37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */; };
 		37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B751BFB60FF00B450E0 /* Main.storyboard */; };
 		37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B781BFB60FF00B450E0 /* Assets.xcassets */; };
@@ -130,7 +131,6 @@
 		37C2C19D1C11A31B000010F2 /* RequestDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDetailsViewController.swift; sourceTree = "<group>"; };
 		37C69D9E1C135A7C009D7755 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		37C69DA01C145583009D7755 /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
-		37C69DA21C145A33009D7755 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		37C69DA61C1467FB009D7755 /* UserMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessageTableViewCell.swift; sourceTree = "<group>"; };
 		37C69DA71C1467FB009D7755 /* UserMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserMessageTableViewCell.xib; sourceTree = "<group>"; };
 		37C69DAA1C146BD8009D7755 /* MessageContentPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageContentPresentable.swift; sourceTree = "<group>"; };
@@ -139,6 +139,8 @@
 		37C69DB21C146F7D009D7755 /* ConfigurableMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableMessageCell.swift; sourceTree = "<group>"; };
 		37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormater+initWithDateFormat.swift"; sourceTree = "<group>"; };
 		37C952C31C39BB590006B721 /* UIViewController+WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+WebViewController.swift"; sourceTree = "<group>"; };
+		37C952C51C39BF990006B721 /* UserImageMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImageMessageTableViewCell.swift; sourceTree = "<group>"; };
+		37C952C61C39BF990006B721 /* UserImageMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImageMessageTableViewCell.xib; sourceTree = "<group>"; };
 		37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CC9B761BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -280,6 +282,8 @@
 		378639F01C1497E400FF7CEE /* User */ = {
 			isa = PBXGroup;
 			children = (
+				37C952C51C39BF990006B721 /* UserImageMessageTableViewCell.swift */,
+				37C952C61C39BF990006B721 /* UserImageMessageTableViewCell.xib */,
 				37C69DA61C1467FB009D7755 /* UserMessageTableViewCell.swift */,
 				37C69DA71C1467FB009D7755 /* UserMessageTableViewCell.xib */,
 			);
@@ -311,7 +315,6 @@
 				37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */,
 				37C69D9E1C135A7C009D7755 /* Message.swift */,
 				37C69DA01C145583009D7755 /* MessageSender.swift */,
-				37C69DA21C145A33009D7755 /* Image.swift */,
 				18391B43C5FC3324F6E1F8EF /* ServerManager.swift */,
 				37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */,
 				37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */,
@@ -633,6 +636,7 @@
 				37D134481C31F97400D16C69 /* logo.png in Resources */,
 				3726C7551C30970400487828 /* NormalHelp.png in Resources */,
 				370694921C2EBF0100C5A689 /* Login.storyboard in Resources */,
+				37C952C81C39BF990006B721 /* UserImageMessageTableViewCell.xib in Resources */,
 				3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
 				3726C7541C30970400487828 /* ExpressHelp.png in Resources */,
@@ -730,12 +734,12 @@
 				37A7CB951C0CC0DD004CFB14 /* HelpTypePresenter.swift in Sources */,
 				37EB111C1C2D656C00879A05 /* BillTableViewCell.swift in Sources */,
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,
-				37C69DA31C145A33009D7755 /* Image.swift in Sources */,
 				37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */,
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
 				3706949C1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift in Sources */,
 				370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */,
+				37C952C71C39BF990006B721 /* UserImageMessageTableViewCell.swift in Sources */,
 				37B6AF151C35613400FA6BD4 /* ServerModelPresentable.swift in Sources */,
 				37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */,
 				37C69DAB1C146BD8009D7755 /* MessageContentPresentable.swift in Sources */,
