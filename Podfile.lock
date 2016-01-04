@@ -12,6 +12,7 @@ PODS:
   - DKImagePickerController/ImageManager (3.0.0)
   - Eureka (1.3.0)
   - Fabric (1.6.1)
+  - HanekeSwift (0.10.1)
   - JSBadgeView (1.4.1)
   - Masonry (0.6.3)
   - Realm (0.97.0):
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - DKImagePickerController
   - Eureka
   - Fabric
+  - HanekeSwift
   - JSBadgeView
   - RealmSwift
   - REFormattedNumberField
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   DKImagePickerController: 34231330ff322cffab32ab5a61f3d5e118c83b9f
   Eureka: d4c038db3ddc4b60f6f08b0aca8ecbb0e9ff1278
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
