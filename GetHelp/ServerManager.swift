@@ -15,6 +15,7 @@ import RealmSwift
 class ServerManager {
   
   static var sharedInstance = ServerManager()
+//  let baseURL = "http://getthelp.binaryblitz.ru"
   let baseURL = "http://getthelp.herokuapp.com"
   private var manager = Manager.sharedInstance
   
