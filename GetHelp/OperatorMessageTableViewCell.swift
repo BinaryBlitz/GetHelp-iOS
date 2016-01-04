@@ -10,7 +10,6 @@ import UIKit
 
 class OperatorMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
 
-  @IBOutlet weak var attachmentStatusLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var contentLabel: UILabel!
   @IBOutlet weak var cardView: UIView!

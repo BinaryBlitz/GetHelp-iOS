@@ -12,35 +12,29 @@
             <rect key="frame" x="0.0" y="0.0" width="369" height="129"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="369" height="128.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="369" height="129"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rjn-Z0-ct4">
-                        <rect key="frame" x="8" y="5" width="353" height="118.5"/>
+                        <rect key="frame" x="8" y="5" width="353" height="119"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieg-Qy-QmF">
-                                <rect key="frame" x="341" y="0.0" width="12" height="118.5"/>
+                                <rect key="frame" x="341" y="0.0" width="12" height="119"/>
                                 <color key="backgroundColor" red="0.41031354865771813" green="0.80755444795367726" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="12" id="eTH-35-eLH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Текст сообщения" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF4-O2-w6s">
-                                <rect key="frame" x="18" y="8" width="139.5" height="20.5"/>
+                                <rect key="frame" x="18" y="8" width="140" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70a-iU-FNl">
-                                <rect key="frame" x="18" y="95.5" width="33.5" height="14.5"/>
+                                <rect key="frame" x="18" y="96" width="34" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2 фотографии" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wn-tf-72K">
-                                <rect key="frame" x="229" y="93" width="104" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -48,14 +42,12 @@
                         <constraints>
                             <constraint firstItem="VF4-O2-w6s" firstAttribute="leading" secondItem="Rjn-Z0-ct4" secondAttribute="leading" constant="18" id="1hQ-dH-IH7"/>
                             <constraint firstAttribute="bottom" secondItem="ieg-Qy-QmF" secondAttribute="bottom" id="3j5-jY-FUJ"/>
-                            <constraint firstItem="ieg-Qy-QmF" firstAttribute="leading" secondItem="1wn-tf-72K" secondAttribute="trailing" constant="8" id="Fa8-Fx-TLg"/>
                             <constraint firstItem="70a-iU-FNl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VF4-O2-w6s" secondAttribute="bottom" constant="8" id="PzZ-r1-Aqe"/>
                             <constraint firstAttribute="bottom" secondItem="70a-iU-FNl" secondAttribute="bottom" constant="8.5" id="QGM-wS-uoX"/>
                             <constraint firstItem="ieg-Qy-QmF" firstAttribute="top" secondItem="Rjn-Z0-ct4" secondAttribute="top" id="SOo-yW-6ev"/>
                             <constraint firstItem="ieg-Qy-QmF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VF4-O2-w6s" secondAttribute="trailing" constant="8" id="gtE-U8-zei"/>
                             <constraint firstAttribute="trailing" secondItem="ieg-Qy-QmF" secondAttribute="trailing" id="iew-Ht-zjc"/>
                             <constraint firstItem="70a-iU-FNl" firstAttribute="leading" secondItem="VF4-O2-w6s" secondAttribute="leading" id="kBe-tM-uCd"/>
-                            <constraint firstItem="1wn-tf-72K" firstAttribute="baseline" secondItem="70a-iU-FNl" secondAttribute="baseline" id="o3n-d9-VQy"/>
                             <constraint firstItem="VF4-O2-w6s" firstAttribute="top" secondItem="Rjn-Z0-ct4" secondAttribute="top" constant="8" id="y2O-0F-SKy"/>
                         </constraints>
                     </view>
@@ -68,7 +60,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="attachmentStatusLabel" destination="1wn-tf-72K" id="ftv-cn-W1M"/>
                 <outlet property="cardView" destination="Rjn-Z0-ct4" id="spN-oj-bSa"/>
                 <outlet property="contentLabel" destination="VF4-O2-w6s" id="Qbt-K1-EUT"/>
                 <outlet property="dateLabel" destination="70a-iU-FNl" id="q0l-Zu-6Lm"/>
