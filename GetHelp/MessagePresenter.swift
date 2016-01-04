@@ -23,7 +23,9 @@ struct MessagePresenter: MessagePresentable {
       return nil
     }
     
-    return NSURL(string: urlString)
+    let fullURLString = ServerManager.sharedInstance.baseURL + urlString
+    
+    return NSURL(string: fullURLString)
   }
   
   //MARK: - DateTimePresentable

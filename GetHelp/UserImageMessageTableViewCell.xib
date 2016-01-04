@@ -32,7 +32,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aRa-Xk-fYI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aRa-Xk-fYI">
                                 <rect key="frame" x="18" y="8" width="315" height="254"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aRa-Xk-fYI" secondAttribute="height" multiplier="315:254" id="U0s-H2-ra4"/>
@@ -69,4 +69,7 @@
             <point key="canvasLocation" x="269.5" y="275"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="signup_bg.jpg" width="1200" height="2130"/>
+    </resources>
 </document>

@@ -40,7 +40,7 @@ class ConversationViewController: UIViewController {
     
     let realm = try! Realm()
     let orderId = helpRequest.id
-    messages = realm.objects(Message).filter("orderId == \(orderId)")
+    messages = realm.objects(Message).filter("orderId == \(orderId)").sorted("dateCreated")
 
     setUpButtons()
     setUpKeyboard()
@@ -52,8 +52,10 @@ class ConversationViewController: UIViewController {
   func setUpTableView() {
     tableView.tableFooterView = UIView()
     let userCellNib = UINib(nibName: "UserMessageTableViewCell", bundle: nil)
+    let userImageCellNib = UINib(nibName: "UserImageMessageTableViewCell", bundle: nil)
     let operatorCellNib = UINib(nibName: "OperatorMessageTableViewCell", bundle: nil)
     tableView.registerNib(userCellNib, forCellReuseIdentifier: "userMessageCell")
+    tableView.registerNib(userImageCellNib, forCellReuseIdentifier: "userImageMessageCell")
     tableView.registerNib(operatorCellNib, forCellReuseIdentifier: "operatorMessageCell")
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100
@@ -65,6 +67,7 @@ class ConversationViewController: UIViewController {
 //    refreshControl?.triggerVerticalOffset = 100
     refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
     tableView.bottomRefreshControl = refreshControl
+    tableView.sendSubviewToBack(refreshControl!)
   }
   
   func setUpTextView() {
@@ -117,10 +120,7 @@ class ConversationViewController: UIViewController {
       if let error = error {
         //TODO: Create alert for error
         print("Error: \(error)")
-      } else {
-        print("Success: \(success)")
       }
-      
       complition()
     }
   }
@@ -131,21 +131,6 @@ class ConversationViewController: UIViewController {
     guard textView.text != "" else {
       return
     }
-    
-//    let message = Message()
-//    message.content = textView.text
-//    message.dateCreated = NSDate()
-//    message.sender = .User
-
-
-//    let realm = try! Realm()
-//    try! realm.write {
-//      self.helpRequest.messages.append(message)
-//      self.selectedAssets?.forEach { asset in
-////        realm.add(image)
-//      }
-////      realm.add(message)
-//    }
 
     selectedAssets = nil
     imagePickerController = nil
@@ -193,14 +178,22 @@ extension ConversationViewController: UITableViewDataSource {
     guard let message = messages?[indexPath.row] else {
       return UITableViewCell()
     }
-
+    
     let cellIdentifier: String
     
     switch message.sender {
     case .Operator:
-      cellIdentifier = "operatorMessageCell"
+      if message.imageURLString != nil {
+        cellIdentifier = "userImageMessageCell" //TODO: change to operator cell
+      } else {
+        cellIdentifier = "operatorMessageCell"
+      }
     case .User:
-      cellIdentifier = "userMessageCell"
+      if message.imageURLString != nil {
+        cellIdentifier = "userImageMessageCell"
+      } else {
+        cellIdentifier = "userMessageCell"
+      }
     }
 
     guard let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) else {
