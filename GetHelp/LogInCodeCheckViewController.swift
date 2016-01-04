@@ -25,6 +25,10 @@ class LogInCodeCheckViewController: UIViewController {
     setUpButtons()
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard:"))
   }
+  
+  override func viewWillAppear(animated: Bool) {
+    codeTextField.becomeFirstResponder()
+  }
  
   override func viewWillDisappear(animated: Bool) {
     codeTextField.text = ""
