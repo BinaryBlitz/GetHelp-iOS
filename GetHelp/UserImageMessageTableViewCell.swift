@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class UserImageMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
 
@@ -17,13 +18,22 @@ class UserImageMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-
+    
     cardView.layer.cornerRadius = 10
     cardView.layer.borderWidth = 2
     cardView.layer.borderColor = UIColor(white: 0.86, alpha: 1).CGColor
+    
+    contentImageView.clipsToBounds = true
+    contentImageView.contentMode = .ScaleAspectFill
   }
 
   func configure(presenter: MessagePresentable) {
+    contentImageView.hnk_cancelSetImage()
+    contentImageView.image = nil
     dateLabel.text = presenter.time
+    
+    if let imageURL = presenter.imageURL {
+      contentImageView.hnk_setImageFromURL(imageURL)
+    }
   }
 }
