@@ -25,6 +25,8 @@ class ConversationViewController: UIViewController {
   var selectedAssets: [DKAsset]?
   
   var messages: Results<Message>?
+  
+  var timer: NSTimer?
 
   private var imagePickerController: DKImagePickerController?
 
@@ -47,6 +49,19 @@ class ConversationViewController: UIViewController {
     setUpTextView()
     setUpTableView()
     setUpRefreshControl()
+    
+    // set up timer
+    self.timer = NSTimer.scheduledTimerWithTimeInterval(
+      10,
+      target: self,
+      selector: "refresh:",
+      userInfo: nil,
+      repeats: true
+    )
+  }
+  
+  deinit {
+    timer?.invalidate()
   }
   
   func setUpTableView() {
@@ -66,10 +81,10 @@ class ConversationViewController: UIViewController {
   
   func setUpRefreshControl() {
     refreshControl = UIRefreshControl()
-//    refreshControl?.triggerVerticalOffset = 100
+    refreshControl?.triggerVerticalOffset = 15
     refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
     tableView.bottomRefreshControl = refreshControl
-    tableView.sendSubviewToBack(refreshControl!)
+    tableView.sendSubviewToBack(tableView.bottomRefreshControl)
   }
   
   func setUpTextView() {
@@ -130,8 +145,20 @@ class ConversationViewController: UIViewController {
   //MARK: - IBActions
 
   @IBAction func sendButtonAction(sender: AnyObject) {
-    guard textView.text != "" else {
+    guard let messageContent = textView.text else {
       return
+    }
+    
+    ServerManager.sharedInstance.sendMessageWithText(messageContent, toOrder: helpRequest) { success, error in
+      if success {
+        print("Success!")
+        self.tableView.reloadData()
+        self.scrollToBottom()
+      }
+      
+      if let error = error {
+        print("Error: \(error)")
+      }
     }
 
     selectedAssets = nil
