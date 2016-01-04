@@ -126,8 +126,10 @@ class ConversationViewController: UIViewController {
   
   func refresh(sender: AnyObject) {
     beginRefreshWithComplition { () -> Void in
-      self.tableView.reloadData()
       self.refreshControl?.endRefreshing()
+      self.tableView.scrollEnabled = false
+      self.tableView.reloadData()
+      self.tableView.scrollEnabled = true
       self.scrollToBottom()
     }
   }
@@ -145,11 +147,11 @@ class ConversationViewController: UIViewController {
   //MARK: - IBActions
 
   @IBAction func sendButtonAction(sender: AnyObject) {
-    guard let messageContent = textView.text else {
+    guard let textMessage = textView.text where textMessage != "" else {
       return
     }
-    
-    ServerManager.sharedInstance.sendMessageWithText(messageContent, toOrder: helpRequest) { success, error in
+
+    ServerManager.sharedInstance.sendMessageWithText(textMessage, toOrder: helpRequest) { success, error in
       if success {
         print("Success!")
         self.tableView.reloadData()
@@ -160,9 +162,6 @@ class ConversationViewController: UIViewController {
         print("Error: \(error)")
       }
     }
-
-    selectedAssets = nil
-    imagePickerController = nil
     
     textView.text = ""
     badgeView?.badgeText = nil
@@ -180,8 +179,25 @@ class ConversationViewController: UIViewController {
     } else {
       imagePickerController = DKImagePickerController()
       imagePickerController?.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
-        self.badgeView?.badgeText = assets.count != 0 ? "\(assets.count)" : nil
-        self.selectedAssets = assets
+        assets.forEach { (asset) -> () in
+          asset.fetchOriginalImageWithCompleteBlock { (image) -> Void in
+            guard let image = image else {
+              print("fail!")
+              return
+            }
+            ServerManager.sharedInstance.sendMessageWithImage(image, toOrder: self.helpRequest, complition: { (success, error) -> Void in
+              if success {
+                print("Success!")
+                self.tableView.reloadData()
+                self.scrollToBottom()
+              }
+              
+              if let error = error {
+                print("Error: \(error)")
+              }
+            })
+          }
+        }
       }
       imagePickerController?.maxSelectableCount = 5
       presentViewController(imagePickerController!, animated: true, completion: nil)

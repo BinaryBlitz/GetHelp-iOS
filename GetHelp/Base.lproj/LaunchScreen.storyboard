@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,18 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="PcG-nS-3a1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tu3-01-Z9E">
                                 <rect key="frame" x="255" y="264" width="90" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="PcG-nS-3a1" secondAttribute="height" multiplier="10:8" id="Iyp-3x-qLu"/>
-                                    <constraint firstAttribute="width" constant="90" id="lUX-Kn-Rzu"/>
+                                    <constraint firstAttribute="height" constant="72" id="HEA-5x-hkt"/>
+                                    <constraint firstAttribute="width" constant="90" id="Jec-dO-4XY"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.42352941176470588" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="PcG-nS-3a1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Iy-9f-3ub"/>
-                            <constraint firstItem="PcG-nS-3a1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="FEb-be-1vl"/>
+                            <constraint firstItem="Tu3-01-Z9E" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qq8-x3-kGp"/>
+                            <constraint firstItem="Tu3-01-Z9E" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rUq-Nk-c4C"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo.png" width="1021" height="842"/>
+        <image name="Logo" width="340" height="280"/>
     </resources>
 </document>

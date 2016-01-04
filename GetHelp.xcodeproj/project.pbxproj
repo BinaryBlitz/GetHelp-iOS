@@ -57,6 +57,7 @@
 		37C952C81C39BF990006B721 /* UserImageMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C952C61C39BF990006B721 /* UserImageMessageTableViewCell.xib */; };
 		37C952CB1C3AEAA10006B721 /* OperatorImageMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C952C91C3AEAA10006B721 /* OperatorImageMessageTableViewCell.swift */; };
 		37C952CC1C3AEAA10006B721 /* OperatorImageMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C952CA1C3AEAA10006B721 /* OperatorImageMessageTableViewCell.xib */; };
+		37C952CE1C3B03E90006B721 /* MessagesQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C952CD1C3B03E90006B721 /* MessagesQueue.swift */; };
 		37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */; };
 		37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B751BFB60FF00B450E0 /* Main.storyboard */; };
 		37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CC9B781BFB60FF00B450E0 /* Assets.xcassets */; };
@@ -145,6 +146,7 @@
 		37C952C61C39BF990006B721 /* UserImageMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImageMessageTableViewCell.xib; sourceTree = "<group>"; };
 		37C952C91C3AEAA10006B721 /* OperatorImageMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorImageMessageTableViewCell.swift; sourceTree = "<group>"; };
 		37C952CA1C3AEAA10006B721 /* OperatorImageMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OperatorImageMessageTableViewCell.xib; sourceTree = "<group>"; };
+		37C952CD1C3B03E90006B721 /* MessagesQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesQueue.swift; sourceTree = "<group>"; };
 		37CC9B6E1BFB60FF00B450E0 /* GetHelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37CC9B761BFB60FF00B450E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				18391B43C5FC3324F6E1F8EF /* ServerManager.swift */,
 				37A7CB8F1C0CB3D8004CFB14 /* HelpType.swift */,
 				37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */,
+				37C952CD1C3B03E90006B721 /* MessagesQueue.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E6B3181C1CC6B300DA19A8 /* WalletInfoPresentable.swift in Sources */,
+				37C952CE1C3B03E90006B721 /* MessagesQueue.swift in Sources */,
 				3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */,
 				37CC9B721BFB60FF00B450E0 /* AppDelegate.swift in Sources */,
 				37A7CB951C0CC0DD004CFB14 /* HelpTypePresenter.swift in Sources */,

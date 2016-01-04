@@ -330,9 +330,9 @@ class ServerManager {
     
     do {
       let imageData = UIImagePNGRepresentation(image)
-      let base64Image = imageData?.base64EncodedDataWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
-      let parameters: [String: AnyObject] = ["message": ["image": base64Image ?? NSNull()]]
-      print(parameters)
+      let base64ImageString = imageData?.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+      let formattedImage = "data:image/gif;base64,\(base64ImageString ?? NSNull())"
+      let parameters: [String: AnyObject] = ["message": ["image": formattedImage]]
       
       let request = try post("/orders/\(order.id)/messages", params: parameters)
       request.validate().responseJSON { response in
@@ -340,7 +340,7 @@ class ServerManager {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           
-          guard let message = Message.createFromJSON(json["message"]) else {
+          guard let message = Message.createFromJSON(json) else {
             complition?(success: false, error: GHError.InvalidData)
             return
           }
