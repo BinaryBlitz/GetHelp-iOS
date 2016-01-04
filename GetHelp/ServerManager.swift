@@ -292,12 +292,14 @@ class ServerManager {
       let parameters: [String: AnyObject] = ["message": ["content": content]]
       
       let request = try post("/orders/\(order.id)/messages", params: parameters)
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
       request.validate().responseJSON { response in
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch response.result {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           
-          guard let message = Message.createFromJSON(json["message"]) else {
+          guard let message = Message.createFromJSON(json) else {
             complition?(success: false, error: GHError.InvalidData)
             return
           }
