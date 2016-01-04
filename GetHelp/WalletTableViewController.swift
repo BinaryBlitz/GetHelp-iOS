@@ -32,9 +32,7 @@ class WalletTableViewController: UITableViewController {
 
   func fetchHelpRequests(serverManager: ServerManager = ServerManager()) {
     let realm  = try! Realm()
-    activeRequests = realm.objects(HelpRequest).filter("_status == 'wating_for_payment'")
-//  // just for test
-//    activeRequests = realm.objects(HelpRequest).filter("_status != 'wating_for_payment'")
+    activeRequests = realm.objects(HelpRequest).filter("_status == '\(HelpRequestStatus.WaitingForPayment.rawValue)'")
   }
 
   func setUpRefreshControl() {
@@ -105,9 +103,10 @@ class WalletTableViewController: UITableViewController {
       }
 
       let request = activeRequests?[indexPath.row]
+      //TODO: fix wtf with presenter
       let presenter = request?.presenter()
       cell.titleLabel.text = presenter?.name
-      cell.detailsLabel.text = "1000\(rubleSign)"
+      cell.detailsLabel.text = "\(request?.sum ?? 0)\(rubleSign)"
 
       return cell
     case 3:
