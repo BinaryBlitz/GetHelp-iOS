@@ -327,7 +327,10 @@ class ServerManager {
   func sendMessageWithImage(image: UIImage, toOrder order: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
-      let parameters: [String: AnyObject] = ["message": ["image": UIImagePNGRepresentation(image) ?? NSNull()]]
+      let imageData = UIImagePNGRepresentation(image)
+      let base64Image = imageData?.base64EncodedDataWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+      let parameters: [String: AnyObject] = ["message": ["image": base64Image ?? NSNull()]]
+      print(parameters)
       
       let request = try post("/orders/\(order.id)/messages", params: parameters)
       request.validate().responseJSON { response in
@@ -367,7 +370,7 @@ class ServerManager {
   func paymentsURLForOrderID(orderID: Int, complition: ((paymentURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
-      let request = try post("/orders/\(orderID)/payments/")
+      let request = try post("orders/\(orderID)/payments/")
       request.validate().responseJSON { response in
         switch response.result {
         case .Success(let resultValue):
