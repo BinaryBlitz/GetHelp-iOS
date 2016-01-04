@@ -23,52 +23,30 @@ class ConversationViewController: UIViewController {
 
   var refreshControl: UIRefreshControl?
   var selectedAssets: [DKAsset]?
+  
+  var messages: Results<Message>?
 
   private var imagePickerController: DKImagePickerController?
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-
+    
+    refresh(self)
     scrollToBottom()
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let realm = try! Realm()
+    let orderId = helpRequest.id
+    messages = realm.objects(Message).filter("orderId == \(orderId)")
 
-    if helpRequest.messages.count == 0 {
-      appendTestMessages()
-    }
     setUpButtons()
     setUpKeyboard()
     setUpTextView()
     setUpTableView()
     setUpRefreshControl()
-  }
-
-  func appendTestMessages() {
-    let message1 = Message()
-    message1.content = "Ваша заявка принята. Оплатите её пожалуйста в личном кабинете"
-    message1.sender = .Operator
-
-    let message2 = Message()
-    message2.content = "Оплатил. Скоро скину фото заданий."
-    message2.sender = .User
-
-    let message3 = Message()
-    message3.content = "Вот задание. 3 задачу вообще невозможно решить."
-    message3.sender = .User
-    
-    let message4 = Message()
-    message4.content = "Получили, решаем"
-    message4.sender = .Operator
-
-    let realm = try! Realm()
-    try! realm.write() {
-      self.helpRequest.messages.append(message1)
-      self.helpRequest.messages.append(message2)
-      self.helpRequest.messages.append(message3)
-      self.helpRequest.messages.append(message4)
-    }
   }
   
   func setUpTableView() {
@@ -135,8 +113,14 @@ class ConversationViewController: UIViewController {
   }
   
   func beginRefreshWithComplition(complition: () -> Void) {
-    //TODO: Reresh request
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+    ServerManager.sharedInstance.fetchAllMessagesForOrder(helpRequest) { success, error in
+      if let error = error {
+        //TODO: Create alert for error
+        print("Error: \(error)")
+      } else {
+        print("Success: \(success)")
+      }
+      
       complition()
     }
   }
@@ -148,20 +132,20 @@ class ConversationViewController: UIViewController {
       return
     }
     
-    let message = Message()
-    message.content = textView.text
-    message.dateCreated = NSDate()
-    message.sender = .User
+//    let message = Message()
+//    message.content = textView.text
+//    message.dateCreated = NSDate()
+//    message.sender = .User
 
 
-    let realm = try! Realm()
-    try! realm.write {
-      self.helpRequest.messages.append(message)
-      self.selectedAssets?.forEach { asset in
-//        realm.add(image)
-      }
-      realm.add(message)
-    }
+//    let realm = try! Realm()
+//    try! realm.write {
+//      self.helpRequest.messages.append(message)
+//      self.selectedAssets?.forEach { asset in
+////        realm.add(image)
+//      }
+////      realm.add(message)
+//    }
 
     selectedAssets = nil
     imagePickerController = nil
@@ -196,7 +180,9 @@ class ConversationViewController: UIViewController {
 extension ConversationViewController: UITableViewDataSource {
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let messages = helpRequest.messages
+    guard let messages = messages else {
+      return 0
+    }
     
     tableView.hidden = messages.count == 0
 
@@ -204,8 +190,9 @@ extension ConversationViewController: UITableViewDataSource {
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let messages = helpRequest.messages
-    let message = messages[indexPath.row]
+    guard let message = messages?[indexPath.row] else {
+      return UITableViewCell()
+    }
 
     let cellIdentifier: String
     

@@ -26,7 +26,6 @@ class HelpRequest: Object {
   dynamic var _status = HelpRequestStatus.InReview.rawValue
   dynamic var _type = HelpType.Normal.rawValue
   dynamic var sum = 0
-  let messages = List<Message>()
 
   override class func primaryKey() -> String? {
     return "id"

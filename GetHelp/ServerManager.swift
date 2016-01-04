@@ -245,7 +245,7 @@ class ServerManager {
   
   //MARK: - Messages
   
-  func fetchAllMessagesForOrder(order: HelpRequest, complition: ((success: Bool) -> Void)? = nil) -> Request? {
+  func fetchAllMessagesForOrder(order: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -257,40 +257,107 @@ class ServerManager {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           
+          var messages = [Message]()
           for (_, messageData) in json {
-            //TODO: update ande create messages
-            print(messageData)
+            if let message = Message.createFromJSON(messageData) {
+              messages.append(message)
+            }
           }
           
-          complition?(success: true)
+          do {
+            let realm = try Realm()
+            try realm.write {
+              realm.add(messages, update: true)
+            }
+            complition?(success: true, error: nil)
+          } catch let error {
+            complition?(success: false, error: error)
+          }
         case .Failure(let error):
-          print("Error: \(error)")
+          complition?(success: false, error: error)
         }
       }
       
       return request
     } catch let error {
-      print("Error: \(error)")
-      complition?(success: false)
+      complition?(success: false, error: error)
     }
     
     return nil
   }
   
-  func sendMessage(message: Message, toOrder order: HelpRequest, complition: ((success: Bool) -> Void)? = nil) -> Request? {
+  func sendMessageWithText(content: String, toOrder order: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
-      let parameters: [String: AnyObject] = ["message": ["content": message.content ?? ""]]
+      let parameters: [String: AnyObject] = ["message": ["content": content]]
       
       let request = try post("orders/\(order.id)/messages", params: parameters)
-      request.validate().responseJSON { (response) -> Void in
-        // yo yo
+      request.validate().responseJSON { response in
+        switch response.result {
+        case .Success(let resultValue):
+          let json = JSON(resultValue)
+          
+          guard let message = Message.createFromJSON(json["message"]) else {
+            complition?(success: false, error: GHError.InvalidData)
+            return
+          }
+          
+          do {
+            let realm = try Realm()
+            try realm.write {
+              realm.add(message, update: true)
+            }
+          
+            complition?(success: true, error: nil)
+          } catch let error {
+            complition?(success: false, error: error)
+          }
+        case .Failure(let error):
+          complition?(success: false, error: error)
+        }
       }
       
       return request
     } catch let error {
-      print("Error: \(error)")
-      complition?(success: false)
+      complition?(success: false, error: error)
+    }
+    return nil
+  }
+  
+  func sendMessageWithImage(image: UIImage, toOrder order: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+    
+    do {
+      let parameters: [String: AnyObject] = ["message": ["image": UIImagePNGRepresentation(image) ?? NSNull()]]
+      
+      let request = try post("orders/\(order.id)/messages", params: parameters)
+      request.validate().responseJSON { response in
+        switch response.result {
+        case .Success(let resultValue):
+          let json = JSON(resultValue)
+          
+          guard let message = Message.createFromJSON(json["message"]) else {
+            complition?(success: false, error: GHError.InvalidData)
+            return
+          }
+          
+          do {
+            let realm = try Realm()
+            try realm.write {
+              realm.add(message, update: true)
+            }
+            
+            complition?(success: true, error: nil)
+          } catch let error {
+            complition?(success: false, error: error)
+          }
+        case .Failure(let error):
+          complition?(success: false, error: error)
+        }
+      }
+      
+      return request
+    } catch let error {
+      complition?(success: false, error: error)
     }
     return nil
   }
