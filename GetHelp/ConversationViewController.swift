@@ -54,9 +54,11 @@ class ConversationViewController: UIViewController {
     let userCellNib = UINib(nibName: "UserMessageTableViewCell", bundle: nil)
     let userImageCellNib = UINib(nibName: "UserImageMessageTableViewCell", bundle: nil)
     let operatorCellNib = UINib(nibName: "OperatorMessageTableViewCell", bundle: nil)
+    let operatorImageCellNib = UINib(nibName: "OperatorImageMessageTableViewCell", bundle: nil)
     tableView.registerNib(userCellNib, forCellReuseIdentifier: "userMessageCell")
     tableView.registerNib(userImageCellNib, forCellReuseIdentifier: "userImageMessageCell")
     tableView.registerNib(operatorCellNib, forCellReuseIdentifier: "operatorMessageCell")
+    tableView.registerNib(operatorImageCellNib, forCellReuseIdentifier: "operatorImageMessageCell")
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100
     scrollToBottom()
@@ -184,7 +186,7 @@ extension ConversationViewController: UITableViewDataSource {
     switch message.sender {
     case .Operator:
       if message.imageURLString != nil {
-        cellIdentifier = "userImageMessageCell" //TODO: change to operator cell
+        cellIdentifier = "operatorImageMessageCell"
       } else {
         cellIdentifier = "operatorMessageCell"
       }
