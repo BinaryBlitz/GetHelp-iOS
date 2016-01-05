@@ -97,7 +97,6 @@ class ConversationViewController: UIViewController {
     if let refreshControl = refreshControl,
            tableView = tableView {
             
-      refreshControl.triggerVerticalOffset = 15
       refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
       tableView.addSubview(refreshControl)
       tableView.sendSubviewToBack(refreshControl)
