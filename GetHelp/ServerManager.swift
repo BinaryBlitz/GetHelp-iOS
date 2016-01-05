@@ -15,8 +15,11 @@ import RealmSwift
 class ServerManager {
   
   static var sharedInstance = ServerManager()
-  let baseURL = "http://getthelp.binaryblitz.ru"
+  
+  //MARK: - Fields
+  
   private var manager = Manager.sharedInstance
+  let baseURL = "http://getthelp.binaryblitz.ru"
   
   var apiToken: String? {
     didSet {
@@ -24,16 +27,19 @@ class ServerManager {
     }
   }
   
+  var deviceToken: String? {
+    didSet {
+      print("Device token updated: \(deviceToken)")
+    }
+  }
+  
+  //MARK: - Preperties
+  
   var authenticated: Bool {
     return apiToken != nil
   }
   
-  enum GHError: ErrorType {
-    case Unauthorized
-    case InternalServerError
-    case UnspecifiedError
-    case InvalidData
-  }
+  //MARK: - Basic private methods
   
   private func request(method: Alamofire.Method, path: String,
       parameters: [String : AnyObject]?,
@@ -41,7 +47,7 @@ class ServerManager {
     let url = baseURL + path
     var parameters = parameters
     guard let token = apiToken else {
-      throw GHError.Unauthorized
+      throw ServerError.Unauthorized
     }
 
     if parameters != nil {
@@ -67,7 +73,7 @@ class ServerManager {
 
   //MARK: - Login
   
-  func createVerificationTokenFor(phoneNumber: String, complition: ((token: String?, error: GHError?) -> Void)? = nil) -> Request {
+  func createVerificationTokenFor(phoneNumber: String, complition: ((token: String?, error: ServerError?) -> Void)? = nil) -> Request {
     let parameters = ["phone_number" : phoneNumber]
     let req = manager.request(.POST, baseURL + "/verification_tokens/", parameters: parameters, encoding: .JSON)
     
@@ -130,7 +136,7 @@ class ServerManager {
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
-        complition?(error: GHError.InvalidData)
+        complition?(error: ServerError.InvalidData)
         return
       }
       
@@ -140,7 +146,7 @@ class ServerManager {
         self.apiToken = apiToken
         complition?(error: nil)
       } else {
-        complition?(error: GHError.InvalidData)
+        complition?(error: ServerError.InvalidData)
       }
     }
     
@@ -215,7 +221,7 @@ class ServerManager {
               complition?(success: false, error: error)
             }
           } else {
-            complition?(success: false, error: GHError.InvalidData)
+            complition?(success: false, error: ServerError.InvalidData)
           }
         case .Failure(let error):
           complition?(success: false, error: error)
@@ -287,7 +293,7 @@ class ServerManager {
           let json = JSON(resultValue)
           
           guard let message = Message.createFromJSON(json) else {
-            complition?(success: false, error: GHError.InvalidData)
+            complition?(success: false, error: ServerError.InvalidData)
             return
           }
           
@@ -328,7 +334,7 @@ class ServerManager {
           let json = JSON(resultValue)
           
           guard let message = Message.createFromJSON(json) else {
-            complition?(success: false, error: GHError.InvalidData)
+            complition?(success: false, error: ServerError.InvalidData)
             return
           }
           
@@ -365,12 +371,12 @@ class ServerManager {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           guard let paymentURLString = json["url"].string else {
-            complition?(paymentURL: nil, error: GHError.InvalidData)
+            complition?(paymentURL: nil, error: ServerError.InvalidData)
             return
           }
           
           guard let paymentURL = NSURL(string: paymentURLString) else {
-            complition?(paymentURL: nil, error: GHError.InvalidData)
+            complition?(paymentURL: nil, error: ServerError.InvalidData)
             return
           }
           
