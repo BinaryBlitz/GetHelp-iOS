@@ -26,6 +26,6 @@ DerivedData
 # Pods
 Pods/
 
-.pem
-.p12
-.pkey
+*.pem
+*.p12
+*.pkey
