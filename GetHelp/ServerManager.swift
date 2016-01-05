@@ -115,6 +115,7 @@ class ServerManager {
       switch response.result {
       case .Success(let resultValue):
         let json = JSON(resultValue)
+        print(json)
         
         // if api_token nil then create new user
         if let apiToken = json["api_token"].string {
@@ -126,6 +127,7 @@ class ServerManager {
           }
         }
       case .Failure(let error):
+        print("error: \(error)")
         complition?(error: error)
       }
     }
@@ -136,29 +138,30 @@ class ServerManager {
   func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: ErrorType?) -> Void)?) -> Request {
     
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    let parameters = [
+    let parameters: [String: AnyObject] = [
       "user": [
         "phone_number": phoneNumber,
         "verification_token": token,
-        "device_token": ServerManager.sharedInstance.deviceToken ?? NSNull()
+        "device_token": ServerManager.sharedInstance.deviceToken ?? NSNull(),
+        "platform": "ios"
       ]
     ]
     
     let req = manager.request(.POST, baseURL + "/user/", parameters: parameters, encoding: .JSON)
-    req.responseJSON { (response) -> Void in
+    req.validate().responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-      guard let resultValue = response.result.value else {
-        complition?(error: ServerError.InvalidData)
-        return
-      }
-      
-      let json = JSON(resultValue)
-      
-      if let apiToken = json["api_token"].string {
-        self.apiToken = apiToken
-        complition?(error: nil)
-      } else {
-        complition?(error: ServerError.InvalidData)
+      switch response.result {
+      case .Success(let resultValue):
+        let json = JSON(resultValue)
+        
+        if let apiToken = json["api_token"].string {
+          self.apiToken = apiToken
+          complition?(error: nil)
+        } else {
+          complition?(error: ServerError.InvalidData)
+        }
+      case .Failure(let error):
+        complition?(error: error)
       }
     }
     
