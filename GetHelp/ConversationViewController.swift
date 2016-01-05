@@ -25,6 +25,11 @@ class ConversationViewController: UIViewController {
   var selectedAssets: [DKAsset]?
   
   var messages: Results<Message>?
+  var images: [String]? {
+    return messages?.flatMap { (message) -> String? in
+      return message.imageURLString
+    }
+  }
   
   var timer: NSTimer?
 
@@ -34,7 +39,6 @@ class ConversationViewController: UIViewController {
     super.viewWillAppear(animated)
     
     refresh(self)
-    scrollToBottom()
   }
 
   override func viewDidLoad() {
@@ -50,7 +54,6 @@ class ConversationViewController: UIViewController {
     setUpTextView()
     setUpRefreshControl()
     
-    // set up timer
     self.timer = NSTimer.scheduledTimerWithTimeInterval(
       10,
       target: self,
@@ -64,14 +67,16 @@ class ConversationViewController: UIViewController {
     timer?.invalidate()
   }
   
+  //MARK: - Set up methods
+  
   func setUpTableView() {
     let tableView = UITableView(frame: chatContentView.frame, style: .Plain)
     self.tableView = tableView
     
     tableView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-    tableView.delegate = self
     tableView.dataSource = self
-    addContent(tableView, toView: chatContentView)
+    tableView.delegate = self
+    UIView.addContent(tableView, toView: chatContentView)
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .None
     let userCellNib = UINib(nibName: "UserMessageTableViewCell", bundle: nil)
@@ -85,16 +90,6 @@ class ConversationViewController: UIViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100
     scrollToBottom()
-  }
-  
-  func addContent(content: UIView, toView contentView: UIView) {
-    content.translatesAutoresizingMaskIntoConstraints = false
-    contentView.addSubview(content)
-    let topConstraint = NSLayoutConstraint(item: content, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
-    let bottomContraint = NSLayoutConstraint(item: content, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: 0)
-    let trallingConstaint = NSLayoutConstraint(item: content, attribute: .Trailing, relatedBy: .Equal, toItem: contentView, attribute: .Trailing, multiplier: 1, constant: 0)
-    let leadingConstraint = NSLayoutConstraint(item: content, attribute: .Leading, relatedBy: .Equal, toItem: contentView, attribute: .Leading, multiplier: 1, constant: 0)
-    contentView.addConstraints([topConstraint, bottomContraint, leadingConstraint, trallingConstaint])
   }
   
   func setUpRefreshControl() {
@@ -121,7 +116,6 @@ class ConversationViewController: UIViewController {
       name: UIKeyboardWillShowNotification, object: nil)
     notificationCenter.addObserver(self, selector: "keyboardWillHide:",
       name: UIKeyboardWillHideNotification, object: nil)
-    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard:"))
   }
   
   func setUpButtons() {
@@ -140,10 +134,7 @@ class ConversationViewController: UIViewController {
   func refresh(sender: AnyObject) {
     beginRefreshWithComplition { () -> Void in
       self.refreshControl?.endRefreshing()
-      self.tableView?.scrollEnabled = false
       self.tableView?.reloadData()
-      self.tableView?.scrollEnabled = true
-      self.scrollToBottom()
     }
   }
   
@@ -168,7 +159,6 @@ class ConversationViewController: UIViewController {
       if success {
         print("Success!")
         self.tableView!.reloadData()
-        self.scrollToBottom()
       }
       
       if let error = error {
@@ -267,6 +257,38 @@ extension ConversationViewController: UITableViewDataSource {
 
 extension ConversationViewController: UITableViewDelegate {
   
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    guard let message = messages?[indexPath.row],
+        imageURLString = message.imageURLString,
+        images = self.images,
+        indexOfSelectedImage = images.indexOf(imageURLString)
+    else {
+      dismissKeyboard(self)
+      return
+    }
+    
+    let browser = MWPhotoBrowser(delegate: self)
+    browser.setCurrentPhotoIndex(UInt(indexOfSelectedImage))
+    navigationController?.pushViewController(browser, animated: true)
+  }
+}
+
+extension ConversationViewController: MWPhotoBrowserDelegate {
+  
+  func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+    return UInt(images?.count ?? 0)
+  }
+  
+  func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+    let imagePath = images?[Int(index)] ?? ""
+    let fullURLString = ServerManager.sharedInstance.baseURL + imagePath
+    
+    guard let url = NSURL(string: fullURLString) else {
+      return nil
+    }
+    
+    return MWPhoto(URL: url)
+  }
 }
 
 //MARK: - Keyboard events

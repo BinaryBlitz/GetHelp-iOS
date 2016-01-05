@@ -4,3 +4,4 @@
 @import REFormattedNumberField;
 @import TTTAttributedLabel;
 @import SVWebViewController;
+@import MWPhotoBrowser;
