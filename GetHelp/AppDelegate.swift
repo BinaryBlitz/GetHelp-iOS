@@ -130,8 +130,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func configureServerManager() {
     let manager = ServerManager.sharedInstance
     
-    if let token = UserDefaultsHelper.loadObjectForKey(.ApiToken) as? String {
-      manager.apiToken = token
+    if let apiToken = UserDefaultsHelper.loadObjectForKey(.ApiToken) as? String {
+      manager.apiToken = apiToken
+    }
+    
+    if let deviceToken = UserDefaultsHelper.loadObjectForKey(.DeviceToken) as? String {
+      manager.deviceToken = deviceToken
     }
   }
   
