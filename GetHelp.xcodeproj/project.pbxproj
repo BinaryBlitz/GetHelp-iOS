@@ -940,6 +940,7 @@
 				INFOPLIST_FILE = GetHelp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DCOCOAPODS -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GettHelp;
 				PRODUCT_NAME = GetHelp;
 				SWIFT_OBJC_BRIDGING_HEADER = "GetHelp/GetHelp-Bridging-Header.h";
@@ -958,6 +959,7 @@
 				INFOPLIST_FILE = GetHelp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DCOCOAPODS -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GettHelp;
 				PRODUCT_NAME = GetHelp;
 				SWIFT_OBJC_BRIDGING_HEADER = "GetHelp/GetHelp-Bridging-Header.h";

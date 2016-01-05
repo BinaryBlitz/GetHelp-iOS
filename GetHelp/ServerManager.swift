@@ -21,6 +21,7 @@ class ServerManager {
   private var manager = Manager.sharedInstance
   let baseURL = "http://getthelp.binaryblitz.ru"
   
+#if DEBUG
   var apiToken: String? {
     didSet {
       print("Api token updated: \(apiToken ?? "")")
@@ -32,6 +33,10 @@ class ServerManager {
       print("Device token updated: \(deviceToken ?? "")")
     }
   }
+#else
+  var apiToken: String?
+  var deviceToken: String?
+#endif
   
   //MARK: - Preperties
   
