@@ -58,34 +58,40 @@ class PhoneNumbeInputViewController: UIViewController {
   //MARK: - IBActions
 
   @IBAction func okButtonAction(sender: AnyObject) {
+    
     if let request = loginRequest {
       request.cancel()
     }
     
-    if let phoneNumber = phoneNumberTextField.text {
-      let numberLength = phoneNumber.characters.count
-      if numberLength != "+7 (123) 456-78-90".characters.count {
-        phoneNumberTextField.shakeWithDuration(0.07)
-        phoneNumberTextField.becomeFirstResponder()
-        return
-      }
-      
-      let rawPhoneNumber = formatPhoneNumberToRaw(phoneNumber)
-      okButton.userInteractionEnabled = false
-      let request = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
-        print(token)
-        self?.okButton.userInteractionEnabled = true
-        if let token = token {
-          self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
-        } else if let error = error {
-          print("Error: \(error)")
-          let alert = UIAlertController(title: "Ошибка!", message: "Произошла ошибка! Проверьте ваше подключение к интернету и попробуйте позже", preferredStyle: .Alert)
-          alert.addAction(UIAlertAction(title: "ОК", style: .Default, handler: nil))
-          self?.presentViewController(alert, animated: true, completion: nil)
-        }
-      }
-      loginRequest = request
+    guard let phoneNumber = phoneNumberTextField.text else {
+      phoneNumberTextField.shakeWithDuration(0.05)
+      phoneNumberTextField.becomeFirstResponder()
+      return
     }
+    
+    let numberLength = phoneNumber.characters.count ?? 0
+    if numberLength != "+7 (123) 456-78-90".characters.count {
+      phoneNumberTextField.shakeWithDuration(0.07)
+      phoneNumberTextField.becomeFirstResponder()
+      return
+    }
+    
+    let rawPhoneNumber = formatPhoneNumberToRaw(phoneNumber)
+    okButton.userInteractionEnabled = false
+    let request = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
+      print(token)
+      self?.okButton.userInteractionEnabled = true
+      if let token = token {
+        self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
+      } else if let error = error {
+        print("Error: \(error)")
+        let alert = UIAlertController(title: "Ошибка!", message: "Произошла ошибка! Проверьте ваше подключение к интернету и попробуйте позже", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "ОК", style: .Default, handler: nil))
+        self?.presentViewController(alert, animated: true, completion: nil)
+      }
+    }
+    
+    loginRequest = request
   }
   
   @IBAction func backButtonAction(sender: AnyObject) {
