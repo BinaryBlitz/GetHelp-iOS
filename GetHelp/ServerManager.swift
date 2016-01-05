@@ -15,8 +15,7 @@ import RealmSwift
 class ServerManager {
   
   static var sharedInstance = ServerManager()
-//  let baseURL = "http://getthelp.binaryblitz.ru"
-  let baseURL = "http://getthelp.herokuapp.com"
+  let baseURL = "http://getthelp.binaryblitz.ru"
   private var manager = Manager.sharedInstance
   
   var apiToken: String? {
@@ -128,8 +127,8 @@ class ServerManager {
   
   func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: GHError?) -> Void)?) -> Request {
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    let parameters = ["user": ["phone_number": phoneNumber, "/verification_token/": token]]
-    let req = manager.request(.POST, baseURL + "user/", parameters: parameters, encoding: .JSON)
+    let parameters = ["user": ["phone_number": phoneNumber, "verification_token": token]]
+    let req = manager.request(.POST, baseURL + "/user/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
@@ -335,7 +334,7 @@ class ServerManager {
       let formattedImage = "data:image/gif;base64,\(base64ImageString ?? NSNull())"
       let parameters: [String: AnyObject] = ["message": ["image": formattedImage]]
       
-      let request = try post("/orders/\(order.id)/messages", params: parameters)
+      let request = try post("/orders/\(order.id)/messages/", params: parameters)
       request.validate().responseJSON { response in
         switch response.result {
         case .Success(let resultValue):
