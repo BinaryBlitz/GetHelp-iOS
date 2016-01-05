@@ -97,42 +97,44 @@ class ServerManager {
   }
   
   func verifyPhoneNumberWith(code: String, forPhoneNumber phoneNumber: String,
-      andToken token: String, complition: ((error: GHError?) -> Void)? = nil) -> Request {
+      andToken token: String, complition: ((error: ErrorType?) -> Void)? = nil) -> Request {
         
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters = ["phone_number": phoneNumber, "code": code]
     let req = manager.request(.PATCH, baseURL + "/verification_tokens/\(token)/", parameters: parameters, encoding: .JSON)
-    req.responseJSON { (response) -> Void in
+    req.validate().responseJSON { response in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-      guard let resultValue = response.result.value else {
-        complition?(error: .InvalidData)
-        return
-      }
       
-      let json = JSON(resultValue)
-      
-      // if api_token nil then create new user
-      if let apiToken = json["api_token"].string {
-        self.apiToken = apiToken
-        complition?(error: nil)
-      } else {
-        self.createNewUserWhith(phoneNumber, andVerificationToken: token, complition: { (error) -> Void in
-          complition?(error: error)
-        })
+      switch response.result {
+      case .Success(let resultValue):
+        let json = JSON(resultValue)
+        
+        // if api_token nil then create new user
+        if let apiToken = json["api_token"].string {
+          self.apiToken = apiToken
+          complition?(error: nil)
+        } else {
+          self.createNewUserWhith(phoneNumber, andVerificationToken: token) { error in
+            complition?(error: error)
+          }
+        }
+      case .Failure(let error):
+        complition?(error: error)
       }
     }
     
     return req
   }
   
-  func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: GHError?) -> Void)?) -> Request {
+  func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: ErrorType?) -> Void)?) -> Request {
+    
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters = ["user": ["phone_number": phoneNumber, "verification_token": token]]
     let req = manager.request(.POST, baseURL + "/user/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
-        complition?(error: .InvalidData)
+        complition?(error: GHError.InvalidData)
         return
       }
       
@@ -142,7 +144,7 @@ class ServerManager {
         self.apiToken = apiToken
         complition?(error: nil)
       } else {
-        complition?(error: .InvalidData)
+        complition?(error: GHError.InvalidData)
       }
     }
     
@@ -151,7 +153,7 @@ class ServerManager {
   
   //MARK: - HelpRequests
   
-  func fetchHelpRequests(complition: ((success: Bool) -> Void)? = nil) -> Request? {
+  func fetchHelpRequests(complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -177,29 +179,21 @@ class ServerManager {
             print("Error: \(error)")
           }
           
-          complition?(success: true)
+          complition?(success: true, error: nil)
         case .Failure(let error):
-          print("error \(error)")
-          complition?(success: false)
+          complition?(success: false, error: error)
         }
       }
       
       return request
-    } catch GHError.Unauthorized {
-      print("Unauthorized")
-      complition?(success: false)
-    } catch GHError.InternalServerError {
-      print("InternalServerError")
-      complition?(success: false)
-    } catch {
-      print("wat")
-      complition?(success: false)
+    } catch let error {
+      complition?(success: false, error: error)
     }
     
     return nil
   }
   
-  func createNewHelpRequest(helpRequest: HelpRequest, complition: ((success: Bool) -> Void)? = nil) -> Request? {
+  func createNewHelpRequest(helpRequest: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     let order = helpRequest.convertToDict()
     let parameters: [String: AnyObject] = ["order": order]
@@ -220,24 +214,21 @@ class ServerManager {
               try realm.write { () -> Void in
                 realm.add(helpRequest)
               }
-              complition?(success: true)
+              complition?(success: true, error: nil)
             } catch let error {
-              print("Error: \(error)")
-              complition?(success: false)
+              complition?(success: false, error: error)
             }
           } else {
-            complition?(success: false)
+            complition?(success: false, error: GHError.InvalidData)
           }
         case .Failure(let error):
-          print("error \(error)")
-          complition?(success: false)
+          complition?(success: false, error: error)
         }
       }
       
       return request
     } catch let error {
-      print("Error: \(error)")
-      complition?(success: false)
+      complition?(success: false, error: error)
     }
     
     return nil

@@ -205,7 +205,7 @@ class RequestFormViewController: FormViewController {
       }
     }
     
-    createdRequest = ServerManager.sharedInstance.createNewHelpRequest(helpRequest) { [weak self] (success) -> Void in
+    createdRequest = ServerManager.sharedInstance.createNewHelpRequest(helpRequest) { [weak self] (success, error) -> Void in
       if success {
         self?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
       } else {

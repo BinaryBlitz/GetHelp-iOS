@@ -73,7 +73,7 @@ class HomeViewController: UIViewController {
   //MARK: - Refresh
   
   func refresh(sender: AnyObject) {
-    beginRefreshWithComplition { () -> Void in
+    beginRefreshWithComplition {
       self.tableView.reloadData()
       self.refreshControl.endRefreshing()
     }
@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
   
   func beginRefreshWithComplition(complition: () -> Void) {
     //TODO: Reresh request
-    ServerManager.sharedInstance.fetchHelpRequests { (success) -> Void in
+    ServerManager.sharedInstance.fetchHelpRequests { success, error in
       if !success {
         print("Error in ferching request")
       }
