@@ -21,6 +21,7 @@ class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
     cardView.layer.cornerRadius = 10
     cardView.layer.borderWidth = 2
     cardView.layer.borderColor = UIColor(white: 0.86, alpha: 1).CGColor
+    cardView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
   }
 
   func configure(presenter: MessagePresentable) {

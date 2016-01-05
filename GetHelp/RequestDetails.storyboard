@@ -81,14 +81,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-fu-x8i">
-                                <rect key="frame" x="15" y="0.0" width="570" height="501"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="UyY-Pl-ncA" id="2UE-BS-1TQ"/>
-                                    <outlet property="delegate" destination="UyY-Pl-ncA" id="a7e-I4-voU"/>
-                                </connections>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-ct-rBq">
                                 <rect key="frame" x="15" y="501" width="570" height="35"/>
                                 <subviews>
@@ -132,21 +124,24 @@
                                     <constraint firstItem="wOd-7A-ZLg" firstAttribute="leading" secondItem="OIr-ct-rBq" secondAttribute="leading" constant="9" id="ibH-oe-HRI"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-u7-Aiv">
+                                <rect key="frame" x="15" y="0.0" width="570" height="501"/>
+                            </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="hfz-u7-Aiv" firstAttribute="leading" secondItem="uDj-QZ-W7j" secondAttribute="leadingMargin" constant="-5" id="36K-tu-5JI"/>
                             <constraint firstAttribute="leadingMargin" secondItem="OIr-ct-rBq" secondAttribute="leading" constant="5" id="3aG-PV-Ana"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="IxS-fu-x8i" secondAttribute="leading" constant="5" id="Kkh-vG-If5"/>
+                            <constraint firstItem="hfz-u7-Aiv" firstAttribute="top" secondItem="RWG-dt-zV5" secondAttribute="bottom" id="DKS-nD-fEo"/>
+                            <constraint firstItem="OIr-ct-rBq" firstAttribute="top" secondItem="hfz-u7-Aiv" secondAttribute="bottom" id="I5R-Zw-GBF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hfz-u7-Aiv" secondAttribute="trailing" constant="-5" id="MhN-Ux-zSS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OIr-ct-rBq" secondAttribute="trailing" constant="-5" id="XgR-FH-ZL5"/>
-                            <constraint firstItem="IxS-fu-x8i" firstAttribute="top" secondItem="RWG-dt-zV5" secondAttribute="bottom" id="azk-pX-Mg7"/>
-                            <constraint firstItem="OIr-ct-rBq" firstAttribute="top" secondItem="IxS-fu-x8i" secondAttribute="bottom" id="mZ3-fc-lef"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IxS-fu-x8i" secondAttribute="trailing" constant="-5" id="snT-rx-Qn5"/>
                             <constraint firstItem="agY-vm-bHJ" firstAttribute="top" secondItem="OIr-ct-rBq" secondAttribute="bottom" id="stE-FK-X96"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="attachButton" destination="wOd-7A-ZLg" id="15k-qe-XKe"/>
+                        <outlet property="chatContentView" destination="hfz-u7-Aiv" id="0BE-Zc-bkP"/>
                         <outlet property="sendButton" destination="FRI-9G-cg4" id="Npq-nT-yPM"/>
-                        <outlet property="tableView" destination="IxS-fu-x8i" id="Wrk-Sg-Dtg"/>
                         <outlet property="textView" destination="QaL-KR-iep" id="oyK-Up-j0Y"/>
                         <outlet property="textViewContainerBottomConstraint" destination="stE-FK-X96" id="BaU-c0-z0Q"/>
                     </connections>

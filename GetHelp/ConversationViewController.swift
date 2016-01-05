@@ -12,12 +12,12 @@ import DKImagePickerController
 
 class ConversationViewController: UIViewController {
 
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var chatContentView: UIView!
+  @IBOutlet weak var tableView: UITableView?
   @IBOutlet weak var textView: CCGrowingTextView!
   @IBOutlet weak var sendButton: UIButton!
   @IBOutlet weak var attachButton: UIButton!
   @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
-  var badgeView: JSBadgeView?
   
   var helpRequest: HelpRequest!
 
@@ -42,12 +42,12 @@ class ConversationViewController: UIViewController {
     
     let realm = try! Realm()
     let orderId = helpRequest.id
-    messages = realm.objects(Message).filter("orderId == \(orderId)").sorted("dateCreated")
+    messages = realm.objects(Message).filter("orderId == \(orderId)").sorted("dateCreated", ascending: false)
 
+    setUpTableView()
     setUpButtons()
     setUpKeyboard()
     setUpTextView()
-    setUpTableView()
     setUpRefreshControl()
     
     // set up timer
@@ -65,7 +65,15 @@ class ConversationViewController: UIViewController {
   }
   
   func setUpTableView() {
+    let tableView = UITableView(frame: chatContentView.frame, style: .Plain)
+    self.tableView = tableView
+    
+    tableView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+    tableView.delegate = self
+    tableView.dataSource = self
+    addContent(tableView, toView: chatContentView)
     tableView.tableFooterView = UIView()
+    tableView.separatorStyle = .None
     let userCellNib = UINib(nibName: "UserMessageTableViewCell", bundle: nil)
     let userImageCellNib = UINib(nibName: "UserImageMessageTableViewCell", bundle: nil)
     let operatorCellNib = UINib(nibName: "OperatorMessageTableViewCell", bundle: nil)
@@ -79,12 +87,26 @@ class ConversationViewController: UIViewController {
     scrollToBottom()
   }
   
+  func addContent(content: UIView, toView contentView: UIView) {
+    content.translatesAutoresizingMaskIntoConstraints = false
+    contentView.addSubview(content)
+    let topConstraint = NSLayoutConstraint(item: content, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
+    let bottomContraint = NSLayoutConstraint(item: content, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: 0)
+    let trallingConstaint = NSLayoutConstraint(item: content, attribute: .Trailing, relatedBy: .Equal, toItem: contentView, attribute: .Trailing, multiplier: 1, constant: 0)
+    let leadingConstraint = NSLayoutConstraint(item: content, attribute: .Leading, relatedBy: .Equal, toItem: contentView, attribute: .Leading, multiplier: 1, constant: 0)
+    contentView.addConstraints([topConstraint, bottomContraint, leadingConstraint, trallingConstaint])
+  }
+  
   func setUpRefreshControl() {
     refreshControl = UIRefreshControl()
-    refreshControl?.triggerVerticalOffset = 15
-    refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
-    tableView.bottomRefreshControl = refreshControl
-    tableView.sendSubviewToBack(tableView.bottomRefreshControl)
+    if let refreshControl = refreshControl,
+           tableView = tableView {
+            
+      refreshControl.triggerVerticalOffset = 15
+      refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+      tableView.addSubview(refreshControl)
+      tableView.sendSubviewToBack(refreshControl)
+    }
   }
   
   func setUpTextView() {
@@ -107,19 +129,10 @@ class ConversationViewController: UIViewController {
     let attachIcon = UIImage(named: "Camera")?.imageWithRenderingMode(.AlwaysTemplate)
     attachButton.setBackgroundImage(attachIcon, forState: .Normal)
     attachButton.tintColor = UIColor.orangeSecondaryColor()
-    badgeView = JSBadgeView(parentView: attachButton, alignment: .TopRight)
-    badgeView?.badgeTextColor = UIColor.whiteColor()
-    badgeView?.badgeBackgroundColor = UIColor.greenAccentColor()
   }
   
   func scrollToBottom() {
-    let numberOfRows = tableView.numberOfRowsInSection(0)
-    if numberOfRows == 0 {
-      return
-    }
-
-    let indexPath = NSIndexPath(forRow: numberOfRows - 1, inSection: 0)
-    tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+    tableView?.setContentOffset(CGPointZero, animated: true)
   }
   
   //MARK: - Refresh
@@ -127,9 +140,9 @@ class ConversationViewController: UIViewController {
   func refresh(sender: AnyObject) {
     beginRefreshWithComplition { () -> Void in
       self.refreshControl?.endRefreshing()
-      self.tableView.scrollEnabled = false
-      self.tableView.reloadData()
-      self.tableView.scrollEnabled = true
+      self.tableView?.scrollEnabled = false
+      self.tableView?.reloadData()
+      self.tableView?.scrollEnabled = true
       self.scrollToBottom()
     }
   }
@@ -154,7 +167,7 @@ class ConversationViewController: UIViewController {
     ServerManager.sharedInstance.sendMessageWithText(textMessage, toOrder: helpRequest) { success, error in
       if success {
         print("Success!")
-        self.tableView.reloadData()
+        self.tableView!.reloadData()
         self.scrollToBottom()
       }
       
@@ -164,9 +177,6 @@ class ConversationViewController: UIViewController {
     }
     
     textView.text = ""
-    badgeView?.badgeText = nil
-    tableView.reloadData()
-    scrollToBottom()
   }
   
   @IBAction func attachButtonAction(sender: AnyObject) {
@@ -188,7 +198,7 @@ class ConversationViewController: UIViewController {
             ServerManager.sharedInstance.sendMessageWithImage(image, toOrder: self.helpRequest, complition: { (success, error) -> Void in
               if success {
                 print("Success!")
-                self.tableView.reloadData()
+                self.tableView?.reloadData()
                 self.scrollToBottom()
               }
               
@@ -251,6 +261,12 @@ extension ConversationViewController: UITableViewDataSource {
 
     return cell
   }
+}
+
+//MARK: - UITableViewDelegate 
+
+extension ConversationViewController: UITableViewDelegate {
+  
 }
 
 //MARK: - Keyboard events
