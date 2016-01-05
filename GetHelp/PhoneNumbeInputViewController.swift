@@ -38,7 +38,7 @@ class PhoneNumbeInputViewController: UIViewController {
     phoneNumberTextField.placeholder = "+7 (123) 456-78-90"
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewWillAppear(animated: Bool) {
     phoneNumberTextField.becomeFirstResponder()
   }
   
