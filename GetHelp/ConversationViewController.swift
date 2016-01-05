@@ -179,7 +179,7 @@ class ConversationViewController: UIViewController {
       imagePickerController = DKImagePickerController()
       imagePickerController?.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
         assets.forEach { (asset) -> () in
-          asset.fetchOriginalImageWithCompleteBlock { (image) -> Void in
+          asset.fetchOriginalImageWithCompleteBlock { (image, info) -> Void in
             guard let image = image else {
               print("fail!")
               return

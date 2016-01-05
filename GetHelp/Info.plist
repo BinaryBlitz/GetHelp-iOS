@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>8</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -40,7 +40,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>getthelp.herokuapp.com</key>
+			<key>getthelp.binaryblitz.ru</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
@@ -51,7 +51,7 @@
 				<key>NSTemporaryExceptionRequiresForwardSecrecy</key>
 				<false/>
 			</dict>
-			<key>getthelp.binaryblitz.ru</key>
+			<key>getthelp.herokuapp.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
