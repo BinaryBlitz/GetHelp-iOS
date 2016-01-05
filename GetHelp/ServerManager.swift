@@ -35,10 +35,6 @@ class ServerManager {
     case InvalidData
   }
   
-  func saveApiToken() {
-    NSUserDefaults.standardUserDefaults().setObject(apiToken, forKey: "apiToken")
-  }
-  
   private func request(method: Alamofire.Method, path: String,
       parameters: [String : AnyObject]?,
       encoding: ParameterEncoding) throws -> Request {

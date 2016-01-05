@@ -59,8 +59,11 @@ class LogInCodeCheckViewController: UIViewController {
     }
     
     ServerManager.sharedInstance.verifyPhoneNumberWith(code, forPhoneNumber: phoneNumber, andToken: token) { (error) -> Void in
+      
       if error == nil {
-        ServerManager.sharedInstance.saveApiToken()
+        let token = ServerManager.sharedInstance.apiToken
+        UserDefaultsHelper.save(token, forKey: .ApiToken)
+        
         let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
         if let initialController = mainStroryboard.instantiateInitialViewController() {
           self.presentViewController(initialController, animated: true, completion: nil)

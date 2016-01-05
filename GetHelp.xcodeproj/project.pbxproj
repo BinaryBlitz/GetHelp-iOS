@@ -70,6 +70,7 @@
 		37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */; };
 		37D134481C31F97400D16C69 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D134471C31F97400D16C69 /* logo.png */; };
 		37D1344A1C32D7F500D16C69 /* NSDate+CreatedAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D134491C32D7F500D16C69 /* NSDate+CreatedAt.swift */; };
+		37D94DEC1C3BFAC60050ADAB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D94DEB1C3BFAC60050ADAB /* UserDefaultsHelper.swift */; };
 		37E6B3181C1CC6B300DA19A8 /* WalletInfoPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6B3171C1CC6B300DA19A8 /* WalletInfoPresentable.swift */; };
 		37E6B31A1C1CC6F500DA19A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E6B3191C1CC6F500DA19A8 /* Constants.swift */; };
 		37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */; };
@@ -163,6 +164,7 @@
 		37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestPresentable.swift; sourceTree = "<group>"; };
 		37D134471C31F97400D16C69 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		37D134491C32D7F500D16C69 /* NSDate+CreatedAt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+CreatedAt.swift"; sourceTree = "<group>"; };
+		37D94DEB1C3BFAC60050ADAB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		37E6B3171C1CC6B300DA19A8 /* WalletInfoPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoPresentable.swift; sourceTree = "<group>"; };
 		37E6B3191C1CC6F500DA19A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestTableViewCell.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			children = (
 				37F171BE1BFB6D0F0016433D /* Views */,
 				37F171BC1BFB6D020016433D /* Controllers */,
+				37D94DED1C3BFAD30050ADAB /* Helpers */,
 				37ADE33C1C0608B000CC3CE2 /* Models */,
 				37A7CB911C0CB426004CFB14 /* Presenters */,
 				37CFD5041C10C41B009F734B /* Protocols */,
@@ -420,6 +423,14 @@
 				37B6AF141C35613400FA6BD4 /* ServerModelPresentable.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		37D94DED1C3BFAD30050ADAB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				37D94DEB1C3BFAC60050ADAB /* UserDefaultsHelper.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		37EB111E1C2D657300879A05 /* BillTableViewCell */ = {
@@ -738,6 +749,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D94DEC1C3BFAC60050ADAB /* UserDefaultsHelper.swift in Sources */,
 				37E6B3181C1CC6B300DA19A8 /* WalletInfoPresentable.swift in Sources */,
 				37C952CE1C3B03E90006B721 /* MessagesQueue.swift in Sources */,
 				3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */,

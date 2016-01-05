@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func configureServerManager() {
     let manager = ServerManager.sharedInstance
     
-    if let token = NSUserDefaults.standardUserDefaults().objectForKey("apiToken") as? String {
+    if let token = UserDefaultsHelper.loadObjectForKey(.ApiToken) as? String {
       manager.apiToken = token
     }
   }
