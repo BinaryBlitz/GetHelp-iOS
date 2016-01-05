@@ -76,6 +76,8 @@ class PhoneNumbeInputViewController: UIViewController {
       return
     }
     
+    registerForPushNotifications()
+    
     let rawPhoneNumber = formatPhoneNumberToRaw(phoneNumber)
     okButton.userInteractionEnabled = false
     let request = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
@@ -114,6 +116,15 @@ class PhoneNumbeInputViewController: UIViewController {
     rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString("-", withString: "")
     
     return rawPhoneNumber
+  }
+  
+  func registerForPushNotifications() {
+    UIApplication.sharedApplication()
+      .registerUserNotificationSettings(
+        UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+    )
+    
+    UIApplication.sharedApplication().registerForRemoteNotifications()
   }
 }
 

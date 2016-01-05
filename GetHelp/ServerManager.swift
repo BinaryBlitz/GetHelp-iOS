@@ -23,13 +23,13 @@ class ServerManager {
   
   var apiToken: String? {
     didSet {
-      print("Api token updated: \(apiToken)")
+      print("Api token updated: \(apiToken ?? "")")
     }
   }
   
   var deviceToken: String? {
     didSet {
-      print("Device token updated: \(deviceToken)")
+      print("Device token updated: \(deviceToken ?? "")")
     }
   }
   
@@ -131,7 +131,14 @@ class ServerManager {
   func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: ErrorType?) -> Void)?) -> Request {
     
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    let parameters = ["user": ["phone_number": phoneNumber, "verification_token": token]]
+    let parameters = [
+      "user": [
+        "phone_number": phoneNumber,
+        "verification_token": token,
+        "device_token": ServerManager.sharedInstance.deviceToken ?? NSNull()
+      ]
+    ]
+    
     let req = manager.request(.POST, baseURL + "/user/", parameters: parameters, encoding: .JSON)
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false

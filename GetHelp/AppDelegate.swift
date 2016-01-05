@@ -170,7 +170,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
-
-
+  
+  //MARK - Push notifications
+  
+  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+    var token = ""
+    
+    for var i = 0; i < deviceToken.length; i++ {
+      token += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+    }
+    
+    UserDefaultsHelper.save(token, forKey: .DeviceToken)
+    ServerManager.sharedInstance.deviceToken = token
+  }
+  
+  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    // develper.layOnTheFloor()
+    // do {
+    //    try developer.notToCry()
+    // catch {
+    //    developer.cryALot()
+    // }
+  }
 }
 
