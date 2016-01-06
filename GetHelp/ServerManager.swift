@@ -380,7 +380,7 @@ class ServerManager {
   func paymentsURLForOrderID(orderID: Int, complition: ((paymentURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
-      let request = try post("orders/\(orderID)/payments/")
+      let request = try post("/orders/\(orderID)/payments/")
       request.validate().responseJSON { response in
         switch response.result {
         case .Success(let resultValue):
