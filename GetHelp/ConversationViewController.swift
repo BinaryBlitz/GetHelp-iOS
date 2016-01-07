@@ -172,6 +172,7 @@ class ConversationViewController: UIViewController {
     presentImagePickerController()
   }
 
+  //TODO: fix me plz
   func presentImagePickerController() {
     if let imagePicker = imagePickerController {
       presentViewController(imagePicker, animated: true, completion: nil)

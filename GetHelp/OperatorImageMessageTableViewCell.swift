@@ -33,7 +33,7 @@ class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCel
     contentImageView.image = nil
     dateLabel.text = presenter.time
     
-    if let imageURL = presenter.imageURL {
+    if let imageURL = presenter.imageThumbURL {
       contentImageView.hnk_setImageFromURL(imageURL)
     }
   }

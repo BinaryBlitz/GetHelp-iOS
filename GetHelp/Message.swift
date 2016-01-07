@@ -15,6 +15,7 @@ class Message: Object {
   dynamic var orderId: Int = 0
   dynamic var content: String?
   dynamic var imageURLString: String?
+  dynamic var imageThumbURLString: String?
   private dynamic var _sender: String = MessageSender.User.rawValue
   dynamic var dateCreated: NSDate = NSDate()
 
@@ -60,6 +61,10 @@ extension Message: ServerModelPresentable {
     
     if let imageURLString = json["image_url"].string {
       message.imageURLString = imageURLString
+    }
+    
+    if let imageThumbURLString = json["image_thumb_url"].string {
+      message.imageThumbURLString = imageThumbURLString
     }
     
     return message

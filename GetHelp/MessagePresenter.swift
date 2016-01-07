@@ -19,7 +19,15 @@ struct MessagePresenter: MessagePresentable {
   }
   
   var imageURL: NSURL? {
-    guard let urlString = message.imageURLString else {
+    return urlFromString(message.imageURLString)
+  }
+  
+  var imageThumbURL: NSURL? {
+    return urlFromString(message.imageThumbURLString)
+  }
+  
+  private func urlFromString(urlString: String?) -> NSURL? {
+    guard let urlString = urlString else {
       return nil
     }
     
