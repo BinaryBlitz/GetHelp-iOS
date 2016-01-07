@@ -122,7 +122,7 @@ class ServerManager {
           self.apiToken = apiToken
           complition?(error: nil)
         } else {
-          self.createNewUserWhith(phoneNumber, andVerificationToken: token) { error in
+          self.createNewUserWith(phoneNumber, andVerificationToken: token) { error in
             complition?(error: error)
           }
         }
@@ -135,7 +135,7 @@ class ServerManager {
     return req
   }
   
-  func createNewUserWhith(phoneNumber: String, andVerificationToken token: String, complition: ((error: ErrorType?) -> Void)?) -> Request {
+  func createNewUserWith(phoneNumber: String, andVerificationToken token: String, complition: ((error: ErrorType?) -> Void)?) -> Request {
     
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters: [String: AnyObject] = [
