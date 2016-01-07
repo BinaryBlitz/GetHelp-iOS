@@ -63,7 +63,7 @@ class HelpRequest: Object {
 extension HelpRequest: ServerModelPresentable {
   
   func convertToDict() -> [String: AnyObject] {
-    let dateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    let dateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
     var jsonData: [String: AnyObject] = [
       "id": id,
       "course": subject,
