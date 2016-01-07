@@ -14,3 +14,4 @@ pod 'TTTAttributedLabel'
 pod 'SVWebViewController'
 pod 'HanekeSwift'
 pod 'MWPhotoBrowser'
+pod "SwiftSpinner"

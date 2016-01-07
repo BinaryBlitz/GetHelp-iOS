@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import DKImagePickerController
+import SwiftSpinner
+import Alamofire
 
 class ConversationViewController: UIViewController {
 
@@ -32,8 +34,6 @@ class ConversationViewController: UIViewController {
   }
   
   var timer: NSTimer?
-
-  private var imagePickerController: DKImagePickerController?
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -162,6 +162,18 @@ class ConversationViewController: UIViewController {
       
       if let error = error {
         print("Error: \(error)")
+        guard let error = error as? NSURLError else {
+          return
+        }
+
+        switch error {
+        case .NotConnectedToInternet, .NetworkConnectionLost:
+          self.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
+        case .Cancelled:
+          return
+        default:
+          self.presentAlertWithTitle("Ошбика", andMessage: "Не удалось отправить сообщение. Попробуйте позже.")
+        }
       }
     }
     
@@ -172,36 +184,85 @@ class ConversationViewController: UIViewController {
     presentImagePickerController()
   }
 
-  //TODO: fix me plz
   func presentImagePickerController() {
-    if let imagePicker = imagePickerController {
-      presentViewController(imagePicker, animated: true, completion: nil)
-    } else {
-      imagePickerController = DKImagePickerController()
-      imagePickerController?.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
-        assets.forEach { (asset) -> () in
-          asset.fetchOriginalImageWithCompleteBlock { (image, info) -> Void in
-            guard let image = image else {
-              print("fail!")
+    let imagePickerController = DKImagePickerController()
+    imagePickerController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+    imagePickerController.maxSelectableCount = 3
+    imagePickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
+      self.sendAssets(assets)
+    }
+    
+    presentViewController(imagePickerController, animated: true, completion: nil)
+  }
+  
+  //MARK: - Images magic
+  
+  private var numberOfAssets: Int = 0
+  private var finishedRequests: Int = 0
+  private var imageSendRequests = [Request?]()
+  
+  func sendAssets(assets: [DKAsset]) {
+    let serverManager = ServerManager.sharedInstance
+    numberOfAssets = 0
+    finishedRequests = 0
+    imageSendRequests = []
+    
+    if assets.count == 0 {
+      return
+    }
+    
+    numberOfAssets = assets.count
+    assets.forEach { asset in
+      asset.fetchOriginalImageWithCompleteBlock { image, info in
+        guard let image = image else {
+          return
+        }
+        
+        let request = serverManager.sendMessageWithImage(image, toOrder: self.helpRequest) { [unowned self] success, error in
+          self.finishedRequests += 1
+          if self.numberOfAssets == self.finishedRequests {
+            SwiftSpinner.hide()
+          }
+          
+          if success {
+            print("Success!")
+            self.tableView?.reloadData()
+            self.scrollToBottom()
+          }
+          
+          if let error = error {
+            print("Error: \(error)")
+            
+            if (error as NSError).description.containsString(": 413") {
+              self.presentAlertWithTitle("Ошибка", andMessage: "Фотография слишком большая!")
               return
             }
-            ServerManager.sharedInstance.sendMessageWithImage(image, toOrder: self.helpRequest, complition: { (success, error) -> Void in
-              if success {
-                print("Success!")
-                self.tableView?.reloadData()
-                self.scrollToBottom()
-              }
-              
-              if let error = error {
-                print("Error: \(error)")
-              }
-            })
+            
+            guard let error = error as? NSURLError else {
+              return
+            }
+
+            switch error {
+            case .NotConnectedToInternet, .NetworkConnectionLost:
+              self.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
+            case .Cancelled:
+              return
+            default:
+              self.presentAlertWithTitle("Ошбика", andMessage: "Не удалось отправить фотографию. Попробуйте позже.")
+            }
           }
         }
+        
+        self.imageSendRequests.append(request)
       }
-      imagePickerController?.maxSelectableCount = 5
-      presentViewController(imagePickerController!, animated: true, completion: nil)
     }
+    
+    SwiftSpinner.show("Отправка фотографий").addTapHandler( {
+        SwiftSpinner.hide()
+        self.imageSendRequests.forEach { request in
+          request?.cancel()
+        }
+    }, subtitle: "Нажмите для отмены")
   }
 }
 

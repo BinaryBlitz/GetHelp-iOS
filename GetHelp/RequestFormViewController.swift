@@ -124,12 +124,6 @@ class RequestFormViewController: FormViewController {
     }
   }
 
-  func presentAlertWithMessage(message: String) {
-    let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-    presentViewController(alert, animated: true, completion: nil)
-  }
-
   @IBAction func submitButtonAction(sender: AnyObject) {
     if let request = createdRequest {
       request.cancel()
