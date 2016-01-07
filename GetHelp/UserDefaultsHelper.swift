@@ -9,6 +9,7 @@
 enum UserDefaultsKey: String {
   case ApiToken
   case DeviceToken
+  case DeviceTokenUploadStatus
 }
 
 struct UserDefaultsHelper {

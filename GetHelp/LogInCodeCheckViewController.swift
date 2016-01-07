@@ -63,6 +63,7 @@ class LogInCodeCheckViewController: UIViewController {
       if error == nil {
         let token = ServerManager.sharedInstance.apiToken
         UserDefaultsHelper.save(token, forKey: .ApiToken)
+        ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
         
         let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
         if let initialController = mainStroryboard.instantiateInitialViewController() {
@@ -96,7 +97,6 @@ extension LogInCodeCheckViewController: ContainerPresentable {
   
   func setData(data: AnyObject?) {
     if let pair = data as? PhoneTokenPair {
-//      self.phoneNumber = phoneNumber
       self.phoneNumber = pair.phoneNumber
       self.token =  pair.token
     }

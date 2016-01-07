@@ -410,4 +410,34 @@ class ServerManager {
     
     return nil
   }
+  
+  //MARK: - Device token
+  
+  func updateDeviceTokenIfNeeded(complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+    
+    if let uploadStatus = UserDefaultsHelper.loadObjectForKey(.DeviceTokenUploadStatus) as? Bool
+        where uploadStatus == true {
+      return nil
+    }
+    
+    do {
+      let parameters: [String: AnyObject] = ["user": ["device_token": deviceToken ?? ""]]
+      let request = try patch("/user/", params: parameters)
+      
+      request.validate().response { (_, response, data, error) -> Void in
+        if let error = error {
+          complition?(success: false, error: error)
+        } else {
+          UserDefaultsHelper.save(true, forKey: .DeviceTokenUploadStatus)
+          complition?(success: true, error: nil)
+        }
+      }
+      
+      return request
+    } catch let error {
+      complition?(success: false, error: error)
+    }
+    
+    return nil
+  }
 }

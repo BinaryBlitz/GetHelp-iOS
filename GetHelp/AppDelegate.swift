@@ -137,6 +137,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if let deviceToken = UserDefaultsHelper.loadObjectForKey(.DeviceToken) as? String {
       manager.deviceToken = deviceToken
     }
+    
+    ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
   }
   
   func configureNavigationBar() {
