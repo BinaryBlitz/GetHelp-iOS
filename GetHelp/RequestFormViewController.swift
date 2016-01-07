@@ -73,11 +73,8 @@ class RequestFormViewController: FormViewController {
     //MARK: - Section 3 (university info)
 
     form +++= Section()
-    <<< PushRow<String>("schoolRow") {
+    <<< TextFloatLabelRow("schoolRow") {
       $0.title = "Вуз"
-      $0.options = ["ВШЭ", "МГУ"] //TODO: список вузов
-      $0.value = "ВШЭ"
-      $0.selectorTitle = "Выберите вуз"
     }
     <<< TextFloatLabelRow("facilityRow") {
       $0.title = "Факультет"
