@@ -86,10 +86,18 @@ class PhoneNumbeInputViewController: UIViewController {
       if let token = token {
         self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
       } else if let error = error {
-        print("Error: \(error)")
-        let alert = UIAlertController(title: "Ошибка!", message: "Произошла ошибка! Проверьте ваше подключение к интернету и попробуйте позже", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "ОК", style: .Default, handler: nil))
-        self?.presentViewController(alert, animated: true, completion: nil)
+        guard let error = error as? NSURLError else {
+          return
+        }
+
+        switch error {
+        case .NotConnectedToInternet, .NetworkConnectionLost:
+          self?.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
+        case .Cancelled:
+          return
+        default:
+          self?.presentAlertWithTitle("Ошбика", andMessage: "Что-то пошло не так. Попробуйте позже.")
+        }
       }
     }
     

@@ -78,7 +78,7 @@ class ServerManager {
 
   //MARK: - Login
   
-  func createVerificationTokenFor(phoneNumber: String, complition: ((token: String?, error: ServerError?) -> Void)? = nil) -> Request {
+  func createVerificationTokenFor(phoneNumber: String, complition: ((token: String?, error: ErrorType?) -> Void)? = nil) -> Request {
     let parameters = ["phone_number" : phoneNumber]
     let req = manager.request(.POST, baseURL + "/verification_tokens", parameters: parameters, encoding: .JSON)
     
@@ -86,14 +86,14 @@ class ServerManager {
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
-        complition?(token: nil, error: .InvalidData)
+        complition?(token: nil, error: ServerError.InvalidData)
         return
       }
       
       let json = JSON(resultValue)
       
       guard let token = json["token"].string else {
-        complition?(token: nil, error: .InvalidData)
+        complition?(token: nil, error: ServerError.InvalidData)
         return
       }
       

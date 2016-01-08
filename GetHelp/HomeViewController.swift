@@ -179,20 +179,21 @@ extension HomeViewController: HelpRequestCellDelegate {
     
     Status.isActive = true
     ServerManager.sharedInstance.paymentsURLForOrderID(order.id) { paymentURL, error in
-      print("\(paymentURL)")
-      print("Error: \(error)")
       if let url = paymentURL {
         self.presentWebViewControllerWithURL(url)
       } else if let error = error {
-        print("Error: \(error)")
-        let alert = UIAlertController(
-          title: nil,
-          message: "Произошла ошибка! Проверьте интернет соединение и попробуйте позже.",
-          preferredStyle: .Alert
-        )
-        alert.addAction(UIAlertAction(title: "ОК", style: .Default, handler: nil))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
+        guard let error = error as? NSURLError else {
+          return
+        }
+
+        switch error {
+        case .NotConnectedToInternet, .NetworkConnectionLost:
+          self.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
+        case .Cancelled:
+          return
+        default:
+          self.presentAlertWithTitle("Ошбика", andMessage: "Не удалось загрузить страницу. Попробуйте позже.")
+        }
       }
       
       Status.isActive = false
