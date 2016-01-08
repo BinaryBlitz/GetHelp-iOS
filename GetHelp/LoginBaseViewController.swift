@@ -75,7 +75,7 @@ class LoginBaseViewController: UIViewController {
     
     currentController.willMoveToParentViewController(nil)
     addChildViewController(viewControllerToPresent)
-    let duration = 0.7
+    let duration = 0.57
     
     if let contentToPresent = viewControllerToPresent as? ContainerPresentable {
       contentToPresent.updateNavigationDelegate(self)
