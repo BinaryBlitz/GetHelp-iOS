@@ -19,7 +19,7 @@ class ServerManager {
   //MARK: - Fields
   
   private var manager = Manager.sharedInstance
-  let baseURL = "http://getthelp.binaryblitz.ru"
+  let baseURL = "http://getthelp.ru"
   
 #if DEBUG
   var apiToken: String? {
