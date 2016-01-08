@@ -85,7 +85,7 @@ class RequestFormViewController: FormViewController {
       form +++= Section("Email для отправки решения") {
         $0.header
       }
-      <<< TextFloatLabelRow("emailRow") {
+      <<< EmailRow("emailRow") {
         $0.title = "email"
       }
     }
