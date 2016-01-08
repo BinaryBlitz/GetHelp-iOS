@@ -214,7 +214,11 @@ class ConversationViewController: UIViewController {
     numberOfAssets = assets.count
     assets.forEach { asset in
       asset.fetchOriginalImageWithCompleteBlock { image, info in
-        guard let image = image else {
+        guard let originalImage = image else {
+          return
+        }
+        
+        guard let image = UIImage.resizeImage(originalImage, withScalingFactor: 0.67) else {
           return
         }
         
