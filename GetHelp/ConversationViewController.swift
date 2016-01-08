@@ -47,7 +47,27 @@ class ConversationViewController: UIViewController {
     let realm = try! Realm()
     let orderId = helpRequest.id
     messages = realm.objects(Message).filter("orderId == \(orderId)").sorted("dateCreated", ascending: false)
-
+    
+    if messages?.count == 0 {
+      let id = UserDefaultsHelper.loadObjectForKey(.FirstOperatorMessageId) as? Int
+      let message = Message()
+      message.id = (id ?? -1) - 1
+      message.sender = .Operator
+      message.orderId = orderId
+      message.content = "Ваш заказ рассматривается. Оператор ответит вам в ближайшее время. Пишите, если у вас есть какие-то вопросы."
+      message.dateCreated = helpRequest.createdAt ?? NSDate()
+      do {
+        let realm = try Realm()
+        try realm.write {
+          realm.add(message)
+        }
+        
+        UserDefaultsHelper.save(message.id, forKey: .FirstOperatorMessageId)
+      } catch let error {
+          print("Error: \(error)")
+      }
+    }
+    
     setUpTableView()
     setUpButtons()
     setUpKeyboard()
