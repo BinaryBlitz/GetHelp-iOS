@@ -11,4 +11,5 @@ enum HelpRequestStatus: String {
   case WaitingForPayment = "pending"
   case Accepted = "paid"
   case Rejected = "rejected"
+  case Refunded = "refunded"
 }

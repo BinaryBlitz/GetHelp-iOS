@@ -48,16 +48,13 @@ class HelpRequestPresenter: HelpRequestPresentable {
       return "Отклонен"
     case .WaitingForPayment:
       return "Ожидает оплаты"
+    case .Refunded:
+      return "Возвращен"
     }
   }
   
   func isPayable() -> Bool {
-    switch helpRequest.status {
-    case .WaitingForPayment:
-      return true
-    default:
-      return false
-    }
+    return helpRequest.status == .WaitingForPayment
   }
   
   var price: String {
@@ -67,13 +64,15 @@ class HelpRequestPresenter: HelpRequestPresentable {
   var indicatorColor: UIColor {
     switch helpRequest.status {
     case .Accepted:
-      return UIColor.greenAccentColor()
+      return .greenAccentColor()
     case .WaitingForPayment:
-      return UIColor.yellowAccentColor()
+      return .yellowAccentColor()
     case .InReview:
-      return UIColor.blueAccentColor()
+      return .blueAccentColor()
     case .Rejected:
-      return UIColor.redAccentColor()
+      return .redAccentColor()
+    case .Refunded:
+      return .redAccentColor()
     }
   }
 
