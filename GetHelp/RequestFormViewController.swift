@@ -56,18 +56,11 @@ class RequestFormViewController: FormViewController {
 
     //MARK: - Section 2 (subject info)
 
-    switch type {
-    case .Normal:
-      form +++= TextFloatLabelRow("subjectRow") {
-        $0.title = "Предмет"
-      }
-    case .Express:
-      form +++= TextFloatLabelRow("subjectRow") {
-        $0.title = "Предмет"
-      }
-      <<< TextFloatLabelRow("activityTypeRow") {
-        $0.title = "Тип работы"
-      }
+    form +++= TextFloatLabelRow("subjectRow") {
+      $0.title = "Предмет"
+    }
+    <<< TextFloatLabelRow("activityTypeRow") {
+      $0.title = "Тип работы"
     }
 
     //MARK: - Section 3 (university info)
@@ -178,15 +171,15 @@ class RequestFormViewController: FormViewController {
       helpRequest.dueDate = endDate
     }
 
-    if type == .Express {
-      if let activityType = form.rowByTag("activityTypeRow")?.baseValue as? String {
-        helpRequest.activityType = activityType
-      } else {
-        print("activity type")
-        presentAlertWithMessage("Вы не указали тип работы")
-        return
-      }
+    if let activityType = form.rowByTag("activityTypeRow")?.baseValue as? String {
+      helpRequest.activityType = activityType
     } else {
+      print("activity type")
+      presentAlertWithMessage("Вы не указали тип работы")
+      return
+    }
+    
+    if type == .Normal {
       if let email = form.rowByTag("emailRow")?.baseValue as? String {
         helpRequest.email = email
       } else {
