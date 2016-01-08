@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="206" id="KGk-i7-Jjw" customClass="RequestInfoTableViewCell" customModule="GettHelp_iOS" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="206" id="KGk-i7-Jjw" customClass="RequestInfoTableViewCell" customModule="GetHelp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="372" height="206"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -21,36 +21,45 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Статистические и эмиерические модели компьютинга" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgS-e4-coj">
-                        <rect key="frame" x="18" y="45" width="286.5" height="43"/>
+                        <rect key="frame" x="18" y="45" width="287" height="43"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата: 22.09.2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afj-ZQ-JEM">
-                        <rect key="frame" x="18" y="95" width="126.5" height="19.5"/>
+                        <rect key="frame" x="18" y="95" width="127" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Компьютерные науки ВШЭ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnF-pm-DZH">
-                        <rect key="frame" x="18" y="122" width="205" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Компьютерные науки ВШЭ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnF-pm-DZH">
+                        <rect key="frame" x="18" y="121" width="205" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foobar@foobar.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmn-F1-3mF">
-                        <rect key="frame" x="18" y="149.5" width="143.5" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="foobar@foobar.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmn-F1-3mF">
+                        <rect key="frame" x="18" y="150" width="144" height="19"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlA-sy-Y98">
+                        <rect key="frame" x="324" y="17" width="30" height="20"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Vmn-F1-3mF" firstAttribute="leading" secondItem="wnF-pm-DZH" secondAttribute="leading" id="17r-CS-tBH"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="wnF-pm-DZH" secondAttribute="trailing" id="DxH-cO-tih"/>
                     <constraint firstItem="wnF-pm-DZH" firstAttribute="top" secondItem="Afj-ZQ-JEM" secondAttribute="bottom" constant="7.5" id="JAO-Nx-ujC"/>
                     <constraint firstAttribute="topMargin" secondItem="ZdL-6x-cR9" secondAttribute="top" constant="-10" id="KFS-rN-iFe"/>
                     <constraint firstAttribute="leadingMargin" secondItem="ZdL-6x-cR9" secondAttribute="leading" constant="-10" id="RWL-ri-Dyz"/>
                     <constraint firstItem="lgS-e4-coj" firstAttribute="leading" secondItem="ZdL-6x-cR9" secondAttribute="leading" id="TaW-aQ-hYh"/>
+                    <constraint firstItem="vlA-sy-Y98" firstAttribute="baseline" secondItem="ZdL-6x-cR9" secondAttribute="baseline" id="UTI-xh-o7D"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vlA-sy-Y98" secondAttribute="trailing" constant="10" id="XiW-vd-R76"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Vmn-F1-3mF" secondAttribute="bottom" constant="7" id="c2k-Qq-uK6"/>
                     <constraint firstItem="lgS-e4-coj" firstAttribute="top" secondItem="ZdL-6x-cR9" secondAttribute="bottom" constant="9.5" id="dPW-Hq-Fhi"/>
                     <constraint firstItem="Vmn-F1-3mF" firstAttribute="top" secondItem="wnF-pm-DZH" secondAttribute="bottom" constant="7.5" id="gVc-wr-TtS"/>
@@ -64,6 +73,7 @@
                 <outlet property="dateTimeLabel" destination="Afj-ZQ-JEM" id="o2s-CA-l9k"/>
                 <outlet property="emailLabel" destination="Vmn-F1-3mF" id="2rG-60-0GE"/>
                 <outlet property="helpTypeLabel" destination="ZdL-6x-cR9" id="db9-aP-iHY"/>
+                <outlet property="orderIdLabel" destination="vlA-sy-Y98" id="xWr-Bs-ndP"/>
                 <outlet property="schoolInfoLabel" destination="wnF-pm-DZH" id="uqw-mW-G5E"/>
                 <outlet property="subjectLabel" destination="lgS-e4-coj" id="Cdn-CH-eGg"/>
             </connections>

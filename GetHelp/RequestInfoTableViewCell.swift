@@ -15,6 +15,7 @@ class RequestInfoTableViewCell: UITableViewCell {
   @IBOutlet weak var dateTimeLabel: UILabel!
   @IBOutlet weak var schoolInfoLabel: UILabel!
   @IBOutlet weak var emailLabel: UILabel!
+  @IBOutlet weak var orderIdLabel: UILabel!
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -26,5 +27,6 @@ class RequestInfoTableViewCell: UITableViewCell {
     helpTypeLabel.text = presenter.type
     schoolInfoLabel.text = presenter.schoolInfo
     emailLabel.text = "emal: " + presenter.email
+    orderIdLabel.text = presenter.id
   }
 }
