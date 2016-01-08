@@ -34,7 +34,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="typeOptionCell" textLabel="Cbg-sH-M8J" style="IBUITableViewCellStyleDefault" id="rjU-O5-DFf">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="66"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rjU-O5-DFf" id="eCG-Wu-cK2">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
@@ -104,10 +104,88 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Rdg-BY-ltE" kind="show" identifier="attachPhotos" id="5qt-Z2-CDP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nf0-AY-SdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1705" y="347"/>
+        </scene>
+        <!--Attach Photos View Controller-->
+        <scene sceneID="ECE-9D-dtc">
+            <objects>
+                <viewController id="Rdg-BY-ltE" customClass="AttachPhotosViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hvx-Qg-gVR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qkz-Gn-NKJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8UM-Hm-L3g">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wr-Qq-D9u">
+                                <rect key="frame" x="208" y="223" width="185" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="X4f-UE-ff0"/>
+                                    <constraint firstAttribute="width" constant="185" id="YyJ-H2-Y5r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Приложить"/>
+                                <connections>
+                                    <action selector="attachButtonAction:" destination="Rdg-BY-ltE" eventType="touchUpInside" id="YpF-GL-bO7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы сможете отправить фотографии позже в чате" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVj-7z-AIE">
+                                <rect key="frame" x="125" y="288" width="353" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приложите фотогрфаии, с дополнительными сведениями о работе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4h-FX-a1w">
+                                <rect key="frame" x="39" y="147" width="524" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZt-KX-HqN">
+                                <rect key="frame" x="407" y="235" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7wr-Qq-D9u" firstAttribute="centerY" secondItem="8UM-Hm-L3g" secondAttribute="centerY" constant="-55" id="2fc-zG-rFH"/>
+                            <constraint firstItem="LVj-7z-AIE" firstAttribute="top" secondItem="7wr-Qq-D9u" secondAttribute="bottom" constant="21" id="5eC-tW-zpm"/>
+                            <constraint firstItem="fZt-KX-HqN" firstAttribute="centerY" secondItem="7wr-Qq-D9u" secondAttribute="centerY" id="6We-3Y-GBK"/>
+                            <constraint firstItem="H4h-FX-a1w" firstAttribute="centerX" secondItem="7wr-Qq-D9u" secondAttribute="centerX" id="8qo-Yb-dKQ"/>
+                            <constraint firstItem="H4h-FX-a1w" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8UM-Hm-L3g" secondAttribute="leadingMargin" constant="15" id="Esx-aQ-6fo"/>
+                            <constraint firstItem="LVj-7z-AIE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8UM-Hm-L3g" secondAttribute="leadingMargin" constant="30" id="HHf-Kd-OtX"/>
+                            <constraint firstItem="7wr-Qq-D9u" firstAttribute="centerX" secondItem="8UM-Hm-L3g" secondAttribute="centerX" id="YUj-RB-6Wd"/>
+                            <constraint firstItem="LVj-7z-AIE" firstAttribute="centerX" secondItem="7wr-Qq-D9u" secondAttribute="centerX" id="cxz-Uc-inj"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="LVj-7z-AIE" secondAttribute="trailing" constant="30" id="g5F-41-ReK"/>
+                            <constraint firstItem="fZt-KX-HqN" firstAttribute="leading" secondItem="7wr-Qq-D9u" secondAttribute="trailing" constant="14" id="lrS-qo-CLQ"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="H4h-FX-a1w" secondAttribute="trailing" constant="15" id="uaf-Sf-7ft"/>
+                            <constraint firstItem="7wr-Qq-D9u" firstAttribute="top" secondItem="H4h-FX-a1w" secondAttribute="bottom" constant="30" id="us5-Dc-RPn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ami-xV-dn0">
+                        <barButtonItem key="rightBarButtonItem" title="Продолжить" id="X83-0l-eng">
+                            <connections>
+                                <action selector="continueButtonAction:" destination="Rdg-BY-ltE" id="CUW-2Q-qPR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="attachButton" destination="7wr-Qq-D9u" id="Ehc-ye-4dM"/>
+                        <outlet property="imagesCountLabel" destination="fZt-KX-HqN" id="YEc-w7-fUG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBJ-h7-rJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2450" y="347"/>
         </scene>
     </scenes>
 </document>

@@ -210,7 +210,7 @@ class ServerManager {
     return nil
   }
   
-  func createNewHelpRequest(helpRequest: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func createNewHelpRequest(helpRequest: HelpRequest, complition: ((helpRequest: HelpRequest?, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     let order = helpRequest.convertToDict()
     let parameters: [String: AnyObject] = ["order": order]
@@ -231,21 +231,21 @@ class ServerManager {
               try realm.write { () -> Void in
                 realm.add(helpRequest)
               }
-              complition?(success: true, error: nil)
+              complition?(helpRequest: helpRequest, error: nil)
             } catch let error {
-              complition?(success: false, error: error)
+              complition?(helpRequest: nil, error: error)
             }
           } else {
-            complition?(success: false, error: ServerError.InvalidData)
+            complition?(helpRequest: nil, error: ServerError.InvalidData)
           }
         case .Failure(let error):
-          complition?(success: false, error: error)
+          complition?(helpRequest: nil, error: error)
         }
       }
       
       return request
     } catch let error {
-      complition?(success: false, error: error)
+      complition?(helpRequest: nil, error: error)
     }
     
     return nil

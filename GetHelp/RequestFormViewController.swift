@@ -28,6 +28,15 @@ class RequestFormViewController: FormViewController {
       request.cancel()
     }
   }
+  
+  //MARK: - Navigation 
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let destination = segue.destinationViewController as? AttachPhotosViewController,
+        helpRequest = sender as? HelpRequest where segue.identifier == "attachPhotos" {
+      destination.helpRequest = helpRequest
+    }
+  }
 
   //MARK: - Form
 
@@ -94,13 +103,6 @@ class RequestFormViewController: FormViewController {
     <<< TextAreaRow("descriptionRow") {
       $0.placeholder = "Что это за работа?"
     }
-
-    //MARK: - Section 5 (Add content)
-
-    //TODO: Multiple photo selection. Alert with options. Create custome cell.
-    form +++= ImageRow("photoRow") { row in
-      row.title = "Приложить фотографии"
-    }
   }
 
   func rowsSetup() {
@@ -115,6 +117,7 @@ class RequestFormViewController: FormViewController {
   }
 
   @IBAction func submitButtonAction(sender: AnyObject) {
+    
     if let request = createdRequest {
       request.cancel()
     }
@@ -189,9 +192,9 @@ class RequestFormViewController: FormViewController {
       }
     }
     
-    createdRequest = ServerManager.sharedInstance.createNewHelpRequest(helpRequest) { [weak self] (success, error) -> Void in
-      if success {
-        self?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    createdRequest = ServerManager.sharedInstance.createNewHelpRequest(helpRequest) { [weak self] (helpRequest, error) -> Void in
+      if let helpRequest = helpRequest {
+        self?.performSegueWithIdentifier("attachPhotos", sender: helpRequest)
       } else {
         self?.presentAlertWithMessage("Что-то не так! Попробуйте ещё раз позже")
       }
