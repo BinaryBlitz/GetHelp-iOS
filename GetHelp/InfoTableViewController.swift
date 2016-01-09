@@ -94,7 +94,7 @@ class InfoTableViewController: UITableViewController {
       let mailViewController = MFMailComposeViewController()
       mailViewController.setSubject("Ошибка")
       mailViewController.navigationBar.tintColor = UIColor.whiteColor()
-      mailViewController.setToRecipients(["danshevlyuk@icloud.com"])
+      mailViewController.setToRecipients(["support@getthelp.ru"])
       mailViewController.mailComposeDelegate = self
       presentViewController(mailViewController, animated: true, completion: nil)
     default:
