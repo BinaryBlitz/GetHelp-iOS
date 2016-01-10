@@ -13,17 +13,20 @@ struct InfoLink {
   let name: String
   let urlString: String
   var url: NSURL? {
-    return NSURL(string: urlString)
+    guard let encodedURLString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) else {
+      return nil
+    }
+    
+    return NSURL(string: encodedURLString)
   }
 }
 
 class InfoTableViewController: UITableViewController {
 
   let infoData = [
-    InfoLink(name: "Публичная оферта #1", urlString: "http://getthelp.ru/docs/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0%201.docx"),
-    InfoLink(name: "Публичная оферта #2", urlString: "http://getthelp.ru/docs/%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0%202.docx"),
-    InfoLink(name: "Пользовательское соглашение", urlString: "https://google.com"),
-    InfoLink(name: "Как это работает?", urlString: "https://google.com"),
+    InfoLink(name: "Пользовательское соглашение", urlString: "http://getthelp.ru/docs/Пользовательское соглашение.docx"),
+    InfoLink(name: "Политика конфиденциальности", urlString: "http://getthelp.ru/docs/Политика конфиденциальности.docx"),
+    InfoLink(name: "Как это работает?", urlString: "http://getthelp.ru/docs/FAQ.docx")
   ]
   
   override func viewDidLoad() {
@@ -38,11 +41,14 @@ class InfoTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == 0 {
+    switch section {
+    case 0:
       return infoData.count
+    case 1:
+      return 1
+    default:
+      return 0
     }
-    
-    return 1
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -89,7 +95,7 @@ class InfoTableViewController: UITableViewController {
         return
       }
       
-      self.presentWebViewControllerWithURL(url)
+      presentWebViewControllerWithURL(url)
     case 1:
       let mailViewController = MFMailComposeViewController()
       mailViewController.setSubject("Ошибка")

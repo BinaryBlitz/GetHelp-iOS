@@ -25,7 +25,11 @@ class GreetingViewController: UIViewController {
     userAgreement.enabledTextCheckingTypes = NSTextCheckingAllTypes
     userAgreement.delegate = self
     let linkRange = (userAgreement.text! as NSString).rangeOfString("пользовательское соглашение")
-    userAgreement.addLinkToURL(NSURL(string: "http://google.com/"), withRange: linkRange)
+    let urlString = "http://getthelp.ru/docs/Пользовательское соглашение.docx"
+    if let encodedURLString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()),
+          url = NSURL(string: encodedURLString) {
+      userAgreement.addLinkToURL(url, withRange: linkRange)
+    }
   }
   
   @IBAction func signUpButtonAction(sender: AnyObject) {
