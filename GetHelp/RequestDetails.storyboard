@@ -35,15 +35,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="eDo-i0-sNU" secondAttribute="trailing" constant="-20" id="4Rs-EJ-rdI"/>
+                            <constraint firstItem="n5F-k5-Mcy" firstAttribute="leading" secondItem="GEE-ru-RLK" secondAttribute="leadingMargin" constant="-20" id="8Cx-cO-Exd">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
                             <constraint firstItem="hmy-4Z-e6d" firstAttribute="top" secondItem="eDo-i0-sNU" secondAttribute="bottom" id="Cz0-Bj-U9D"/>
                             <constraint firstItem="n5F-k5-Mcy" firstAttribute="top" secondItem="sdm-cY-Bm8" secondAttribute="bottom" id="Nfr-uy-737"/>
                             <constraint firstItem="hmy-4Z-e6d" firstAttribute="top" secondItem="n5F-k5-Mcy" secondAttribute="bottom" id="cFa-8g-6oD"/>
                             <constraint firstItem="eDo-i0-sNU" firstAttribute="leading" secondItem="GEE-ru-RLK" secondAttribute="leadingMargin" constant="-20" id="hsg-mb-h0n"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="n5F-k5-Mcy" secondAttribute="trailing" constant="-20" id="txO-Ak-AcL"/>
-                            <constraint firstItem="n5F-k5-Mcy" firstAttribute="leading" secondItem="GEE-ru-RLK" secondAttribute="leadingMargin" constant="-20" id="whg-eK-RxL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n5F-k5-Mcy" secondAttribute="trailing" constant="-20" id="qjn-Vk-MNm">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
                             <constraint firstItem="eDo-i0-sNU" firstAttribute="top" secondItem="sdm-cY-Bm8" secondAttribute="bottom" id="wut-QZ-UJ5"/>
                         </constraints>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="8Cx-cO-Exd"/>
+                                <include reference="qjn-Vk-MNm"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="eVm-xj-Zh7">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gh8-aw-Myo">
@@ -72,7 +83,7 @@
         <!--Conversation View Controller-->
         <scene sceneID="3oI-5W-nvm">
             <objects>
-                <viewController id="UyY-Pl-ncA" customClass="ConversationViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="UyY-Pl-ncA" customClass="ConversationViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RWG-dt-zV5"/>
                         <viewControllerLayoutGuide type="bottom" id="agY-vm-bHJ"/>
@@ -82,21 +93,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-ct-rBq">
-                                <rect key="frame" x="15" y="501" width="570" height="35"/>
+                                <rect key="frame" x="0.0" y="501" width="600" height="35"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaL-KR-iep" customClass="CCGrowingTextView">
-                                        <rect key="frame" x="49" y="10" width="456" height="15"/>
+                                        <rect key="frame" x="49" y="10" width="486" height="15"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" placeholder="YES" id="Kmo-qs-q1H"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="49" y="10" width="286" height="15"/>
+                                        </variation>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRI-9G-cg4">
-                                        <rect key="frame" x="515" y="-8" width="46" height="33"/>
+                                        <rect key="frame" x="545" y="-8" width="46" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Отпр."/>
+                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="345" y="-8" width="46" height="33"/>
+                                        </variation>
                                         <connections>
                                             <action selector="sendButtonAction:" destination="UyY-Pl-ncA" eventType="touchUpInside" id="FJH-8a-DDw"/>
                                         </connections>
@@ -123,21 +140,25 @@
                                     <constraint firstItem="QaL-KR-iep" firstAttribute="top" secondItem="OIr-ct-rBq" secondAttribute="top" constant="10" id="a60-bD-ujo"/>
                                     <constraint firstItem="wOd-7A-ZLg" firstAttribute="leading" secondItem="OIr-ct-rBq" secondAttribute="leading" constant="9" id="ibH-oe-HRI"/>
                                 </constraints>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="501" width="400" height="35"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-u7-Aiv">
-                                <rect key="frame" x="15" y="0.0" width="570" height="501"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="501"/>
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hfz-u7-Aiv" firstAttribute="leading" secondItem="uDj-QZ-W7j" secondAttribute="leadingMargin" constant="-5" id="36K-tu-5JI"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="OIr-ct-rBq" secondAttribute="leading" constant="5" id="3aG-PV-Ana"/>
+                            <constraint firstItem="OIr-ct-rBq" firstAttribute="trailing" secondItem="hfz-u7-Aiv" secondAttribute="trailing" id="1e5-8F-Vtd"/>
+                            <constraint firstAttribute="leading" secondItem="hfz-u7-Aiv" secondAttribute="leadingMargin" constant="-8" id="36K-tu-5JI"/>
                             <constraint firstItem="hfz-u7-Aiv" firstAttribute="top" secondItem="RWG-dt-zV5" secondAttribute="bottom" id="DKS-nD-fEo"/>
                             <constraint firstItem="OIr-ct-rBq" firstAttribute="top" secondItem="hfz-u7-Aiv" secondAttribute="bottom" id="I5R-Zw-GBF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hfz-u7-Aiv" secondAttribute="trailing" constant="-5" id="MhN-Ux-zSS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OIr-ct-rBq" secondAttribute="trailing" constant="-5" id="XgR-FH-ZL5"/>
+                            <constraint firstAttribute="trailing" secondItem="hfz-u7-Aiv" secondAttribute="trailingMargin" constant="8" id="MhN-Ux-zSS"/>
+                            <constraint firstItem="OIr-ct-rBq" firstAttribute="leading" secondItem="hfz-u7-Aiv" secondAttribute="leading" id="amp-ZC-fLV"/>
                             <constraint firstItem="agY-vm-bHJ" firstAttribute="top" secondItem="OIr-ct-rBq" secondAttribute="bottom" id="stE-FK-X96"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
                         <outlet property="attachButton" destination="wOd-7A-ZLg" id="15k-qe-XKe"/>
                         <outlet property="chatContentView" destination="hfz-u7-Aiv" id="0BE-Zc-bkP"/>
@@ -153,7 +174,7 @@
         <!--Request Info Table View Controller-->
         <scene sceneID="fPs-nA-BFR">
             <objects>
-                <tableViewController id="a1g-PV-82P" customClass="RequestInfoTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="a1g-PV-82P" customClass="RequestInfoTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="XYX-TY-VMU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
