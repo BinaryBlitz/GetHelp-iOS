@@ -24,8 +24,6 @@
 		371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */; };
 		3726C7501C30954200487828 /* RequestTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726C74E1C30954200487828 /* RequestTypeTableViewCell.swift */; };
 		3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3726C74F1C30954200487828 /* RequestTypeTableViewCell.xib */; };
-		3726C7541C30970400487828 /* ExpressHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3726C7521C30970400487828 /* ExpressHelp.png */; };
-		3726C7551C30970400487828 /* NormalHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3726C7531C30970400487828 /* NormalHelp.png */; };
 		3729DA7A1C0F0FFB007DB48C /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */; };
 		372E6A241C3EF7BD00586949 /* UIViewController+PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E6A231C3EF7BD00586949 /* UIViewController+PresentAlert.swift */; };
 		376C4D9B1C11B66A00970316 /* RequestInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */; };
@@ -39,7 +37,6 @@
 		37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */; };
 		37ADE3441C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */; };
 		37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */; };
-		37AE79681C2AD14D00AC62DD /* signup_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37AE79671C2AD14D00AC62DD /* signup_bg.jpg */; };
 		37B38ACF1C3C7C64002110CA /* UIView+AddConent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B38ACE1C3C7C64002110CA /* UIView+AddConent.swift */; };
 		37B6AF151C35613400FA6BD4 /* ServerModelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6AF141C35613400FA6BD4 /* ServerModelPresentable.swift */; };
 		37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */; };
@@ -119,8 +116,6 @@
 		371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletInfoTableViewCell.xib; sourceTree = "<group>"; };
 		3726C74E1C30954200487828 /* RequestTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTypeTableViewCell.swift; sourceTree = "<group>"; };
 		3726C74F1C30954200487828 /* RequestTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestTypeTableViewCell.xib; sourceTree = "<group>"; };
-		3726C7521C30970400487828 /* ExpressHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExpressHelp.png; sourceTree = "<group>"; };
-		3726C7531C30970400487828 /* NormalHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NormalHelp.png; sourceTree = "<group>"; };
 		3729DA791C0F0FFB007DB48C /* WalletTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
 		372E6A231C3EF7BD00586949 /* UIViewController+PresentAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PresentAlert.swift"; sourceTree = "<group>"; };
 		376C4D9A1C11B66A00970316 /* RequestInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestInfoTableViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +129,6 @@
 		37ADE33D1C0608CD00CC3CE2 /* HelpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
 		37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewRequestTableViewController.swift; sourceTree = "<group>"; };
 		37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateNewRequest.storyboard; sourceTree = "<group>"; };
-		37AE79671C2AD14D00AC62DD /* signup_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = signup_bg.jpg; sourceTree = "<group>"; };
 		37B38ACE1C3C7C64002110CA /* UIView+AddConent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddConent.swift"; sourceTree = "<group>"; };
 		37B6AF141C35613400FA6BD4 /* ServerModelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModelPresentable.swift; sourceTree = "<group>"; };
 		37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+GetHelp.swift"; sourceTree = "<group>"; };
@@ -515,9 +509,6 @@
 			isa = PBXGroup;
 			children = (
 				37D134471C31F97400D16C69 /* logo.png */,
-				3726C7521C30970400487828 /* ExpressHelp.png */,
-				3726C7531C30970400487828 /* NormalHelp.png */,
-				37AE79671C2AD14D00AC62DD /* signup_bg.jpg */,
 				37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */,
 				37E6B3191C1CC6F500DA19A8 /* Constants.swift */,
 				371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */,
@@ -674,18 +665,15 @@
 				37EB111D1C2D656C00879A05 /* BillTableViewCell.xib in Resources */,
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
 				37D134481C31F97400D16C69 /* logo.png in Resources */,
-				3726C7551C30970400487828 /* NormalHelp.png in Resources */,
 				370694921C2EBF0100C5A689 /* Login.storyboard in Resources */,
 				37C952C81C39BF990006B721 /* UserImageMessageTableViewCell.xib in Resources */,
 				3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
-				3726C7541C30970400487828 /* ExpressHelp.png in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */,
 				37C952CC1C3AEAA10006B721 /* OperatorImageMessageTableViewCell.xib in Resources */,
-				37AE79681C2AD14D00AC62DD /* signup_bg.jpg in Resources */,
 				370130BB1C1870BE0099AD1E /* RequestStatusTableViewCell.xib in Resources */,
 				378639EF1C1497DB00FF7CEE /* OperatorMessageTableViewCell.xib in Resources */,
 				37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */,
