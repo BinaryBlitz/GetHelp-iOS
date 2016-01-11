@@ -102,6 +102,8 @@ class ConversationViewController: UIViewController {
     tableView.dataSource = self
     tableView.delegate = self
     UIView.addContent(tableView, toView: chatContentView)
+    tableView.showsVerticalScrollIndicator = false
+    tableView.showsHorizontalScrollIndicator = false
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .None
     let userCellNib = UINib(nibName: "UserMessageTableViewCell", bundle: nil)
