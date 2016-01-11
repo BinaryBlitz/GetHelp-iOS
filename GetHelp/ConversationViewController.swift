@@ -38,6 +38,7 @@ class ConversationViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
+    timer?.fire()
     refresh(self)
   }
 
@@ -81,6 +82,10 @@ class ConversationViewController: UIViewController {
       userInfo: nil,
       repeats: true
     )
+  }
+  
+  override func viewDidDisappear(animated: Bool) {
+    timer?.invalidate()
   }
   
   deinit {

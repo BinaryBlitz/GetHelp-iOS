@@ -22,6 +22,7 @@ class HelpRequest: Object {
   dynamic var startDate: NSDate?
   dynamic var createdAt: NSDate?
   dynamic var email = ""
+  dynamic var viewed: Bool = false
   dynamic var activityType = ""
   dynamic var _status = HelpRequestStatus.InReview.rawValue
   dynamic var _type = HelpType.Normal.rawValue
@@ -121,6 +122,10 @@ extension HelpRequest: ServerModelPresentable {
     
     if let sum = json["sum"].int {
       helpRequest.sum = sum
+    }
+    
+    if let viewed = json["viewed?"].bool {
+      helpRequest.viewed = viewed
     }
     
     return helpRequest

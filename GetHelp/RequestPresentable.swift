@@ -13,4 +13,5 @@ protocol RequestPresentale {
   var schoolInfo: String { get }
   var email: String { get }
   var price: String  { get }
+  var isViewed: Bool { get }
 }

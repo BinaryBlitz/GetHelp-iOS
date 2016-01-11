@@ -15,6 +15,8 @@ protocol HelpRequestCellDelegate: class {
 class HelpRequestTableViewCell: UITableViewCell {
 
   @IBOutlet weak var cardView: UIView!
+  @IBOutlet weak var updateMarkerImageView: UIImageView!
+  @IBOutlet weak var updateMarkerWidthConstraint: NSLayoutConstraint!
   
   @IBOutlet weak var orderNumberLabel: UILabel!
   @IBOutlet weak var statusLabel: UILabel!
@@ -32,6 +34,8 @@ class HelpRequestTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
+    updateMarkerImageView.image = UIImage(named: "Circle")!.imageWithRenderingMode(.AlwaysTemplate)
+    updateMarkerImageView.tintColor = UIColor(r: 46, g: 170, b: 60)
     cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
     cardView.layer.borderWidth = 1.4
     cardView.layer.cornerRadius = 10
@@ -45,20 +49,19 @@ class HelpRequestTableViewCell: UITableViewCell {
     statusLabel.textColor = presenter.indicatorColor
     typeLabel.text = presenter.type
     nameLabel.text = presenter.name
-    
     priceLabel.text = presenter.price
     
-    if presenter.isPayable() {
-      setPayementSectionHidden(false)
-    } else {
-      setPayementSectionHidden(true)
-    }
+    setPayementSectionHidden( !presenter.isPayable())
+    setUpdateMarkerHidden(presenter.isViewed)
+  }
+  
+  private func setUpdateMarkerHidden(hidden: Bool) {
+    updateMarkerImageView.hidden = hidden
+    updateMarkerWidthConstraint.constant = hidden ? 0 : 15
   }
   
   private func setPayementSectionHidden(hidden: Bool) {
-    if hidden {
-      priceLabel.text = nil
-    }
+    if hidden { priceLabel.text = nil }
     priceLabel.hidden = hidden
     payButton.hidden = hidden
   }

@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="426" height="202"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="426" height="202"/>
+                <rect key="frame" x="0.0" y="0.0" width="426" height="201.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slA-jX-q1f">
@@ -26,8 +26,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидает подтверждения" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-Wu-oAs">
-                                <rect key="frame" x="188" y="15" width="204" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидает подтверждения" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-Wu-oAs">
+                                <rect key="frame" x="169" y="15" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -76,6 +76,13 @@
                                     <action selector="payButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7Xv-eU-elP"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" translatesAutoresizingMaskIntoConstraints="NO" id="Ctj-h0-VGR">
+                                <rect key="frame" x="378" y="19" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="14" id="44H-I8-cAf"/>
+                                    <constraint firstAttribute="width" secondItem="Ctj-h0-VGR" secondAttribute="height" multiplier="1:1" id="Cx0-8d-BBG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -88,27 +95,23 @@
                             <constraint firstItem="emn-JB-SNV" firstAttribute="leading" secondItem="4rY-UC-ZdG" secondAttribute="leading" id="F4W-Xv-QVH"/>
                             <constraint firstItem="Kwb-DB-2I9" firstAttribute="trailing" secondItem="lPP-Z1-eOn" secondAttribute="trailing" id="Fsb-Al-uTb"/>
                             <constraint firstAttribute="trailing" secondItem="4rY-UC-ZdG" secondAttribute="trailing" id="HDw-Nz-4bS"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="trailing" constant="20" id="ILH-CB-loH"/>
                             <constraint firstItem="Kwb-DB-2I9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="trailing" constant="5" id="NeW-pz-4kx"/>
                             <constraint firstItem="hCc-xd-dhJ" firstAttribute="top" secondItem="09B-O0-35D" secondAttribute="bottom" constant="15" id="OKE-Tw-cOj"/>
                             <constraint firstItem="emn-JB-SNV" firstAttribute="top" secondItem="4rY-UC-ZdG" secondAttribute="bottom" constant="10" id="T6P-E5-ig7"/>
                             <constraint firstItem="a80-CB-Bgf" firstAttribute="top" secondItem="slA-jX-q1f" secondAttribute="top" constant="15" id="Ugr-71-KBY"/>
+                            <constraint firstAttribute="trailing" secondItem="Ctj-h0-VGR" secondAttribute="trailing" constant="12" id="ZLh-AW-gsq"/>
+                            <constraint firstItem="Ctj-h0-VGR" firstAttribute="leading" secondItem="dkH-Wu-oAs" secondAttribute="trailing" constant="5" id="aWA-WQ-ynd"/>
+                            <constraint firstAttribute="trailing" secondItem="lPP-Z1-eOn" secondAttribute="trailing" constant="12" id="cCB-NU-A40"/>
                             <constraint firstItem="Kwb-DB-2I9" firstAttribute="top" secondItem="lPP-Z1-eOn" secondAttribute="bottom" constant="22" id="cQS-vE-zuf"/>
+                            <constraint firstItem="Ctj-h0-VGR" firstAttribute="centerY" secondItem="dkH-Wu-oAs" secondAttribute="centerY" id="eDS-6X-ssZ"/>
                             <constraint firstItem="lPP-Z1-eOn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="emn-JB-SNV" secondAttribute="trailing" constant="5" id="eWy-aQ-IVD"/>
                             <constraint firstItem="lPP-Z1-eOn" firstAttribute="top" secondItem="4rY-UC-ZdG" secondAttribute="bottom" constant="10" id="gjy-aJ-DaH"/>
-                            <constraint firstAttribute="trailing" secondItem="dkH-Wu-oAs" secondAttribute="trailing" constant="12" id="kjc-FC-lNG"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hCc-xd-dhJ" secondAttribute="bottom" constant="20" id="m88-14-goj"/>
                             <constraint firstItem="Kwb-DB-2I9" firstAttribute="width" secondItem="lPP-Z1-eOn" secondAttribute="width" multiplier="20:13" id="myP-Qg-vNK"/>
                             <constraint firstItem="09B-O0-35D" firstAttribute="leading" secondItem="emn-JB-SNV" secondAttribute="leading" id="q5G-HZ-g6V"/>
-                            <constraint firstItem="lPP-Z1-eOn" firstAttribute="trailing" secondItem="dkH-Wu-oAs" secondAttribute="trailing" id="qpf-lR-SPp"/>
                             <constraint firstItem="Kwb-DB-2I9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="09B-O0-35D" secondAttribute="trailing" constant="5" id="sUb-2p-dKx"/>
                             <constraint firstItem="4rY-UC-ZdG" firstAttribute="leading" secondItem="slA-jX-q1f" secondAttribute="leading" constant="12" id="xQ0-aP-btM"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ILH-CB-loH"/>
-                            </mask>
-                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,8 +132,13 @@
                 <outlet property="separatorView" destination="4rY-UC-ZdG" id="yTU-jA-HAr"/>
                 <outlet property="statusLabel" destination="dkH-Wu-oAs" id="3kn-9f-ogZ"/>
                 <outlet property="typeLabel" destination="09B-O0-35D" id="MNF-fv-oRk"/>
+                <outlet property="updateMarkerImageView" destination="Ctj-h0-VGR" id="stP-NF-XY7"/>
+                <outlet property="updateMarkerWidthConstraint" destination="44H-I8-cAf" id="Wfm-ZL-Zr0"/>
             </connections>
             <point key="canvasLocation" x="406" y="327"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Circle" width="30" height="30"/>
+    </resources>
 </document>

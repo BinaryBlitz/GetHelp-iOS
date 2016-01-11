@@ -57,6 +57,10 @@ class HelpRequestPresenter: HelpRequestPresentable {
     return helpRequest.status == .WaitingForPayment
   }
   
+  var isViewed: Bool {
+    return helpRequest.viewed
+  }
+  
   var price: String {
     return "\(helpRequest.sum) \(rubleSign)"
   }
