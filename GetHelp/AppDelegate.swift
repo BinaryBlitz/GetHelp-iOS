@@ -27,18 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     checkArguments()
     
-    if !ServerManager.sharedInstance.authenticated {
-      let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
-      let loginViewController = loginStoryboard.instantiateInitialViewController()!
-      let navigation = UINavigationController(rootViewController: loginViewController)
-      navigation.navigationBarHidden = true
-      window?.rootViewController = navigation
-    } else {
-      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-      let homeViewController = mainStoryboard.instantiateInitialViewController()!
-      window?.rootViewController = homeViewController
-    }
-    
     return true
   }
   

@@ -421,7 +421,7 @@ class ServerManager {
     }
     
     do {
-      let parameters: [String: AnyObject] = ["user": ["device_token": deviceToken ?? ""]]
+      let parameters: [String: AnyObject] = ["user": ["device_token": deviceToken ?? NSNull()]]
       let request = try patch("/user", params: parameters)
       
       request.validate().response { (_, response, data, error) -> Void in

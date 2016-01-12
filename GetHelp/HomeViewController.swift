@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     navigationController?.navigationBar.barStyle = .BlackTranslucent
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: "")
 
@@ -32,15 +33,24 @@ class HomeViewController: UIViewController {
     configureCreateButton()
     configureTableView()
     fetchHelpRequests()
-
+    
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:",
             name: HelpRequestUpdatedNotification, object: nil)
+    
   }
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     refresh(self)
     tableView.reloadData()
+    
+    if !ServerManager.sharedInstance.authenticated {
+      let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+      let loginViewController = loginStoryboard.instantiateInitialViewController()!
+      let navigation = UINavigationController(rootViewController: loginViewController)
+      navigation.navigationBarHidden = true
+      presentViewController(navigation, animated: true, completion: nil)
+    }
   }
 
   deinit {

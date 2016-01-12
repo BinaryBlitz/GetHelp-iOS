@@ -37,14 +37,14 @@ class InfoTableViewController: UITableViewController {
   }
   
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 2
+    return 3
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
       return infoData.count
-    case 1:
+    case 1, 2:
       return 1
     default:
       return 0
@@ -68,6 +68,7 @@ class InfoTableViewController: UITableViewController {
       
       if let textLabel = cell.viewWithTag(1) as? UILabel {
         textLabel.text = "Написать разработчикам"
+        textLabel.textColor = UIColor.blackColor()
       }
       
       return cell
@@ -78,6 +79,7 @@ class InfoTableViewController: UITableViewController {
       
       if let textLabel = cell.viewWithTag(1) as? UILabel {
         textLabel.text = "Выйти"
+        textLabel.textColor = UIColor.redColor()
       }
       
       return cell
@@ -98,14 +100,56 @@ class InfoTableViewController: UITableViewController {
       presentWebViewControllerWithURL(url)
     case 1:
       let mailViewController = MFMailComposeViewController()
-      mailViewController.setSubject("Ошибка")
+      mailViewController.setSubject("Getthelp")
       mailViewController.navigationBar.tintColor = UIColor.whiteColor()
       mailViewController.setToRecipients(["support@getthelp.ru"])
       mailViewController.mailComposeDelegate = self
       presentViewController(mailViewController, animated: true, completion: nil)
+    case 2:
+      let alert = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .Alert)
+      
+      alert.addAction(UIAlertAction(title: "Отмена", style:.Default, handler: nil))
+      let logoutAction = UIAlertAction(title: "Выйти", style: UIAlertActionStyle.Destructive, handler: logoutActionHandler)
+      alert.addAction(logoutAction)
+      
+      presentViewController(alert, animated: true, completion: nil)
     default:
       break
     }
+  }
+  
+  private func logoutActionHandler(alertAction: UIAlertAction?) {
+    ServerManager.sharedInstance.deviceToken = ""
+    UserDefaultsHelper.save(false, forKey: UserDefaultsKey.DeviceTokenUploadStatus)
+    
+    let activityIndicator = createActivityIndicator()
+    view.addSubview(activityIndicator)
+    view.bringSubviewToFront(activityIndicator)
+    
+    activityIndicator.startAnimating()
+    
+    ServerManager.sharedInstance.updateDeviceTokenIfNeeded { (success, error) -> Void in
+      activityIndicator.stopAnimating()
+      if success {
+        ServerManager.sharedInstance.apiToken = nil
+        UserDefaultsHelper.save(nil, forKey: .ApiToken)
+        UserDefaultsHelper.save(false, forKey: UserDefaultsKey.DeviceTokenUploadStatus)
+        self.tabBarController?.selectedIndex = 0
+      } else {
+        self.presentAlertWithTitle("Ошибка", andMessage: "Проверьте интернет соединение и попробуйте позже")
+      }
+    }
+  }
+  
+  private func createActivityIndicator() -> UIActivityIndicatorView {
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    indicator.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+    indicator.center = view.center
+    indicator.layer.cornerRadius = 3
+    indicator.backgroundColor = UIColor.orangeSecondaryColor()
+    indicator.center = view.center
+    
+    return indicator
   }
 }
 

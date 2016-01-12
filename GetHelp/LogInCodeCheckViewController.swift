@@ -65,10 +65,7 @@ class LogInCodeCheckViewController: UIViewController {
         UserDefaultsHelper.save(token, forKey: .ApiToken)
         ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
         
-        let mainStroryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let initialController = mainStroryboard.instantiateInitialViewController() {
-          self.presentViewController(initialController, animated: true, completion: nil)
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
       } else {
         self.codeTextField.shakeWithDuration(0.07)
         self.codeTextField.text = ""
