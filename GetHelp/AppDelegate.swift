@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     checkArguments()
     
+    application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+    
     return true
   }
   
@@ -36,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     for argument in Process.arguments {
       switch argument {
       case "--dont-login":
-        ServerManager.sharedInstance.apiToken = "4YdZnMy9TtnuWQotqhKhS3Dx"
+        ServerManager.sharedInstance.apiToken = "BXaNe1rF3tYowNFtLDFk8jqh"
       case "--test-data":
         dropDatabaseData()
         setTestDbData()
@@ -186,6 +188,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // catch {
     //    developer.cryALot()
     // }
+  }
+  
+  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    ServerManager.sharedInstance.fetchHelpRequests { success, error in
+      do {
+        let realm = try Realm()
+        let results = realm.objects(HelpRequest).filter("viewed == false")
+        UIApplication.sharedApplication().applicationIconBadgeNumber = results.count
+      } catch {
+        return
+      }
+      
+      if let _ = error {
+        completionHandler(UIBackgroundFetchResult.Failed)
+      } else {
+        completionHandler(UIBackgroundFetchResult.NewData)
+      }
+    }
+  }
+  
+  func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    ServerManager.sharedInstance.fetchHelpRequests { success, error in
+      do {
+        let realm = try Realm()
+        let results = realm.objects(HelpRequest).filter("viewed == false")
+        UIApplication.sharedApplication().applicationIconBadgeNumber = results.count
+      } catch {
+        return
+      }
+      
+      if let _ = error {
+        completionHandler(UIBackgroundFetchResult.Failed)
+      } else {
+        completionHandler(UIBackgroundFetchResult.NewData)
+      }
+    }
   }
 }
 

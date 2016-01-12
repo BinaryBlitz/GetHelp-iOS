@@ -96,6 +96,14 @@ class HomeViewController: UIViewController {
         print("Error in ferching request")
       }
       
+      do {
+        let realm = try Realm()
+        let results = realm.objects(HelpRequest).filter("viewed == false")
+        UIApplication.sharedApplication().applicationIconBadgeNumber = results.count
+      } catch {
+        return
+      }
+      
       complition()
     }
   }
