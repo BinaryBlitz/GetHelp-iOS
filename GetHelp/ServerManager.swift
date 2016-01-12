@@ -78,7 +78,7 @@ class ServerManager {
 
   //MARK: - Login
   
-  func createVerificationTokenFor(phoneNumber: String, complition: ((token: String?, error: ErrorType?) -> Void)? = nil) -> Request {
+  func createVerificationTokenFor(phoneNumber: String, completion: ((token: String?, error: ErrorType?) -> Void)? = nil) -> Request {
     let parameters = ["phone_number" : phoneNumber]
     let req = manager.request(.POST, baseURL + "/verification_tokens", parameters: parameters, encoding: .JSON)
     
@@ -86,25 +86,25 @@ class ServerManager {
     req.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       guard let resultValue = response.result.value else {
-        complition?(token: nil, error: ServerError.InvalidData)
+        completion?(token: nil, error: ServerError.InvalidData)
         return
       }
       
       let json = JSON(resultValue)
       
       guard let token = json["token"].string else {
-        complition?(token: nil, error: ServerError.InvalidData)
+        completion?(token: nil, error: ServerError.InvalidData)
         return
       }
       
-      complition?(token: token, error: nil)
+      completion?(token: token, error: nil)
     }
     
     return req
   }
   
   func verifyPhoneNumberWith(code: String, forPhoneNumber phoneNumber: String,
-      andToken token: String, complition: ((error: ErrorType?) -> Void)? = nil) -> Request {
+      andToken token: String, completion: ((error: ErrorType?) -> Void)? = nil) -> Request {
         
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters = ["phone_number": phoneNumber, "code": code]
@@ -120,22 +120,22 @@ class ServerManager {
         // if api_token nil then create new user
         if let apiToken = json["api_token"].string {
           self.apiToken = apiToken
-          complition?(error: nil)
+          completion?(error: nil)
         } else {
           self.createNewUserWith(phoneNumber, andVerificationToken: token) { error in
-            complition?(error: error)
+            completion?(error: error)
           }
         }
       case .Failure(let error):
         print("error: \(error)")
-        complition?(error: error)
+        completion?(error: error)
       }
     }
     
     return req
   }
   
-  func createNewUserWith(phoneNumber: String, andVerificationToken token: String, complition: ((error: ErrorType?) -> Void)?) -> Request {
+  func createNewUserWith(phoneNumber: String, andVerificationToken token: String, completion: ((error: ErrorType?) -> Void)?) -> Request {
     
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters: [String: AnyObject] = [
@@ -156,12 +156,12 @@ class ServerManager {
         
         if let apiToken = json["api_token"].string {
           self.apiToken = apiToken
-          complition?(error: nil)
+          completion?(error: nil)
         } else {
-          complition?(error: ServerError.InvalidData)
+          completion?(error: ServerError.InvalidData)
         }
       case .Failure(let error):
-        complition?(error: error)
+        completion?(error: error)
       }
     }
     
@@ -170,7 +170,7 @@ class ServerManager {
   
   //MARK: - HelpRequests
   
-  func fetchHelpRequests(complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func fetchHelpRequests(completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -196,21 +196,21 @@ class ServerManager {
             print("Error: \(error)")
           }
           
-          complition?(success: true, error: nil)
+          completion?(success: true, error: nil)
         case .Failure(let error):
-          complition?(success: false, error: error)
+          completion?(success: false, error: error)
         }
       }
       
       return request
     } catch let error {
-      complition?(success: false, error: error)
+      completion?(success: false, error: error)
     }
     
     return nil
   }
   
-  func createNewHelpRequest(helpRequest: HelpRequest, complition: ((helpRequest: HelpRequest?, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func createNewHelpRequest(helpRequest: HelpRequest, completion: ((helpRequest: HelpRequest?, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     let order = helpRequest.convertToDict()
     let parameters: [String: AnyObject] = ["order": order]
@@ -231,21 +231,21 @@ class ServerManager {
               try realm.write { () -> Void in
                 realm.add(helpRequest)
               }
-              complition?(helpRequest: helpRequest, error: nil)
+              completion?(helpRequest: helpRequest, error: nil)
             } catch let error {
-              complition?(helpRequest: nil, error: error)
+              completion?(helpRequest: nil, error: error)
             }
           } else {
-            complition?(helpRequest: nil, error: ServerError.InvalidData)
+            completion?(helpRequest: nil, error: ServerError.InvalidData)
           }
         case .Failure(let error):
-          complition?(helpRequest: nil, error: error)
+          completion?(helpRequest: nil, error: error)
         }
       }
       
       return request
     } catch let error {
-      complition?(helpRequest: nil, error: error)
+      completion?(helpRequest: nil, error: error)
     }
     
     return nil
@@ -253,7 +253,7 @@ class ServerManager {
   
   //MARK: - Messages
   
-  func fetchAllMessagesForOrder(order: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func fetchAllMessagesForOrder(order: HelpRequest, completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -277,24 +277,24 @@ class ServerManager {
             try realm.write {
               realm.add(messages, update: true)
             }
-            complition?(success: true, error: nil)
+            completion?(success: true, error: nil)
           } catch let error {
-            complition?(success: false, error: error)
+            completion?(success: false, error: error)
           }
         case .Failure(let error):
-          complition?(success: false, error: error)
+          completion?(success: false, error: error)
         }
       }
       
       return request
     } catch let error {
-      complition?(success: false, error: error)
+      completion?(success: false, error: error)
     }
     
     return nil
   }
   
-  func sendMessageWithText(content: String, toOrder order: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func sendMessageWithText(content: String, toOrder order: HelpRequest, completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
       let parameters: [String: AnyObject] = ["message": ["content": content]]
@@ -308,7 +308,7 @@ class ServerManager {
           let json = JSON(resultValue)
           
           guard let message = Message.createFromJSON(json) else {
-            complition?(success: false, error: ServerError.InvalidData)
+            completion?(success: false, error: ServerError.InvalidData)
             return
           }
           
@@ -318,23 +318,23 @@ class ServerManager {
               realm.add(message, update: true)
             }
           
-            complition?(success: true, error: nil)
+            completion?(success: true, error: nil)
           } catch let error {
-            complition?(success: false, error: error)
+            completion?(success: false, error: error)
           }
         case .Failure(let error):
-          complition?(success: false, error: error)
+          completion?(success: false, error: error)
         }
       }
       
       return request
     } catch let error {
-      complition?(success: false, error: error)
+      completion?(success: false, error: error)
     }
     return nil
   }
   
-  func sendMessageWithImage(image: UIImage, toOrder order: HelpRequest, complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func sendMessageWithImage(image: UIImage, toOrder order: HelpRequest, completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
       let imageData = UIImagePNGRepresentation(image)
@@ -349,7 +349,7 @@ class ServerManager {
           let json = JSON(resultValue)
           
           guard let message = Message.createFromJSON(json) else {
-            complition?(success: false, error: ServerError.InvalidData)
+            completion?(success: false, error: ServerError.InvalidData)
             return
           }
           
@@ -359,25 +359,25 @@ class ServerManager {
               realm.add(message, update: true)
             }
             
-            complition?(success: true, error: nil)
+            completion?(success: true, error: nil)
           } catch let error {
-            complition?(success: false, error: error)
+            completion?(success: false, error: error)
           }
         case .Failure(let error):
-          complition?(success: false, error: error)
+          completion?(success: false, error: error)
         }
       }
       
       return request
     } catch let error {
-      complition?(success: false, error: error)
+      completion?(success: false, error: error)
     }
     return nil
   }
   
   //MARK: - Payments 
   
-  func paymentsURLForOrderID(orderID: Int, complition: ((paymentURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func paymentsURLForOrderID(orderID: Int, completion: ((paymentURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
       let request = try post("/orders/\(orderID)/payments")
@@ -386,26 +386,26 @@ class ServerManager {
         case .Success(let resultValue):
           let json = JSON(resultValue)
           guard let paymentURLString = json["url"].string else {
-            complition?(paymentURL: nil, error: ServerError.InvalidData)
+            completion?(paymentURL: nil, error: ServerError.InvalidData)
             return
           }
           
           guard let paymentURL = NSURL(string: paymentURLString) else {
-            complition?(paymentURL: nil, error: ServerError.InvalidData)
+            completion?(paymentURL: nil, error: ServerError.InvalidData)
             return
           }
           
-          complition?(paymentURL: paymentURL, error: nil)
+          completion?(paymentURL: paymentURL, error: nil)
           
         case .Failure(let error):
-          complition?(paymentURL: nil, error: error)
+          completion?(paymentURL: nil, error: error)
         }
       }
       
       return request
     } catch let error {
       print("Error: \(error)")
-      complition?(paymentURL: nil, error: error)
+      completion?(paymentURL: nil, error: error)
     }
     
     return nil
@@ -413,7 +413,7 @@ class ServerManager {
   
   //MARK: - Device token
   
-  func updateDeviceTokenIfNeeded(complition: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func updateDeviceTokenIfNeeded(completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     if let uploadStatus = UserDefaultsHelper.loadObjectForKey(.DeviceTokenUploadStatus) as? Bool
         where uploadStatus == true {
@@ -426,16 +426,16 @@ class ServerManager {
       
       request.validate().response { (_, response, data, error) -> Void in
         if let error = error {
-          complition?(success: false, error: error)
+          completion?(success: false, error: error)
         } else {
           UserDefaultsHelper.save(true, forKey: .DeviceTokenUploadStatus)
-          complition?(success: true, error: nil)
+          completion?(success: true, error: nil)
         }
       }
       
       return request
     } catch let error {
-      complition?(success: false, error: error)
+      completion?(success: false, error: error)
     }
     
     return nil

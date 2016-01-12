@@ -83,13 +83,13 @@ class HomeViewController: UIViewController {
   //MARK: - Refresh
   
   func refresh(sender: AnyObject) {
-    beginRefreshWithComplition {
+    beginRefreshWithCompletion {
       self.tableView.reloadData()
       self.refreshControl.endRefreshing()
     }
   }
   
-  func beginRefreshWithComplition(complition: () -> Void) {
+  func beginRefreshWithCompletion(completion: () -> Void) {
     //TODO: Reresh request
     ServerManager.sharedInstance.fetchHelpRequests { success, error in
       if !success {
@@ -104,7 +104,7 @@ class HomeViewController: UIViewController {
         return
       }
       
-      complition()
+      completion()
     }
   }
 

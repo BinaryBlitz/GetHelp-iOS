@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import RealmSwift
+import AudioToolbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -166,22 +167,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // }
   }
   
-  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-    ServerManager.sharedInstance.fetchHelpRequests { success, error in
-      do {
-        let realm = try Realm()
-        let results = realm.objects(HelpRequest).filter("viewed == false")
-        UIApplication.sharedApplication().applicationIconBadgeNumber = results.count
-      } catch {
-        return
-      }
-      
-      if let _ = error {
-        completionHandler(UIBackgroundFetchResult.Failed)
-      } else {
-        completionHandler(UIBackgroundFetchResult.NewData)
-      }
-    }
+  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    NSNotificationCenter.defaultCenter().postNotificationName(HelpRequestUpdatedNotification, object: nil)
+    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
   }
   
   func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {

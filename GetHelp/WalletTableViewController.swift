@@ -54,19 +54,19 @@ class WalletTableViewController: UITableViewController {
   //MARK: - Refresh
 
   func refresh(sender: AnyObject) {
-    beginRefreshWithComplition { () -> Void in
+    beginRefreshWithCompletion { () -> Void in
       self.tableView.reloadData()
       self.refreshControl?.endRefreshing()
     }
   }
 
-  func beginRefreshWithComplition(complition: () -> Void) {
+  func beginRefreshWithCompletion(completion: () -> Void) {
     //TODO: Reresh request
     dispatch_after(
         dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))),
         dispatch_get_main_queue()
     ) { () -> Void in
-      complition()
+      completion()
     }
   }
 

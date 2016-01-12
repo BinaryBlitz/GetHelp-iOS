@@ -75,6 +75,9 @@ class ConversationViewController: UIViewController {
     setUpTextView()
     setUpRefreshControl()
     
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:",
+            name: HelpRequestUpdatedNotification, object: nil)
+    
     self.timer = NSTimer.scheduledTimerWithTimeInterval(
       10,
       target: self,
@@ -158,19 +161,19 @@ class ConversationViewController: UIViewController {
   //MARK: - Refresh
   
   func refresh(sender: AnyObject) {
-    beginRefreshWithComplition { () -> Void in
+    beginRefreshWithcompletion { () -> Void in
       self.refreshControl?.endRefreshing()
       self.tableView?.reloadData()
     }
   }
   
-  func beginRefreshWithComplition(complition: () -> Void) {
+  func beginRefreshWithcompletion(completion: () -> Void) {
     ServerManager.sharedInstance.fetchAllMessagesForOrder(helpRequest) { success, error in
       if let error = error {
         //TODO: Create alert for error
         print("Error: \(error)")
       }
-      complition()
+      completion()
     }
   }
 
