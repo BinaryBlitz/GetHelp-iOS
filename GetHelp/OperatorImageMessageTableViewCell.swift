@@ -31,7 +31,7 @@ class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCel
   func configure(presenter: MessagePresentable) {
     contentImageView.hnk_cancelSetImage()
     contentImageView.image = nil
-    dateLabel.text = presenter.time
+    dateLabel.text = presenter.dateTime
     
     if let imageURL = presenter.imageThumbURL {
       contentImageView.hnk_setImageFromURL(imageURL)

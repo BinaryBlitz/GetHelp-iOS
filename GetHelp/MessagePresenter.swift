@@ -10,7 +10,8 @@ struct MessagePresenter: MessagePresentable {
 
   let message: Message
 
-  private let dateFormatter = NSDateFormatter(dateFormat: "HH:mm")
+  private let dateFormatter = NSDateFormatter(dateFormat: "dd.MM.yy")
+  private let timeFormatter = NSDateFormatter(dateFormat: "HH:mm")
 
   //MARK : - MessageContentPresentable
   
@@ -39,14 +40,23 @@ struct MessagePresenter: MessagePresentable {
   //MARK: - DateTimePresentable
   
   var date: String {
-    return ""
+    return dateFormatter.stringFromDate(message.dateCreated)
   }
 
   var time: String {
-    return dateFormatter.stringFromDate(message.dateCreated)
+    return timeFormatter.stringFromDate(message.dateCreated)
   }
   
   var dateTime: String {
+    let calendar = NSCalendar.currentCalendar()
+    let messageDateComponents = calendar.components([.Day, .Month, .Year], fromDate: message.dateCreated)
+    let currentDate = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+    if messageDateComponents.day == currentDate.day &&
+        messageDateComponents.month == currentDate.month &&
+      messageDateComponents.year == currentDate.year {
+        return time
+    }
+    
     return "\(date) \(time)"
   }
 }
