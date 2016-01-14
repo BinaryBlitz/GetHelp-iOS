@@ -123,7 +123,7 @@ class InfoTableViewController: UITableViewController {
     UserDefaultsHelper.save(false, forKey: UserDefaultsKey.DeviceTokenUploadStatus)
     
     let activityIndicator = createActivityIndicator()
-    view.addSubview(activityIndicator)
+    navigationController?.navigationBar.addSubview(activityIndicator)
     view.bringSubviewToFront(activityIndicator)
     
     activityIndicator.startAnimating()
@@ -144,7 +144,6 @@ class InfoTableViewController: UITableViewController {
   private func createActivityIndicator() -> UIActivityIndicatorView {
     let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     indicator.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-    indicator.center = view.center
     indicator.layer.cornerRadius = 3
     indicator.backgroundColor = UIColor.orangeSecondaryColor()
     indicator.center = view.center
