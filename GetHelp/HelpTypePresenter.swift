@@ -30,9 +30,9 @@ struct HelpTypePresenter {
   var description: String {
     switch type {
     case .Normal:
-      return "Помощь с домашним заданием к определенному дню"
+      return "Помощь с домашними заданиями, докладами, презентациями"
     case .Express:
-      return "Срочная помощь на контрольной или экзамене"
+      return "Срочная помощь к контрольной или экзамену"
     }
   }
 }
