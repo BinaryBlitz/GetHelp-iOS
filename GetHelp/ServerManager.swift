@@ -115,7 +115,6 @@ class ServerManager {
       switch response.result {
       case .Success(let resultValue):
         let json = JSON(resultValue)
-        print(json)
         
         // if api_token nil then create new user
         if let apiToken = json["api_token"].string {
