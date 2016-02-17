@@ -22,7 +22,7 @@ class RequestDetailsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    if helpRequest.status == .Accepted {
+    if !helpRequest.viewed {
       segmentedControl.selectSegmentAt(conversationIndex)
     }
   }
