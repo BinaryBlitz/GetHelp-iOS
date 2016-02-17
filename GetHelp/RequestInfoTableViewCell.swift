@@ -26,7 +26,7 @@ class RequestInfoTableViewCell: UITableViewCell {
     subjectLabel.text = presenter.name
     helpTypeLabel.text = presenter.type
     schoolInfoLabel.text = presenter.schoolInfo
-    emailLabel.text = "emal: " + presenter.email
+    emailLabel.text = "Email: " + presenter.email
     orderIdLabel.text = presenter.id
   }
 }
