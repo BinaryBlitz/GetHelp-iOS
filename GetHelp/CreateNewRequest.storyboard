@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sg1-jT-g5p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sg1-jT-g5p">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +34,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="typeOptionCell" textLabel="Cbg-sH-M8J" style="IBUITableViewCellStyleDefault" id="rjU-O5-DFf">
-                                <rect key="frame" x="0.0" y="114" width="600" height="66"/>
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rjU-O5-DFf" id="eCG-Wu-cK2">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
@@ -58,7 +58,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Новый заказ" id="0hW-IQ-Eza">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="OgH-ly-pzG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="OgH-ly-pzG">
                             <connections>
                                 <action selector="cancelButtonAction:" destination="Sym-9y-nTd" id="pXA-p8-v2l"/>
                             </connections>

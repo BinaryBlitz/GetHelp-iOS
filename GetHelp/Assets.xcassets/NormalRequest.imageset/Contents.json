@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "NormalHelp copy.png",
+      "filename" : "NormalHelp@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "NormalHelp.png",
+      "filename" : "NormalHelp@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "NormalHelp-1.png",
+      "filename" : "NormalHelp@3x.png",
       "scale" : "3x"
     }
   ],
