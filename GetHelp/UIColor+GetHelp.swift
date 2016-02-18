@@ -32,4 +32,8 @@ extension UIColor {
   static func blueAccentColor() -> UIColor {
     return UIColor(r: 95, g: 190, b: 212)
   }
+    
+  static func newMessageIndicatorColor() -> UIColor {
+    return UIColor(r: 46, g: 170, b: 60)
+  }
 }

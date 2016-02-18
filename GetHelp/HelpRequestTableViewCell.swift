@@ -16,7 +16,6 @@ class HelpRequestTableViewCell: UITableViewCell {
 
   @IBOutlet weak var cardView: UIView!
   @IBOutlet weak var updateMarkerImageView: UIImageView!
-  @IBOutlet weak var updateMarkerWidthConstraint: NSLayoutConstraint!
   
   @IBOutlet weak var orderNumberLabel: UILabel!
   @IBOutlet weak var statusLabel: UILabel!
@@ -34,8 +33,8 @@ class HelpRequestTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    updateMarkerImageView.image = UIImage(named: "Circle")!.imageWithRenderingMode(.AlwaysTemplate)
-    updateMarkerImageView.tintColor = UIColor(r: 46, g: 170, b: 60)
+    updateMarkerImageView.image = UIImage(named: "Message")!.imageWithRenderingMode(.AlwaysTemplate)
+    updateMarkerImageView.tintColor = UIColor.lightGrayColor()
     cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
     cardView.layer.borderWidth = 1.4
     cardView.layer.cornerRadius = 10
@@ -52,12 +51,12 @@ class HelpRequestTableViewCell: UITableViewCell {
     priceLabel.text = presenter.price
     
     setPayementSectionHidden( !presenter.isPayable())
-    setUpdateMarkerHidden(presenter.isViewed)
-  }
-  
-  private func setUpdateMarkerHidden(hidden: Bool) {
-    updateMarkerImageView.hidden = hidden
-    updateMarkerWidthConstraint.constant = hidden ? 0 : 15
+    
+    if presenter.isViewed {
+      updateMarkerImageView.tintColor = UIColor.lightGrayColor()
+    } else {
+      updateMarkerImageView.tintColor = UIColor.newMessageIndicatorColor()
+    }
   }
   
   private func setPayementSectionHidden(hidden: Bool) {
