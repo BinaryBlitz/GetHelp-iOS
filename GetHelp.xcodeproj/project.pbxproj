@@ -402,7 +402,7 @@
 				37CFD5041C10C41B009F734B /* Protocols */,
 				37F171C01BFB6D2B0016433D /* UI */,
 				37B889C81C09121A00EA02D8 /* Extensions */,
-				37F171C21BFB6D330016433D /* Supporting files */,
+				37F171C21BFB6D330016433D /* Configuration */,
 				37CC9B781BFB60FF00B450E0 /* Assets.xcassets */,
 			);
 			path = GetHelp;
@@ -505,7 +505,7 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		37F171C21BFB6D330016433D /* Supporting files */ = {
+		37F171C21BFB6D330016433D /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
 				37D134471C31F97400D16C69 /* logo.png */,
@@ -514,7 +514,7 @@
 				371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */,
 				37CC9B7D1BFB60FF00B450E0 /* Info.plist */,
 			);
-			name = "Supporting files";
+			name = Configuration;
 			sourceTree = "<group>";
 		};
 		37F5D9771C27126400938308 /* Home */ = {
