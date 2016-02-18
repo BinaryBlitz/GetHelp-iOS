@@ -173,6 +173,14 @@ extension HomeViewController: UITableViewDataSource {
 
     return cell
   }
+  
+  func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    guard let cell = cell as? HelpRequestTableViewCell else {
+      return
+    }
+    
+    cell.stopAnimations()
+  }
 }
 
 //MARK: - HelpRequestCellDelegate

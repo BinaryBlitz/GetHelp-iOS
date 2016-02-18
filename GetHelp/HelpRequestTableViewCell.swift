@@ -29,6 +29,7 @@ class HelpRequestTableViewCell: UITableViewCell {
   @IBOutlet weak var payButton: UIButton!
   
   weak var delegate: HelpRequestCellDelegate?
+  var timer: NSTimer?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -41,7 +42,12 @@ class HelpRequestTableViewCell: UITableViewCell {
     setUpButtons()
   }
   
+  deinit {
+    stopAnimations()
+  }
+  
   func configure(presenter: HelpRequestPresentable) {
+    timer?.invalidate()
     orderNumberLabel.text = presenter.id
     dateTimeLabel.text = presenter.dateTime
     statusLabel.text = presenter.status
@@ -56,7 +62,27 @@ class HelpRequestTableViewCell: UITableViewCell {
       updateMarkerImageView.tintColor = UIColor.lightGrayColor()
     } else {
       updateMarkerImageView.tintColor = UIColor.newMessageIndicatorColor()
+      setUpAnimationTimer()
     }
+  }
+  
+  func stopAnimations() {
+    timer?.invalidate()
+  }
+  
+  private func setUpAnimationTimer() {
+    timer = NSTimer.scheduledTimerWithTimeInterval(
+      5,
+      target: self,
+      selector: "fireAnimation:",
+      userInfo: nil,
+      repeats: true
+    )
+    timer?.fire()
+  }
+  
+  func fireAnimation(sender: AnyObject) {
+    updateMarkerImageView.shakeWithDuration(0.065)
   }
   
   private func setPayementSectionHidden(hidden: Bool) {
