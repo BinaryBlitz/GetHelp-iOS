@@ -32,7 +32,9 @@ class HomeViewController: UIViewController {
     refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
     configureCreateButton()
     configureTableView()
+    
     fetchHelpRequests()
+    tableView.reloadData()
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:",
             name: HelpRequestUpdatedNotification, object: nil)
@@ -42,7 +44,6 @@ class HomeViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     refresh(self)
-    tableView.reloadData()
     
     if !ServerManager.sharedInstance.authenticated {
       let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
@@ -84,6 +85,7 @@ class HomeViewController: UIViewController {
   
   func refresh(sender: AnyObject) {
     beginRefreshWithCompletion {
+      self.fetchHelpRequests()
       self.tableView.reloadData()
       self.refreshControl.endRefreshing()
     }
