@@ -206,7 +206,7 @@ extension HomeViewController: HelpRequestCellDelegate {
     Status.isActive = true
     ServerManager.sharedInstance.paymentsURLForOrderID(order.id) { paymentURL, error in
       if let url = paymentURL {
-        self.presentWebViewControllerWithURL(url)
+        self.presentWebViewControllerWith(url)
       } else if let error = error {
         guard let error = error as? NSURLError else {
           return

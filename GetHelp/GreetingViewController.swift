@@ -39,7 +39,7 @@ class GreetingViewController: UIViewController {
 
 extension GreetingViewController: TTTAttributedLabelDelegate {
   func attributedLabel(label: TTTAttributedLabel, didSelectLinkWithURL url: NSURL) {
-    self.presentWebViewControllerWithURL(url)
+    self.presentWebViewControllerWith(url)
   }
 }
 

@@ -97,7 +97,7 @@ class InfoTableViewController: UITableViewController {
         return
       }
       
-      presentWebViewControllerWithURL(url)
+      presentWebViewControllerWith(url, entersReaderIfAvailable: true)
     case 1:
       let mailViewController = MFMailComposeViewController()
       mailViewController.setSubject("Getthelp")

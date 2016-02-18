@@ -10,10 +10,19 @@ import SafariServices
 
 extension UIViewController {
   
-  func presentWebViewControllerWithURL(url: NSURL) {
+  func presentWebViewControllerWith(url: NSURL, entersReaderIfAvailable reader: Bool = false) {
     if #available(iOS 9.0, *) {
-      let safariController = SFSafariViewController(URL: url)
-      self.presentViewController(safariController, animated: true, completion: nil)
+      let safariController = SFSafariViewController(URL: url, entersReaderIfAvailable: reader)
+      self.presentViewController(safariController, animated: true) {
+        // disable swipe back action
+        for view in safariController.view.subviews {
+          if let recognisers = view.gestureRecognizers {
+            for gestureRecogniser in recognisers where gestureRecogniser is UIScreenEdgePanGestureRecognizer {
+              gestureRecogniser.enabled = false
+            }
+          }
+        }
+      }
     } else {
       let webViewController = SVModalWebViewController(URL: url)
       webViewController.navigationBar.barStyle = UIBarStyle.BlackOpaque
