@@ -1,5 +1,5 @@
 //
-//  UITestField+ShakeAnimation.swift
+//  UIView+ShakeAnimation.swift
 //  GettHelp-iOS
 //
 //  Created by Dan Shevlyuk on 26/12/2015.
@@ -7,7 +7,7 @@
 //
 import UIKit
 
-extension UITextField {
+extension UIView {
   
   func shake() {
     let shakes = 10

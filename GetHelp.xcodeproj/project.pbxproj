@@ -19,7 +19,7 @@
 		370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694941C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift */; };
 		370694991C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694951C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift */; };
 		3706949A1C2EBF8E00C5A689 /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370694961C2EBF8E00C5A689 /* LoginBaseViewController.swift */; };
-		3706949C1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */; };
+		3706949C1C2ECDEE00C5A689 /* UIView+ShakeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706949B1C2ECDEE00C5A689 /* UIView+ShakeAnimation.swift */; };
 		371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */; };
 		371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */; };
 		3726C7501C30954200487828 /* RequestTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726C74E1C30954200487828 /* RequestTypeTableViewCell.swift */; };
@@ -110,7 +110,7 @@
 		370694941C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbeInputViewController.swift; sourceTree = "<group>"; };
 		370694951C2EBF8E00C5A689 /* LogInCodeCheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInCodeCheckViewController.swift; sourceTree = "<group>"; };
 		370694961C2EBF8E00C5A689 /* LoginBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
-		3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITestField+ShakeAnimation.swift"; sourceTree = "<group>"; };
+		3706949B1C2ECDEE00C5A689 /* UIView+ShakeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ShakeAnimation.swift"; sourceTree = "<group>"; };
 		371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		371DA8671C1C8AFC007847ED /* WalletInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfoTableViewCell.swift; sourceTree = "<group>"; };
 		371DA8681C1C8AFC007847ED /* WalletInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletInfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 				37D134491C32D7F500D16C69 /* NSDate+CreatedAt.swift */,
 				37B889C61C09121400EA02D8 /* UIColor+GetHelp.swift */,
 				37C69DB41C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift */,
-				3706949B1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift */,
+				3706949B1C2ECDEE00C5A689 /* UIView+ShakeAnimation.swift */,
 				37C952C31C39BB590006B721 /* UIViewController+WebViewController.swift */,
 				37B38ACE1C3C7C64002110CA /* UIView+AddConent.swift */,
 				372E6A231C3EF7BD00586949 /* UIViewController+PresentAlert.swift */,
@@ -772,7 +772,7 @@
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
 				37D94DF11C3C01F00050ADAB /* ServerError.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
-				3706949C1C2ECDEE00C5A689 /* UITestField+ShakeAnimation.swift in Sources */,
+				3706949C1C2ECDEE00C5A689 /* UIView+ShakeAnimation.swift in Sources */,
 				37B38ACF1C3C7C64002110CA /* UIView+AddConent.swift in Sources */,
 				372E6A241C3EF7BD00586949 /* UIViewController+PresentAlert.swift in Sources */,
 				370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */,
