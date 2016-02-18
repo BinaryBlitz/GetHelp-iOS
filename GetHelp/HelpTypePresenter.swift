@@ -21,9 +21,9 @@ struct HelpTypePresenter {
   var name: String {
     switch type {
     case .Normal:
-      return "Домашнее задание"
+      return "Любые задания"
     case .Express:
-      return "Срочная помощь"
+      return "Онлайн помощь"
     }
   }
   
