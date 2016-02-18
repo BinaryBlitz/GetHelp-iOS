@@ -99,10 +99,19 @@ class InfoTableViewController: UITableViewController {
       
       presentWebViewControllerWith(url, entersReaderIfAvailable: true)
     case 1:
+      let supportEmail = "support@getthelp.ru"
+      guard MFMailComposeViewController.canSendMail() else {
+        let mailURL = NSURL(string: "mailto:\(supportEmail)")
+        if let url = mailURL {
+          UIApplication.sharedApplication().openURL(url)
+        }
+        return
+      }
+      
       let mailViewController = MFMailComposeViewController()
       mailViewController.setSubject("Getthelp")
       mailViewController.navigationBar.tintColor = UIColor.whiteColor()
-      mailViewController.setToRecipients(["support@getthelp.ru"])
+      mailViewController.setToRecipients([supportEmail])
       mailViewController.mailComposeDelegate = self
       presentViewController(mailViewController, animated: true, completion: nil)
     case 2:
