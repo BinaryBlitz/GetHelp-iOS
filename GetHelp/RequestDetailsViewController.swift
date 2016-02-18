@@ -25,6 +25,10 @@ class RequestDetailsViewController: UIViewController {
     segmentedControl.selectSegmentAt(conversationIndex)
   }
   
+  override func viewWillAppear(animated: Bool) {
+    self.tabBarController?.tabBar.hidden = true
+  }
+  
   @IBAction func segmentedControlValueChangedAction(sender: AnyObject) {
     guard let segmentedControl = sender as? UISegmentedControl else {
       return
