@@ -72,7 +72,7 @@ class HelpRequestTableViewCell: UITableViewCell {
   
   private func setUpAnimationTimer() {
     timer = NSTimer.scheduledTimerWithTimeInterval(
-      5,
+      2,
       target: self,
       selector: "fireAnimation:",
       userInfo: nil,
