@@ -68,8 +68,27 @@ class RequestFormViewController: FormViewController {
     form +++= TextFloatLabelRow("subjectRow") {
       $0.title = "Предмет"
     }
-    <<< TextFloatLabelRow("activityTypeRow") {
-      $0.title = "Тип работы"
+    <<< PushRow<String>("activityTypeRow") { row in
+      row.title = "Тип работы"
+      row.options = [
+        "Домашнее задание",
+        "Тест",
+        "Эссе",
+        "Доклад",
+        "Реферат",
+        "Курсовая работа",
+        "Дипломная работа",
+        "Магистерская работа",
+        "Научно-исследовательская работа",
+        "Отчет по практике",
+        "Контрольная работа",
+        "Презентация",
+        "Чертеж",
+        "Перевод",
+        "Другое"
+      ]
+      
+      row.value = row.options.first!
     }
 
     //MARK: - Section 3 (university info)
@@ -123,31 +142,26 @@ class RequestFormViewController: FormViewController {
     }
     
     guard let subject = form.rowByTag("subjectRow")?.baseValue as? String else {
-      print("subject!")
       presentAlertWithMessage("Вы не указали предмет")
       return
     }
 
     guard let school = form.rowByTag("schoolRow")?.baseValue as? String else {
-      print("school!")
       presentAlertWithMessage("Вы не выбрали где вы учитесь")
       return
     }
 
     guard let facility = form.rowByTag("facilityRow")?.baseValue as? String else {
-      print("facility")
       presentAlertWithMessage("Вы не указали ваш факультет")
       return
     }
 
     guard let course = form.rowByTag("courseRow")?.baseValue as? String else {
-      print("course")
       presentAlertWithMessage("Вы не выбрали ваш курс")
       return
     }
 
     guard let helpDesctiption = form.rowByTag("descriptionRow")?.baseValue as? String else {
-      print("description!")
       presentAlertWithMessage("Вы не добавили описание вашей работы")
       return
     }
