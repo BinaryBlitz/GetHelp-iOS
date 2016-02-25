@@ -8,6 +8,7 @@
 
 import RealmSwift
 import SwiftyJSON
+import SwiftDate
 
 class Message: Object {
   
@@ -51,7 +52,8 @@ extension Message: ServerModelPresentable {
     message.id = id
     message.orderId = orderId
     message._sender = sender
-    if let dateCreated = NSDate(dateString: createdDateString) {
+    
+    if let dateCreated = createdDateString.toDateFromISO8601() {
       message.dateCreated = dateCreated
     }
     

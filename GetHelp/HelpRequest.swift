@@ -109,15 +109,15 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest._status = status
     helpRequest._type = type
     helpRequest.school = university
-    helpRequest.createdAt = NSDate(dateString: createdDateString)
+    helpRequest.createdAt = createdDateString.toDateFromISO8601()
     if let description = json["description"].string {
       helpRequest.helpDescription = description
     }
     helpRequest.faculty = faculty
     helpRequest.email = email
-    helpRequest.dueDate = NSDate(dateString: dueDateString)
+    helpRequest.dueDate = dueDateString.toDateFromISO8601()
     if let startDate = json["starts_at"].string {
-      helpRequest.startDate = NSDate(dateString: startDate)
+      helpRequest.startDate = startDate.toDateFromISO8601()
     }
     
     if let sum = json["sum"].int {
