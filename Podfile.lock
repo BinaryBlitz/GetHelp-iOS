@@ -27,6 +27,7 @@ PODS:
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - SVWebViewController (1.0)
+  - SwiftDate (3.0.2)
   - SwiftSpinner (0.8.0)
   - SwiftyJSON (2.3.2)
   - TTTAttributedLabel (1.13.4)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - RealmSwift
   - REFormattedNumberField
   - SVWebViewController
+  - SwiftDate
   - SwiftSpinner
   - SwiftyJSON
   - TTTAttributedLabel
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   REFormattedNumberField: be3d55dd709f65541fb26b7e1709da07903147f8
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
+  SwiftDate: 952306bbcd546719ba7431889939b58c5f57bae8
   SwiftSpinner: 11c2c5ec7443d92f3026d3067ca8a91d4adef13f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f

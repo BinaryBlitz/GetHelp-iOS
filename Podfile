@@ -15,3 +15,4 @@ pod 'SVWebViewController'
 pod 'HanekeSwift'
 pod 'MWPhotoBrowser'
 pod "SwiftSpinner"
+pod 'SwiftDate'
