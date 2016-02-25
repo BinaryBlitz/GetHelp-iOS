@@ -50,10 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-    schemaVersion: 15,
-            migrationBlock: { migration, oldSchemaVersion in
-              if oldSchemaVersion < 1 {}
-            }
+      schemaVersion: 16,
+      migrationBlock: { migration, oldSchemaVersion in
+        if oldSchemaVersion < 16 {
+          migration.deleteData(Message.className())
+        }
+      }
     )
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
   }
