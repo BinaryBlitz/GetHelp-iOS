@@ -8,7 +8,7 @@
 
 import Eureka
 
-public class FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<T>, UITextFieldDelegate, TextFieldCell {
+public class _FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<T>, UITextFieldDelegate, TextFieldCell {
         
     public var textField : UITextField { return floatLabelTextField }
 
@@ -32,7 +32,7 @@ public class FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<T
         selectionStyle = .None
         contentView.addSubview(floatLabelTextField)
         floatLabelTextField.delegate = self
-        floatLabelTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+        floatLabelTextField.addTarget(self, action: #selector(_FloatLabelCell.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
         contentView.addConstraints(layoutConstraints())
     }
     
@@ -51,7 +51,7 @@ public class FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<T
         return !row.isDisabled && floatLabelTextField.canBecomeFirstResponder()
     }
     
-    public override func cellBecomeFirstResponder() -> Bool {
+    public override func cellBecomeFirstResponder(direction: Direction) -> Bool {
         return floatLabelTextField.becomeFirstResponder()
     }
     
@@ -70,18 +70,28 @@ public class FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<T
             row.value = nil
             return
         }
-        if let fieldRow = row as? FormatterConformance, let formatter = fieldRow.formatter where fieldRow.useFormatterDuringInput {
-            let value: AutoreleasingUnsafeMutablePointer<AnyObject?> = AutoreleasingUnsafeMutablePointer<AnyObject?>.init(UnsafeMutablePointer<T>.alloc(1))
-            let errorDesc: AutoreleasingUnsafeMutablePointer<NSString?> = nil
-            if formatter.getObjectValue(value, forString: textValue, errorDescription: errorDesc) {
-                row.value = value.memory as? T
-                if var selStartPos = textField.selectedTextRange?.start {
-                    let oldVal = textField.text
-                    textField.text = row.displayValueFor?(row.value)
-                    if let f = formatter as? FormatterProtocol {
-                        selStartPos = f.getNewPosition(forPosition: selStartPos, inTextInput: textField, oldValue: oldVal, newValue: textField.text)
+        if let fieldRow = row as? FormatterConformance, let formatter = fieldRow.formatter {
+            if fieldRow.useFormatterDuringInput {
+                let value: AutoreleasingUnsafeMutablePointer<AnyObject?> = AutoreleasingUnsafeMutablePointer<AnyObject?>.init(UnsafeMutablePointer<T>.alloc(1))
+                let errorDesc: AutoreleasingUnsafeMutablePointer<NSString?> = nil
+                if formatter.getObjectValue(value, forString: textValue, errorDescription: errorDesc) {
+                    row.value = value.memory as? T
+                    if var selStartPos = textField.selectedTextRange?.start {
+                        let oldVal = textField.text
+                        textField.text = row.displayValueFor?(row.value)
+                        if let f = formatter as? FormatterProtocol {
+                            selStartPos = f.getNewPosition(forPosition: selStartPos, inTextInput: textField, oldValue: oldVal, newValue: textField.text)
+                        }
+                        textField.selectedTextRange = textField.textRangeFromPosition(selStartPos, toPosition: selStartPos)
                     }
-                    textField.selectedTextRange = textField.textRangeFromPosition(selStartPos, toPosition: selStartPos)
+                    return
+                }
+            }
+            else {
+                let value: AutoreleasingUnsafeMutablePointer<AnyObject?> = AutoreleasingUnsafeMutablePointer<AnyObject?>.init(UnsafeMutablePointer<T>.alloc(1))
+                let errorDesc: AutoreleasingUnsafeMutablePointer<NSString?> = nil
+                if formatter.getObjectValue(value, forString: textValue, errorDescription: errorDesc) {
+                    row.value = value.memory as? T
                 }
                 return
             }
@@ -91,19 +101,37 @@ public class FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<T
             return
         }
         guard let newValue = T.init(string: textValue) else {
-            row.updateCell()
             return
         }
         row.value = newValue
+    }
+    
+    
+    //Mark: Helpers
+    
+    private func displayValue(useFormatter useFormatter: Bool) -> String? {
+        guard let v = row.value else { return nil }
+        if let formatter = (row as? FormatterConformance)?.formatter where useFormatter {
+            return textField.isFirstResponder() ? formatter.editingStringForObjectValue(v as! AnyObject) : formatter.stringForObjectValue(v as! AnyObject)
+        }
+        return String(v)
     }
     
     //MARK: TextFieldDelegate
     
     public func textFieldDidBeginEditing(textField: UITextField) {
         formViewController()?.beginEditing(self)
+        if let fieldRowConformance = row as? FormatterConformance, let _ = fieldRowConformance.formatter where fieldRowConformance.useFormatterOnDidBeginEditing ?? fieldRowConformance.useFormatterDuringInput {
+            textField.text = displayValue(useFormatter: true)
+        } else {
+            textField.text = displayValue(useFormatter: false)
+        }
     }
     
     public func textFieldDidEndEditing(textField: UITextField) {
         formViewController()?.endEditing(self)
+        formViewController()?.textInputDidEndEditing(textField, cell: self)
+        textFieldDidChange(textField)
+        textField.text = displayValue(useFormatter: (row as? FormatterConformance)?.formatter != nil)
     }
 }

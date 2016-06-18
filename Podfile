@@ -1,7 +1,8 @@
 platform :ios, '8.0'
-use_frameworks!
 
 target 'GetHelp' do
+  use_frameworks!
+
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'Fabric'
@@ -15,6 +16,6 @@ target 'GetHelp' do
   pod 'SVWebViewController'
   pod 'HanekeSwift'
   pod 'MWPhotoBrowser'
-  pod "SwiftSpinner"
+  pod 'SwiftSpinner'
   pod 'SwiftDate'
 end

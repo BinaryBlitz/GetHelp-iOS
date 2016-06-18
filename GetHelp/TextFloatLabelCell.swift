@@ -8,7 +8,7 @@
 
 import Eureka
 
-public class TextFloatLabelCell : FloatLabelCell<String>, CellType {
+public class TextFloatLabelCell : _FloatLabelCell<String>, CellType {
     
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -2,4 +2,5 @@
 @import REFormattedNumberField;
 @import TTTAttributedLabel;
 @import SVWebViewController;
-@import MWPhotoBrowser;
+//#import <MBProgressHUD/MBProgressHUD.h>
+@import MBProgressHUD;

@@ -8,4 +8,8 @@
 
 import Eureka
 
-public final class TextFloatLabelRow: FloatFieldRow<String, TextFloatLabelCell>, RowType {}
+public final class TextFloatLabelRow: FloatFieldRow<String, TextFloatLabelCell>, RowType {
+    public required init(tag: String?) {
+        super.init(tag: tag)
+    }
+}
