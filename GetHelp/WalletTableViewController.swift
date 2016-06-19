@@ -37,7 +37,7 @@ class WalletTableViewController: UITableViewController {
 
   func setUpRefreshControl() {
     refreshControl = UIRefreshControl()
-    refreshControl?.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+    refreshControl?.addTarget(self, action: #selector(refresh(_:)), forControlEvents: .ValueChanged)
   }
 
   func setUpTableView() {

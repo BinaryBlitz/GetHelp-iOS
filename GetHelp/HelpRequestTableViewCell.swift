@@ -74,7 +74,7 @@ class HelpRequestTableViewCell: UITableViewCell {
     timer = NSTimer.scheduledTimerWithTimeInterval(
       2,
       target: self,
-      selector: "fireAnimation:",
+      selector: #selector(fireAnimation(_:)),
       userInfo: nil,
       repeats: true
     )

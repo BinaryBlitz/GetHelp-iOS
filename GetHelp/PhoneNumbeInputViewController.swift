@@ -33,7 +33,7 @@ class PhoneNumbeInputViewController: UIViewController {
 
     setUpButtons()
     view.backgroundColor = UIColor.clearColor()
-    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard:"))
+    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:))))
     phoneNumberTextField.format = "+X (XXX) XXX-XX-XX"
     phoneNumberTextField.placeholder = "+7 (123) 456-78-90"
   }

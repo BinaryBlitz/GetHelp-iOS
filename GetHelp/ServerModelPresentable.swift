@@ -9,7 +9,7 @@
 import SwiftyJSON
 
 protocol ServerModelPresentable {
-  typealias ObjectType
+  associatedtype ObjectType
   static func createFromJSON(json: JSON) -> ObjectType?
   func convertToDict() -> [String: AnyObject]
 }

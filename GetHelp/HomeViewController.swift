@@ -27,16 +27,16 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     
     navigationController?.navigationBar.barStyle = .BlackTranslucent
-    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: "")
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
-    refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+    refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: .ValueChanged)
     configureCreateButton()
     configureTableView()
     
     fetchHelpRequests()
     tableView.reloadData()
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh(_:)),
             name: HelpRequestUpdatedNotification, object: nil)
     
   }

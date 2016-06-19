@@ -23,7 +23,7 @@ class LogInCodeCheckViewController: UIViewController {
     super.viewDidLoad()
     
     setUpButtons()
-    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard:"))
+    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:))))
   }
   
   override func viewWillAppear(animated: Bool) {

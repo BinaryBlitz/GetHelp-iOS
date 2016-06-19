@@ -76,13 +76,13 @@ class ConversationViewController: UIViewController {
     setUpTextView()
     setUpRefreshControl()
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:",
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh(_:)),
             name: HelpRequestUpdatedNotification, object: nil)
     
     self.timer = NSTimer.scheduledTimerWithTimeInterval(
       10,
       target: self,
-      selector: "refresh:",
+      selector: #selector(refresh(_:)),
       userInfo: nil,
       repeats: true
     )
@@ -128,7 +128,7 @@ class ConversationViewController: UIViewController {
     if let refreshControl = refreshControl,
            tableView = tableView {
             
-      refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+      refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: .ValueChanged)
       tableView.addSubview(refreshControl)
       tableView.sendSubviewToBack(refreshControl)
     }
@@ -142,9 +142,9 @@ class ConversationViewController: UIViewController {
   
   func setUpKeyboard() {
     let notificationCenter = NSNotificationCenter.defaultCenter()
-    notificationCenter.addObserver(self, selector: "keyboardWillShow:",
+    notificationCenter.addObserver(self, selector: #selector(keyboardWillShow(_:)),
       name: UIKeyboardWillShowNotification, object: nil)
-    notificationCenter.addObserver(self, selector: "keyboardWillHide:",
+    notificationCenter.addObserver(self, selector: #selector(keyboardWillHide(_:)),
       name: UIKeyboardWillHideNotification, object: nil)
   }
   
