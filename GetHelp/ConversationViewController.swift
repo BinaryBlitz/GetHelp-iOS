@@ -390,9 +390,7 @@ extension ConversationViewController: MWPhotoBrowserDelegate {
 extension ConversationViewController {
   
   func keyboardWillShow(notification: NSNotification) {
-    guard let userInfo = notification.userInfo else {
-      return
-    }
+    guard let userInfo = notification.userInfo else { return }
     
     let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue
     let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue ?? 0
@@ -411,9 +409,7 @@ extension ConversationViewController {
   }
   
   func keyboardWillHide(notification: NSNotification) {
-    guard let userInfo = notification.userInfo else {
-      return
-    }
+    guard let userInfo = notification.userInfo else { return }
     
     let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue ?? 0
     let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey]
