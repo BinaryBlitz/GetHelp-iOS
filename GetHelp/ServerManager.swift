@@ -21,10 +21,11 @@ class ServerManager {
   private var manager = Manager.sharedInstance
   let baseURL = "http://getthelp.ru"
   
-#if DEBUG
   var apiToken: String? {
     didSet {
       print("Api token updated: \(apiToken ?? "")")
+      UserDefaultsHelper.save(false, forKey: .DeviceTokenUploadStatus)
+      ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
     }
   }
   
@@ -33,10 +34,6 @@ class ServerManager {
       print("Device token updated: \(deviceToken ?? "")")
     }
   }
-#else
-  var apiToken: String?
-  var deviceToken: String?
-#endif
   
   //MARK: - Preperties
   
@@ -119,6 +116,7 @@ class ServerManager {
         // if api_token nil then create new user
         if let apiToken = json["api_token"].string {
           self.apiToken = apiToken
+          UserDefaultsHelper.save(false, forKey: .DeviceTokenUploadStatus)
           completion?(error: nil)
         } else {
           self.createNewUserWith(phoneNumber, andVerificationToken: token) { error in
@@ -419,8 +417,10 @@ class ServerManager {
       return nil
     }
     
+    guard let deviceToken = deviceToken else { return nil }
+    
     do {
-      let parameters: [String: AnyObject] = ["user": ["device_token": deviceToken ?? NSNull()]]
+      let parameters: [String: AnyObject] = ["user": ["device_token": deviceToken]]
       let request = try patch("/user", params: parameters)
       
       request.validate().response { (_, response, data, error) -> Void in

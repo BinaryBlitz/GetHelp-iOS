@@ -183,27 +183,22 @@ extension HomeViewController: UITableViewDataSource {
     
     cell.stopAnimations()
   }
+  
 }
 
 //MARK: - HelpRequestCellDelegate
 
 extension HomeViewController: HelpRequestCellDelegate {
+  
   func didTouchPayButtonInCell(cell: HelpRequestTableViewCell) {
     struct Status {
       static var isActive: Bool = false
     }
     
-    if Status.isActive {
-      return
-    }
+    if Status.isActive { return }
     
-    guard let indexPath = tableView.indexPathForCell(cell) else {
-      return
-    }
-    
-    guard let order = helpRequests?[indexPath.row] else {
-      return
-    }
+    guard let indexPath = tableView.indexPathForCell(cell) else { return }
+    guard let order = helpRequests?[indexPath.row] else { return }
     
     Status.isActive = true
     ServerManager.sharedInstance.paymentsURLForOrderID(order.id) { paymentURL, error in
@@ -227,4 +222,5 @@ extension HomeViewController: HelpRequestCellDelegate {
       Status.isActive = false
     }
   }
+  
 }
