@@ -376,10 +376,8 @@ extension ConversationViewController: MWPhotoBrowserDelegate {
   }
   
   func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
-    let imagePath = images?[Int(index)] ?? ""
-    let fullURLString = ServerManager.sharedInstance.baseURL + imagePath
     
-    guard let url = NSURL(string: fullURLString) else {
+    guard let imageURLString = images?[Int(index)], url = NSURL(string: imageURLString) else {
       return nil
     }
     
