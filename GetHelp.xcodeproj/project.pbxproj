@@ -66,7 +66,6 @@
 		37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5071C10C44A009F734B /* StatusPresentable.swift */; };
 		37CFD50A1C10C474009F734B /* DateTimePresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD5091C10C474009F734B /* DateTimePresentable.swift */; };
 		37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */; };
-		37D134481C31F97400D16C69 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 37D134471C31F97400D16C69 /* logo.png */; };
 		37D94DEC1C3BFAC60050ADAB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D94DEB1C3BFAC60050ADAB /* UserDefaultsHelper.swift */; };
 		37D94DF11C3C01F00050ADAB /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D94DF01C3C01F00050ADAB /* ServerError.swift */; };
 		37E083641C3FA503008E74C9 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E083631C3FA503008E74C9 /* UIImage+Resize.swift */; };
@@ -163,7 +162,6 @@
 		37CFD5071C10C44A009F734B /* StatusPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusPresentable.swift; sourceTree = "<group>"; };
 		37CFD5091C10C474009F734B /* DateTimePresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePresentable.swift; sourceTree = "<group>"; };
 		37CFD50B1C10C4DB009F734B /* HelpRequestPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestPresentable.swift; sourceTree = "<group>"; };
-		37D134471C31F97400D16C69 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		37D94DEB1C3BFAC60050ADAB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		37D94DF01C3C01F00050ADAB /* ServerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		37E083631C3FA503008E74C9 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
@@ -506,7 +504,6 @@
 		37F171C21BFB6D330016433D /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				37D134471C31F97400D16C69 /* logo.png */,
 				37CC9B711BFB60FF00B450E0 /* AppDelegate.swift */,
 				37E6B3191C1CC6F500DA19A8 /* Constants.swift */,
 				371BC2BD1BFB699F009807E3 /* GetHelp-Bridging-Header.h */,
@@ -666,7 +663,6 @@
 			files = (
 				37EB111D1C2D656C00879A05 /* BillTableViewCell.xib in Resources */,
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
-				37D134481C31F97400D16C69 /* logo.png in Resources */,
 				370694921C2EBF0100C5A689 /* Login.storyboard in Resources */,
 				37C952C81C39BF990006B721 /* UserImageMessageTableViewCell.xib in Resources */,
 				3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */,
