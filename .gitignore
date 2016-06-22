@@ -16,16 +16,26 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-# OS X Stuff
+#OS X Stuff
 .localized
 .DS_Store
-
-# IDE
-.idea
+*.zip
 
 # Pods
 Pods/
 
+# Editors
+.idea
+*.swp
+
+# Fastlane
+fastlane/report.xml
+*.mobileprovision
+
+# Keys
 *.pem
-*.p12
 *.pkey
+*.p12
+
+# Rbenv
+.ruby-version
