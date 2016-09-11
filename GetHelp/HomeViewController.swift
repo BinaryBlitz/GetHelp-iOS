@@ -36,8 +36,11 @@ class HomeViewController: UIViewController {
     fetchHelpRequests()
     tableView.reloadData()
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh(_:)),
-            name: HelpRequestUpdatedNotification, object: nil)
+    NSNotificationCenter
+        .defaultCenter()
+        .addObserver(self,
+                     selector: #selector(refresh(_:)),
+                     name: HelpRequestUpdatedNotification, object: nil)
     
   }
 
@@ -167,6 +170,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     let request = helpRequests?[indexPath.row]
+    
     if let presenter = request?.presenter() {
       cell.configure(presenter)
     }

@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
     Fabric.with([Crashlytics.self])
 
@@ -33,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
-  //MARK: - Launch arguments
+  // MARK: - Launch arguments
   
   private func checkArguments() {
     for argument in Process.arguments {
@@ -46,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
-  //MARK: - App configuration
+  // MARK: - App configuration
   
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
@@ -57,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
     )
+
     Realm.Configuration.defaultConfiguration = realmDefaultConfig
   }
   
@@ -75,20 +77,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func configureNavigationBar() {
-    UINavigationBar.appearance().barTintColor = UIColor.orangeSecondaryColor()
-    UINavigationBar.appearance().translucent = false
-    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.systemFontOfSize(18)]
-    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+    let appearance = UINavigationBar.appearance()
+
+    appearance.barTintColor = UIColor.orangeSecondaryColor()
+    appearance.translucent = false
+    appearance.tintColor = UIColor.whiteColor()
+    appearance.titleTextAttributes = [
+      NSForegroundColorAttributeName: UIColor.whiteColor(),
+      NSFontAttributeName: UIFont.systemFontOfSize(18)
+    ]
+
+    UIApplication
+      .sharedApplication()
+      .setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
   }
 
   func configureTabBar() {
     UITabBar.appearance().tintColor = UIColor.orangeSecondaryColor()
   }
   
-  //MARK - Push notifications
+  // MARK - Push notifications
   
-  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+  func application(application: UIApplication,
+                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+
     let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
     var token = ""
     
@@ -100,21 +112,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ServerManager.sharedInstance.deviceToken = token
   }
   
-  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-    // develper.layOnTheFloor()
-    // do {
-    //    try developer.notToCry()
-    // catch {
-    //    developer.cryALot()
-    // }
+  func application(application: UIApplication,
+                   didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    
+    print("didFailToRegisterForRemoteNotificationsWithError")
   }
   
-  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-    NSNotificationCenter.defaultCenter().postNotificationName(HelpRequestUpdatedNotification, object: nil)
+  func application(application: UIApplication,
+                   didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    
+    NSNotificationCenter
+      .defaultCenter()
+      .postNotificationName(HelpRequestUpdatedNotification, object: nil)
+    
     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
   }
   
-  func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+  func application(
+    application: UIApplication,
+    performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    
     ServerManager.sharedInstance.fetchHelpRequests { success, error in
       do {
         let realm = try Realm()
@@ -123,12 +140,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       } catch {
         return
       }
-      
-      if let _ = error {
-        completionHandler(UIBackgroundFetchResult.Failed)
-      } else {
-        completionHandler(UIBackgroundFetchResult.NewData)
-      }
+
+      let backgroundFetchResult: UIBackgroundFetchResult = (error == nil ? .NewData : .Failed)
+      completionHandler(backgroundFetchResult)
     }
   }
 }

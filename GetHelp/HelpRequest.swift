@@ -110,9 +110,11 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest._type = type
     helpRequest.school = university
     helpRequest.createdAt = createdDateString.toDateFromISO8601()
+    
     if let description = json["description"].string {
       helpRequest.helpDescription = description
     }
+
     helpRequest.faculty = faculty
     helpRequest.email = email
     helpRequest.dueDate = dueDateString.toDateFromISO8601()

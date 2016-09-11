@@ -48,12 +48,12 @@ class RequestFormViewController: FormViewController {
 
     switch type {
     case .Normal:
-      form +++= DateTimeInlineRow("dueDateRow") {
+      form +++ DateTimeInlineRow("dueDateRow") {
         $0.title = "Дата и время сдачи"
         $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
       }
     case .Express:
-      form +++= DateTimeInlineRow("startDateRow") {
+      form +++ DateTimeInlineRow("startDateRow") {
         $0.title = "Началo работы"
         $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
       }
@@ -65,7 +65,7 @@ class RequestFormViewController: FormViewController {
 
     //MARK: - Section 2 (subject info)
 
-    form +++= TextFloatLabelRow("subjectRow") {
+    form +++ TextFloatLabelRow("subjectRow") {
       $0.title = "Предмет"
     }
     <<< PushRow<String>("activityTypeRow") { row in
@@ -93,7 +93,7 @@ class RequestFormViewController: FormViewController {
 
     //MARK: - Section 3 (university info)
 
-    form +++= Section()
+    form +++ Section()
     <<< TextFloatLabelRow("schoolRow") {
       $0.title = "Вуз"
     }
@@ -110,7 +110,7 @@ class RequestFormViewController: FormViewController {
     //MARK: - Section 4 (description)
 
     if type == .Normal {
-      form +++= Section("Email для отправки решения") {
+      form +++ Section("Email для отправки решения") {
         $0.header
       }
       <<< EmailRow("emailRow") {
@@ -118,7 +118,7 @@ class RequestFormViewController: FormViewController {
       }
     }
 
-    form +++= Section("Описание работы")
+    form +++ Section("Описание работы")
     <<< TextAreaRow("descriptionRow") {
       $0.placeholder = "Что это за работа?"
     }

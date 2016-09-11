@@ -19,7 +19,7 @@ class ServerManager {
   //MARK: - Fields
   
   private var manager = Manager.sharedInstance
-  let baseURL = "http://getthelp.ru"
+  let baseURL = "https://getthelp.ru"
   
   var apiToken: String? {
     didSet {
@@ -35,13 +35,13 @@ class ServerManager {
     }
   }
   
-  //MARK: - Preperties
+  // MARK: - Preperties
   
   var authenticated: Bool {
     return apiToken != nil
   }
   
-  //MARK: - Basic private methods
+  // MARK: - Basic private methods
   
   private func request(method: Alamofire.Method, path: String,
       parameters: [String : AnyObject]?,
@@ -73,7 +73,7 @@ class ServerManager {
     return try request(.PATCH, path: path, parameters: params, encoding: .JSON)
   }
 
-  //MARK: - Login
+  // MARK: - Login
   
   func createVerificationTokenFor(phoneNumber: String, completion: ((token: String?, error: ErrorType?) -> Void)? = nil) -> Request {
     let parameters = ["phone_number" : phoneNumber]
@@ -106,6 +106,7 @@ class ServerManager {
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters = ["phone_number": phoneNumber, "code": code]
     let req = manager.request(.PATCH, baseURL + "/verification_tokens/\(token)", parameters: parameters, encoding: .JSON)
+    
     req.validate().responseJSON { response in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
       
@@ -132,7 +133,9 @@ class ServerManager {
     return req
   }
   
-  func createNewUserWith(phoneNumber: String, andVerificationToken token: String, completion: ((error: ErrorType?) -> Void)?) -> Request {
+  func createNewUserWith(phoneNumber: String,
+                         andVerificationToken token: String,
+                         completion: ((error: ErrorType?) -> Void)?) -> Request {
     
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     let parameters: [String: AnyObject] = [
@@ -165,7 +168,7 @@ class ServerManager {
     return req
   }
   
-  //MARK: - HelpRequests
+  // MARK: - HelpRequests
   
   func fetchHelpRequests(completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
@@ -372,7 +375,7 @@ class ServerManager {
     return nil
   }
   
-  //MARK: - Payments 
+  // MARK: - Payments
   
   func paymentsURLForOrderID(orderID: Int, completion: ((paymentURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
     
@@ -408,7 +411,7 @@ class ServerManager {
     return nil
   }
   
-  //MARK: - Device token
+  // MARK: - Device token
   
   func updateDeviceTokenIfNeeded(completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     

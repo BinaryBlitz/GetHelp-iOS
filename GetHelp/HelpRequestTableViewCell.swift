@@ -39,6 +39,7 @@ class HelpRequestTableViewCell: UITableViewCell {
     cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
     cardView.layer.borderWidth = 1.4
     cardView.layer.cornerRadius = 10
+    
     setUpButtons()
   }
   
@@ -48,6 +49,7 @@ class HelpRequestTableViewCell: UITableViewCell {
   
   func configure(presenter: HelpRequestPresentable) {
     timer?.invalidate()
+    
     orderNumberLabel.text = presenter.id
     dateTimeLabel.text = presenter.dateTime
     statusLabel.text = presenter.status
