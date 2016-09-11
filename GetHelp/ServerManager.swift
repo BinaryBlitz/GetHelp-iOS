@@ -337,7 +337,7 @@ class ServerManager {
   func sendMessageWithImage(image: UIImage, toOrder order: HelpRequest, completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
     
     do {
-      let imageData = UIImagePNGRepresentation(image)
+      let imageData = UIImageJPEGRepresentation(image, 0.7)
       let base64ImageString = imageData?.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
       let formattedImage = "data:image/gif;base64,\(base64ImageString ?? NSNull())"
       let parameters: [String: AnyObject] = ["message": ["image": formattedImage]]
