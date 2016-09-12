@@ -16,7 +16,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-#OS X Stuff
+# macOS
 .localized
 .DS_Store
 *.zip
@@ -30,6 +30,7 @@ Pods/
 
 # Fastlane
 fastlane/report.xml
+fastlane/screenshots
 *.mobileprovision
 
 # Keys
@@ -37,5 +38,8 @@ fastlane/report.xml
 *.pkey
 *.p12
 
-# Rbenv
+# rbenv
 .ruby-version
+
+# Secrets
+.env
