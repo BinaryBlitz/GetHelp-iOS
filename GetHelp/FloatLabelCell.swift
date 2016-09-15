@@ -62,7 +62,7 @@ public class _FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<
     private func layoutConstraints() -> [NSLayoutConstraint] {
         let views = ["floatLabeledTextField": floatLabelTextField]
         let metrics = ["vMargin":8.0]
-        return NSLayoutConstraint.constraintsWithVisualFormat("H:|-[floatLabeledTextField]-|", options: .AlignAllBaseline, metrics: metrics, views: views) + NSLayoutConstraint.constraintsWithVisualFormat("V:|-(vMargin)-[floatLabeledTextField]-(vMargin)-|", options: .AlignAllBaseline, metrics: metrics, views: views)
+        return NSLayoutConstraint.constraintsWithVisualFormat("H:|-[floatLabeledTextField]-|", options: NSLayoutFormatOptions.AlignAllLastBaseline, metrics: metrics, views: views) + NSLayoutConstraint.constraintsWithVisualFormat("V:|-(vMargin)-[floatLabeledTextField]-(vMargin)-|", options: NSLayoutFormatOptions.AlignAllLastBaseline, metrics: metrics, views: views)
     }
     
     public func textFieldDidChange(textField : UITextField){
@@ -80,7 +80,7 @@ public class _FloatLabelCell<T where T: Equatable, T: InputTypeInitiable>: Cell<
                         let oldVal = textField.text
                         textField.text = row.displayValueFor?(row.value)
                         if let f = formatter as? FormatterProtocol {
-                            selStartPos = f.getNewPosition(forPosition: selStartPos, inTextInput: textField, oldValue: oldVal, newValue: textField.text)
+                            selStartPos = f.getNewPosition(selStartPos, inTextInput: textField, oldValue: oldVal, newValue: textField.text)
                         }
                         textField.selectedTextRange = textField.textRangeFromPosition(selStartPos, toPosition: selStartPos)
                     }

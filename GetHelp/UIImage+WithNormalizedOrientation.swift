@@ -10,7 +10,7 @@ extension UIImage {
     let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
 
-    return normalizedImage
+    return normalizedImage!
   }
 
 }
