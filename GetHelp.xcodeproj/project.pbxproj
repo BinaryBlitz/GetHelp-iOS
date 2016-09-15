@@ -624,6 +624,7 @@
 					37CC9B6D1BFB60FF00B450E0 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 4WGG8V34K4;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -956,6 +957,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = GetHelp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -982,6 +984,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = GetHelp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
