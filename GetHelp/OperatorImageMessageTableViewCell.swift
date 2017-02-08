@@ -15,7 +15,7 @@ class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCel
   @IBOutlet weak var cardView: UIView!
   @IBOutlet weak var indicatorView: UIView!
   @IBOutlet weak var contentImageView: UIImageView!
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
 
@@ -23,7 +23,7 @@ class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCel
     cardView.layer.borderWidth = 2
     cardView.layer.borderColor = UIColor(white: 0.93, alpha: 1).CGColor
     cardView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-    
+
     contentImageView.clipsToBounds = true
     contentImageView.contentMode = .ScaleAspectFill
   }
@@ -32,7 +32,7 @@ class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCel
     contentImageView.hnk_cancelSetImage()
     contentImageView.image = nil
     dateLabel.text = presenter.dateTime
-    
+
     if let imageURL = presenter.imageThumbURL {
       contentImageView.hnk_setImageFromURL(imageURL)
     }

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 /// Contains basic fields for help request
 class HelpRequest: Object {
-  
+
   dynamic var id = 0
   dynamic var subject = ""
   dynamic var course = ""
@@ -31,9 +31,9 @@ class HelpRequest: Object {
   override class func primaryKey() -> String? {
     return "id"
   }
-  
+
   //MARK: - Properties
-  
+
   var type: HelpType {
     get {
       return HelpType(rawValue: _type)!
@@ -42,7 +42,7 @@ class HelpRequest: Object {
       self._type = newType.rawValue
     }
   }
-  
+
   var status: HelpRequestStatus {
     get {
       return HelpRequestStatus(rawValue: _status)!
@@ -51,9 +51,9 @@ class HelpRequest: Object {
       self._status = newStatus.rawValue
     }
   }
-  
+
   //MARK: - Presentes stuff
-  
+
   func presenter() -> HelpRequestPresentable {
     return HelpRequestPresenter(helpRequest: self)
   }
@@ -62,7 +62,7 @@ class HelpRequest: Object {
 //MARK: - ServerModelPresentable
 
 extension HelpRequest: ServerModelPresentable {
-  
+
   func convertToDict() -> [String: AnyObject] {
     let dateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
     var jsonData: [String: AnyObject] = [
@@ -75,18 +75,18 @@ extension HelpRequest: ServerModelPresentable {
       "email": email,
       "description": helpDescription
     ]
-    
+
     if let dueDate = dueDate {
       jsonData["due_by"] = dateFormatter.stringFromDate(dueDate)
     }
-    
+
     if let startDate = startDate {
       jsonData["starts_at"] = dateFormatter.stringFromDate(startDate)
     }
-    
+
     return jsonData
   }
-  
+
   static func createFromJSON(json: JSON) -> HelpRequest? {
     guard let id = json["id"].int,
         subject = json["course"].string,
@@ -101,7 +101,7 @@ extension HelpRequest: ServerModelPresentable {
       else {
       return nil
     }
-    
+
     let helpRequest = HelpRequest()
     helpRequest.id = id
     helpRequest.subject = subject
@@ -110,7 +110,7 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest._type = type
     helpRequest.school = university
     helpRequest.createdAt = createdDateString.toDateFromISO8601()
-    
+
     if let description = json["description"].string {
       helpRequest.helpDescription = description
     }
@@ -121,16 +121,15 @@ extension HelpRequest: ServerModelPresentable {
     if let startDate = json["starts_at"].string {
       helpRequest.startDate = startDate.toDateFromISO8601()
     }
-    
+
     if let sum = json["sum"].int {
       helpRequest.sum = sum
     }
-    
+
     if let viewed = json["viewed?"].bool {
       helpRequest.viewed = viewed
     }
-    
+
     return helpRequest
   }
 }
-

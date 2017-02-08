@@ -12,27 +12,27 @@ extension UIColor {
   convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1) {
     self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)
   }
-  
+
   static func orangeSecondaryColor() -> UIColor {
     return UIColor(r: 243, g: 108, b: 18)
   }
-  
+
   static func greenAccentColor() -> UIColor {
     return UIColor(r: 146, g: 199, b: 103)
   }
-  
+
   static func redAccentColor() -> UIColor {
     return UIColor(r: 222, g: 102, b: 91)
   }
-  
+
   static func yellowAccentColor() -> UIColor {
     return UIColor(r: 250, g: 201, b: 95)
   }
-  
+
   static func blueAccentColor() -> UIColor {
     return UIColor(r: 95, g: 190, b: 212)
   }
-    
+
   static func newMessageIndicatorColor() -> UIColor {
     return UIColor(r: 46, g: 170, b: 60)
   }

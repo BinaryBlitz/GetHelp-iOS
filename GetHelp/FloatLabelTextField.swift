@@ -17,7 +17,7 @@ import UIKit
 @IBDesignable public class FloatLabelTextField: UITextField {
 	let animationDuration = 0.3
 	var title = UILabel()
-	
+
 	// MARK:- Properties
 	override public var accessibilityLabel:String! {
 		get {
@@ -31,28 +31,28 @@ import UIKit
 			self.accessibilityLabel = newValue
 		}
 	}
-	
+
 	override public var placeholder:String? {
 		didSet {
 			title.text = placeholder
 			title.sizeToFit()
 		}
 	}
-	
+
 	override public var attributedPlaceholder:NSAttributedString? {
 		didSet {
 			title.text = attributedPlaceholder?.string
 			title.sizeToFit()
 		}
 	}
-	
+
 	var titleFont: UIFont = .systemFontOfSize(12.0) {
 		didSet {
 			title.font = titleFont
 			title.sizeToFit()
 		}
 	}
-	
+
 	@IBInspectable var hintYPadding:CGFloat = 0.0
 
 	@IBInspectable var titleYPadding:CGFloat = 0.0 {
@@ -62,7 +62,7 @@ import UIKit
 			title.frame = r
 		}
 	}
-	
+
 	@IBInspectable var titleTextColour:UIColor = .grayColor() {
 		didSet {
 			if !isFirstResponder() {
@@ -70,7 +70,7 @@ import UIKit
 			}
 		}
 	}
-	
+
 	@IBInspectable var titleActiveTextColour:UIColor! {
 		didSet {
 			if isFirstResponder() {
@@ -78,18 +78,18 @@ import UIKit
 			}
 		}
 	}
-	
+
 	// MARK:- Init
 	required public init?(coder aDecoder:NSCoder) {
 		super.init(coder:aDecoder)
 		setup()
 	}
-	
+
 	override init(frame:CGRect) {
 		super.init(frame:frame)
 		setup()
 	}
-	
+
 	// MARK:- Overrides
 	override public func layoutSubviews() {
 		super.layoutSubviews()
@@ -109,7 +109,7 @@ import UIKit
 			showTitle(isResp)
 		}
 	}
-	
+
 	override public func textRectForBounds(bounds:CGRect) -> CGRect {
 		var r = super.textRectForBounds(bounds)
 		if !(text?.isEmpty ?? true){
@@ -119,7 +119,7 @@ import UIKit
 		}
 		return CGRectIntegral(r)
 	}
-	
+
 	override public func editingRectForBounds(bounds:CGRect) -> CGRect {
 		var r = super.editingRectForBounds(bounds)
 		if !(text?.isEmpty ?? true) {
@@ -129,7 +129,7 @@ import UIKit
 		}
 		return CGRectIntegral(r)
 	}
-	
+
 	override public func clearButtonRectForBounds(bounds:CGRect) -> CGRect {
 		var r = super.clearButtonRectForBounds(bounds)
 		if !(text?.isEmpty ?? true) {
@@ -139,9 +139,9 @@ import UIKit
 		}
 		return CGRectIntegral(r)
 	}
-	
+
 	// MARK:- Public Methods
-	
+
 	// MARK:- Private Methods
 	private func setup() {
 		borderStyle = UITextBorderStyle.None
@@ -160,7 +160,7 @@ import UIKit
 	private func maxTopInset()->CGFloat {
 		return max(0, floor(bounds.size.height - (font?.lineHeight ?? 0) - 4.0))
 	}
-	
+
 	private func setTitlePositionForTextAlignment() {
 		let r = textRectForBounds(bounds)
 		var x = r.origin.x
@@ -171,7 +171,7 @@ import UIKit
 		}
 		title.frame = CGRect(x:x, y:title.frame.origin.y, width:title.frame.size.width, height:title.frame.size.height)
 	}
-	
+
 	private func showTitle(animated:Bool) {
 		let dur = animated ? animationDuration : 0
 		UIView.animateWithDuration(dur, delay:0, options: UIViewAnimationOptions.BeginFromCurrentState.union(UIViewAnimationOptions.CurveEaseOut), animations:{
@@ -182,7 +182,7 @@ import UIKit
 				self.title.frame = r
 			}, completion:nil)
 	}
-	
+
 	private func hideTitle(animated:Bool) {
 		let dur = animated ? animationDuration : 0
 		UIView.animateWithDuration(dur, delay:0, options: UIViewAnimationOptions.BeginFromCurrentState.union(UIViewAnimationOptions.CurveEaseIn), animations:{

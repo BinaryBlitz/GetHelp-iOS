@@ -8,7 +8,7 @@
 
 struct HelpTypePresenter {
   let type: HelpType
-  
+
   var image: UIImage? {
     switch type {
     case .Normal:
@@ -17,7 +17,7 @@ struct HelpTypePresenter {
       return UIImage(named: "ExpressRequest")
     }
   }
-  
+
   var name: String {
     switch type {
     case .Normal:
@@ -26,7 +26,7 @@ struct HelpTypePresenter {
       return "Онлайн помощь"
     }
   }
-  
+
   var description: String {
     switch type {
     case .Normal:

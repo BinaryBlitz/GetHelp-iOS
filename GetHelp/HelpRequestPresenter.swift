@@ -7,17 +7,17 @@
 //
 
 class HelpRequestPresenter: HelpRequestPresentable {
-  
+
   private var helpRequest: HelpRequest
   private var helpTypePresenter: HelpTypePresenter!
   private lazy var dateFormatter = NSDateFormatter(dateFormat: "dd.MM.yyyy")
   private lazy var timeFormatter = NSDateFormatter(dateFormat: "hh:mm")
-  
+
   init(helpRequest: HelpRequest) {
     self.helpRequest = helpRequest
     helpTypePresenter = HelpTypePresenter(type: helpRequest.type)
   }
-  
+
   var id: String {
     return "#\(helpRequest.id)"
   }
@@ -25,7 +25,7 @@ class HelpRequestPresenter: HelpRequestPresentable {
   var type: String {
     return helpTypePresenter.name
   }
-  
+
   var name: String {
     return helpRequest.subject
   }
@@ -52,15 +52,15 @@ class HelpRequestPresenter: HelpRequestPresentable {
       return "Возвращен"
     }
   }
-  
+
   func isPayable() -> Bool {
     return helpRequest.status == .WaitingForPayment
   }
-  
+
   var isViewed: Bool {
     return helpRequest.viewed
   }
-  
+
   var price: String {
     return "\(helpRequest.sum) \(rubleSign)"
   }
@@ -86,20 +86,20 @@ class HelpRequestPresenter: HelpRequestPresentable {
     } else if let dueDate = helpRequest.dueDate {
       return dateFormatter.stringFromDate(dueDate)
     }
-    
+
     return ""
   }
-  
+
   var time: String {
     if let startDate = helpRequest.startDate {
       return timeFormatter.stringFromDate(startDate)
     } else if let dueDate = helpRequest.dueDate {
       return timeFormatter.stringFromDate(dueDate)
     }
-    
+
     return ""
   }
-  
+
   var dateTime: String {
     return "\(date) \(time)"
   }

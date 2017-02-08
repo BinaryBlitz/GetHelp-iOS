@@ -12,27 +12,27 @@ struct MessagesQueue {
   var images = [UIImage]()
   var textMessage: String?
   let order: HelpRequest
-  
+
   private var update: ((success: Bool, error: ErrorType?) -> Void)?
   private var currentRequest: Request?
-  
+
   init(order: HelpRequest) {
     self.order = order
   }
- 
+
   mutating func append(image: UIImage) {
     images.append(image)
   }
-  
+
   mutating func append(text: String) {
     textMessage = text
   }
-  
+
   mutating func clearQueue() {
     images = []
     textMessage = nil
   }
-  
+
   mutating func sendMessagesWithUpdateMethod(update: (success: Bool, error: ErrorType?) -> Void) {
     print("Images count: \(images.count)")
     self.update = update
@@ -47,12 +47,12 @@ struct MessagesQueue {
       sendNextImage()
     }
   }
-  
+
   mutating private func sendNextImage() {
     guard let image = images.popLast() else {
       return
     }
-    
+
     self.currentRequest = ServerManager.sharedInstance.sendMessageWithImage(image, toOrder: order) { success, error in
       print("Success: \(success)")
       print("Error: \(error)")
@@ -62,7 +62,7 @@ struct MessagesQueue {
       }
     }
   }
-  
+
   mutating func cancel() {
     currentRequest?.cancel()
     currentRequest = nil

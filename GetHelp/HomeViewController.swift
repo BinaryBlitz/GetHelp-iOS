@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
   @IBOutlet weak var backgroundView: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var createRequestButton: UIButton!
-  
+
   let refreshControl = UIRefreshControl()
   var helpRequests: Results<HelpRequest>?
 
@@ -25,29 +25,29 @@ class HomeViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     navigationController?.navigationBar.barStyle = .BlackTranslucent
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 
     refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: .ValueChanged)
     configureCreateButton()
     configureTableView()
-    
+
     fetchHelpRequests()
     tableView.reloadData()
-    
+
     NSNotificationCenter
         .defaultCenter()
         .addObserver(self,
                      selector: #selector(refresh(_:)),
                      name: HelpRequestUpdatedNotification, object: nil)
-    
+
   }
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     refresh(self)
-    
+
     if !ServerManager.sharedInstance.authenticated {
       let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
       let loginViewController = loginStoryboard.instantiateInitialViewController()!
@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
-  
+
   //MARK: - Initialize
 
   func configureTableView() {
@@ -83,9 +83,9 @@ class HomeViewController: UIViewController {
     createRequestButton.layer.borderColor = UIColor.orangeSecondaryColor().CGColor
     createRequestButton.tintColor = UIColor.orangeSecondaryColor()
   }
-  
+
   //MARK: - Refresh
-  
+
   func refresh(sender: AnyObject) {
     beginRefreshWithCompletion {
       self.fetchHelpRequests()
@@ -93,14 +93,14 @@ class HomeViewController: UIViewController {
       self.refreshControl.endRefreshing()
     }
   }
-  
+
   func beginRefreshWithCompletion(completion: () -> Void) {
     //TODO: Reresh request
     ServerManager.sharedInstance.fetchHelpRequests { success, error in
       if !success {
         print("Error in ferching request")
       }
-      
+
       do {
         let realm = try Realm()
         let results = realm.objects(HelpRequest).filter("viewed == false")
@@ -108,7 +108,7 @@ class HomeViewController: UIViewController {
       } catch {
         return
       }
-      
+
       completion()
     }
   }
@@ -121,13 +121,13 @@ class HomeViewController: UIViewController {
   }
 
   //MARK: - Actions
-  
+
   @IBAction func addBarButtonAction(sender: AnyObject) {
     performSegueWithIdentifier("createNewRequest", sender: self)
   }
-  
+
   //MARK: Navigation
-  
+
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let destination = segue.destinationViewController as? RequestDetailsViewController,
         indexPath = sender as? NSIndexPath {
@@ -156,7 +156,7 @@ extension HomeViewController: UITableViewDataSource {
       backgroundView.hidden = false
       return 0
     }
-    
+
     let shouldHideTableView = requests.count == 0
     tableView.hidden = shouldHideTableView
     backgroundView.hidden = !shouldHideTableView
@@ -170,40 +170,40 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     let request = helpRequests?[indexPath.row]
-    
+
     if let presenter = request?.presenter() {
       cell.configure(presenter)
     }
-    
+
     cell.delegate = self
 
     return cell
   }
-  
+
   func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     guard let cell = cell as? HelpRequestTableViewCell else {
       return
     }
-    
+
     cell.stopAnimations()
   }
-  
+
 }
 
 //MARK: - HelpRequestCellDelegate
 
 extension HomeViewController: HelpRequestCellDelegate {
-  
+
   func didTouchPayButtonInCell(cell: HelpRequestTableViewCell) {
     struct Status {
       static var isActive: Bool = false
     }
-    
+
     if Status.isActive { return }
-    
+
     guard let indexPath = tableView.indexPathForCell(cell) else { return }
     guard let order = helpRequests?[indexPath.row] else { return }
-    
+
     Status.isActive = true
     ServerManager.sharedInstance.paymentsURLForOrderID(order.id) { paymentURL, error in
       if let url = paymentURL {
@@ -222,9 +222,9 @@ extension HomeViewController: HelpRequestCellDelegate {
           self.presentAlertWithTitle("Ошбика", andMessage: "Не удалось загрузить страницу. Попробуйте позже.")
         }
       }
-      
+
       Status.isActive = false
     }
   }
-  
+
 }

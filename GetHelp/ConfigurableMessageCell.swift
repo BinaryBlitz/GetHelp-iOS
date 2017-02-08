@@ -9,4 +9,3 @@
 protocol ConfigurableMessageCell {
   func configure(presenter: MessagePresentable)
 }
-
