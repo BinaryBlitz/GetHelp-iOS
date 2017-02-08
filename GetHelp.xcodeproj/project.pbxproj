@@ -954,7 +954,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetHelp/GetHelp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
@@ -982,7 +982,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetHelp/GetHelp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = GetHelp/Info.plist;
