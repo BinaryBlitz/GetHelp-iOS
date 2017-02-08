@@ -19,7 +19,7 @@ class ServerManager {
   //MARK: - Fields
 
   private var manager = Manager.sharedInstance
-  let baseURL = "https://getthelp.ru"
+  private let baseURL = "https://gethelp-staging.herokuapp.com"
 
   var apiToken: String? {
     didSet {
