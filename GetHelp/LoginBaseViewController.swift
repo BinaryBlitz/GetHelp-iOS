@@ -24,7 +24,7 @@ class LoginBaseViewController: UIViewController {
   enum MoveOption {
     case Forward
     case Backward
-    
+
     func getAinmationOptions() -> UIViewAnimationOptions {
       switch self {
       case .Forward:
@@ -36,7 +36,7 @@ class LoginBaseViewController: UIViewController {
   }
 
   @IBOutlet weak var containerView: UIView!
-  
+
   private var numberOfPages = 3
   private var viewControllersIdentifiers = [
     "GreetingViewController",
@@ -45,44 +45,44 @@ class LoginBaseViewController: UIViewController {
   ]
   private var viewControllers = [String: UIViewController]()
   private var presentingIndex: Int = 0
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
   }
-  
+
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let content = segue.destinationViewController as? ContainerPresentable {
       content.updateNavigationDelegate(self)
     }
   }
-  
+
   func presentViewControllerWithIndex(index: Int, withOptions moveOption: MoveOption, andData data: AnyObject?) {
     guard let viewControllerToPresent = viewControllerAtIndex(index) else {
       return
     }
-    
+
     var currentContent: ContainerPresentable? = nil
-    
+
     for child in childViewControllers {
       if let content = child as? ContainerPresentable {
         currentContent = content
         break
       }
     }
-    
+
     guard let currentController = currentContent?.viewController else { return }
-    
+
     currentController.willMoveToParentViewController(nil)
     addChildViewController(viewControllerToPresent)
     let duration = 0.57
-    
+
     if let contentToPresent = viewControllerToPresent as? ContainerPresentable {
       contentToPresent.updateNavigationDelegate(self)
       contentToPresent.setData(data)
     }
     viewControllerToPresent.view.frame = currentController.view.frame
-    
+
     transitionFromViewController(currentController,
       toViewController: viewControllerToPresent,
       duration: duration,
@@ -96,12 +96,12 @@ class LoginBaseViewController: UIViewController {
         }
     }
   }
-  
+
   private func viewControllerAtIndex(index: Int) -> UIViewController? {
     if index >= numberOfPages {
       return nil
     }
-    
+
     let identifire = viewControllersIdentifiers[index]
     if let controller = viewControllers[identifire] {
       return controller
@@ -110,7 +110,7 @@ class LoginBaseViewController: UIViewController {
         return nil
       }
       viewControllers[identifire] = controller
-      
+
       return controller
     }
   }
@@ -121,14 +121,14 @@ extension LoginBaseViewController: LoginNavigationDelegate {
     if presentingIndex + 1 >= numberOfPages {
       return
     }
-    
+
     presentingIndex += 1
     presentViewControllerWithIndex(presentingIndex, withOptions: .Forward, andData: data)
   }
-  
+
   func moveBackward(data: AnyObject?) {
     if presentingIndex - 1 < 0 { return }
-    
+
     presentingIndex -= 1
     presentViewControllerWithIndex(presentingIndex, withOptions: .Backward, andData: data)
   }

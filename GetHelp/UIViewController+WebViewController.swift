@@ -9,7 +9,7 @@
 import SafariServices
 
 extension UIViewController {
-  
+
   func presentWebViewControllerWith(url: NSURL, entersReaderIfAvailable reader: Bool = false) {
     if #available(iOS 9.0, *) {
       let safariController = SFSafariViewController(URL: url, entersReaderIfAvailable: reader)

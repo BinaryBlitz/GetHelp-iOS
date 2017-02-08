@@ -14,7 +14,7 @@ import Alamofire
 class RequestFormViewController: FormViewController {
 
   var type: HelpType = HelpType.Normal
-  
+
   var createdRequest: Request?
 
   override func viewDidLoad() {
@@ -22,15 +22,15 @@ class RequestFormViewController: FormViewController {
 
     initialiseForm()
   }
-  
+
   override func viewWillDisappear(animated: Bool) {
     if let request = createdRequest {
       request.cancel()
     }
   }
-  
-  //MARK: - Navigation 
-  
+
+  //MARK: - Navigation
+
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let destination = segue.destinationViewController as? AttachPhotosViewController,
         helpRequest = sender as? HelpRequest where segue.identifier == "attachPhotos" {
@@ -87,7 +87,7 @@ class RequestFormViewController: FormViewController {
         "Перевод",
         "Другое"
       ]
-      
+
       row.value = row.options.first!
     }
 
@@ -136,11 +136,11 @@ class RequestFormViewController: FormViewController {
   }
 
   @IBAction func submitButtonAction(sender: AnyObject) {
-    
+
     if let request = createdRequest {
       request.cancel()
     }
-    
+
     guard let subject = form.rowByTag("subjectRow")?.baseValue as? String else {
       presentAlertWithMessage("Вы не указали предмет")
       return
@@ -174,7 +174,7 @@ class RequestFormViewController: FormViewController {
     helpRequest.faculty = facility
     helpRequest.course = course
     helpRequest.helpDescription = helpDesctiption
-    
+
     if let dueDate = form.rowByTag("dueDateRow")?.baseValue as? NSDate {
       helpRequest.dueDate = dueDate
     } else if let startDate = form.rowByTag("startDateRow")?.baseValue as? NSDate,
@@ -183,7 +183,7 @@ class RequestFormViewController: FormViewController {
         presentAlertWithMessage("Неверно указаны даты начала и конца")
         return
       }
-            
+
       helpRequest.startDate = startDate
       helpRequest.dueDate = endDate
     }
@@ -195,7 +195,7 @@ class RequestFormViewController: FormViewController {
       presentAlertWithMessage("Вы не указали тип работы")
       return
     }
-    
+
     if type == .Normal {
       if let email = form.rowByTag("emailRow")?.baseValue as? String {
         helpRequest.email = email
@@ -205,7 +205,7 @@ class RequestFormViewController: FormViewController {
         return
       }
     }
-    
+
     createdRequest = ServerManager.sharedInstance.createNewHelpRequest(helpRequest) { [weak self] (helpRequest, error) -> Void in
       if let helpRequest = helpRequest {
         self?.performSegueWithIdentifier("attachPhotos", sender: helpRequest)

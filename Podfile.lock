@@ -1,27 +1,27 @@
 PODS:
-  - Alamofire (3.5.0)
+  - Alamofire (3.5.1)
   - CCGrowingTextView (0.7)
-  - Crashlytics (3.8.1):
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DACircularProgress (2.3.1)
-  - DKImagePickerController (3.3.4):
-    - DKImagePickerController/Camera (= 3.3.4)
-    - DKImagePickerController/ImageManager (= 3.3.4)
-  - DKImagePickerController/Camera (3.3.4)
-  - DKImagePickerController/ImageManager (3.3.4)
+  - DKImagePickerController (3.3.5):
+    - DKImagePickerController/Camera (= 3.3.5)
+    - DKImagePickerController/ImageManager (= 3.3.5)
+  - DKImagePickerController/Camera (3.3.5)
+  - DKImagePickerController/ImageManager (3.3.5)
   - Eureka (1.7.0)
-  - Fabric (1.6.8)
+  - Fabric (1.6.11)
   - HanekeSwift (0.10.1)
   - MBProgressHUD (0.9.2)
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
+  - Realm (1.1.0):
+    - Realm/Headers (= 1.1.0)
+  - Realm/Headers (1.1.0)
+  - RealmSwift (1.1.0):
+    - Realm (= 1.1.0)
   - REFormattedNumberField (1.1.6)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -29,20 +29,20 @@ PODS:
   - SVWebViewController (1.0)
   - SwiftDate (3.0.9)
   - SwiftSpinner (0.9.5)
-  - SwiftyJSON (2.3.2)
+  - SwiftyJSON (2.4.0)
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.5)
   - CCGrowingTextView (~> 0.7)
   - Crashlytics (~> 3.8)
-  - DKImagePickerController (from `https://github.com/dev-0/DKImagePickerController.git`, branch `swift2.3`)
+  - DKImagePickerController (~> 3.3.4)
   - Eureka (from `https://github.com/xmartlabs/Eureka`, branch `swift2.3`)
   - Fabric (~> 1.6)
-  - HanekeSwift (from `https://github.com/cannyboy/HanekeSwift.git`)
+  - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`)
   - MWPhotoBrowser (~> 2.1)
-  - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
-  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
+  - Realm (~> 1.1)
+  - RealmSwift (~> 1.1)
   - REFormattedNumberField (~> 1.1)
   - SVWebViewController (~> 1.0)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`, branch `feature/swift_23`)
@@ -51,69 +51,47 @@ DEPENDENCIES:
   - TTTAttributedLabel (~> 2.0)
 
 EXTERNAL SOURCES:
-  DKImagePickerController:
-    :branch: swift2.3
-    :git: https://github.com/dev-0/DKImagePickerController.git
   Eureka:
     :branch: swift2.3
     :git: https://github.com/xmartlabs/Eureka
   HanekeSwift:
-    :git: https://github.com/cannyboy/HanekeSwift.git
-  Realm:
-    :branch: master
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-  RealmSwift:
-    :branch: master
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
+    :git: https://github.com/Haneke/HanekeSwift.git
   SwiftDate:
     :branch: feature/swift_23
     :git: https://github.com/malcommac/SwiftDate.git
 
 CHECKOUT OPTIONS:
-  DKImagePickerController:
-    :commit: adfef4d24871572e3aaf1b9f01980095a8ac3d27
-    :git: https://github.com/dev-0/DKImagePickerController.git
   Eureka:
-    :commit: b8f35699244c9f7c9ff4c8355fc8542a16a731bc
+    :commit: be9e11baaba4092c36373e8c8ba774fddd6788cc
     :git: https://github.com/xmartlabs/Eureka
   HanekeSwift:
-    :commit: 6d269cf310c62e17b321af4d43fa7d675d00caf7
-    :git: https://github.com/cannyboy/HanekeSwift.git
-  Realm:
-    :commit: 188b3a9d78879385d09addaa50bcee028d7577b3
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-  RealmSwift:
-    :commit: 188b3a9d78879385d09addaa50bcee028d7577b3
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
+    :commit: 2f304e81ced4e14d3d0eaadcb9b59baf67a3b524
+    :git: https://github.com/Haneke/HanekeSwift.git
   SwiftDate:
     :commit: 1608e37a42a4f1fec52b324f4f96726d414bd04b
     :git: https://github.com/malcommac/SwiftDate.git
 
 SPEC CHECKSUMS:
-  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
+  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   CCGrowingTextView: cd7e27d7f92e54de43fc607e146c16b3a3bb3950
-  Crashlytics: 4391d8df0b125345e9f209c5db6e7f40a6a8435d
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  DKImagePickerController: 4de1703ad3ba8bc216753447cbb00e482d8d4604
+  DKImagePickerController: 389caffedaa3ae0b058326084cbca32adf3e75a5
   Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
-  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   HanekeSwift: 4113367892828e7700d24a384027de6ebc79aad1
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
-  Realm: 2948cfa3a05b7acc446abc4c124d443df646c8de
-  RealmSwift: 4816c8608630a9a00bba6d726bb30b4bab6dd6bf
+  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
+  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
   REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: '098e97e6176540799c27e804c96653ee0833d13c'
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftDate: fa487d9b7d8c3070ea2553486902494f4915465d
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyJSON: 96918c1bf505efa50c4f72957018dd3452090c9c
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: d563fb057f09655759cc750421c07808fd52611d
+PODFILE CHECKSUM: 907b36852dd13bd5e476727278f46e0a8b6b4e41
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0

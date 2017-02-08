@@ -14,7 +14,7 @@ class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
   @IBOutlet weak var contentLabel: UILabel!
   @IBOutlet weak var cardView: UIView!
   @IBOutlet weak var indicatorView: UIView!
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
 

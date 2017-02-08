@@ -10,4 +10,3 @@ enum MessageSender: String {
   case Operator = "operator"
   case User = "user"
 }
-

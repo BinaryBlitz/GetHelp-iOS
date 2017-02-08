@@ -13,7 +13,7 @@ enum HelpType: String {
   var presenter: HelpTypePresenter {
     return HelpTypePresenter(type: self)
   }
-  
+
   static func avaliableTypes() -> [HelpType] {
     return [.Normal, .Express]
   }

@@ -7,4 +7,3 @@
 //
 
 typealias HelpRequestPresentable = protocol<RequestPresentale, DateTimePresentable, StatusPresentable>
-

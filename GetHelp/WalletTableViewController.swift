@@ -20,7 +20,7 @@ class WalletTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     navigationController?.navigationBar.barStyle = .BlackTranslucent
 
     fetchHelpRequests()
@@ -43,7 +43,7 @@ class WalletTableViewController: UITableViewController {
   func setUpTableView() {
     let walletInfoNib = UINib(nibName: "WalletInfoTableViewCell", bundle: nil)
     tableView.registerNib(walletInfoNib, forCellReuseIdentifier: kWalletInfoCellIdentifier)
-    
+
     let billCellNib = UINib(nibName: "BillTableViewCell", bundle: nil)
     tableView.registerNib(billCellNib, forCellReuseIdentifier: kRequestBillCellIdentifire)
 
@@ -89,13 +89,13 @@ class WalletTableViewController: UITableViewController {
 
   override func tableView(tableView: UITableView,
       cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
     switch indexPath.section {
     case 0:
       guard let cell = tableView.dequeueReusableCellWithIdentifier(kWalletInfoCellIdentifier) else {
         return UITableViewCell()
       }
-      
+
       return cell
     case 1:
       guard let cell = tableView.dequeueReusableCellWithIdentifier(kRequestBillCellIdentifire) as? BillTableViewCell else {
@@ -113,7 +113,7 @@ class WalletTableViewController: UITableViewController {
       guard let cell = tableView.dequeueReusableCellWithIdentifier(kNoDataMessageCellIdentifire) else {
         return UITableViewCell()
       }
-      
+
       return cell
     default:
       return UITableViewCell()
@@ -121,16 +121,16 @@ class WalletTableViewController: UITableViewController {
   }
 
   //MARK: - UITableViewDelegate
-  
+
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     let contentRowsCount = (activeRequests?.count ?? 0) + (completedRequests?.count ?? 0)
     return contentRowsCount == 0 ? 4 : 3
   }
-  
+
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
-  
+
   // Magic number 0.01 actually means 0 height for wierd UITableView. lol
   override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     switch section {
@@ -144,14 +144,14 @@ class WalletTableViewController: UITableViewController {
       return super.tableView(tableView, heightForHeaderInSection: section)
     }
   }
-  
+
   override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     if section == 0 {
       return 15
     }
     return 0.01
   }
-  
+
   override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 1:

@@ -11,7 +11,7 @@ import UIKit
 class RequestStatusTableViewCell: UITableViewCell {
 
   @IBOutlet weak var statusLabel: UILabel!
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
 

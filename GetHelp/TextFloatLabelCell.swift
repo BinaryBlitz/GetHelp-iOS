@@ -9,11 +9,11 @@
 import Eureka
 
 public class TextFloatLabelCell : _FloatLabelCell<String>, CellType {
-    
+
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
+
     public override func setup() {
         super.setup()
         textField.autocorrectionType = .Default

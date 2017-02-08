@@ -20,7 +20,7 @@ class CreateNewRequestTableViewController: UITableViewController {
     typePresenters = HelpType.avaliableTypes().map { (type) -> HelpTypePresenter in
       return HelpTypePresenter(type: type)
     }
-    
+
     let typeCellNib = UINib(nibName: "RequestTypeTableViewCell", bundle: nil)
     tableView.registerNib(typeCellNib, forCellReuseIdentifier: "typeOptionCell")
     tableView.rowHeight = UIScreen.mainScreen().bounds.height / 3
@@ -54,7 +54,7 @@ class CreateNewRequestTableViewController: UITableViewController {
     performSegueWithIdentifier("fillTheForm", sender: indexPath)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
-  
+
   //MARK: - IBActions
 
   @IBAction func cancelButtonAction(sender: AnyObject) {

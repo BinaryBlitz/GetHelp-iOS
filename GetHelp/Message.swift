@@ -11,7 +11,7 @@ import SwiftyJSON
 import SwiftDate
 
 class Message: Object {
-  
+
   dynamic var id: Int = 0
   dynamic var orderId: Int = 0
   dynamic var content: String?
@@ -28,7 +28,7 @@ class Message: Object {
       _sender = newSender.rawValue
     }
   }
-  
+
   override static func primaryKey() -> String? {
     return "id"
   }
@@ -37,7 +37,7 @@ class Message: Object {
 //MARK: - ServerModelPresentable
 
 extension Message: ServerModelPresentable {
-  
+
   //TODO: implement protocol
   static func createFromJSON(json: JSON) -> Message? {
     guard let id = json["id"].int,
@@ -47,31 +47,31 @@ extension Message: ServerModelPresentable {
     else {
       return nil
     }
-    
+
     let message = Message()
     message.id = id
     message.orderId = orderId
     message._sender = sender
-    
+
     if let dateCreated = createdDateString.toDateFromISO8601() {
       message.dateCreated = dateCreated
     }
-    
+
     if let content = json["content"].string {
       message.content = content
     }
-    
+
     if let imageURLString = json["image_url"].string {
       message.imageURLString = imageURLString
     }
-    
+
     if let imageThumbURLString = json["image_thumb_url"].string {
       message.imageThumbURLString = imageThumbURLString
     }
-    
+
     return message
   }
-  
+
   func convertToDict() -> [String : AnyObject] {
     return ["": ""]
   }

@@ -624,7 +624,7 @@
 					37CC9B6D1BFB60FF00B450E0 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 4WGG8V34K4;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -733,7 +733,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E2DD6F853D2C8E15B7E153E8 /* [CP] Embed Pods Frameworks */ = {
@@ -949,23 +949,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2084CA4442AAB96D8EB3B89C /* Pods-GetHelp.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetHelp/GetHelp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = GetHelp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DCOCOAPODS -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GettHelp;
 				PRODUCT_NAME = GetHelp;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "acfe7a22-f5fc-483c-9bad-ffd953f77a9c";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development ru.binaryblitz.GettHelp";
 				SWIFT_OBJC_BRIDGING_HEADER = "GetHelp/GetHelp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
@@ -977,22 +977,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46F473C0629CB2E1CCE64683 /* Pods-GetHelp.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetHelp/GetHelp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = GetHelp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DCOCOAPODS -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.binaryblitz.GettHelp;
 				PRODUCT_NAME = GetHelp;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9daee9bd-849a-4f08-9338-e89cda1cb30c";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore ru.binaryblitz.GettHelp";
 				SWIFT_OBJC_BRIDGING_HEADER = "GetHelp/GetHelp-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;

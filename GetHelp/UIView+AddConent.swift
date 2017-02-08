@@ -9,12 +9,12 @@
 import UIKit
 
 extension UIView {
-  
+
   static func addContent(content: UIView, toView contentView: UIView) {
-    
+
     content.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(content)
-    
+
     let topConstraint = NSLayoutConstraint(item: content,
       attribute: NSLayoutAttribute.Top,
       relatedBy: NSLayoutRelation.Equal,
@@ -23,7 +23,7 @@ extension UIView {
       multiplier: 1,
       constant: 0
     )
-    
+
     let bottomContraint = NSLayoutConstraint(item: content,
       attribute: .Bottom,
       relatedBy: .Equal,
@@ -32,7 +32,7 @@ extension UIView {
       multiplier: 1,
       constant: 0
     )
-    
+
     let trallingConstaint = NSLayoutConstraint(item: content,
       attribute: .Trailing,
       relatedBy: .Equal,
@@ -41,7 +41,7 @@ extension UIView {
       multiplier: 1,
       constant: 0
     )
-    
+
     let leadingConstraint = NSLayoutConstraint(item: content,
       attribute: .Leading,
       relatedBy: .Equal,
@@ -50,7 +50,7 @@ extension UIView {
       multiplier: 1,
       constant: 0
     )
-    
+
     contentView.addConstraints([topConstraint, bottomContraint, leadingConstraint, trallingConstaint])
   }
 }

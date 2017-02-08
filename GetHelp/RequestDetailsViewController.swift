@@ -9,10 +9,10 @@
 import UIKit
 
 class RequestDetailsViewController: UIViewController {
-  
+
   private let infoIndex = 0
   private let conversationIndex = 1
-  
+
   @IBOutlet weak var requestInfoView: UIView!
   @IBOutlet weak var conversationView: UIView!
   @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -21,22 +21,22 @@ class RequestDetailsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     segmentedControl.selectSegmentAt(conversationIndex)
   }
-  
+
   override func viewWillAppear(animated: Bool) {
     self.tabBarController?.tabBar.hidden = true
   }
-  
+
   @IBAction func segmentedControlValueChangedAction(sender: AnyObject) {
     guard let segmentedControl = sender as? UISegmentedControl else {
       return
     }
-    
+
     //hide keyboard
     view.endEditing(true)
-    
+
     switch segmentedControl.selectedSegmentIndex {
     case infoIndex:
       requestInfoView.hidden = false

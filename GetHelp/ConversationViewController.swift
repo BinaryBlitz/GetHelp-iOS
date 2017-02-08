@@ -21,35 +21,35 @@ class ConversationViewController: UIViewController {
   @IBOutlet weak var sendButton: UIButton!
   @IBOutlet weak var attachButton: UIButton!
   @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
-  
+
   var helpRequest: HelpRequest!
 
   var refreshControl: UIRefreshControl?
   var selectedAssets: [DKAsset]?
-  
+
   var messages: Results<Message>?
   var images: [String]? {
     return messages?.flatMap { (message) -> String? in
       return message.imageURLString
     }
   }
-  
+
   var timer: NSTimer?
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    
+
     timer?.fire()
     refresh(self)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     let realm = try! Realm()
     let orderId = helpRequest.id
     messages = realm.objects(Message).filter("orderId == \(orderId)").sorted("dateCreated", ascending: false)
-    
+
     if messages?.count == 0 {
       let id = UserDefaultsHelper.loadObjectForKey(.FirstOperatorMessageId) as? Int
       let message = Message()
@@ -63,22 +63,22 @@ class ConversationViewController: UIViewController {
         try realm.write {
           realm.add(message)
         }
-        
+
         UserDefaultsHelper.save(message.id, forKey: .FirstOperatorMessageId)
       } catch let error {
           print("Error: \(error)")
       }
     }
-    
+
     setUpTableView()
     setUpButtons()
     setUpKeyboard()
     setUpTextView()
     setUpRefreshControl()
-    
+
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refresh(_:)),
             name: HelpRequestUpdatedNotification, object: nil)
-    
+
     self.timer = NSTimer.scheduledTimerWithTimeInterval(
       10,
       target: self,
@@ -87,21 +87,21 @@ class ConversationViewController: UIViewController {
       repeats: true
     )
   }
-  
+
   override func viewDidDisappear(animated: Bool) {
     timer?.invalidate()
   }
-  
+
   deinit {
     timer?.invalidate()
   }
-  
+
   //MARK: - Set up methods
-  
+
   func setUpTableView() {
     let tableView = UITableView(frame: chatContentView.frame, style: .Plain)
     self.tableView = tableView
-    
+
     tableView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
     tableView.dataSource = self
     tableView.delegate = self
@@ -122,24 +122,24 @@ class ConversationViewController: UIViewController {
     tableView.estimatedRowHeight = 100
     scrollToBottom()
   }
-  
+
   func setUpRefreshControl() {
     refreshControl = UIRefreshControl()
     if let refreshControl = refreshControl,
            tableView = tableView {
-            
+
       refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: .ValueChanged)
       tableView.addSubview(refreshControl)
       tableView.sendSubviewToBack(refreshControl)
     }
   }
-  
+
   func setUpTextView() {
     textView.layer.cornerRadius = 7
     textView.maxNumberOfLine = 5
     textView.placeholder = "Введите сообщение"
   }
-  
+
   func setUpKeyboard() {
     let notificationCenter = NSNotificationCenter.defaultCenter()
     notificationCenter.addObserver(self, selector: #selector(keyboardWillShow(_:)),
@@ -147,27 +147,27 @@ class ConversationViewController: UIViewController {
     notificationCenter.addObserver(self, selector: #selector(keyboardWillHide(_:)),
       name: UIKeyboardWillHideNotification, object: nil)
   }
-  
+
   func setUpButtons() {
     sendButton.tintColor = UIColor.orangeSecondaryColor()
     let attachIcon = UIImage(named: "Camera")?.imageWithRenderingMode(.AlwaysTemplate)
     attachButton.setBackgroundImage(attachIcon, forState: .Normal)
     attachButton.tintColor = UIColor.orangeSecondaryColor()
   }
-  
+
   func scrollToBottom() {
     tableView?.setContentOffset(CGPointZero, animated: true)
   }
-  
+
   //MARK: - Refresh
-  
+
   func refresh(sender: AnyObject) {
     beginRefreshWithcompletion { () -> Void in
       self.refreshControl?.endRefreshing()
       self.tableView?.reloadData()
     }
   }
-  
+
   func beginRefreshWithcompletion(completion: () -> Void) {
     ServerManager.sharedInstance.fetchAllMessagesForOrder(helpRequest) { success, error in
       if let error = error {
@@ -190,7 +190,7 @@ class ConversationViewController: UIViewController {
         print("Success!")
         self.tableView!.reloadData()
       }
-      
+
       if let error = error {
         print("Error: \(error)")
         guard let error = error as? NSURLError else {
@@ -207,10 +207,10 @@ class ConversationViewController: UIViewController {
         }
       }
     }
-    
+
     textView.text = ""
   }
-  
+
   @IBAction func attachButtonAction(sender: AnyObject) {
     presentImagePickerController()
   }
@@ -222,51 +222,51 @@ class ConversationViewController: UIViewController {
     imagePickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
       self.sendAssets(assets)
     }
-    
+
     presentViewController(imagePickerController, animated: true, completion: nil)
   }
-  
+
   //MARK: - Images magic
-  
+
   private var numberOfAssets: Int = 0
   private var finishedRequests: Int = 0
   private var imageSendRequests = [Request?]()
-  
+
   func sendAssets(assets: [DKAsset]) {
     let serverManager = ServerManager.sharedInstance
     numberOfAssets = 0
     finishedRequests = 0
     imageSendRequests = []
-    
+
     if assets.count == 0 {
       return
     }
-    
+
     numberOfAssets = assets.count
     assets.forEach { asset in
       asset.fetchOriginalImageWithCompleteBlock { image, info in
         guard let image = image?.withNormalizedOrientation else { return }
-        
+
         let request = serverManager.sendMessageWithImage(image, toOrder: self.helpRequest) { [unowned self] success, error in
           self.finishedRequests += 1
           if self.numberOfAssets == self.finishedRequests {
             SwiftSpinner.hide()
           }
-          
+
           if success {
             print("Success!")
             self.tableView?.reloadData()
             self.scrollToBottom()
           }
-          
+
           if let error = error {
             print("Error: \(error)")
-            
+
             if (error as NSError).description.containsString(": 413") {
               self.presentAlertWithTitle("Ошибка", andMessage: "Фотография слишком большая!")
               return
             }
-            
+
             guard let error = error as? NSURLError else {
               return
             }
@@ -281,11 +281,11 @@ class ConversationViewController: UIViewController {
             }
           }
         }
-        
+
         self.imageSendRequests.append(request)
       }
     }
-    
+
     SwiftSpinner.show("Отправка фотографий").addTapHandler( {
         SwiftSpinner.hide()
         self.imageSendRequests.forEach { request in
@@ -303,7 +303,7 @@ extension ConversationViewController: UITableViewDataSource {
     guard let messages = messages else {
       return 0
     }
-    
+
     tableView.hidden = messages.count == 0
 
     return messages.count
@@ -313,9 +313,9 @@ extension ConversationViewController: UITableViewDataSource {
     guard let message = messages?[indexPath.row] else {
       return UITableViewCell()
     }
-    
+
     let cellIdentifier: String
-    
+
     switch message.sender {
     case .Operator:
       if message.imageURLString != nil {
@@ -343,10 +343,10 @@ extension ConversationViewController: UITableViewDataSource {
   }
 }
 
-//MARK: - UITableViewDelegate 
+//MARK: - UITableViewDelegate
 
 extension ConversationViewController: UITableViewDelegate {
-  
+
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     guard let message = messages?[indexPath.row],
         imageURLString = message.imageURLString,
@@ -356,7 +356,7 @@ extension ConversationViewController: UITableViewDelegate {
       dismissKeyboard(self)
       return
     }
-    
+
     let browser = MWPhotoBrowser(delegate: self)
     browser.setCurrentPhotoIndex(UInt(indexOfSelectedImage))
     navigationController?.pushViewController(browser, animated: true)
@@ -364,17 +364,17 @@ extension ConversationViewController: UITableViewDelegate {
 }
 
 extension ConversationViewController: MWPhotoBrowserDelegate {
-  
+
   func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
     return UInt(images?.count ?? 0)
   }
-  
+
   func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
-    
+
     guard let imageURLString = images?[Int(index)], url = NSURL(string: imageURLString) else {
       return nil
     }
-    
+
     return MWPhoto(URL: url)
   }
 }
@@ -382,10 +382,10 @@ extension ConversationViewController: MWPhotoBrowserDelegate {
 //MARK: - Keyboard events
 
 extension ConversationViewController {
-  
+
   func keyboardWillShow(notification: NSNotification) {
     guard let userInfo = notification.userInfo else { return }
-    
+
     let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue
     let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue ?? 0
     let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey]
@@ -401,10 +401,10 @@ extension ConversationViewController {
         self.scrollToBottom()
     })
   }
-  
+
   func keyboardWillHide(notification: NSNotification) {
     guard let userInfo = notification.userInfo else { return }
-    
+
     let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue ?? 0
     let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey]
     let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
@@ -417,7 +417,7 @@ extension ConversationViewController {
       completion: nil
     )
   }
-  
+
   func dismissKeyboard(sender: AnyObject) {
     view.endEditing(true)
   }
