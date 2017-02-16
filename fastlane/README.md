@@ -38,14 +38,12 @@ Runs all the tests
 ```
 fastlane ios beta
 ```
-Submit a new Beta Build to Apple TestFlight
-
-This will also make sure the profile is up to date
+Submit a new Beta Build to Crashlytics
 ### ios release
 ```
 fastlane ios release
 ```
-Deploy a new version to the App Store
+Submit a new build to iTunes Connect
 
 ----
 
