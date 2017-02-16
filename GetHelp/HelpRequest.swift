@@ -64,7 +64,9 @@ class HelpRequest: Object {
 extension HelpRequest: ServerModelPresentable {
 
   func convertToDict() -> [String: AnyObject] {
+    // TODO: refactor date parsing
     let dateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
+
     var jsonData: [String: AnyObject] = [
       "id": id,
       "course": subject,
@@ -118,6 +120,7 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest.faculty = faculty
     helpRequest.email = email
     helpRequest.dueDate = dueDateString.toDateFromISO8601()
+
     if let startDate = json["starts_at"].string {
       helpRequest.startDate = startDate.toDateFromISO8601()
     }
@@ -132,4 +135,5 @@ extension HelpRequest: ServerModelPresentable {
 
     return helpRequest
   }
+
 }

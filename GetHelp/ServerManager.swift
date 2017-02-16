@@ -30,27 +30,23 @@ class ServerManager {
   }
 
   var deviceToken: String? {
-    didSet {
-      print("Device token updated: \(deviceToken ?? "")")
-    }
+    didSet { print("Device token updated: \(deviceToken ?? "")") }
   }
 
   // MARK: - Preperties
 
-  var authenticated: Bool {
-    return apiToken != nil
-  }
+  var authenticated: Bool { return apiToken != nil }
 
   // MARK: - Basic private methods
 
   private func request(method: Alamofire.Method, path: String,
-      parameters: [String : AnyObject]?,
-      encoding: ParameterEncoding) throws -> Request {
+                       parameters: [String : AnyObject]?,
+                       encoding: ParameterEncoding) throws -> Request {
+
     let url = baseURL + path
     var parameters = parameters
-    guard let token = apiToken else {
-      throw ServerError.Unauthorized
-    }
+
+    guard let token = apiToken else { throw ServerError.Unauthorized }
 
     if parameters != nil {
       parameters!["api_token"] = token
@@ -75,13 +71,17 @@ class ServerManager {
 
   // MARK: - Login
 
-  func createVerificationTokenFor(phoneNumber: String, completion: ((token: String?, error: ErrorType?) -> Void)? = nil) -> Request {
+  func createVerificationTokenFor(phoneNumber: String,
+                                  completion: ((token: String?, error: ErrorType?) -> Void)? = nil) -> Request {
+
     let parameters = ["phone_number" : phoneNumber]
-    let req = manager.request(.POST, baseURL + "/verification_tokens", parameters: parameters, encoding: .JSON)
+    let request = manager.request(.POST, baseURL + "/verification_tokens", parameters: parameters, encoding: .JSON)
 
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    req.responseJSON { (response) -> Void in
+
+    request.responseJSON { (response) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+
       guard let resultValue = response.result.value else {
         completion?(token: nil, error: ServerError.InvalidData)
         return
@@ -97,24 +97,27 @@ class ServerManager {
       completion?(token: token, error: nil)
     }
 
-    return req
+    return request
   }
 
-  func verifyPhoneNumberWith(code: String, forPhoneNumber phoneNumber: String,
-      andToken token: String, completion: ((error: ErrorType?) -> Void)? = nil) -> Request {
+  func verifyPhoneNumberWith(code: String,
+                             forPhoneNumber phoneNumber: String,
+                             andToken token: String,
+                             completion: ((error: ErrorType?) -> Void)? = nil) -> Request {
 
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    let parameters = ["phone_number": phoneNumber, "code": code]
-    let req = manager.request(.PATCH, baseURL + "/verification_tokens/\(token)", parameters: parameters, encoding: .JSON)
 
-    req.validate().responseJSON { response in
+    let parameters = ["phone_number": phoneNumber, "code": code]
+    let request = manager.request(.PATCH, baseURL + "/verification_tokens/\(token)", parameters: parameters, encoding: .JSON)
+
+    request.validate().responseJSON { response in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 
       switch response.result {
       case .Success(let resultValue):
         let json = JSON(resultValue)
 
-        // if api_token nil then create new user
+        // Create new user if api_token is nil
         if let apiToken = json["api_token"].string {
           self.apiToken = apiToken
           UserDefaultsHelper.save(false, forKey: .DeviceTokenUploadStatus)
@@ -125,12 +128,12 @@ class ServerManager {
           }
         }
       case .Failure(let error):
-        print("error: \(error)")
+        print("Error: \(error)")
         completion?(error: error)
       }
     }
 
-    return req
+    return request
   }
 
   func createNewUserWith(phoneNumber: String,
@@ -175,6 +178,7 @@ class ServerManager {
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
       let request = try get("/orders")
+
       request.validate().responseJSON { (response) -> Void in
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch response.result {
@@ -210,15 +214,16 @@ class ServerManager {
     return nil
   }
 
-  func createNewHelpRequest(helpRequest: HelpRequest, completion: ((helpRequest: HelpRequest?, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func createNewHelpRequest(helpRequest: HelpRequest,
+                            completion: ((helpRequest: HelpRequest?, error: ErrorType?) -> Void)? = nil) -> Request? {
 
     let order = helpRequest.convertToDict()
     let parameters: [String: AnyObject] = ["order": order]
 
     do {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-
       let request = try post("/orders", params: parameters)
+
       request.validate().responseJSON { (response) -> Void in
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         switch response.result {

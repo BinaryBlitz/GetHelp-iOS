@@ -75,4 +75,5 @@ extension Message: ServerModelPresentable {
   func convertToDict() -> [String : AnyObject] {
     return ["": ""]
   }
+
 }
