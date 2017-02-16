@@ -1,4 +1,4 @@
-platform :ios, '8.4'
+platform :ios, '9.3'
 
 target 'GetHelp' do
   use_frameworks!
