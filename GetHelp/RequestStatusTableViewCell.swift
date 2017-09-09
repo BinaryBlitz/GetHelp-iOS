@@ -17,7 +17,7 @@ class RequestStatusTableViewCell: UITableViewCell {
 
   }
 
-  func configure(presenter: StatusPresentable) {
+  func configure(_ presenter: StatusPresentable) {
     statusLabel.text = presenter.status
     backgroundColor = presenter.indicatorColor
   }

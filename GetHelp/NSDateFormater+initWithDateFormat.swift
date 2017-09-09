@@ -6,7 +6,7 @@
 //  Copyright © 2015 BinaryBlitz. All rights reserved.
 //
 
-extension NSDateFormatter {
+extension DateFormatter {
   convenience init(dateFormat: String) {
     self.init()
     self.dateFormat = dateFormat

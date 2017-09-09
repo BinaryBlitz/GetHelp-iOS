@@ -10,8 +10,8 @@ import UIKit
 
 class RequestDetailsViewController: UIViewController {
 
-  private let infoIndex = 0
-  private let conversationIndex = 1
+  fileprivate let infoIndex = 0
+  fileprivate let conversationIndex = 1
 
   @IBOutlet weak var requestInfoView: UIView!
   @IBOutlet weak var conversationView: UIView!
@@ -25,11 +25,11 @@ class RequestDetailsViewController: UIViewController {
     segmentedControl.selectSegmentAt(conversationIndex)
   }
 
-  override func viewWillAppear(animated: Bool) {
-    self.tabBarController?.tabBar.hidden = true
+  override func viewWillAppear(_ animated: Bool) {
+    self.tabBarController?.tabBar.isHidden = true
   }
 
-  @IBAction func segmentedControlValueChangedAction(sender: AnyObject) {
+  @IBAction func segmentedControlValueChangedAction(_ sender: AnyObject) {
     guard let segmentedControl = sender as? UISegmentedControl else {
       return
     }
@@ -39,11 +39,11 @@ class RequestDetailsViewController: UIViewController {
 
     switch segmentedControl.selectedSegmentIndex {
     case infoIndex:
-      requestInfoView.hidden = false
-      conversationView.hidden = true
+      requestInfoView.isHidden = false
+      conversationView.isHidden = true
     case conversationIndex:
-      requestInfoView.hidden = true
-      conversationView.hidden = false
+      requestInfoView.isHidden = true
+      conversationView.isHidden = false
     default:
       return
     }
@@ -51,10 +51,10 @@ class RequestDetailsViewController: UIViewController {
 
   //MARK: - Navigation
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let infoViewController = segue.destinationViewController as? RequestInfoTableViewController {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let infoViewController = segue.destination as? RequestInfoTableViewController {
       infoViewController.helpRequest = helpRequest
-    } else if let conversationViewController = segue.destinationViewController as? ConversationViewController {
+    } else if let conversationViewController = segue.destination as? ConversationViewController {
       conversationViewController.helpRequest = helpRequest
     }
   }
@@ -62,8 +62,8 @@ class RequestDetailsViewController: UIViewController {
 }
 
 extension UISegmentedControl {
-  func selectSegmentAt(index: Int) {
+  func selectSegmentAt(_ index: Int) {
     selectedSegmentIndex = index
-    sendActionsForControlEvents(.ValueChanged)
+    sendActions(for: .valueChanged)
   }
 }

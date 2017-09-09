@@ -8,37 +8,37 @@
 
 import Alamofire
 
-struct MessagesQueue {
+class MessagesQueue {
   var images = [UIImage]()
   var textMessage: String?
   let order: HelpRequest
 
-  private var update: ((success: Bool, error: ErrorType?) -> Void)?
-  private var currentRequest: Request?
+  fileprivate var update: ((_ success: Bool, _ error: Error?) -> Void)?
+  fileprivate var currentRequest: Request?
 
   init(order: HelpRequest) {
     self.order = order
   }
 
-  mutating func append(image: UIImage) {
+  func append(_ image: UIImage) {
     images.append(image)
   }
 
-  mutating func append(text: String) {
+  func append(_ text: String) {
     textMessage = text
   }
 
-  mutating func clearQueue() {
+  func clearQueue() {
     images = []
     textMessage = nil
   }
 
-  mutating func sendMessagesWithUpdateMethod(update: (success: Bool, error: ErrorType?) -> Void) {
+  func sendMessagesWithUpdateMethod(_ update: @escaping (_ success: Bool, _ error: Error?) -> Void) {
     print("Images count: \(images.count)")
     self.update = update
     if let text = textMessage {
       currentRequest = ServerManager.sharedInstance.sendMessageWithText(text, toOrder: order) { success, error in
-        self.update?(success: success, error: error)
+        self.update?(success, error)
         if success {
           self.sendNextImage()
         }
@@ -48,22 +48,22 @@ struct MessagesQueue {
     }
   }
 
-  mutating private func sendNextImage() {
+  fileprivate func sendNextImage() {
     guard let image = images.popLast() else {
       return
     }
 
     self.currentRequest = ServerManager.sharedInstance.sendMessageWithImage(image, toOrder: order) { success, error in
       print("Success: \(success)")
-      print("Error: \(error)")
-      self.update?(success: success, error: error)
+      print("Error: \(String(describing: error))")
+      self.update?(success, error)
       if success {
         self.sendNextImage()
       }
     }
   }
 
-  mutating func cancel() {
+  func cancel() {
     currentRequest?.cancel()
     currentRequest = nil
   }

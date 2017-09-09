@@ -26,11 +26,11 @@ class LogInCodeCheckViewController: UIViewController {
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:))))
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     codeTextField.becomeFirstResponder()
   }
 
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     codeTextField.text = ""
   }
 
@@ -40,8 +40,8 @@ class LogInCodeCheckViewController: UIViewController {
     okButton.backgroundColor = UIColor.orangeSecondaryColor()
     backButton.backgroundColor = UIColor.orangeSecondaryColor()
 
-    okButton.tintColor = UIColor.whiteColor()
-    backButton.tintColor = UIColor.whiteColor()
+    okButton.tintColor = UIColor.white
+    backButton.tintColor = UIColor.white
 
     okButton.layer.cornerRadius = 4
     backButton.layer.cornerRadius = 4
@@ -49,11 +49,11 @@ class LogInCodeCheckViewController: UIViewController {
 
   //MARK: - IBActions
 
-  @IBAction func backButtonAction(sender: AnyObject) {
+  @IBAction func backButtonAction(_ sender: AnyObject) {
     delegate?.moveBackward(nil)
   }
 
-  @IBAction func okButtonAction(sender: AnyObject) {
+  @IBAction func okButtonAction(_ sender: AnyObject) {
     guard let code = codeTextField.text else {
       return
     }
@@ -65,7 +65,7 @@ class LogInCodeCheckViewController: UIViewController {
         UserDefaultsHelper.save(token, forKey: .ApiToken)
         ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
 
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
       } else {
         self.codeTextField.shakeWithDuration(0.07)
         self.codeTextField.text = ""
@@ -76,7 +76,7 @@ class LogInCodeCheckViewController: UIViewController {
 
   //MARK: - Keyboard stuff
 
-  func dismissKeyboard(sender: AnyObject) {
+  func dismissKeyboard(_ sender: AnyObject) {
     view.endEditing(true)
   }
 }
@@ -88,11 +88,11 @@ extension LogInCodeCheckViewController: ContainerPresentable {
     return self
   }
 
-  func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
+  func updateNavigationDelegate(_ delegate: LoginNavigationDelegate) {
     self.delegate = delegate
   }
 
-  func setData(data: AnyObject?) {
+  func setData(_ data: AnyObject?) {
     if let pair = data as? PhoneTokenPair {
       self.phoneNumber = pair.phoneNumber
       self.token =  pair.token

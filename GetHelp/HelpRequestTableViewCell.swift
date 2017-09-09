@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HelpRequestCellDelegate: class {
-  func didTouchPayButtonInCell(cell: HelpRequestTableViewCell)
+  func didTouchPayButtonInCell(_ cell: HelpRequestTableViewCell)
 }
 
 class HelpRequestTableViewCell: UITableViewCell {
@@ -29,14 +29,14 @@ class HelpRequestTableViewCell: UITableViewCell {
   @IBOutlet weak var payButton: UIButton!
 
   weak var delegate: HelpRequestCellDelegate?
-  var timer: NSTimer?
+  var timer: Timer?
 
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    updateMarkerImageView.image = UIImage(named: "Message")!.imageWithRenderingMode(.AlwaysTemplate)
-    updateMarkerImageView.tintColor = UIColor.lightGrayColor()
-    cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
+    updateMarkerImageView.image = UIImage(named: "Message")!.withRenderingMode(.alwaysTemplate)
+    updateMarkerImageView.tintColor = UIColor.lightGray
+    cardView.layer.borderColor = UIColor.lightGray.cgColor
     cardView.layer.borderWidth = 1.4
     cardView.layer.cornerRadius = 10
 
@@ -47,7 +47,7 @@ class HelpRequestTableViewCell: UITableViewCell {
     stopAnimations()
   }
 
-  func configure(presenter: HelpRequestPresentable) {
+  func configure(_ presenter: HelpRequestPresentable) {
     timer?.invalidate()
 
     orderNumberLabel.text = presenter.id
@@ -61,7 +61,7 @@ class HelpRequestTableViewCell: UITableViewCell {
     setPayementSectionHidden( !presenter.isPayable())
 
     if presenter.isViewed {
-      updateMarkerImageView.tintColor = UIColor.lightGrayColor()
+      updateMarkerImageView.tintColor = UIColor.lightGray
     } else {
       updateMarkerImageView.tintColor = UIColor.newMessageIndicatorColor()
       setUpAnimationTimer()
@@ -72,9 +72,9 @@ class HelpRequestTableViewCell: UITableViewCell {
     timer?.invalidate()
   }
 
-  private func setUpAnimationTimer() {
-    timer = NSTimer.scheduledTimerWithTimeInterval(
-      2,
+  fileprivate func setUpAnimationTimer() {
+    timer = Timer.scheduledTimer(
+      timeInterval: 2,
       target: self,
       selector: #selector(fireAnimation(_:)),
       userInfo: nil,
@@ -83,22 +83,22 @@ class HelpRequestTableViewCell: UITableViewCell {
     timer?.fire()
   }
 
-  func fireAnimation(sender: AnyObject) {
+  func fireAnimation(_ sender: AnyObject) {
     updateMarkerImageView.shakeWithDuration(0.065)
   }
 
-  private func setPayementSectionHidden(hidden: Bool) {
+  fileprivate func setPayementSectionHidden(_ hidden: Bool) {
     if hidden { priceLabel.text = nil }
-    priceLabel.hidden = hidden
-    payButton.hidden = hidden
+    priceLabel.isHidden = hidden
+    payButton.isHidden = hidden
   }
 
-  private func setUpButtons() {
+  fileprivate func setUpButtons() {
     payButton.layer.cornerRadius = (payButton.frame.height / 2) - 1
     payButton.backgroundColor = UIColor.yellowAccentColor()
   }
 
-  @IBAction func payButtonAction(sender: AnyObject) {
+  @IBAction func payButtonAction(_ sender: AnyObject) {
     delegate?.didTouchPayButtonInCell(self)
   }
 }

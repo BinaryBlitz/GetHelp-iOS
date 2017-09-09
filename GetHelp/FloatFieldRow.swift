@@ -8,7 +8,7 @@
 
 import Eureka
 
-public class FloatFieldRow<T: Any, Cell: CellType where Cell: BaseCell, Cell: TypedCellType, Cell: TextFieldCell, Cell.Value == T>: FormatteableRow<T, Cell> {
+open class FloatFieldRow<Cell: CellType>: FormatteableRow<Cell> where Cell: BaseCell, Cell: TypedCellType, Cell: TextFieldCell {
 
 
     public required init(tag: String?) {

@@ -23,7 +23,7 @@ class RequestFormViewController: FormViewController {
     initialiseForm()
   }
 
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     if let request = createdRequest {
       request.cancel()
     }
@@ -31,9 +31,9 @@ class RequestFormViewController: FormViewController {
 
   //MARK: - Navigation
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let destination = segue.destinationViewController as? AttachPhotosViewController,
-        helpRequest = sender as? HelpRequest where segue.identifier == "attachPhotos" {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destination = segue.destination as? AttachPhotosViewController,
+        let helpRequest = sender as? HelpRequest, segue.identifier == "attachPhotos" {
       destination.helpRequest = helpRequest
     }
   }
@@ -50,16 +50,16 @@ class RequestFormViewController: FormViewController {
     case .Normal:
       form +++ DateTimeInlineRow("dueDateRow") {
         $0.title = "Дата и время сдачи"
-        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
+        $0.value = NSDate().addingTimeInterval(60 * 60 * 24 * 3) as Date
       }
     case .Express:
       form +++ DateTimeInlineRow("startDateRow") {
         $0.title = "Началo работы"
-        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3)
+        $0.value = NSDate().addingTimeInterval(60 * 60 * 24 * 3) as Date
       }
       <<< DateTimeInlineRow("endDateRow") {
         $0.title = "Конец работы"
-        $0.value = NSDate().dateByAddingTimeInterval(60 * 60 * 24 * 3 + 60 * 2)
+        $0.value = NSDate().addingTimeInterval(60 * 60 * 24 * 3 + 60 * 2) as Date
       }
     }
 
@@ -110,9 +110,7 @@ class RequestFormViewController: FormViewController {
     //MARK: - Section 4 (description)
 
     if type == .Normal {
-      form +++ Section("Email для отправки решения") {
-        $0.header
-      }
+      form +++ Section("Email для отправки решения")
       <<< EmailRow("emailRow") {
         $0.title = "email"
       }
@@ -135,33 +133,33 @@ class RequestFormViewController: FormViewController {
     }
   }
 
-  @IBAction func submitButtonAction(sender: AnyObject) {
+  @IBAction func submitButtonAction(_ sender: AnyObject) {
 
     if let request = createdRequest {
       request.cancel()
     }
 
-    guard let subject = form.rowByTag("subjectRow")?.baseValue as? String else {
+    guard let subject = form.rowBy(tag: "subjectRow")?.baseValue as? String else {
       presentAlertWithMessage("Вы не указали предмет")
       return
     }
 
-    guard let school = form.rowByTag("schoolRow")?.baseValue as? String else {
+    guard let school = form.rowBy(tag: "schoolRow")?.baseValue as? String else {
       presentAlertWithMessage("Вы не выбрали где вы учитесь")
       return
     }
 
-    guard let facility = form.rowByTag("facilityRow")?.baseValue as? String else {
+    guard let facility = form.rowBy(tag: "facilityRow")?.baseValue as? String else {
       presentAlertWithMessage("Вы не указали ваш факультет")
       return
     }
 
-    guard let course = form.rowByTag("courseRow")?.baseValue as? String else {
+    guard let course = form.rowBy(tag: "courseRow")?.baseValue as? String else {
       presentAlertWithMessage("Вы не выбрали ваш курс")
       return
     }
 
-    guard let helpDesctiption = form.rowByTag("descriptionRow")?.baseValue as? String else {
+    guard let helpDesctiption = form.rowBy(tag: "descriptionRow")?.baseValue as? String else {
       presentAlertWithMessage("Вы не добавили описание вашей работы")
       return
     }
@@ -175,11 +173,11 @@ class RequestFormViewController: FormViewController {
     helpRequest.course = course
     helpRequest.helpDescription = helpDesctiption
 
-    if let dueDate = form.rowByTag("dueDateRow")?.baseValue as? NSDate {
+    if let dueDate = form.rowBy(tag: "dueDateRow")?.baseValue as? Date {
       helpRequest.dueDate = dueDate
-    } else if let startDate = form.rowByTag("startDateRow")?.baseValue as? NSDate,
-          endDate =  form.rowByTag("endDateRow")?.baseValue as? NSDate {
-      if endDate.timeIntervalSinceDate(startDate) < 0 {
+    } else if let startDate = form.rowBy(tag: "startDateRow")?.baseValue as? Date,
+          let endDate =  form.rowBy(tag: "endDateRow")?.baseValue as? Date {
+      if endDate.timeIntervalSince(startDate) < 0 {
         presentAlertWithMessage("Неверно указаны даты начала и конца")
         return
       }
@@ -188,7 +186,7 @@ class RequestFormViewController: FormViewController {
       helpRequest.dueDate = endDate
     }
 
-    if let activityType = form.rowByTag("activityTypeRow")?.baseValue as? String {
+    if let activityType = form.rowBy(tag: "activityTypeRow")?.baseValue as? String {
       helpRequest.activityType = activityType
     } else {
       print("activity type")
@@ -197,7 +195,7 @@ class RequestFormViewController: FormViewController {
     }
 
     if type == .Normal {
-      if let email = form.rowByTag("emailRow")?.baseValue as? String {
+      if let email = form.rowBy(tag: "emailRow")?.baseValue as? String {
         helpRequest.email = email
       } else {
         print("email")
@@ -208,7 +206,7 @@ class RequestFormViewController: FormViewController {
 
     createdRequest = ServerManager.sharedInstance.createNewHelpRequest(helpRequest) { [weak self] (helpRequest, error) -> Void in
       if let helpRequest = helpRequest {
-        self?.performSegueWithIdentifier("attachPhotos", sender: helpRequest)
+        self?.performSegue(withIdentifier: "attachPhotos", sender: helpRequest)
       } else {
         self?.presentAlertWithMessage("Что-то не так! Попробуйте ещё раз позже")
       }

@@ -19,26 +19,26 @@ class GreetingViewController: UIViewController {
     super.viewDidLoad()
 
     signUpButton.backgroundColor = UIColor.orangeSecondaryColor()
-    signUpButton.tintColor = UIColor.whiteColor()
+    signUpButton.tintColor = UIColor.white
     signUpButton.layer.cornerRadius = 4
 
     userAgreement.enabledTextCheckingTypes = NSTextCheckingAllTypes
     userAgreement.delegate = self
-    let linkRange = (userAgreement.text! as NSString).rangeOfString("пользовательское соглашение")
+    let linkRange = (userAgreement.text! as NSString).range(of: "пользовательское соглашение")
     let urlString = "http://getthelp.ru/docs/Пользовательское соглашение.docx"
-    if let encodedURLString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()),
-          url = NSURL(string: encodedURLString) {
-      userAgreement.addLinkToURL(url, withRange: linkRange)
+    if let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+          let url = URL(string: encodedURLString) {
+      userAgreement.addLink(to: url, with: linkRange)
     }
   }
 
-  @IBAction func signUpButtonAction(sender: AnyObject) {
+  @IBAction func signUpButtonAction(_ sender: AnyObject) {
     delegate?.moveForward(nil)
   }
 }
 
 extension GreetingViewController: TTTAttributedLabelDelegate {
-  func attributedLabel(label: TTTAttributedLabel, didSelectLinkWithURL url: NSURL) {
+  func attributedLabel(_ label: TTTAttributedLabel, didSelectLinkWith url: URL) {
     self.presentWebViewControllerWith(url)
   }
 }
@@ -48,11 +48,11 @@ extension GreetingViewController: ContainerPresentable {
     return self
   }
 
-  func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
+  func updateNavigationDelegate(_ delegate: LoginNavigationDelegate) {
     self.delegate = delegate
   }
 
-  func setData(data: AnyObject?) {
+  func setData(_ data: AnyObject?) {
     // stuff
   }
 }

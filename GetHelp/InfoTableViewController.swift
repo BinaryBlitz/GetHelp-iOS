@@ -12,12 +12,12 @@ import MessageUI
 struct InfoLink {
   let name: String
   let urlString: String
-  var url: NSURL? {
-    guard let encodedURLString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) else {
+  var url: URL? {
+    guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
       return nil
     }
 
-    return NSURL(string: encodedURLString)
+    return URL(string: encodedURLString)
   }
 }
 
@@ -32,15 +32,15 @@ class InfoTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationController?.navigationBar.barStyle = .BlackTranslucent
+    navigationController?.navigationBar.barStyle = .blackTranslucent
     tableView.tableFooterView = UIView()
   }
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 3
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
       return infoData.count
@@ -51,10 +51,10 @@ class InfoTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch indexPath.section {
     case 0:
-      guard let cell = tableView.dequeueReusableCellWithIdentifier("infoCell") else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") else {
         return UITableViewCell()
       }
 
@@ -62,24 +62,24 @@ class InfoTableViewController: UITableViewController {
 
       return cell
     case 1:
-      guard let cell = tableView.dequeueReusableCellWithIdentifier("actionCell") else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell") else {
         return UITableViewCell()
       }
 
       if let textLabel = cell.viewWithTag(1) as? UILabel {
         textLabel.text = "Написать разработчикам"
-        textLabel.textColor = UIColor.blackColor()
+        textLabel.textColor = UIColor.black
       }
 
       return cell
     case 2:
-      guard let cell = tableView.dequeueReusableCellWithIdentifier("actionCell") else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell") else {
         return UITableViewCell()
       }
 
       if let textLabel = cell.viewWithTag(1) as? UILabel {
         textLabel.text = "Выйти"
-        textLabel.textColor = UIColor.redColor()
+        textLabel.textColor = UIColor.red
       }
 
       return cell
@@ -88,8 +88,8 @@ class InfoTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    defer { tableView.deselectRowAtIndexPath(indexPath, animated: true) }
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    defer { tableView.deselectRow(at: indexPath, animated: true) }
 
     switch indexPath.section {
     case 0:
@@ -101,39 +101,39 @@ class InfoTableViewController: UITableViewController {
     case 1:
       let supportEmail = "support@getthelp.ru"
       guard MFMailComposeViewController.canSendMail() else {
-        let mailURL = NSURL(string: "mailto:\(supportEmail)")
+        let mailURL = URL(string: "mailto:\(supportEmail)")
         if let url = mailURL {
-          UIApplication.sharedApplication().openURL(url)
+          UIApplication.shared.openURL(url)
         }
         return
       }
 
       let mailViewController = MFMailComposeViewController()
       mailViewController.setSubject("Getthelp")
-      mailViewController.navigationBar.tintColor = UIColor.whiteColor()
+      mailViewController.navigationBar.tintColor = UIColor.white
       mailViewController.setToRecipients([supportEmail])
       mailViewController.mailComposeDelegate = self
-      presentViewController(mailViewController, animated: true, completion: nil)
+      present(mailViewController, animated: true, completion: nil)
     case 2:
-      let alert = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .Alert)
+      let alert = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
 
-      alert.addAction(UIAlertAction(title: "Отмена", style:.Default, handler: nil))
-      let logoutAction = UIAlertAction(title: "Выйти", style: UIAlertActionStyle.Destructive, handler: logoutActionHandler)
+      alert.addAction(UIAlertAction(title: "Отмена", style:.default, handler: nil))
+      let logoutAction = UIAlertAction(title: "Выйти", style: UIAlertActionStyle.destructive, handler: logoutActionHandler)
       alert.addAction(logoutAction)
 
-      presentViewController(alert, animated: true, completion: nil)
+      present(alert, animated: true, completion: nil)
     default:
       break
     }
   }
 
-  private func logoutActionHandler(alertAction: UIAlertAction?) {
+  fileprivate func logoutActionHandler(_ alertAction: UIAlertAction?) {
     ServerManager.sharedInstance.deviceToken = ""
     UserDefaultsHelper.save(false, forKey: UserDefaultsKey.DeviceTokenUploadStatus)
 
     let activityIndicator = createActivityIndicator()
     navigationController?.navigationBar.addSubview(activityIndicator)
-    view.bringSubviewToFront(activityIndicator)
+    view.bringSubview(toFront: activityIndicator)
 
     activityIndicator.startAnimating()
 
@@ -150,8 +150,8 @@ class InfoTableViewController: UITableViewController {
     }
   }
 
-  private func createActivityIndicator() -> UIActivityIndicatorView {
-    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+  fileprivate func createActivityIndicator() -> UIActivityIndicatorView {
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     indicator.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
     indicator.layer.cornerRadius = 3
     indicator.backgroundColor = UIColor.orangeSecondaryColor()
@@ -162,7 +162,7 @@ class InfoTableViewController: UITableViewController {
 }
 
 extension InfoTableViewController: MFMailComposeViewControllerDelegate {
-  func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-    dismissViewControllerAnimated(true, completion: nil)
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    dismiss(animated: true, completion: nil)
   }
 }

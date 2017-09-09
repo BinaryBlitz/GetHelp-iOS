@@ -15,26 +15,26 @@ class CreateNewRequestTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+    navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
 
     typePresenters = HelpType.avaliableTypes().map { (type) -> HelpTypePresenter in
       return HelpTypePresenter(type: type)
     }
 
     let typeCellNib = UINib(nibName: "RequestTypeTableViewCell", bundle: nil)
-    tableView.registerNib(typeCellNib, forCellReuseIdentifier: "typeOptionCell")
-    tableView.rowHeight = UIScreen.mainScreen().bounds.height / 3
+    tableView.register(typeCellNib, forCellReuseIdentifier: "typeOptionCell")
+    tableView.rowHeight = UIScreen.main.bounds.height / 3
 //    tableView.estimatedRowHeight = 250
   }
 
   //MARK: - UITableViewDataSource
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCellWithIdentifier("typeOptionCell") as? RequestTypeTableViewCell else {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "typeOptionCell") as? RequestTypeTableViewCell else {
       return UITableViewCell()
     }
 
@@ -46,26 +46,26 @@ class CreateNewRequestTableViewController: UITableViewController {
 
   //MARK: - UITableViewDelegate
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return typePresenters.count
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    performSegueWithIdentifier("fillTheForm", sender: indexPath)
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "fillTheForm", sender: indexPath)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 
   //MARK: - IBActions
 
-  @IBAction func cancelButtonAction(sender: AnyObject) {
-    dismissViewControllerAnimated(true, completion: nil)
+  @IBAction func cancelButtonAction(_ sender: AnyObject) {
+    dismiss(animated: true, completion: nil)
   }
 
   //MARK: - Navigation
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    guard let indexPath = sender as? NSIndexPath,
-        destination = segue.destinationViewController as? RequestFormViewController else {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let indexPath = sender as? IndexPath,
+        let destination = segue.destination as? RequestFormViewController else {
       return
     }
 

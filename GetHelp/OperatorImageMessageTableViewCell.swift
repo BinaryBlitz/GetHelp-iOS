@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haneke
+import Kingfisher
 
 class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
 
@@ -21,20 +21,20 @@ class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCel
 
     cardView.layer.cornerRadius = 10
     cardView.layer.borderWidth = 2
-    cardView.layer.borderColor = UIColor(white: 0.93, alpha: 1).CGColor
-    cardView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+    cardView.layer.borderColor = UIColor(white: 0.93, alpha: 1).cgColor
+    cardView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
 
     contentImageView.clipsToBounds = true
-    contentImageView.contentMode = .ScaleAspectFill
+    contentImageView.contentMode = .scaleAspectFill
   }
 
-  func configure(presenter: MessagePresentable) {
-    contentImageView.hnk_cancelSetImage()
+  func configure(_ presenter: MessagePresentable) {
+    contentImageView.kf.cancelDownloadTask()
     contentImageView.image = nil
     dateLabel.text = presenter.dateTime
 
     if let imageURL = presenter.imageThumbURL {
-      contentImageView.hnk_setImageFromURL(imageURL)
+      contentImageView.kf.setImage(with: imageURL)
     }
   }
 }
