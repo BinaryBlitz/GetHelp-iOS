@@ -8,10 +8,10 @@
 
 class HelpRequestPresenter: HelpRequestPresentable {
 
-  private var helpRequest: HelpRequest
-  private var helpTypePresenter: HelpTypePresenter!
-  private lazy var dateFormatter = NSDateFormatter(dateFormat: "dd.MM.yyyy")
-  private lazy var timeFormatter = NSDateFormatter(dateFormat: "hh:mm")
+  fileprivate var helpRequest: HelpRequest
+  fileprivate var helpTypePresenter: HelpTypePresenter!
+  fileprivate lazy var dateFormatter = DateFormatter(dateFormat: "dd.MM.yyyy")
+  fileprivate lazy var timeFormatter = DateFormatter(dateFormat: "hh:mm")
 
   init(helpRequest: HelpRequest) {
     self.helpRequest = helpRequest
@@ -82,9 +82,9 @@ class HelpRequestPresenter: HelpRequestPresentable {
 
   var date: String {
     if let startDate = helpRequest.startDate {
-      return dateFormatter.stringFromDate(startDate)
+      return dateFormatter.string(from: startDate)
     } else if let dueDate = helpRequest.dueDate {
-      return dateFormatter.stringFromDate(dueDate)
+      return dateFormatter.string(from: dueDate)
     }
 
     return ""
@@ -92,9 +92,9 @@ class HelpRequestPresenter: HelpRequestPresentable {
 
   var time: String {
     if let startDate = helpRequest.startDate {
-      return timeFormatter.stringFromDate(startDate)
+      return timeFormatter.string(from: startDate)
     } else if let dueDate = helpRequest.dueDate {
-      return timeFormatter.stringFromDate(dueDate)
+      return timeFormatter.string(from: dueDate)
     }
 
     return ""

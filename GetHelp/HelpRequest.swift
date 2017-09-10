@@ -8,6 +8,7 @@
 
 import RealmSwift
 import SwiftyJSON
+import SwiftDate
 
 /// Contains basic fields for help request
 class HelpRequest: Object {
@@ -18,9 +19,9 @@ class HelpRequest: Object {
   dynamic var school = ""
   dynamic var faculty = ""
   dynamic var helpDescription = ""
-  dynamic var dueDate: NSDate?
-  dynamic var startDate: NSDate?
-  dynamic var createdAt: NSDate?
+  dynamic var dueDate: Date?
+  dynamic var startDate: Date?
+  dynamic var createdAt: Date?
   dynamic var email = ""
   dynamic var viewed: Bool = false
   dynamic var activityType = ""
@@ -63,43 +64,43 @@ class HelpRequest: Object {
 
 extension HelpRequest: ServerModelPresentable {
 
-  func convertToDict() -> [String: AnyObject] {
+  func convertToDict() -> [String: Any] {
     // TODO: refactor date parsing
-    let dateFormatter = NSDateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
+    let dateFormatter = DateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
 
-    var jsonData: [String: AnyObject] = [
-      "id": id,
-      "course": subject,
-      "grade": Int(course) ?? 1,
-      "category": type.rawValue,
-      "university": school,
-      "faculty": faculty,
+    var jsonData: [String: Any] = [
+      "id": id as AnyObject,
+      "course": subject as AnyObject,
+      "grade": Int(course) as AnyObject ?? 1 as AnyObject,
+      "category": type.rawValue as AnyObject,
+      "university": school as AnyObject,
+      "faculty": faculty as AnyObject,
       "email": email,
       "description": helpDescription
     ]
 
     if let dueDate = dueDate {
-      jsonData["due_by"] = dateFormatter.stringFromDate(dueDate)
+      jsonData["due_by"] = dateFormatter.string(from: dueDate)
     }
 
     if let startDate = startDate {
-      jsonData["starts_at"] = dateFormatter.stringFromDate(startDate)
+      jsonData["starts_at"] = dateFormatter.string(from: startDate)
     }
 
     return jsonData
   }
 
-  static func createFromJSON(json: JSON) -> HelpRequest? {
+  static func createFromJSON(_ json: JSON) -> HelpRequest? {
     guard let id = json["id"].int,
-        subject = json["course"].string,
-        cource = json["grade"].int,
-        type = json["category"].string,
-        university = json["university"].string,
-        faculty = json["faculty"].string,
-        email = json["email"].string,
-        dueDateString = json["due_by"].string,
-        status = json["status"].string,
-        createdDateString = json["created_at"].string
+        let subject = json["course"].string,
+        let cource = json["grade"].int,
+        let type = json["category"].string,
+        let university = json["university"].string,
+        let faculty = json["faculty"].string,
+        let email = json["email"].string,
+        let dueDateString = json["due_by"].string,
+        let status = json["status"].string,
+        let createdDateString = json["created_at"].string
       else {
       return nil
     }
@@ -111,7 +112,7 @@ extension HelpRequest: ServerModelPresentable {
     helpRequest._status = status
     helpRequest._type = type
     helpRequest.school = university
-    helpRequest.createdAt = createdDateString.toDateFromISO8601()
+    helpRequest.createdAt = DateInRegion(string: createdDateString, format: .iso8601(options: .withInternetDateTimeExtended))?.absoluteDate
 
     if let description = json["description"].string {
       helpRequest.helpDescription = description
@@ -119,10 +120,10 @@ extension HelpRequest: ServerModelPresentable {
 
     helpRequest.faculty = faculty
     helpRequest.email = email
-    helpRequest.dueDate = dueDateString.toDateFromISO8601()
+    helpRequest.dueDate = DateInRegion(string: dueDateString, format: .iso8601(options: .withInternetDateTimeExtended))?.absoluteDate
 
     if let startDate = json["starts_at"].string {
-      helpRequest.startDate = startDate.toDateFromISO8601()
+      helpRequest.startDate = DateInRegion(string: startDate, format: .iso8601(options: .withInternetDateTimeExtended))?.absoluteDate
     }
 
     if let sum = json["sum"].int {

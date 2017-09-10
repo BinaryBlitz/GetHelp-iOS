@@ -15,20 +15,20 @@ class RequestInfoTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    tableView.registerNib(UINib(nibName: "RequestInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "infoCell")
-    tableView.registerNib(UINib(nibName: "RequestStatusTableViewCell", bundle: nil), forCellReuseIdentifier: "statusCell")
+    tableView.register(UINib(nibName: "RequestInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "infoCell")
+    tableView.register(UINib(nibName: "RequestStatusTableViewCell", bundle: nil), forCellReuseIdentifier: "statusCell")
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 200
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 2
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch indexPath.row {
       case 0:
-        guard let cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as? RequestInfoTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") as? RequestInfoTableViewCell else {
           break
         }
 
@@ -37,7 +37,7 @@ class RequestInfoTableViewController: UITableViewController {
         return cell
 
       case 1:
-        guard let cell = tableView.dequeueReusableCellWithIdentifier("statusCell") as? RequestStatusTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell") as? RequestStatusTableViewCell else {
           break
         }
 

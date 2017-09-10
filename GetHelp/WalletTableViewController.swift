@@ -11,9 +11,9 @@ import RealmSwift
 
 class WalletTableViewController: UITableViewController {
 
-  private let kWalletInfoCellIdentifier = "walletInfoCell"
-  private let kRequestBillCellIdentifire = "requestBillCell"
-  private let kNoDataMessageCellIdentifire = "noDataMessageCell"
+  fileprivate let kWalletInfoCellIdentifier = "walletInfoCell"
+  fileprivate let kRequestBillCellIdentifire = "requestBillCell"
+  fileprivate let kNoDataMessageCellIdentifire = "noDataMessageCell"
 
   var activeRequests: Results<HelpRequest>? = nil
   var completedRequests:  Results<HelpRequest>? = nil //TODO: Create type for bills
@@ -21,7 +21,7 @@ class WalletTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationController?.navigationBar.barStyle = .BlackTranslucent
+    navigationController?.navigationBar.barStyle = .blackTranslucent
 
     fetchHelpRequests()
     setUpRefreshControl()
@@ -30,22 +30,22 @@ class WalletTableViewController: UITableViewController {
 
   //MARK: - Tools
 
-  func fetchHelpRequests(serverManager: ServerManager = ServerManager()) {
+  func fetchHelpRequests(_ serverManager: ServerManager = ServerManager()) {
     let realm  = try! Realm()
-    activeRequests = realm.objects(HelpRequest).filter("_status == '\(HelpRequestStatus.WaitingForPayment.rawValue)'")
+    activeRequests = realm.objects(HelpRequest.self).filter("_status == '\(HelpRequestStatus.WaitingForPayment.rawValue)'")
   }
 
   func setUpRefreshControl() {
     refreshControl = UIRefreshControl()
-    refreshControl?.addTarget(self, action: #selector(refresh(_:)), forControlEvents: .ValueChanged)
+    refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
   }
 
   func setUpTableView() {
     let walletInfoNib = UINib(nibName: "WalletInfoTableViewCell", bundle: nil)
-    tableView.registerNib(walletInfoNib, forCellReuseIdentifier: kWalletInfoCellIdentifier)
+    tableView.register(walletInfoNib, forCellReuseIdentifier: kWalletInfoCellIdentifier)
 
     let billCellNib = UINib(nibName: "BillTableViewCell", bundle: nil)
-    tableView.registerNib(billCellNib, forCellReuseIdentifier: kRequestBillCellIdentifire)
+    tableView.register(billCellNib, forCellReuseIdentifier: kRequestBillCellIdentifire)
 
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 370
@@ -53,26 +53,24 @@ class WalletTableViewController: UITableViewController {
 
   //MARK: - Refresh
 
-  func refresh(sender: AnyObject) {
+  func refresh(_ sender: AnyObject) {
     beginRefreshWithCompletion { () -> Void in
       self.tableView.reloadData()
       self.refreshControl?.endRefreshing()
     }
   }
 
-  func beginRefreshWithCompletion(completion: () -> Void) {
+  func beginRefreshWithCompletion(_ completion: @escaping () -> Void) {
     //TODO: Reresh request
-    dispatch_after(
-        dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))),
-        dispatch_get_main_queue()
-    ) { () -> Void in
+    DispatchQueue.main.asyncAfter(
+        deadline: DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) { () -> Void in
       completion()
     }
   }
 
   //MARK: - UITableViewDataSource
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
       return 1
@@ -87,18 +85,18 @@ class WalletTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView,
-      cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView,
+      cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
     switch indexPath.section {
     case 0:
-      guard let cell = tableView.dequeueReusableCellWithIdentifier(kWalletInfoCellIdentifier) else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: kWalletInfoCellIdentifier) else {
         return UITableViewCell()
       }
 
       return cell
     case 1:
-      guard let cell = tableView.dequeueReusableCellWithIdentifier(kRequestBillCellIdentifire) as? BillTableViewCell else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: kRequestBillCellIdentifire) as? BillTableViewCell else {
         return UITableViewCell()
       }
 
@@ -110,7 +108,7 @@ class WalletTableViewController: UITableViewController {
 
       return cell
     case 3:
-      guard let cell = tableView.dequeueReusableCellWithIdentifier(kNoDataMessageCellIdentifire) else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: kNoDataMessageCellIdentifire) else {
         return UITableViewCell()
       }
 
@@ -122,17 +120,17 @@ class WalletTableViewController: UITableViewController {
 
   //MARK: - UITableViewDelegate
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     let contentRowsCount = (activeRequests?.count ?? 0) + (completedRequests?.count ?? 0)
     return contentRowsCount == 0 ? 4 : 3
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 
   // Magic number 0.01 actually means 0 height for wierd UITableView. lol
-  override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     switch section {
     case 0:
       return 0.01
@@ -145,14 +143,14 @@ class WalletTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     if section == 0 {
       return 15
     }
     return 0.01
   }
 
-  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 1:
       let requestsCount = activeRequests?.count ?? 0

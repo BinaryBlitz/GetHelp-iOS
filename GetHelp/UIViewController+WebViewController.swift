@@ -10,26 +10,26 @@ import SafariServices
 
 extension UIViewController {
 
-  func presentWebViewControllerWith(url: NSURL, entersReaderIfAvailable reader: Bool = false) {
+  func presentWebViewControllerWith(_ url: URL, entersReaderIfAvailable reader: Bool = false) {
     if #available(iOS 9.0, *) {
-      let safariController = SFSafariViewController(URL: url, entersReaderIfAvailable: reader)
-      self.presentViewController(safariController, animated: true) {
+      let safariController = SFSafariViewController(url: url, entersReaderIfAvailable: reader)
+      self.present(safariController, animated: true) {
         // disable swipe back action
         for view in safariController.view.subviews {
           if let recognisers = view.gestureRecognizers {
             for gestureRecogniser in recognisers where gestureRecogniser is UIScreenEdgePanGestureRecognizer {
-              gestureRecogniser.enabled = false
+              gestureRecogniser.isEnabled = false
             }
           }
         }
       }
     } else {
-      let webViewController = SVModalWebViewController(URL: url)
-      webViewController.navigationBar.barStyle = UIBarStyle.BlackOpaque
-      webViewController.navigationBar.tintColor = UIColor.lightGrayColor()
-      webViewController.navigationBar.barTintColor = UIColor.lightGrayColor()
-      webViewController.barsTintColor = UIColor.whiteColor()
-      self.presentViewController(webViewController, animated: true, completion: nil)
+      let webViewController = SVModalWebViewController(url: url)
+      webViewController?.navigationBar.barStyle = UIBarStyle.blackOpaque
+      webViewController?.navigationBar.tintColor = UIColor.lightGray
+      webViewController?.navigationBar.barTintColor = UIColor.lightGray
+      webViewController?.barsTintColor = UIColor.white
+      self.present(webViewController!, animated: true, completion: nil)
     }
   }
 }

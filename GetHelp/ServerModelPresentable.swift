@@ -10,6 +10,6 @@ import SwiftyJSON
 
 protocol ServerModelPresentable {
   associatedtype ObjectType
-  static func createFromJSON(json: JSON) -> ObjectType?
-  func convertToDict() -> [String: AnyObject]
+  static func createFromJSON(_ json: JSON) -> ObjectType?
+  func convertToDict() -> [String: Any]
 }

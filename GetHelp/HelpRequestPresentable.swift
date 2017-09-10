@@ -6,4 +6,4 @@
 //  Copyright © 2015 BinaryBlitz. All rights reserved.
 //
 
-typealias HelpRequestPresentable = protocol<RequestPresentale, DateTimePresentable, StatusPresentable>
+typealias HelpRequestPresentable = RequestPresentale & DateTimePresentable & StatusPresentable

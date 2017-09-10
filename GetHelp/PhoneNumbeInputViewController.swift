@@ -32,13 +32,13 @@ class PhoneNumbeInputViewController: UIViewController {
     super.viewDidLoad()
 
     setUpButtons()
-    view.backgroundColor = UIColor.clearColor()
+    view.backgroundColor = UIColor.clear
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:))))
     phoneNumberTextField.format = "+X (XXX) XXX-XX-XX"
     phoneNumberTextField.placeholder = "+7 (123) 456-78-90"
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     phoneNumberTextField.becomeFirstResponder()
   }
 
@@ -48,8 +48,8 @@ class PhoneNumbeInputViewController: UIViewController {
     okButton.backgroundColor = UIColor.orangeSecondaryColor()
     backButton.backgroundColor = UIColor.orangeSecondaryColor()
 
-    okButton.tintColor = UIColor.whiteColor()
-    backButton.tintColor = UIColor.whiteColor()
+    okButton.tintColor = UIColor.white
+    backButton.tintColor = UIColor.white
 
     okButton.layer.cornerRadius = 4
     backButton.layer.cornerRadius = 4
@@ -57,7 +57,7 @@ class PhoneNumbeInputViewController: UIViewController {
 
   //MARK: - IBActions
 
-  @IBAction func okButtonAction(sender: AnyObject) {
+  @IBAction func okButtonAction(_ sender: AnyObject) {
 
     if let request = loginRequest {
       request.cancel()
@@ -69,7 +69,7 @@ class PhoneNumbeInputViewController: UIViewController {
       return
     }
 
-    let numberLength = phoneNumber.characters.count ?? 0
+    let numberLength = phoneNumber.characters.count
     if numberLength != "+7 (123) 456-78-90".characters.count {
       phoneNumberTextField.shakeWithDuration(0.07)
       phoneNumberTextField.becomeFirstResponder()
@@ -79,21 +79,21 @@ class PhoneNumbeInputViewController: UIViewController {
     registerForPushNotifications()
 
     let rawPhoneNumber = formatPhoneNumberToRaw(phoneNumber)
-    okButton.userInteractionEnabled = false
+    okButton.isUserInteractionEnabled = false
     let request = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
-      print(token)
-      self?.okButton.userInteractionEnabled = true
+      print(token ?? "No token")
+      self?.okButton.isUserInteractionEnabled = true
       if let token = token {
         self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
       } else if let error = error {
-        guard let error = error as? NSURLError else {
+        guard let error = error as? URLError else {
           return
         }
 
-        switch error {
-        case .NotConnectedToInternet, .NetworkConnectionLost:
+        switch error.code {
+        case .notConnectedToInternet, .networkConnectionLost:
           self?.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
-        case .Cancelled:
+        case URLError.cancelled:
           return
         default:
           self?.presentAlertWithTitle("Ошбика", andMessage: "Что-то пошло не так. Попробуйте позже.")
@@ -104,35 +104,35 @@ class PhoneNumbeInputViewController: UIViewController {
     loginRequest = request
   }
 
-  @IBAction func backButtonAction(sender: AnyObject) {
+  @IBAction func backButtonAction(_ sender: AnyObject) {
     delegate?.moveBackward(nil)
   }
 
   //MARK: - Keyboard stuff
 
-  func dismissKeyboard(sender: AnyObject) {
+  func dismissKeyboard(_ sender: AnyObject) {
     view.endEditing(true)
   }
 
   //MARK: - Support methods
 
-  func formatPhoneNumberToRaw(phoneNumber: String) -> String {
+  func formatPhoneNumberToRaw(_ phoneNumber: String) -> String {
     var rawPhoneNumber = phoneNumber
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString("(", withString: "")
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString(")", withString: "")
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString("-", withString: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: " ", with: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: "(", with: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: ")", with: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: "-", with: "")
 
     return rawPhoneNumber
   }
 
   func registerForPushNotifications() {
-    UIApplication.sharedApplication()
+    UIApplication.shared
       .registerUserNotificationSettings(
-        UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
     )
 
-    UIApplication.sharedApplication().registerForRemoteNotifications()
+    UIApplication.shared.registerForRemoteNotifications()
   }
 }
 
@@ -144,11 +144,11 @@ extension PhoneNumbeInputViewController: ContainerPresentable {
     return self
   }
 
-  func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
+  func updateNavigationDelegate(_ delegate: LoginNavigationDelegate) {
     self.delegate = delegate
   }
 
-  func setData(data: AnyObject?) {
+  func setData(_ data: AnyObject?) {
     // stuff
   }
 }

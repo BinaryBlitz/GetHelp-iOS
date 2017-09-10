@@ -20,7 +20,7 @@ class AttachPhotosViewController: UIViewController {
   var helpRequest: HelpRequest!
   lazy var imagePickerController: DKImagePickerController = {
     let imagePickerController = DKImagePickerController()
-    imagePickerController.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+    imagePickerController.navigationBar.barStyle = UIBarStyle.blackTranslucent
     imagePickerController.maxSelectableCount = 5
 
     return imagePickerController
@@ -33,7 +33,7 @@ class AttachPhotosViewController: UIViewController {
 
     attachButton.layer.borderWidth = 1
     attachButton.layer.cornerRadius = 5
-    attachButton.layer.borderColor = UIColor.orangeSecondaryColor().CGColor
+    attachButton.layer.borderColor = UIColor.orangeSecondaryColor().cgColor
     attachButton.tintColor = UIColor.orangeSecondaryColor()
 
     imagePickerController.didSelectAssets = { assets in
@@ -48,9 +48,9 @@ class AttachPhotosViewController: UIViewController {
     imagesCountLabel.textColor = UIColor.orangeSecondaryColor()
   }
 
-  @IBAction func continueButtonAction(sender: AnyObject) {
+  @IBAction func continueButtonAction(_ sender: AnyObject) {
     if selectedAssets.count == 0 {
-      dismissViewControllerAnimated(true, completion: nil)
+      dismiss(animated: true, completion: nil)
       return
     }
 
@@ -60,7 +60,7 @@ class AttachPhotosViewController: UIViewController {
     message.sender = .Operator
     message.orderId = helpRequest.id
     message.content = "Ваш заказ рассматривается. Оператор ответит вам в ближайшее время. Пишите, если у вас есть какие-то вопросы."
-    message.dateCreated = helpRequest.createdAt ?? NSDate()
+    message.dateCreated = helpRequest.createdAt ?? Date()
     do {
       let realm = try Realm()
       try realm.write {
@@ -75,17 +75,17 @@ class AttachPhotosViewController: UIViewController {
     sendAssets(selectedAssets)
   }
 
-  @IBAction func attachButtonAction(sender: AnyObject) {
-    presentViewController(imagePickerController, animated: true, completion: nil)
+  @IBAction func attachButtonAction(_ sender: AnyObject) {
+    present(imagePickerController, animated: true, completion: nil)
   }
 
   //MARK: - Images magic
 
-  private var numberOfAssets: Int = 0
-  private var finishedRequests: Int = 0
-  private var imageSendRequests = [Request?]()
+  fileprivate var numberOfAssets: Int = 0
+  fileprivate var finishedRequests: Int = 0
+  fileprivate var imageSendRequests = [Request?]()
 
-  func sendAssets(assets: [DKAsset]) {
+  func sendAssets(_ assets: [DKAsset]) {
     let serverManager = ServerManager.sharedInstance
     numberOfAssets = 0
     finishedRequests = 0
@@ -104,25 +104,25 @@ class AttachPhotosViewController: UIViewController {
           self.finishedRequests += 1
           if self.numberOfAssets == self.finishedRequests {
             SwiftSpinner.hide()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
           }
 
           if let error = error {
             print("Error: \(error)")
 
-            if (error as NSError).description.containsString(": 413") {
+            if (error as CustomStringConvertible).description.contains(": 413") {
               self.presentAlertWithTitle("Ошибка", andMessage: "Фотография слишком большая!")
               return
             }
 
-            guard let error = error as? NSURLError else {
+            guard let error = error as? URLError else {
               return
             }
 
-            switch error {
-            case .NotConnectedToInternet, .NetworkConnectionLost:
+            switch error.code {
+            case .notConnectedToInternet, .networkConnectionLost:
               self.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
-            case .Cancelled:
+            case .cancelled:
               return
             default:
               self.presentAlertWithTitle("Ошбика", andMessage: "Не удалось отправить фотографию. Попробуйте позже.")

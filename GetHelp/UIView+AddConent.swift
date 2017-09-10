@@ -10,43 +10,43 @@ import UIKit
 
 extension UIView {
 
-  static func addContent(content: UIView, toView contentView: UIView) {
+  static func addContent(_ content: UIView, toView contentView: UIView) {
 
     content.translatesAutoresizingMaskIntoConstraints = false
     contentView.addSubview(content)
 
     let topConstraint = NSLayoutConstraint(item: content,
-      attribute: NSLayoutAttribute.Top,
-      relatedBy: NSLayoutRelation.Equal,
+      attribute: NSLayoutAttribute.top,
+      relatedBy: NSLayoutRelation.equal,
       toItem: contentView,
-      attribute: NSLayoutAttribute.Top,
+      attribute: NSLayoutAttribute.top,
       multiplier: 1,
       constant: 0
     )
 
     let bottomContraint = NSLayoutConstraint(item: content,
-      attribute: .Bottom,
-      relatedBy: .Equal,
+      attribute: .bottom,
+      relatedBy: .equal,
       toItem: contentView,
-      attribute: .Bottom,
+      attribute: .bottom,
       multiplier: 1,
       constant: 0
     )
 
     let trallingConstaint = NSLayoutConstraint(item: content,
-      attribute: .Trailing,
-      relatedBy: .Equal,
+      attribute: .trailing,
+      relatedBy: .equal,
       toItem: contentView,
-      attribute: .Trailing,
+      attribute: .trailing,
       multiplier: 1,
       constant: 0
     )
 
     let leadingConstraint = NSLayoutConstraint(item: content,
-      attribute: .Leading,
-      relatedBy: .Equal,
+      attribute: .leading,
+      relatedBy: .equal,
       toItem: contentView,
-      attribute: .Leading,
+      attribute: .leading,
       multiplier: 1,
       constant: 0
     )

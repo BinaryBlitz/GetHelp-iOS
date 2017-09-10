@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     Fabric.with([Crashlytics.self])
 
@@ -36,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK: - Launch arguments
 
-  private func checkArguments() {
-    for argument in Process.arguments {
+  fileprivate func checkArguments() {
+    for argument in CommandLine.arguments {
       switch argument {
       case "--dont-login":
         ServerManager.sharedInstance.apiToken = "foobar"
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       schemaVersion: 16,
       migrationBlock: { migration, oldSchemaVersion in
         if oldSchemaVersion < 16 {
-          migration.deleteData(Message.className())
+          migration.deleteData(forType: Message.className())
         }
       }
     )
@@ -80,16 +80,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let appearance = UINavigationBar.appearance()
 
     appearance.barTintColor = UIColor.orangeSecondaryColor()
-    appearance.translucent = false
-    appearance.tintColor = UIColor.whiteColor()
+    appearance.isTranslucent = false
+    appearance.tintColor = UIColor.white
     appearance.titleTextAttributes = [
-      NSForegroundColorAttributeName: UIColor.whiteColor(),
-      NSFontAttributeName: UIFont.systemFontOfSize(18)
+      NSForegroundColorAttributeName: UIColor.white,
+      NSFontAttributeName: UIFont.systemFont(ofSize: 18)
     ]
-
-    UIApplication
-      .sharedApplication()
-      .setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
   }
 
   func configureTabBar() {
@@ -98,13 +94,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK - Push notifications
 
-  func application(application: UIApplication,
-                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+  func application(_ application: UIApplication,
+                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
-    let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+    let tokenChars = (deviceToken as NSData).bytes.bindMemory(to: CChar.self, capacity: deviceToken.count)
     var token = ""
 
-    for i in 0 ..< deviceToken.length {
+    for i in 0 ..< deviceToken.count {
       token += String(format: "%02.2hhx", arguments: [tokenChars[i]])
     }
 
@@ -112,36 +108,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ServerManager.sharedInstance.deviceToken = token
   }
 
-  func application(application: UIApplication,
-                   didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+  func application(_ application: UIApplication,
+                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
     print("didFailToRegisterForRemoteNotificationsWithError")
   }
 
-  func application(application: UIApplication,
-                   didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+  func application(_ application: UIApplication,
+                   didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
 
-    NSNotificationCenter
-      .defaultCenter()
-      .postNotificationName(HelpRequestUpdatedNotification, object: nil)
+    NotificationCenter.default
+      .post(name: Notification.Name(rawValue: HelpRequestUpdatedNotification), object: nil)
 
     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
   }
 
   func application(
-    application: UIApplication,
-    performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    _ application: UIApplication,
+    performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
     ServerManager.sharedInstance.fetchHelpRequests { success, error in
       do {
         let realm = try Realm()
-        let results = realm.objects(HelpRequest).filter("viewed == false")
-        UIApplication.sharedApplication().applicationIconBadgeNumber = results.count
+        let results = realm.objects(HelpRequest.self).filter("viewed == false")
+        UIApplication.shared.applicationIconBadgeNumber = results.count
       } catch {
         return
       }
 
-      let backgroundFetchResult: UIBackgroundFetchResult = (error == nil ? .NewData : .Failed)
+      let backgroundFetchResult: UIBackgroundFetchResult = (error == nil ? .newData : .failed)
       completionHandler(backgroundFetchResult)
     }
   }

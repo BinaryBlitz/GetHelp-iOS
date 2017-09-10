@@ -14,7 +14,7 @@ class RequestTypeTableViewCell: UITableViewCell {
   @IBOutlet weak var iconImageView: UIImageView!
   @IBOutlet weak var descriptionLabel: UILabel!
 
-  func configureWith(presenter: HelpTypePresenter) {
+  func configureWith(_ presenter: HelpTypePresenter) {
     titleLabel.text = presenter.name
     iconImageView.image = presenter.image
     descriptionLabel.text = presenter.description
