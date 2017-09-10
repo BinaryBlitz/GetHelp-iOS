@@ -84,6 +84,10 @@
 		37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */; };
 		37F5D97C1C2712DF00938308 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */; };
 		4980EB5D2C38DAD710CF3695 /* Pods_GetHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C8A025D04833332F84AE56 /* Pods_GetHelp.framework */; };
+		88FBACBE1F65BD8800B0293D /* UIView+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACBD1F65BD8800B0293D /* UIView+UIExtensions.swift */; };
+		88FBACC01F65BDFD00B0293D /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACBF1F65BDFD00B0293D /* GoButton.swift */; };
+		88FBACC31F65D61100B0293D /* GetHelpNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACC21F65D61100B0293D /* GetHelpNavigationController.swift */; };
+		88FBACC51F65E4E900B0293D /* String+onlyDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACC41F65E4E900B0293D /* String+onlyDigits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +185,10 @@
 		37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatFieldRow.swift; sourceTree = "<group>"; };
 		37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		46F473C0629CB2E1CCE64683 /* Pods-GetHelp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHelp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetHelp/Pods-GetHelp.release.xcconfig"; sourceTree = "<group>"; };
+		88FBACBD1F65BD8800B0293D /* UIView+UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UIExtensions.swift"; sourceTree = "<group>"; };
+		88FBACBF1F65BDFD00B0293D /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
+		88FBACC21F65D61100B0293D /* GetHelpNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHelpNavigationController.swift; sourceTree = "<group>"; };
+		88FBACC41F65E4E900B0293D /* String+onlyDigits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+onlyDigits.swift"; sourceTree = "<group>"; };
 		F0C8A025D04833332F84AE56 /* Pods_GetHelp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetHelp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E7324B98E69E4DAA1DE665 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -355,6 +363,8 @@
 				37B38ACE1C3C7C64002110CA /* UIView+AddConent.swift */,
 				372E6A231C3EF7BD00586949 /* UIViewController+PresentAlert.swift */,
 				37E083631C3FA503008E74C9 /* UIImage+WithNormalizedOrientation.swift */,
+				88FBACBD1F65BD8800B0293D /* UIView+UIExtensions.swift */,
+				88FBACC41F65E4E900B0293D /* String+onlyDigits.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -474,6 +484,7 @@
 		37F171BC1BFB6D020016433D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				88FBACC11F65D5FE00B0293D /* Common */,
 				37EFF3FC1C1E0A71008D020F /* Login */,
 				37F5D9771C27126400938308 /* Home */,
 				37F5D9791C27129700938308 /* Wallet */,
@@ -487,6 +498,7 @@
 			children = (
 				3726C74B1C30905300487828 /* Home */,
 				3726C74C1C30905B00487828 /* Wallet */,
+				88FBACBF1F65BDFD00B0293D /* GoButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -548,6 +560,14 @@
 				37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */,
 			);
 			name = Info;
+			sourceTree = "<group>";
+		};
+		88FBACC11F65D5FE00B0293D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				88FBACC21F65D61100B0293D /* GetHelpNavigationController.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		92C239DDAF8BC4E7F71CD80B /* Pods */ = {
@@ -770,6 +790,7 @@
 				37E8B3871C01E88900778C6B /* HelpRequestTableViewCell.swift in Sources */,
 				37A7CB901C0CB3D8004CFB14 /* HelpType.swift in Sources */,
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
+				88FBACBE1F65BD8800B0293D /* UIView+UIExtensions.swift in Sources */,
 				37D94DF11C3C01F00050ADAB /* ServerError.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
 				3706949C1C2ECDEE00C5A689 /* UIView+ShakeAnimation.swift in Sources */,
@@ -777,6 +798,7 @@
 				372E6A241C3EF7BD00586949 /* UIViewController+PresentAlert.swift in Sources */,
 				370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */,
 				37C952C71C39BF990006B721 /* UserImageMessageTableViewCell.swift in Sources */,
+				88FBACC31F65D61100B0293D /* GetHelpNavigationController.swift in Sources */,
 				37B6AF151C35613400FA6BD4 /* ServerModelPresentable.swift in Sources */,
 				37C2C19E1C11A31B000010F2 /* RequestDetailsViewController.swift in Sources */,
 				37C69DAB1C146BD8009D7755 /* MessageContentPresentable.swift in Sources */,
@@ -802,6 +824,8 @@
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
 				3706949A1C2EBF8E00C5A689 /* LoginBaseViewController.swift in Sources */,
 				37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */,
+				88FBACC51F65E4E900B0293D /* String+onlyDigits.swift in Sources */,
+				88FBACC01F65BDFD00B0293D /* GoButton.swift in Sources */,
 				18391909CBFEF9EEEB599DBB /* HomeViewController.swift in Sources */,
 				37CFD5081C10C44A009F734B /* StatusPresentable.swift in Sources */,
 				37C69D9F1C135A7C009D7755 /* Message.swift in Sources */,

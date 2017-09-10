@@ -22,17 +22,15 @@ class PhoneTokenPair {
 class PhoneNumbeInputViewController: UIViewController {
 
   @IBOutlet weak var okButton: UIButton!
-  @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var phoneNumberTextField: REFormattedNumberField!
 
-  var delegate: LoginNavigationDelegate?
   var loginRequest: Request?
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logoGethelpNavbar1"))
     setUpButtons()
-    view.backgroundColor = UIColor.clear
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:))))
     phoneNumberTextField.format = "+X (XXX) XXX-XX-XX"
     phoneNumberTextField.placeholder = "+7 (123) 456-78-90"
@@ -45,14 +43,7 @@ class PhoneNumbeInputViewController: UIViewController {
   //MARK: - Set up methods
 
   func setUpButtons() {
-    okButton.backgroundColor = UIColor.orangeSecondaryColor()
-    backButton.backgroundColor = UIColor.orangeSecondaryColor()
 
-    okButton.tintColor = UIColor.white
-    backButton.tintColor = UIColor.white
-
-    okButton.layer.cornerRadius = 4
-    backButton.layer.cornerRadius = 4
   }
 
   //MARK: - IBActions
@@ -84,7 +75,12 @@ class PhoneNumbeInputViewController: UIViewController {
       print(token ?? "No token")
       self?.okButton.isUserInteractionEnabled = true
       if let token = token {
-        self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
+        let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let codeCheckViewController = loginStoryboard.instantiateViewController(withIdentifier: "CodeViewController") as! LogInCodeCheckViewController
+        codeCheckViewController.token = token
+        codeCheckViewController.rawPhoneNumber = rawPhoneNumber
+        codeCheckViewController.displayPhoneNumber = phoneNumber
+        self?.navigationController?.pushViewController(codeCheckViewController, animated: true)
       } else if let error = error {
         guard let error = error as? URLError else {
           return
@@ -102,10 +98,6 @@ class PhoneNumbeInputViewController: UIViewController {
     }
 
     loginRequest = request
-  }
-
-  @IBAction func backButtonAction(_ sender: AnyObject) {
-    delegate?.moveBackward(nil)
   }
 
   //MARK: - Keyboard stuff
@@ -133,22 +125,5 @@ class PhoneNumbeInputViewController: UIViewController {
     )
 
     UIApplication.shared.registerForRemoteNotifications()
-  }
-}
-
-//MARK: - ContainerPresentable
-
-extension PhoneNumbeInputViewController: ContainerPresentable {
-
-  var viewController: UIViewController {
-    return self
-  }
-
-  func updateNavigationDelegate(_ delegate: LoginNavigationDelegate) {
-    self.delegate = delegate
-  }
-
-  func setData(_ data: AnyObject?) {
-    // stuff
   }
 }

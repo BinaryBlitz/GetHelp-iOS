@@ -50,9 +50,7 @@ class HomeViewController: UIViewController {
     if !ServerManager.sharedInstance.authenticated {
       let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
       let loginViewController = loginStoryboard.instantiateInitialViewController()!
-      let navigation = UINavigationController(rootViewController: loginViewController)
-      navigation.isNavigationBarHidden = true
-      present(navigation, animated: true, completion: nil)
+      present(loginViewController, animated: true, completion: nil)
     }
   }
 
