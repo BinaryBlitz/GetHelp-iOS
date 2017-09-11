@@ -73,9 +73,7 @@ class ServerManager {
                                   completion: ((_ token: String?, _ error: Error?) -> Void)? = nil) -> Request? {
 
     let parameters = ["phone_number" : phoneNumber]
-    guard let request = try? self.request(.post, "/verification_tokens", parameters: parameters, encoding: JSONEncoding.default) else {
-      return nil
-    }
+    let request = Alamofire.request(baseURL + "/verification_tokens", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
 
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
@@ -103,14 +101,14 @@ class ServerManager {
   func verifyPhoneNumberWith(_ code: String,
                              forPhoneNumber phoneNumber: String,
                              andToken token: String,
-                             completion: ((_ error: Error?) -> Void)? = nil) -> Void {
+                             completion: ((_ error: Error?) -> Void)? = nil) -> Request {
 
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
     let parameters = ["phone_number": phoneNumber, "code": code]
-    let request = try? self.request(.patch, baseURL + "/verification_tokens/\(token)", parameters: parameters, encoding: JSONEncoding.default)
+    let request = Alamofire.request(baseURL + "/verification_tokens/\(token)", method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
 
-    request?.validate().responseJSON { response in
+    request.validate().responseJSON { response in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
       switch response.result {
@@ -132,6 +130,7 @@ class ServerManager {
         completion?(error)
       }
     }
+    return request
   }
 
   func createNewUserWith(_ phoneNumber: String,
