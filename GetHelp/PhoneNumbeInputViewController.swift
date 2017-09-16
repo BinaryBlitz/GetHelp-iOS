@@ -23,7 +23,8 @@ class PhoneNumbeInputViewController: UIViewController, LightContentViewControlle
 
   @IBOutlet weak var okButton: UIButton!
   @IBOutlet weak var phoneNumberTextField: REFormattedNumberField!
-
+  @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
+  
   var loginRequest: Request?
 
   override func viewDidLoad() {

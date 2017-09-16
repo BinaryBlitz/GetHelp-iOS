@@ -16,7 +16,8 @@ class LogInCodeCheckViewController: UIViewController, LightContentViewController
   @IBOutlet weak var sendAgainButton: UIButton!
   @IBOutlet weak var codeTextField: REFormattedNumberField!
   @IBOutlet weak var codeSentLabel: UILabel!
-
+  @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
+  
   var rawPhoneNumber: String!
   var displayPhoneNumber: String!
   var token: String!

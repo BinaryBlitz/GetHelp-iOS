@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Sg1-jT-g5p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Sg1-jT-g5p">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,12 +21,75 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Sym-9y-nTd" kind="relationship" relationship="rootViewController" id="Eb5-xw-1Fj"/>
+                        <segue destination="Sym-9y-nTd" kind="relationship" relationship="rootViewController" id="foL-C4-RpD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oki-GE-RYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="223" y="347"/>
+        </scene>
+        <!--Новый заказ-->
+        <scene sceneID="4id-qK-CA0">
+            <objects>
+                <viewController title="Новый заказ" id="AOl-3h-8vD" customClass="CreateNewRequestContainerViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kBt-lI-OKw"/>
+                        <viewControllerLayoutGuide type="bottom" id="JhR-OT-VZP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8cL-0r-OcP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTS-QP-0ts">
+                                <rect key="frame" x="0.0" y="64" width="375" height="511"/>
+                                <connections>
+                                    <segue destination="ycH-ZK-l7z" kind="embed" id="gG3-Nt-oZs"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAr-Pq-H3m" customClass="GoButton" customModule="GetHelp" customModuleProvider="target">
+                                <rect key="frame" x="107.5" y="585" width="160" height="42"/>
+                                <color key="backgroundColor" red="0.18505209680000001" green="0.77416473630000004" blue="0.75996559860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="4H1-gc-0qg"/>
+                                    <constraint firstAttribute="height" constant="42" id="eec-NQ-E2S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <state key="normal" title="ОТПРАВИТЬ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.18505209680000001" green="0.77416473630000004" blue="0.75996559860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendButtonAction:" destination="AOl-3h-8vD" eventType="touchUpInside" id="SRz-fL-djJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JhR-OT-VZP" firstAttribute="top" secondItem="VAr-Pq-H3m" secondAttribute="bottom" constant="40" id="4Pk-Q7-0LF"/>
+                            <constraint firstItem="wTS-QP-0ts" firstAttribute="leading" secondItem="8cL-0r-OcP" secondAttribute="leading" id="WSn-Cq-2hA"/>
+                            <constraint firstItem="VAr-Pq-H3m" firstAttribute="top" secondItem="wTS-QP-0ts" secondAttribute="bottom" constant="10" id="YJZ-qL-v7H"/>
+                            <constraint firstAttribute="trailing" secondItem="wTS-QP-0ts" secondAttribute="trailing" id="og7-5q-jGN"/>
+                            <constraint firstItem="wTS-QP-0ts" firstAttribute="top" secondItem="kBt-lI-OKw" secondAttribute="bottom" id="oib-mX-PNM"/>
+                            <constraint firstItem="VAr-Pq-H3m" firstAttribute="centerX" secondItem="8cL-0r-OcP" secondAttribute="centerX" id="vTX-uK-xSD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Новый заказ" id="wzB-Ys-9wb">
+                        <barButtonItem key="backBarButtonItem" title=" " id="DUT-ho-FIg"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sendButton" destination="VAr-Pq-H3m" id="ACr-gn-CJb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vdp-ZS-eto" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2078" y="-254"/>
         </scene>
         <!--Новый заказ-->
         <scene sceneID="BVc-o4-haY">
@@ -53,6 +116,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="AOl-3h-8vD" kind="show" identifier="fillTheForm" trigger="accessoryAction" id="Is6-j2-yaP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -62,19 +128,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Новый заказ" id="0hW-IQ-Eza">
+                        <barButtonItem key="backBarButtonItem" title=" " id="fXR-9j-mwC"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="OgH-ly-pzG">
                             <connections>
                                 <action selector="cancelButtonAction:" destination="Sym-9y-nTd" id="pXA-p8-v2l"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="ycH-ZK-l7z" kind="show" identifier="fillTheForm" id="2TT-LX-GCs"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCI-Ra-cgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="347"/>
+            <point key="canvasLocation" x="1022" y="360"/>
         </scene>
         <!--Request Form View Controller-->
         <scene sceneID="QGg-lr-XaH">
@@ -85,11 +149,11 @@
                         <viewControllerLayoutGuide type="bottom" id="miG-Zh-YiG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ikI-Mv-nHN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="511"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8D-BzD">
-                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
+                                <rect key="frame" x="-4" y="0.0" width="383" height="511"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -102,24 +166,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fZm-cd-yoN">
-                        <barButtonItem key="rightBarButtonItem" title="Отправить" id="xmO-ZK-zlO">
-                            <connections>
-                                <action selector="submitButtonAction:" destination="ycH-ZK-l7z" id="MMH-Kt-NNe"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Отправить" id="xmO-ZK-zlO"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="Rdg-BY-ltE" kind="show" identifier="attachPhotos" id="5qt-Z2-CDP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nf0-AY-SdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="347"/>
+            <point key="canvasLocation" x="2078" y="520"/>
         </scene>
         <!--Attach Photos View Controller-->
         <scene sceneID="ECE-9D-dtc">
             <objects>
-                <viewController id="Rdg-BY-ltE" customClass="AttachPhotosViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AttachPhotosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rdg-BY-ltE" customClass="AttachPhotosViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hvx-Qg-gVR"/>
                         <viewControllerLayoutGuide type="bottom" id="Qkz-Gn-NKJ"/>
@@ -128,68 +185,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wr-Qq-D9u">
-                                <rect key="frame" x="95" y="256.5" width="185" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9S-cs-MAN">
+                                <rect key="frame" x="40" y="202" width="295" height="263.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы сможете отправить фотографии позже в чате" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVj-7z-AIE">
+                                        <rect key="frame" x="0.0" y="227.5" width="295" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.39988736579754602" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZt-KX-HqN">
+                                        <rect key="frame" x="286" y="128" width="0.0" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приложите фотографии с дополнительными сведениями о работе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4h-FX-a1w">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="82.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6B-he-KtE">
+                                        <rect key="frame" x="115" y="122.5" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="1mA-OY-Lqt"/>
+                                            <constraint firstAttribute="width" constant="65" id="odD-Ml-Ls2"/>
+                                        </constraints>
+                                        <state key="normal" image="icDownload">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="attachButtonAction:" destination="Rdg-BY-ltE" eventType="touchUpInside" id="H7J-OC-lyA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="X4f-UE-ff0"/>
-                                    <constraint firstAttribute="width" constant="185" id="YyJ-H2-Y5r"/>
+                                    <constraint firstAttribute="bottom" secondItem="LVj-7z-AIE" secondAttribute="bottom" id="5rR-cP-eZ8"/>
+                                    <constraint firstAttribute="trailing" secondItem="H4h-FX-a1w" secondAttribute="trailing" id="6gd-0R-Y0P"/>
+                                    <constraint firstItem="H4h-FX-a1w" firstAttribute="top" secondItem="H9S-cs-MAN" secondAttribute="top" id="Ela-TV-ObR"/>
+                                    <constraint firstItem="H4h-FX-a1w" firstAttribute="leading" secondItem="H9S-cs-MAN" secondAttribute="leading" id="RSI-sT-SyD"/>
+                                    <constraint firstItem="LVj-7z-AIE" firstAttribute="leading" secondItem="H9S-cs-MAN" secondAttribute="leading" id="UL5-lq-vGw"/>
+                                    <constraint firstItem="o6B-he-KtE" firstAttribute="centerX" secondItem="H9S-cs-MAN" secondAttribute="centerX" id="WrM-LS-0Py"/>
+                                    <constraint firstItem="LVj-7z-AIE" firstAttribute="top" secondItem="o6B-he-KtE" secondAttribute="bottom" constant="40" id="Y30-ds-IhO"/>
+                                    <constraint firstAttribute="trailing" secondItem="LVj-7z-AIE" secondAttribute="trailing" id="azW-Kp-2Nm"/>
+                                    <constraint firstItem="o6B-he-KtE" firstAttribute="top" secondItem="H4h-FX-a1w" secondAttribute="bottom" constant="40" id="mRp-1D-fx6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Приложить"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0t-Zz-PnF" customClass="GoButton" customModule="GetHelp" customModuleProvider="target">
+                                <rect key="frame" x="107.5" y="585" width="160" height="42"/>
+                                <color key="backgroundColor" red="0.18505209680000001" green="0.77416473630000004" blue="0.75996559860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="dA0-fT-FbK"/>
+                                    <constraint firstAttribute="width" constant="160" id="sje-Sr-Cxi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <state key="normal" title="ПРОДОЛЖИТЬ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.18505209680000001" green="0.77416473630000004" blue="0.75996559860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="attachButtonAction:" destination="Rdg-BY-ltE" eventType="touchUpInside" id="YpF-GL-bO7"/>
+                                    <action selector="continueButtonAction:" destination="Rdg-BY-ltE" eventType="touchUpInside" id="e8f-Rq-Uhz"/>
+                                    <action selector="sendButtonAction:" destination="AOl-3h-8vD" eventType="touchUpInside" id="Jou-od-zPi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы сможете отправить фотографии позже в чате" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVj-7z-AIE">
-                                <rect key="frame" x="57.5" y="321.5" width="260" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZt-KX-HqN">
-                                <rect key="frame" x="294" y="278.5" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <color key="textColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приложите фотогрфии, с дополнительными сведениями о работе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4h-FX-a1w">
-                                <rect key="frame" x="39" y="158" width="298" height="68.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7wr-Qq-D9u" firstAttribute="centerY" secondItem="8UM-Hm-L3g" secondAttribute="centerY" constant="-55" id="2fc-zG-rFH"/>
-                            <constraint firstItem="LVj-7z-AIE" firstAttribute="top" secondItem="7wr-Qq-D9u" secondAttribute="bottom" constant="21" id="5eC-tW-zpm"/>
-                            <constraint firstItem="fZt-KX-HqN" firstAttribute="centerY" secondItem="7wr-Qq-D9u" secondAttribute="centerY" id="6We-3Y-GBK"/>
-                            <constraint firstItem="H4h-FX-a1w" firstAttribute="centerX" secondItem="7wr-Qq-D9u" secondAttribute="centerX" id="8qo-Yb-dKQ"/>
-                            <constraint firstItem="H4h-FX-a1w" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8UM-Hm-L3g" secondAttribute="leadingMargin" constant="15" id="Esx-aQ-6fo"/>
-                            <constraint firstItem="LVj-7z-AIE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8UM-Hm-L3g" secondAttribute="leadingMargin" constant="30" id="HHf-Kd-OtX"/>
-                            <constraint firstItem="7wr-Qq-D9u" firstAttribute="centerX" secondItem="8UM-Hm-L3g" secondAttribute="centerX" id="YUj-RB-6Wd"/>
-                            <constraint firstItem="LVj-7z-AIE" firstAttribute="centerX" secondItem="7wr-Qq-D9u" secondAttribute="centerX" id="cxz-Uc-inj"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="LVj-7z-AIE" secondAttribute="trailing" constant="30" id="g5F-41-ReK"/>
-                            <constraint firstItem="fZt-KX-HqN" firstAttribute="leading" secondItem="7wr-Qq-D9u" secondAttribute="trailing" constant="14" id="lrS-qo-CLQ"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="H4h-FX-a1w" secondAttribute="trailing" constant="15" id="uaf-Sf-7ft"/>
-                            <constraint firstItem="7wr-Qq-D9u" firstAttribute="top" secondItem="H4h-FX-a1w" secondAttribute="bottom" constant="30" id="us5-Dc-RPn"/>
+                            <constraint firstItem="R0t-Zz-PnF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H9S-cs-MAN" secondAttribute="bottom" constant="5" id="9Bz-CV-hF4"/>
+                            <constraint firstItem="R0t-Zz-PnF" firstAttribute="centerX" secondItem="8UM-Hm-L3g" secondAttribute="centerX" id="HiU-1z-gih"/>
+                            <constraint firstItem="H9S-cs-MAN" firstAttribute="centerY" secondItem="8UM-Hm-L3g" secondAttribute="centerY" priority="800" id="diB-y3-jO6"/>
+                            <constraint firstItem="H9S-cs-MAN" firstAttribute="leading" secondItem="8UM-Hm-L3g" secondAttribute="leading" constant="40" id="hr3-0f-pMo"/>
+                            <constraint firstItem="Qkz-Gn-NKJ" firstAttribute="top" secondItem="R0t-Zz-PnF" secondAttribute="bottom" constant="40" id="j9G-yR-Mhf"/>
+                            <constraint firstAttribute="trailing" secondItem="H9S-cs-MAN" secondAttribute="trailing" constant="40" id="s1u-AF-h3c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ami-xV-dn0">
-                        <barButtonItem key="rightBarButtonItem" title="Продолжить" id="X83-0l-eng">
-                            <connections>
-                                <action selector="continueButtonAction:" destination="Rdg-BY-ltE" id="CUW-2Q-qPR"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="X83-0l-eng"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="attachButton" destination="7wr-Qq-D9u" id="Ehc-ye-4dM"/>
+                        <outlet property="attachButton" destination="o6B-he-KtE" id="hDc-SM-nj0"/>
                         <outlet property="imagesCountLabel" destination="fZt-KX-HqN" id="YEc-w7-fUG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBJ-h7-rJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2450" y="347"/>
+            <point key="canvasLocation" x="3200.8000000000002" y="346.77661169415296"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icDownload" width="55" height="55"/>
+    </resources>
 </document>

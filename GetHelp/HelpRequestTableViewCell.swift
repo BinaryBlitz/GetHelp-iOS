@@ -33,12 +33,38 @@ class HelpRequestTableViewCell: UITableViewCell {
 
   @IBOutlet var messageCountViews: [UIView]!
 
+  @IBOutlet weak var additionalContentContainerView: UIView!
+  @IBOutlet weak var additionalContentHeightConstraint: NSLayoutConstraint!
+
   weak var delegate: HelpRequestCellDelegate?
+
+  lazy var additionalContentView: HelpRequestAdditionalContentView! = {
+    let nib = UINib(nibName: "HelpRequestAdditionalContentView", bundle: nil)
+    return nib.instantiate(withOwner: nil, options: nil)[0] as! HelpRequestAdditionalContentView
+  }()
+
   var timer: Timer?
+
+  var isExpanded: Bool = false {
+    didSet {
+      guard isExpanded != oldValue else { return }
+      additionalContentContainerView.subviews.forEach { $0.removeFromSuperview() }
+      if isExpanded {
+        additionalContentContainerView.addSubview(additionalContentView)
+        additionalContentView.translatesAutoresizingMaskIntoConstraints = false
+        additionalContentView.topAnchor.constraint(equalTo: additionalContentContainerView.topAnchor).isActive = true
+        additionalContentView.bottomAnchor.constraint(equalTo: additionalContentContainerView.bottomAnchor).isActive = true
+        additionalContentView.leftAnchor.constraint(equalTo: additionalContentContainerView.leftAnchor).isActive = true
+        additionalContentView.rightAnchor.constraint(equalTo: additionalContentContainerView.rightAnchor).isActive = true
+      }
+      additionalContentHeightConstraint.isActive = !isExpanded
+      updateConstraints()
+      layoutIfNeeded()
+    }
+  }
 
   override func awakeFromNib() {
     super.awakeFromNib()
-
   }
 
   deinit {
@@ -67,6 +93,10 @@ class HelpRequestTableViewCell: UITableViewCell {
     } else {
       indicatorNewMessageView.tintColor = UIColor.red
       setUpAnimationTimer()
+    }
+
+    if isExpanded {
+      additionalContentView.configure(presenter)
     }
   }
 

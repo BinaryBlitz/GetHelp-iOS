@@ -31,11 +31,6 @@ class AttachPhotosViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    attachButton.layer.borderWidth = 1
-    attachButton.layer.cornerRadius = 5
-    attachButton.layer.borderColor = UIColor.orangeSecondaryColor().cgColor
-    attachButton.tintColor = UIColor.orangeSecondaryColor()
-
     imagePickerController.didSelectAssets = { assets in
       self.selectedAssets = assets
       if assets.count != 0 {

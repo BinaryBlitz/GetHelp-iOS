@@ -17,6 +17,9 @@ class CreateNewRequestTableViewController: UITableViewController {
     super.viewDidLoad()
     edgesForExtendedLayout = UIRectEdge()
     view.backgroundColor = UIColor.white
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.backgroundColor = UIColor.white
+    navigationController?.view.backgroundColor = UIColor.white
 
     typePresenters = HelpType.avaliableTypes().map { (type) -> HelpTypePresenter in
       return HelpTypePresenter(type: type)
@@ -77,7 +80,7 @@ class CreateNewRequestTableViewController: UITableViewController {
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let indexPath = sender as? IndexPath,
-        let destination = segue.destination as? RequestFormViewController else {
+        let destination = segue.destination as? CreateNewRequestContainerViewController else {
       return
     }
 

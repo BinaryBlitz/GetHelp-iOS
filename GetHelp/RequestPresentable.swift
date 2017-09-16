@@ -15,6 +15,10 @@ protocol RequestPresentale {
   var commentsCount: String { get }
   var schoolInfo: String { get }
   var email: String { get }
+  var school: String { get }
+  var requestDescription: String { get }
+  var course: String { get }
+  var faculty: String { get }
   var price: String  { get }
   var isViewed: Bool { get }
 

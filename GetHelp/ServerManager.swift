@@ -18,7 +18,7 @@ class ServerManager {
 
   //MARK: - Fields
 
-  let baseURL = "https://gethelp24.ru"
+  let baseURL = "https://gethelp-staging.herokuapp.com"
 
   var apiToken: String? {
     didSet {
@@ -147,8 +147,8 @@ class ServerManager {
       ]
     ]
 
-    let req = try? self.request(.post, baseURL + "/user", parameters: parameters, encoding: JSONEncoding.default)
-    req?.validate().responseJSON { (response) -> Void in
+    let req = Alamofire.request(baseURL + "/user", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+    req.validate().responseJSON { (response) -> Void in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
       switch response.result {
       case .success(let resultValue):

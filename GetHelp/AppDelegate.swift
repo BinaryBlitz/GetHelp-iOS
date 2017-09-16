@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Fabric.with([Crashlytics.self])
 
     configureRealm()
-    configureNavigationBar()
     configureServerManager()
 
     checkArguments()
@@ -73,18 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
-  }
-
-  func configureNavigationBar() {
-    let appearance = UINavigationBar.appearance()
-
-    appearance.barTintColor = UIColor.orangeSecondaryColor()
-    appearance.isTranslucent = false
-    appearance.tintColor = UIColor.white
-    appearance.titleTextAttributes = [
-      NSForegroundColorAttributeName: UIColor.white,
-      NSFontAttributeName: UIFont.systemFont(ofSize: 18)
-    ]
   }
 
   // MARK - Push notifications

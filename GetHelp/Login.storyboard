@@ -41,7 +41,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="273" height="24"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="alert"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tB5-oZ-cCr">
                                                         <rect key="frame" x="0.0" y="36" width="273" height="2"/>
@@ -135,6 +135,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="za0-C7-71c"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomLayoutConstraint" destination="2j7-iQ-i0S" id="yHE-Vm-dAW"/>
                         <outlet property="okButton" destination="Q92-up-C71" id="3NS-el-v70"/>
                         <outlet property="phoneNumberTextField" destination="ZMh-2c-Qbi" id="pCb-ID-o8i"/>
                     </connections>
@@ -175,7 +176,7 @@
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gI-nj-C1P">
                                                         <rect key="frame" x="0.0" y="41" width="255" height="2"/>
@@ -267,6 +268,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="MwJ-Rz-7b0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomLayoutConstraint" destination="DHB-Hi-PcK" id="0iM-gN-Fu9"/>
                         <outlet property="codeSentLabel" destination="Vrz-SX-xnV" id="H4c-Df-zlZ"/>
                         <outlet property="codeTextField" destination="1Ih-eY-XhI" id="l1z-L0-V6P"/>
                         <outlet property="sendAgainButton" destination="Q1f-w2-EbR" id="8yC-bh-6Dr"/>

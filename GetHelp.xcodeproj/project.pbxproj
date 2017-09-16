@@ -84,8 +84,11 @@
 		37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */; };
 		37F5D97C1C2712DF00938308 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */; };
 		4980EB5D2C38DAD710CF3695 /* Pods_GetHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C8A025D04833332F84AE56 /* Pods_GetHelp.framework */; };
+		8804EA4A1F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA491F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift */; };
+		8804EA4C1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8804EA4B1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib */; };
 		88644CF11F6AADB200B2B253 /* HelpRequestSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */; };
 		88644CF31F6AADC300B2B253 /* HelpRequestSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */; };
+		88869EDD1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88869EDC1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift */; };
 		88FBACBE1F65BD8800B0293D /* UIView+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACBD1F65BD8800B0293D /* UIView+UIExtensions.swift */; };
 		88FBACC01F65BDFD00B0293D /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACBF1F65BDFD00B0293D /* GoButton.swift */; };
 		88FBACC31F65D61100B0293D /* GetHelpNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACC21F65D61100B0293D /* GetHelpNavigationController.swift */; };
@@ -187,8 +190,11 @@
 		37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatFieldRow.swift; sourceTree = "<group>"; };
 		37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		46F473C0629CB2E1CCE64683 /* Pods-GetHelp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHelp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetHelp/Pods-GetHelp.release.xcconfig"; sourceTree = "<group>"; };
+		8804EA491F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestAdditionalContentView.swift; sourceTree = "<group>"; };
+		8804EA4B1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestAdditionalContentView.xib; sourceTree = "<group>"; };
 		88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestSectionHeader.swift; sourceTree = "<group>"; };
 		88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestSectionHeader.xib; sourceTree = "<group>"; };
+		88869EDC1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewRequestContainerViewController.swift; sourceTree = "<group>"; };
 		88FBACBD1F65BD8800B0293D /* UIView+UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UIExtensions.swift"; sourceTree = "<group>"; };
 		88FBACBF1F65BDFD00B0293D /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
 		88FBACC21F65D61100B0293D /* GetHelpNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHelpNavigationController.swift; sourceTree = "<group>"; };
@@ -352,6 +358,7 @@
 		37B889C31C08EF4D00EA02D8 /* HelpRequestTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8804EA481F6DE4B40059FC78 /* AdditionalContent */,
 				37E8B3851C01E88900778C6B /* HelpRequestTableViewCell.swift */,
 				37E8B3861C01E88900778C6B /* HelpRequestTableViewCell.xib */,
 			);
@@ -547,6 +554,7 @@
 				37ADE3431C061EED00CC3CE2 /* CreateNewRequestTableViewController.swift */,
 				37A7CB8D1C0CA913004CFB14 /* RequestFormViewController.swift */,
 				37E083651C40756E008E74C9 /* AttachPhotosViewController.swift */,
+				88869EDC1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift */,
 			);
 			name = "Create new";
 			sourceTree = "<group>";
@@ -565,6 +573,15 @@
 				37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */,
 			);
 			name = Info;
+			sourceTree = "<group>";
+		};
+		8804EA481F6DE4B40059FC78 /* AdditionalContent */ = {
+			isa = PBXGroup;
+			children = (
+				8804EA491F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift */,
+				8804EA4B1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib */,
+			);
+			name = AdditionalContent;
 			sourceTree = "<group>";
 		};
 		88644CEF1F6AAD9800B2B253 /* HelpRequestSectionHeader */ = {
@@ -702,6 +719,7 @@
 			files = (
 				37EB111D1C2D656C00879A05 /* BillTableViewCell.xib in Resources */,
 				370130B51C1858D50099AD1E /* RequestInfoTableViewCell.xib in Resources */,
+				8804EA4C1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib in Resources */,
 				370694921C2EBF0100C5A689 /* Login.storyboard in Resources */,
 				37C952C81C39BF990006B721 /* UserImageMessageTableViewCell.xib in Resources */,
 				3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */,
@@ -850,6 +868,7 @@
 				37B38ACF1C3C7C64002110CA /* UIView+AddConent.swift in Sources */,
 				372E6A241C3EF7BD00586949 /* UIViewController+PresentAlert.swift in Sources */,
 				370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */,
+				88869EDD1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift in Sources */,
 				37C952C71C39BF990006B721 /* UserImageMessageTableViewCell.swift in Sources */,
 				88FBACC31F65D61100B0293D /* GetHelpNavigationController.swift in Sources */,
 				37B6AF151C35613400FA6BD4 /* ServerModelPresentable.swift in Sources */,
@@ -896,6 +915,7 @@
 				37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */,
 				37C69DB11C146C7C009D7755 /* MessagePresenter.swift in Sources */,
 				37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */,
+				8804EA4A1F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

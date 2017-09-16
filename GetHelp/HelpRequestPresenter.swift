@@ -10,7 +10,7 @@ class HelpRequestPresenter: HelpRequestPresentable {
 
   fileprivate var helpRequest: HelpRequest
   fileprivate var helpTypePresenter: HelpTypePresenter!
-  fileprivate lazy var dateFormatter = DateFormatter(dateFormat: "EE, dd mmm")
+  fileprivate lazy var dateFormatter = DateFormatter(dateFormat: "EE dd MMM")
   fileprivate lazy var timeFormatter = DateFormatter(dateFormat: "hh:mm")
 
   init(helpRequest: HelpRequest) {
@@ -36,6 +36,22 @@ class HelpRequestPresenter: HelpRequestPresentable {
 
   var schoolInfo: String {
     return "\(helpRequest.school), \(helpRequest.faculty), \(helpRequest.course) курс"
+  }
+
+  var school: String {
+    return helpRequest.school
+  }
+
+  var faculty: String {
+    return helpRequest.faculty
+  }
+
+  var course: String {
+    return helpRequest.course
+  }
+
+  var requestDescription: String {
+    return helpRequest.helpDescription
   }
 
   var email: String {

@@ -15,4 +15,8 @@ class HelpRequestSectionHeader: UITableViewHeaderFooterView {
   func configure(presenter: HelpTypePresenter) {
     typeNameLabel.text = presenter.name
   }
+
+  func configure(text: String) {
+    typeNameLabel.text = text
+  }
 }
