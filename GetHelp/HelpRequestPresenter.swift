@@ -10,7 +10,7 @@ class HelpRequestPresenter: HelpRequestPresentable {
 
   fileprivate var helpRequest: HelpRequest
   fileprivate var helpTypePresenter: HelpTypePresenter!
-  fileprivate lazy var dateFormatter = DateFormatter(dateFormat: "dd.MM.yyyy")
+  fileprivate lazy var dateFormatter = DateFormatter(dateFormat: "EE, dd mmm")
   fileprivate lazy var timeFormatter = DateFormatter(dateFormat: "hh:mm")
 
   init(helpRequest: HelpRequest) {
@@ -24,6 +24,10 @@ class HelpRequestPresenter: HelpRequestPresentable {
 
   var type: String {
     return helpTypePresenter.name
+  }
+
+  var typeColor: UIColor {
+    return helpTypePresenter.color
   }
 
   var name: String {
@@ -41,17 +45,33 @@ class HelpRequestPresenter: HelpRequestPresentable {
   var status: String {
     switch helpRequest.status {
     case .Accepted:
-      return "Принят"
+      return "Принято"
     case .InReview:
       return "Рассматривается"
     case .Rejected:
-      return "Отклонен"
+      return "Отклонено"
     case .WaitingForPayment:
       return "Ожидает оплаты"
     case .Refunded:
       return "Возвращен"
     }
   }
+
+  var statusImage: UIImage {
+    switch helpRequest.status {
+    case .Accepted:
+      return #imageLiteral(resourceName: "icAccepted")
+    case .InReview:
+      return #imageLiteral(resourceName: "icPending")
+    case .Rejected:
+      return #imageLiteral(resourceName: "icDeclined")
+    case .WaitingForPayment:
+      return #imageLiteral(resourceName: "icPendingpay")
+    case .Refunded:
+      return #imageLiteral(resourceName: "icPendingpay")
+    }
+  }
+
 
   func isPayable() -> Bool {
     return helpRequest.status == .WaitingForPayment
@@ -80,13 +100,28 @@ class HelpRequestPresenter: HelpRequestPresentable {
     }
   }
 
+  var filesCount: String {
+    return "\(helpRequest.filesCount)"
+  }
+
+  var commentsCount: String {
+    return "\(helpRequest.filesCount)"
+  }
+
+  var commentSectionVisible: Bool {
+    return helpRequest.commentsCount > 0
+  }
+
+  var filesSectionVisible: Bool {
+    return helpRequest.filesCount > 0
+  }
+
   var date: String {
     if let startDate = helpRequest.startDate {
       return dateFormatter.string(from: startDate)
     } else if let dueDate = helpRequest.dueDate {
       return dateFormatter.string(from: dueDate)
     }
-
     return ""
   }
 

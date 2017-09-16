@@ -21,6 +21,14 @@ class HomeViewController: UIViewController {
   let refreshControl = UIRefreshControl()
   var helpRequests: Results<HelpRequest>?
 
+  var normalRequests: [HelpRequest] {
+    return helpRequests?.filter { $0.type == .Normal } ?? []
+  }
+
+  var expressRequests: [HelpRequest] {
+    return helpRequests?.filter { $0.type == .Express } ?? []
+  }
+
   //MARK: - Livecycle
 
   override func viewDidLoad() {
@@ -30,7 +38,6 @@ class HomeViewController: UIViewController {
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
     refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-    configureCreateButton()
     configureTableView()
 
     fetchHelpRequests()
@@ -63,22 +70,16 @@ class HomeViewController: UIViewController {
   func configureTableView() {
     let helpRequestCellNib = UINib(nibName: "HelpRequestTableViewCell", bundle: nil)
     tableView.tableFooterView = UIView()
-    tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+    tableView.backgroundColor = UIColor.white
     tableView.register(helpRequestCellNib, forCellReuseIdentifier: "helpRequestCell")
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 80
     tableView.addSubview(refreshControl)
     tableView.sendSubview(toBack: refreshControl)
-    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 5))
-    headerView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-    tableView.tableHeaderView = headerView
-  }
+    tableView.backgroundColor = UIColor.white
 
-  func configureCreateButton() {
-    createRequestButton.layer.borderWidth = 1
-    createRequestButton.layer.cornerRadius = 5
-    createRequestButton.layer.borderColor = UIColor.orangeSecondaryColor().cgColor
-    createRequestButton.tintColor = UIColor.orangeSecondaryColor()
+    let sectionHeaderNib = UINib(nibName: "HelpRequestSectionHeader", bundle: nil)
+    tableView.register(sectionHeaderNib, forHeaderFooterViewReuseIdentifier: "helpRequestHeader")
   }
 
   //MARK: - Refresh
@@ -128,7 +129,14 @@ class HomeViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let destination = segue.destination as? RequestDetailsViewController,
         let indexPath = sender as? IndexPath {
-      destination.helpRequest = helpRequests?[indexPath.row]
+      switch indexPath.section {
+      case 0:
+        destination.helpRequest = normalRequests[indexPath.row]
+      case 1:
+        destination.helpRequest = expressRequests[indexPath.row]
+      default:
+        break
+      }
     }
   }
 }
@@ -147,17 +155,57 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
 
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    switch section {
+    case 0 where normalRequests.count == 0:
+      return 0
+    case 1 where expressRequests.count == 0:
+      return 0
+    default:
+      break
+    }
+
+    return 60
+  }
+
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "helpRequestHeader") as! HelpRequestSectionHeader
+    switch section {
+    case 0 where normalRequests.count != 0:
+      header.configure(presenter: HelpTypePresenter(type: .Normal))
+    case 1 where expressRequests.count == 0:
+      header.configure(presenter: HelpTypePresenter(type: .Express))
+    default:
+      break
+    }
+
+    return header
+  }
+  
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     guard let requests = helpRequests else {
       tableView.isHidden = true
       backgroundView.isHidden = false
+      navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logoGethelpNavbar2"))
       return 0
     }
 
     let shouldHideTableView = requests.count == 0
     tableView.isHidden = shouldHideTableView
     backgroundView.isHidden = !shouldHideTableView
-    return requests.count
+    if shouldHideTableView {
+      navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logoGethelpNavbar2"))
+    } else {
+      navigationItem.titleView = nil
+      navigationItem.title = "Мои заказы"
+    }
+
+    return section == 0 ? normalRequests.count : expressRequests.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -166,11 +214,9 @@ extension HomeViewController: UITableViewDataSource {
       return UITableViewCell()
     }
 
-    let request = helpRequests?[indexPath.row]
+    let request = indexPath.section == 0 ? normalRequests[indexPath.row] : expressRequests[indexPath.row]
 
-    if let presenter = request?.presenter() {
-      cell.configure(presenter)
-    }
+    cell.configure(request.presenter())
 
     cell.delegate = self
 

@@ -19,7 +19,7 @@ class PhoneTokenPair {
   }
 }
 
-class PhoneNumbeInputViewController: UIViewController {
+class PhoneNumbeInputViewController: UIViewController, LightContentViewController {
 
   @IBOutlet weak var okButton: UIButton!
   @IBOutlet weak var phoneNumberTextField: REFormattedNumberField!

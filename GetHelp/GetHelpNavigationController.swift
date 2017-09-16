@@ -9,12 +9,11 @@
 import Foundation
 import UIKit
 
-protocol DefaultBarStyleViewController { }
-protocol TransparentNavigationViewController { }
+protocol LightContentViewController { }
 
 class GetHelpNavigationController: UINavigationController, UINavigationControllerDelegate {
 
-  let defaultBarTintColor = UIColor.clear
+  var nextViewController: UIViewController? = nil
 
   override func loadView() {
     super.loadView()
@@ -26,15 +25,28 @@ class GetHelpNavigationController: UINavigationController, UINavigationControlle
     navigationBar.setBackgroundImage(UIImage(), for: .default)
     navigationBar.tintColor = UIColor.white
     navigationBar.titleTextAttributes =
-      [NSFontAttributeName: UIFont.systemFont(ofSize: 17), NSForegroundColorAttributeName: UIColor.white]
+      [NSFontAttributeName: UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium), NSForegroundColorAttributeName: UIColor.black]
     setNeedsStatusBarAppearanceUpdate()
   }
 
   func navigationController(_ navigationController: UINavigationController,
                             willShow viewController: UIViewController, animated: Bool) {
+    nextViewController = viewController
+
+    let tintColor: UIColor = viewController is LightContentViewController ? .white : .black
+    navigationBar.tintColor = tintColor
+    navigationBar.titleTextAttributes =
+      [NSFontAttributeName: UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium), NSForegroundColorAttributeName: tintColor]
+
+    view.backgroundColor = viewController is LightContentViewController ? .clear : .white
+
+    setNeedsStatusBarAppearanceUpdate()
   }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
+    guard let viewController = nextViewController, viewController is LightContentViewController else {
+      return .default
+    }
     return .lightContent
   }
 

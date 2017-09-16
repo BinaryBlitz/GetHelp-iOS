@@ -21,7 +21,10 @@ struct InfoLink {
   }
 }
 
-class InfoTableViewController: UITableViewController {
+class InfoTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var signOutButton: GoButton!
 
   let infoData = [
     InfoLink(name: "Пользовательское соглашение", urlString: "http://getthelp.ru/docs/Пользовательское соглашение.docx"),
@@ -36,22 +39,32 @@ class InfoTableViewController: UITableViewController {
     tableView.tableFooterView = UIView()
   }
 
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
   }
 
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return section == 0 ? 0 : 30
+  }
+
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let view = UIView()
+    view.backgroundColor = UIColor.clear
+    return view
+  }
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
       return infoData.count
-    case 1, 2:
+    case 1:
       return 1
     default:
       return 0
     }
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch indexPath.section {
     case 0:
       guard let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") else {
@@ -62,25 +75,10 @@ class InfoTableViewController: UITableViewController {
 
       return cell
     case 1:
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell") else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") else {
         return UITableViewCell()
       }
-
-      if let textLabel = cell.viewWithTag(1) as? UILabel {
-        textLabel.text = "Написать разработчикам"
-        textLabel.textColor = UIColor.black
-      }
-
-      return cell
-    case 2:
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell") else {
-        return UITableViewCell()
-      }
-
-      if let textLabel = cell.viewWithTag(1) as? UILabel {
-        textLabel.text = "Выйти"
-        textLabel.textColor = UIColor.red
-      }
+      cell.textLabel?.text = "Написать разработчикам"
 
       return cell
     default:
@@ -88,7 +86,7 @@ class InfoTableViewController: UITableViewController {
     }
   }
 
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     defer { tableView.deselectRow(at: indexPath, animated: true) }
 
     switch indexPath.section {
@@ -114,14 +112,6 @@ class InfoTableViewController: UITableViewController {
       mailViewController.setToRecipients([supportEmail])
       mailViewController.mailComposeDelegate = self
       present(mailViewController, animated: true, completion: nil)
-    case 2:
-      let alert = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
-
-      alert.addAction(UIAlertAction(title: "Отмена", style:.default, handler: nil))
-      let logoutAction = UIAlertAction(title: "Выйти", style: UIAlertActionStyle.destructive, handler: logoutActionHandler)
-      alert.addAction(logoutAction)
-
-      present(alert, animated: true, completion: nil)
     default:
       break
     }
@@ -159,6 +149,17 @@ class InfoTableViewController: UITableViewController {
 
     return indicator
   }
+
+  @IBAction func signOutButtonAction(_ sender: Any) {
+    let alert = UIAlertController(title: nil, message: "Вы уверены, что хотите выйти?", preferredStyle: .alert)
+
+    alert.addAction(UIAlertAction(title: "Отмена", style:.default, handler: nil))
+    let logoutAction = UIAlertAction(title: "Выйти", style: UIAlertActionStyle.destructive, handler: logoutActionHandler)
+    alert.addAction(logoutAction)
+
+    present(alert, animated: true, completion: nil)
+  }
+
 }
 
 extension InfoTableViewController: MFMailComposeViewControllerDelegate {

@@ -10,6 +10,7 @@ import UIKit
 
 class RequestTypeTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var cardView: UIView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var iconImageView: UIImageView!
   @IBOutlet weak var descriptionLabel: UILabel!
@@ -18,5 +19,6 @@ class RequestTypeTableViewCell: UITableViewCell {
     titleLabel.text = presenter.name
     iconImageView.image = presenter.image
     descriptionLabel.text = presenter.description
+    cardView.backgroundColor = presenter.color
   }
 }

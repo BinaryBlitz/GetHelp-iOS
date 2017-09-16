@@ -9,9 +9,15 @@
 protocol RequestPresentale {
   var id: String { get }
   var type: String  { get }
+  var typeColor: UIColor  { get }
   var name: String { get }
+  var filesCount: String { get }
+  var commentsCount: String { get }
   var schoolInfo: String { get }
   var email: String { get }
   var price: String  { get }
   var isViewed: Bool { get }
+
+  var commentSectionVisible: Bool { get }
+  var filesSectionVisible: Bool { get }
 }

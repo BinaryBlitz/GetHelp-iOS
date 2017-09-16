@@ -16,7 +16,7 @@ import UIKit
 
   override var isEnabled: Bool {
     didSet {
-      if isEnabled {
+      if !isEnabled {
         alpha = 0.6
       } else {
         alpha = 1

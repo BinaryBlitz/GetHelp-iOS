@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     configureRealm()
     configureNavigationBar()
-    configureTabBar()
     configureServerManager()
 
     checkArguments()
@@ -86,10 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSForegroundColorAttributeName: UIColor.white,
       NSFontAttributeName: UIFont.systemFont(ofSize: 18)
     ]
-  }
-
-  func configureTabBar() {
-    UITabBar.appearance().tintColor = UIColor.orangeSecondaryColor()
   }
 
   // MARK - Push notifications

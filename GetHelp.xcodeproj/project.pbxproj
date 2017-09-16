@@ -84,6 +84,8 @@
 		37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */; };
 		37F5D97C1C2712DF00938308 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */; };
 		4980EB5D2C38DAD710CF3695 /* Pods_GetHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C8A025D04833332F84AE56 /* Pods_GetHelp.framework */; };
+		88644CF11F6AADB200B2B253 /* HelpRequestSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */; };
+		88644CF31F6AADC300B2B253 /* HelpRequestSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */; };
 		88FBACBE1F65BD8800B0293D /* UIView+UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACBD1F65BD8800B0293D /* UIView+UIExtensions.swift */; };
 		88FBACC01F65BDFD00B0293D /* GoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACBF1F65BDFD00B0293D /* GoButton.swift */; };
 		88FBACC31F65D61100B0293D /* GetHelpNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBACC21F65D61100B0293D /* GetHelpNavigationController.swift */; };
@@ -185,6 +187,8 @@
 		37EDF94B1C0CEC6400927D68 /* FloatFieldRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatFieldRow.swift; sourceTree = "<group>"; };
 		37F5D97B1C2712DF00938308 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		46F473C0629CB2E1CCE64683 /* Pods-GetHelp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHelp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetHelp/Pods-GetHelp.release.xcconfig"; sourceTree = "<group>"; };
+		88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestSectionHeader.swift; sourceTree = "<group>"; };
+		88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestSectionHeader.xib; sourceTree = "<group>"; };
 		88FBACBD1F65BD8800B0293D /* UIView+UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UIExtensions.swift"; sourceTree = "<group>"; };
 		88FBACBF1F65BDFD00B0293D /* GoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoButton.swift; sourceTree = "<group>"; };
 		88FBACC21F65D61100B0293D /* GetHelpNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHelpNavigationController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 		370130B11C1854F80099AD1E /* Request Screen */ = {
 			isa = PBXGroup;
 			children = (
+				88644CEF1F6AAD9800B2B253 /* HelpRequestSectionHeader */,
 				370130B01C1854E50099AD1E /* HelpRequestInfoCell */,
 				37C69DA51C1467A6009D7755 /* MessagesCells */,
 				370130BC1C1871140099AD1E /* RequestStatusTebleViewCell */,
@@ -562,6 +567,15 @@
 			name = Info;
 			sourceTree = "<group>";
 		};
+		88644CEF1F6AAD9800B2B253 /* HelpRequestSectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */,
+				88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */,
+			);
+			name = HelpRequestSectionHeader;
+			sourceTree = "<group>";
+		};
 		88FBACC11F65D5FE00B0293D /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,6 +708,7 @@
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
+				88644CF31F6AADC300B2B253 /* HelpRequestSectionHeader.xib in Resources */,
 				37CC9B791BFB60FF00B450E0 /* Assets.xcassets in Resources */,
 				37C69DA91C1467FB009D7755 /* UserMessageTableViewCell.xib in Resources */,
 				37C952CC1C3AEAA10006B721 /* OperatorImageMessageTableViewCell.xib in Resources */,
@@ -871,6 +886,7 @@
 				37C952CB1C3AEAA10006B721 /* OperatorImageMessageTableViewCell.swift in Sources */,
 				370130BA1C1870BE0099AD1E /* RequestStatusTableViewCell.swift in Sources */,
 				18391D92B940B76766394B71 /* ServerManager.swift in Sources */,
+				88644CF11F6AADB200B2B253 /* HelpRequestSectionHeader.swift in Sources */,
 				37C69DA11C145583009D7755 /* MessageSender.swift in Sources */,
 				37B889C71C09121400EA02D8 /* UIColor+GetHelp.swift in Sources */,
 				371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */,
@@ -1018,7 +1034,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetHelp/GetHelp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gapbaev Boris (NP6L3K9A4S)";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
@@ -1047,7 +1063,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetHelp/GetHelp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Binary Blitz OOO (4WGG8V34K4)";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 4WGG8V34K4;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = GetHelp/Info.plist;

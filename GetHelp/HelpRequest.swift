@@ -29,6 +29,15 @@ class HelpRequest: Object {
   dynamic var _type = HelpType.Normal.rawValue
   dynamic var sum = 0
 
+  
+  var filesCount: Int {
+    return 0
+  }
+
+  var commentsCount: Int {
+    return 0
+  }
+
   override class func primaryKey() -> String? {
     return "id"
   }

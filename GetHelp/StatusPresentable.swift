@@ -8,6 +8,6 @@
 
 protocol StatusPresentable {
   var status: String { get }
-  var indicatorColor: UIColor { get }
+  var statusImage: UIImage { get }
   func isPayable() -> Bool
 }

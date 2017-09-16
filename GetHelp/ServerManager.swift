@@ -18,7 +18,7 @@ class ServerManager {
 
   //MARK: - Fields
 
-  let baseURL = "https://gethelp-production.herokuapp.com"
+  let baseURL = "https://gethelp24.ru"
 
   var apiToken: String? {
     didSet {
@@ -52,7 +52,7 @@ class ServerManager {
       parameters = ["api_token": token as Any]
     }
 
-    return Alamofire.request(url, method: method, parameters: parameters, encoding: encoding, headers: nil)
+    return Alamofire.request(url, method: method, parameters: parameters, encoding: encoding, headers: nil).responseDebugPrint()
   }
 
   func get(_ path: String, params: [String: Any]? = nil) throws -> DataRequest {
@@ -429,6 +429,22 @@ class ServerManager {
 
     } catch let error {
       completion?(false, error)
+    }
+
+  }
+}
+
+extension Alamofire.DataRequest {
+  func responseDebugPrint() -> Self {
+    return responseJSON() {
+      response in
+      if let  JSON = response.result.value,
+        let JSONData = try? JSONSerialization.data(withJSONObject: JSON, options: .prettyPrinted),
+        let prettyString = NSString(data: JSONData, encoding: String.Encoding.utf8.rawValue) {
+        print(prettyString)
+      } else if let error = response.result.error {
+        print("Error Debug Print: \(error.localizedDescription)")
+      }
     }
 
   }

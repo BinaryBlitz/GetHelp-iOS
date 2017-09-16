@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class LogInCodeCheckViewController: UIViewController {
+class LogInCodeCheckViewController: UIViewController, LightContentViewController {
 
   var loginRequest: Request?
 

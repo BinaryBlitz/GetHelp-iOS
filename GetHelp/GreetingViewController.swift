@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GreetingViewController: UIViewController {
+class GreetingViewController: UIViewController, LightContentViewController {
 
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var userAgreement: TTTAttributedLabel!

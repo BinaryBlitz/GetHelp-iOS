@@ -19,6 +19,10 @@ class RequestFormViewController: FormViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    automaticallyAdjustsScrollViewInsets = false
+    edgesForExtendedLayout = UIRectEdge()
+    view.backgroundColor = UIColor.white
+    tableView.backgroundColor = UIColor.white
 
     initialiseForm()
   }
@@ -111,8 +115,9 @@ class RequestFormViewController: FormViewController {
 
     if type == .Normal {
       form +++ Section("Email для отправки решения")
-      <<< EmailRow("emailRow") {
+      <<< TextFloatLabelRow("emailRow") {
         $0.title = "email"
+        $0.cell.textField.keyboardType = .emailAddress
       }
     }
 

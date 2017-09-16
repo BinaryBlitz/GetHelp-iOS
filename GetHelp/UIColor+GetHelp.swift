@@ -37,8 +37,16 @@ extension UIColor {
     return UIColor(r: 46, g: 170, b: 60)
   }
 
-  class var ftmLightPeach40: UIColor {
+  class var lightPeach40: UIColor {
     return UIColor(red: 253.0 / 255.0, green: 215.0 / 255.0, blue: 205.0 / 255.0, alpha: 0.4)
+  }
+
+  class var perrywinkle: UIColor {
+    return UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 228.0 / 255.0, alpha: 1.0)
+  }
+
+  class var tealishTwo: UIColor {
+    return UIColor(red: 47.0 / 255.0, green: 197.0 / 255.0, blue: 194.0 / 255.0, alpha: 1.0)
   }
 
   func lighter(percentage: CGFloat = 0.1) -> UIColor {

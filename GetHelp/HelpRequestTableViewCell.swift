@@ -15,18 +15,23 @@ protocol HelpRequestCellDelegate: class {
 class HelpRequestTableViewCell: UITableViewCell {
 
   @IBOutlet weak var cardView: UIView!
-  @IBOutlet weak var updateMarkerImageView: UIImageView!
 
   @IBOutlet weak var orderNumberLabel: UILabel!
   @IBOutlet weak var statusLabel: UILabel!
-  @IBOutlet weak var separatorView: UIView!
 
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var typeLabel: UILabel!
   @IBOutlet weak var dateTimeLabel: UILabel!
 
+  @IBOutlet weak var filesCountLabel: UILabel!
+  @IBOutlet weak var messagesCountLabel: UILabel!
+
+  @IBOutlet weak var statusImageView: UIImageView!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var payButton: UIButton!
+  @IBOutlet weak var indicatorNewMessageView: UIView!
+  @IBOutlet var filesCountViews: [UIView]!
+
+  @IBOutlet var messageCountViews: [UIView]!
 
   weak var delegate: HelpRequestCellDelegate?
   var timer: Timer?
@@ -34,13 +39,6 @@ class HelpRequestTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    updateMarkerImageView.image = UIImage(named: "Message")!.withRenderingMode(.alwaysTemplate)
-    updateMarkerImageView.tintColor = UIColor.lightGray
-    cardView.layer.borderColor = UIColor.lightGray.cgColor
-    cardView.layer.borderWidth = 1.4
-    cardView.layer.cornerRadius = 10
-
-    setUpButtons()
   }
 
   deinit {
@@ -50,20 +48,24 @@ class HelpRequestTableViewCell: UITableViewCell {
   func configure(_ presenter: HelpRequestPresentable) {
     timer?.invalidate()
 
+    cardView.backgroundColor = presenter.typeColor
     orderNumberLabel.text = presenter.id
-    dateTimeLabel.text = presenter.dateTime
+    dateTimeLabel.text = presenter.date
     statusLabel.text = presenter.status
-    statusLabel.textColor = presenter.indicatorColor
-    typeLabel.text = presenter.type
     nameLabel.text = presenter.name
+    statusImageView.image = presenter.statusImage
     priceLabel.text = presenter.price
-
+    messagesCountLabel.text = presenter.commentsCount
+    filesCountLabel.text = presenter.filesCount
+    statusImageView.image = presenter.statusImage
+    messageCountViews.forEach { $0.isHidden = !presenter.commentSectionVisible }
+    filesCountViews.forEach { $0.isHidden = !presenter.filesSectionVisible }
     setPayementSectionHidden( !presenter.isPayable())
 
     if presenter.isViewed {
-      updateMarkerImageView.tintColor = UIColor.lightGray
+      indicatorNewMessageView.tintColor = UIColor.clear
     } else {
-      updateMarkerImageView.tintColor = UIColor.newMessageIndicatorColor()
+      indicatorNewMessageView.tintColor = UIColor.red
       setUpAnimationTimer()
     }
   }
@@ -84,18 +86,13 @@ class HelpRequestTableViewCell: UITableViewCell {
   }
 
   func fireAnimation(_ sender: AnyObject) {
-    updateMarkerImageView.shakeWithDuration(0.065)
+    statusImageView.shakeWithDuration(0.065)
   }
 
   fileprivate func setPayementSectionHidden(_ hidden: Bool) {
     if hidden { priceLabel.text = nil }
     priceLabel.isHidden = hidden
     payButton.isHidden = hidden
-  }
-
-  fileprivate func setUpButtons() {
-    payButton.layer.cornerRadius = (payButton.frame.height / 2) - 1
-    payButton.backgroundColor = UIColor.yellowAccentColor()
   }
 
   @IBAction func payButtonAction(_ sender: AnyObject) {

@@ -15,7 +15,8 @@ class CreateNewRequestTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
+    edgesForExtendedLayout = UIRectEdge()
+    view.backgroundColor = UIColor.white
 
     typePresenters = HelpType.avaliableTypes().map { (type) -> HelpTypePresenter in
       return HelpTypePresenter(type: type)
@@ -23,8 +24,8 @@ class CreateNewRequestTableViewController: UITableViewController {
 
     let typeCellNib = UINib(nibName: "RequestTypeTableViewCell", bundle: nil)
     tableView.register(typeCellNib, forCellReuseIdentifier: "typeOptionCell")
-    tableView.rowHeight = UIScreen.main.bounds.height / 3
-//    tableView.estimatedRowHeight = 250
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 250
   }
 
   //MARK: - UITableViewDataSource
@@ -48,6 +49,17 @@ class CreateNewRequestTableViewController: UITableViewController {
 
   override func numberOfSections(in tableView: UITableView) -> Int {
     return typePresenters.count
+  }
+
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    guard section == 0 else { return 0 }
+    return 40
+  }
+
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let view = UIView()
+    view.backgroundColor = UIColor.clear
+    return view
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

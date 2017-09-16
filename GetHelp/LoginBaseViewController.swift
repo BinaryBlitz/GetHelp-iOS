@@ -19,7 +19,7 @@ protocol LoginNavigationDelegate {
   func moveBackward(_ data: AnyObject?)
 }
 
-class LoginBaseViewController: UIViewController {
+class LoginBaseViewController: UIViewController, LightContentViewController {
 
   enum MoveOption {
     case forward
