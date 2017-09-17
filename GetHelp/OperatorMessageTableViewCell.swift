@@ -17,11 +17,14 @@ class OperatorMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
-
+    contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+    bubbleTipView.image = #imageLiteral(resourceName: "incomingBubbleTip").withRenderingMode(.alwaysTemplate)
   }
 
   func configure(_ presenter: MessagePresentable) {
     dateLabel.text = presenter.dateTime
     contentLabel.text = presenter.content
+    cardView.backgroundColor = presenter.color ?? UIColor.tealishTwo
+    bubbleTipView.tintColor = presenter.color ?? UIColor.tealishTwo
   }
 }

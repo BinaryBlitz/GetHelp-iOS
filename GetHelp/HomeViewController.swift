@@ -177,7 +177,7 @@ extension HomeViewController: UITableViewDataSource {
     switch section {
     case 0 where normalRequests.count != 0:
       header.configure(presenter: HelpTypePresenter(type: .Normal))
-    case 1 where expressRequests.count == 0:
+    case 1 where expressRequests.count != 0:
       header.configure(presenter: HelpTypePresenter(type: .Express))
     default:
       break

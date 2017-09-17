@@ -9,6 +9,7 @@
 struct MessagePresenter: MessagePresentable {
 
   let message: Message
+  var color: UIColor?
 
   fileprivate let dateFormatter = DateFormatter(dateFormat: "dd.MM.yy")
   fileprivate let timeFormatter = DateFormatter(dateFormat: "HH:mm")

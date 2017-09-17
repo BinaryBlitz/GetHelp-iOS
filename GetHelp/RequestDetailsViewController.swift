@@ -53,7 +53,6 @@ class RequestDetailsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     configureSegments()
   }
 

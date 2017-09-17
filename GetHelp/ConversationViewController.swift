@@ -71,7 +71,6 @@ class ConversationViewController: UIViewController {
     }
 
     setUpTableView()
-    setUpButtons()
     setUpKeyboard()
     setUpTextView()
     setUpRefreshControl()
@@ -135,9 +134,9 @@ class ConversationViewController: UIViewController {
   }
 
   func setUpTextView() {
-    textView.layer.cornerRadius = 7
     textView.maxNumberOfLine = 5
-    textView.placeholder = "Введите сообщение"
+    textView.text = ""
+    textView.placeholder = "Ваше сообщение"
   }
 
   func setUpKeyboard() {
@@ -146,13 +145,6 @@ class ConversationViewController: UIViewController {
       name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     notificationCenter.addObserver(self, selector: #selector(keyboardWillHide(_:)),
       name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-  }
-
-  func setUpButtons() {
-    sendButton.tintColor = UIColor.orangeSecondaryColor()
-    let attachIcon = UIImage(named: "Camera")?.withRenderingMode(.alwaysTemplate)
-    attachButton.setBackgroundImage(attachIcon, for: UIControlState())
-    attachButton.tintColor = UIColor.orangeSecondaryColor()
   }
 
   func scrollToBottom() {
@@ -315,9 +307,11 @@ extension ConversationViewController: UITableViewDataSource {
     }
 
     let cellIdentifier: String
+    var color: UIColor? = nil
 
     switch message.sender {
     case .Operator:
+      color = helpRequest.type.presenter.color
       if message.imageURLString != nil {
         cellIdentifier = "operatorImageMessageCell"
       } else {
@@ -336,7 +330,7 @@ extension ConversationViewController: UITableViewDataSource {
     }
 
     if let configurableCell = cell as? ConfigurableMessageCell {
-      configurableCell.configure(MessagePresenter(message: message))
+      configurableCell.configure(MessagePresenter(message: message, color: color))
     }
 
     return cell

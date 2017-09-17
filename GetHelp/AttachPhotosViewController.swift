@@ -16,6 +16,7 @@ class AttachPhotosViewController: UIViewController {
 
   @IBOutlet weak var attachButton: UIButton!
   @IBOutlet weak var imagesCountLabel: UILabel!
+  @IBOutlet weak var continueButton: GoButton!
 
   var helpRequest: HelpRequest!
   lazy var imagePickerController: DKImagePickerController = {
@@ -41,6 +42,13 @@ class AttachPhotosViewController: UIViewController {
     }
 
     imagesCountLabel.textColor = UIColor.orangeSecondaryColor()
+
+    let reqTypeColor = helpRequest.type.presenter.color
+
+    attachButton.setImage(#imageLiteral(resourceName: "icDownload").withRenderingMode(.alwaysTemplate), for: .normal)
+    attachButton.tintColor = reqTypeColor
+    continueButton.backgroundColor = reqTypeColor
+    continueButton.defaultBackgroundColor = reqTypeColor
   }
 
   @IBAction func continueButtonAction(_ sender: AnyObject) {

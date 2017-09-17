@@ -16,6 +16,7 @@ class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
+    contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
 
   }
 

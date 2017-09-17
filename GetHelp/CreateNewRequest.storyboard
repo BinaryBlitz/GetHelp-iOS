@@ -194,13 +194,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.39988736579754602" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZt-KX-HqN">
-                                        <rect key="frame" x="286" y="128" width="0.0" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                        <color key="textColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приложите фотографии с дополнительными сведениями о работе" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4h-FX-a1w">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="82.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
@@ -220,6 +213,12 @@
                                             <action selector="attachButtonAction:" destination="Rdg-BY-ltE" eventType="touchUpInside" id="H7J-OC-lyA"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZt-KX-HqN">
+                                        <rect key="frame" x="147.5" y="207.5" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" red="0.95294117649999999" green="0.42352941179999998" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="LVj-7z-AIE" secondAttribute="bottom" id="5rR-cP-eZ8"/>
@@ -228,9 +227,11 @@
                                     <constraint firstItem="H4h-FX-a1w" firstAttribute="leading" secondItem="H9S-cs-MAN" secondAttribute="leading" id="RSI-sT-SyD"/>
                                     <constraint firstItem="LVj-7z-AIE" firstAttribute="leading" secondItem="H9S-cs-MAN" secondAttribute="leading" id="UL5-lq-vGw"/>
                                     <constraint firstItem="o6B-he-KtE" firstAttribute="centerX" secondItem="H9S-cs-MAN" secondAttribute="centerX" id="WrM-LS-0Py"/>
-                                    <constraint firstItem="LVj-7z-AIE" firstAttribute="top" secondItem="o6B-he-KtE" secondAttribute="bottom" constant="40" id="Y30-ds-IhO"/>
                                     <constraint firstAttribute="trailing" secondItem="LVj-7z-AIE" secondAttribute="trailing" id="azW-Kp-2Nm"/>
+                                    <constraint firstItem="LVj-7z-AIE" firstAttribute="top" secondItem="fZt-KX-HqN" secondAttribute="bottom" constant="20" id="bFb-Hr-q0E"/>
                                     <constraint firstItem="o6B-he-KtE" firstAttribute="top" secondItem="H4h-FX-a1w" secondAttribute="bottom" constant="40" id="mRp-1D-fx6"/>
+                                    <constraint firstItem="fZt-KX-HqN" firstAttribute="centerX" secondItem="H9S-cs-MAN" secondAttribute="centerX" id="moF-gm-KGj"/>
+                                    <constraint firstItem="fZt-KX-HqN" firstAttribute="top" secondItem="o6B-he-KtE" secondAttribute="bottom" constant="20" id="u4H-L8-XDj"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0t-Zz-PnF" customClass="GoButton" customModule="GetHelp" customModuleProvider="target">
@@ -274,6 +275,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="attachButton" destination="o6B-he-KtE" id="hDc-SM-nj0"/>
+                        <outlet property="continueButton" destination="R0t-Zz-PnF" id="uQd-zV-dVi"/>
                         <outlet property="imagesCountLabel" destination="fZt-KX-HqN" id="YEc-w7-fUG"/>
                     </connections>
                 </viewController>

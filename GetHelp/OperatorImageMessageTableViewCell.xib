@@ -66,6 +66,7 @@
             </tableViewCellContentView>
             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
             <connections>
+                <outlet property="bubbleTipView" destination="cdE-EI-U4A" id="5Ve-tN-8kj"/>
                 <outlet property="cardView" destination="Zgf-IB-o1w" id="TgE-Y7-jCh"/>
                 <outlet property="contentImageView" destination="SrG-LD-rtk" id="W15-xk-in8"/>
                 <outlet property="dateLabel" destination="7sN-gU-nNv" id="DLv-8F-f8i"/>

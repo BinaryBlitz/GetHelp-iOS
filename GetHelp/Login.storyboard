@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nfc-KY-tgm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nfc-KY-tgm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -329,7 +329,7 @@
                                     <segue destination="yqe-yb-r3N" kind="show" id="ydM-QM-Npg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-9h-sQX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-9h-sQX">
                                 <rect key="frame" x="42" y="225" width="291.5" height="55"/>
                                 <string key="text">Ваш карманный помошник
 в вопросах учебы</string>
@@ -352,7 +352,7 @@
                         <color key="backgroundColor" red="0.97738057369999998" green="0.5061407685" blue="0.21888479590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Wxm-K7-4rm" firstAttribute="top" secondItem="cY4-VR-FGn" secondAttribute="bottom" constant="42" id="9Lx-Th-a6r"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ROJ-9h-sQX" secondAttribute="trailing" constant="10" id="Ozg-6k-iVe"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ROJ-9h-sQX" secondAttribute="trailing" id="Ozg-6k-iVe"/>
                             <constraint firstItem="gwf-Q4-4MT" firstAttribute="centerX" secondItem="ZvI-gR-dLG" secondAttribute="centerX" id="QUc-YT-41B"/>
                             <constraint firstItem="UKS-77-L65" firstAttribute="top" secondItem="Wxm-K7-4rm" secondAttribute="bottom" constant="40" id="RTw-z7-kmC"/>
                             <constraint firstItem="cY4-VR-FGn" firstAttribute="centerX" secondItem="ZvI-gR-dLG" secondAttribute="centerX" id="SJV-cR-jAG"/>
@@ -362,7 +362,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Wxm-K7-4rm" secondAttribute="trailing" constant="15" id="cT1-kI-Dos"/>
                             <constraint firstItem="ROJ-9h-sQX" firstAttribute="top" secondItem="gwf-Q4-4MT" secondAttribute="bottom" constant="100" id="dX1-ym-WV9"/>
                             <constraint firstItem="ROJ-9h-sQX" firstAttribute="centerX" secondItem="ZvI-gR-dLG" secondAttribute="centerX" id="jCN-C1-ylr"/>
-                            <constraint firstItem="ROJ-9h-sQX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZvI-gR-dLG" secondAttribute="leadingMargin" constant="10" id="o33-cI-Uu6"/>
+                            <constraint firstItem="ROJ-9h-sQX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZvI-gR-dLG" secondAttribute="leadingMargin" id="o33-cI-Uu6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lkz-gL-Fq6">

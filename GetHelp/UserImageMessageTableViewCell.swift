@@ -17,7 +17,7 @@ class UserImageMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
-
+    contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
     contentImageView.clipsToBounds = true
     contentImageView.contentMode = .scaleAspectFill
   }

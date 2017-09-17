@@ -27,7 +27,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rjn-Z0-ct4">
                         <rect key="frame" x="16" y="15.5" width="160" height="145"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Текст сообщения" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF4-O2-w6s">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Текст сообщения" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF4-O2-w6s">
                                 <rect key="frame" x="14" y="8" width="132" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,7 +38,7 @@
                         <constraints>
                             <constraint firstItem="VF4-O2-w6s" firstAttribute="leading" secondItem="Rjn-Z0-ct4" secondAttribute="leading" constant="14" id="1hQ-dH-IH7"/>
                             <constraint firstAttribute="trailing" secondItem="VF4-O2-w6s" secondAttribute="trailing" constant="14" id="GQd-sK-Hfb"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VF4-O2-w6s" secondAttribute="bottom" id="tw2-ft-BtT"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VF4-O2-w6s" secondAttribute="bottom" constant="8" id="tw2-ft-BtT"/>
                             <constraint firstItem="VF4-O2-w6s" firstAttribute="top" secondItem="Rjn-Z0-ct4" secondAttribute="top" constant="8" id="y2O-0F-SKy"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

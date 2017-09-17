@@ -8,6 +8,7 @@
 
 protocol MessageContentPresentable {
   var content: String? { get }
+  var color: UIColor? { get }
   var imageURL: URL? { get }
   var imageThumbURL: URL? { get }
 }

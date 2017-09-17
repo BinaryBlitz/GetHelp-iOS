@@ -27,7 +27,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpC-tM-o05">
                         <rect key="frame" x="193" y="15.5" width="160" height="145"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Текст сообщения" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPE-n6-Wup">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Текст сообщения" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPE-n6-Wup">
                                 <rect key="frame" x="14" y="8" width="132" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,7 +39,7 @@
                             <constraint firstItem="uPE-n6-Wup" firstAttribute="leading" secondItem="hpC-tM-o05" secondAttribute="leading" constant="14" id="CkG-B9-PJa"/>
                             <constraint firstAttribute="trailing" secondItem="uPE-n6-Wup" secondAttribute="trailing" constant="14" id="YVy-UR-aNk"/>
                             <constraint firstItem="uPE-n6-Wup" firstAttribute="top" secondItem="hpC-tM-o05" secondAttribute="top" constant="8" id="tl4-Ug-gCY"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uPE-n6-Wup" secondAttribute="bottom" id="wK7-ZD-dIP"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uPE-n6-Wup" secondAttribute="bottom" constant="8" id="wK7-ZD-dIP"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

@@ -156,7 +156,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.18505209680000001" green="0.77416473630000004" blue="0.75996559860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="nzc-uw-aSG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="C01-FQ-otE"/>
                 <constraint firstItem="rga-es-qM2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CeO-al-hol"/>
