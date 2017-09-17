@@ -86,6 +86,8 @@
 		4980EB5D2C38DAD710CF3695 /* Pods_GetHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C8A025D04833332F84AE56 /* Pods_GetHelp.framework */; };
 		8804EA4A1F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA491F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift */; };
 		8804EA4C1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8804EA4B1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib */; };
+		8804EA4F1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8804EA4E1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib */; };
+		8804EA511F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA501F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift */; };
 		88644CF11F6AADB200B2B253 /* HelpRequestSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */; };
 		88644CF31F6AADC300B2B253 /* HelpRequestSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */; };
 		88869EDD1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88869EDC1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift */; };
@@ -192,6 +194,8 @@
 		46F473C0629CB2E1CCE64683 /* Pods-GetHelp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHelp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetHelp/Pods-GetHelp.release.xcconfig"; sourceTree = "<group>"; };
 		8804EA491F6DE4E40059FC78 /* HelpRequestAdditionalContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestAdditionalContentView.swift; sourceTree = "<group>"; };
 		8804EA4B1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestAdditionalContentView.xib; sourceTree = "<group>"; };
+		8804EA4E1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestSegmentItemView.xib; sourceTree = "<group>"; };
+		8804EA501F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestSegmentItemView.swift; sourceTree = "<group>"; };
 		88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestSectionHeader.swift; sourceTree = "<group>"; };
 		88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestSectionHeader.xib; sourceTree = "<group>"; };
 		88869EDC1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewRequestContainerViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 		370130B11C1854F80099AD1E /* Request Screen */ = {
 			isa = PBXGroup;
 			children = (
+				8804EA4D1F6DF2B40059FC78 /* Segment */,
 				88644CEF1F6AAD9800B2B253 /* HelpRequestSectionHeader */,
 				370130B01C1854E50099AD1E /* HelpRequestInfoCell */,
 				37C69DA51C1467A6009D7755 /* MessagesCells */,
@@ -584,6 +589,15 @@
 			name = AdditionalContent;
 			sourceTree = "<group>";
 		};
+		8804EA4D1F6DF2B40059FC78 /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				8804EA4E1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib */,
+				8804EA501F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift */,
+			);
+			name = Segment;
+			sourceTree = "<group>";
+		};
 		88644CEF1F6AAD9800B2B253 /* HelpRequestSectionHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +749,7 @@
 				37E8B3881C01E88900778C6B /* HelpRequestTableViewCell.xib in Resources */,
 				37ADE3461C061F2700CC3CE2 /* CreateNewRequest.storyboard in Resources */,
 				37CC9B771BFB60FF00B450E0 /* Main.storyboard in Resources */,
+				8804EA4F1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +926,7 @@
 				371DA8691C1C8AFC007847ED /* WalletInfoTableViewCell.swift in Sources */,
 				37C952C41C39BB590006B721 /* UIViewController+WebViewController.swift in Sources */,
 				37E083641C3FA503008E74C9 /* UIImage+WithNormalizedOrientation.swift in Sources */,
+				8804EA511F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift in Sources */,
 				37C69DB51C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift in Sources */,
 				37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */,
 				37C69DB11C146C7C009D7755 /* MessagePresenter.swift in Sources */,
