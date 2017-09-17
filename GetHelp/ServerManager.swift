@@ -206,6 +206,38 @@ class ServerManager {
     }
   }
 
+  func fetchNews(_ completion: ((_ news: [Post], _ error: Error?) -> Void)? = nil) -> Void {
+
+    do {
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
+      let request = try get("/posts")
+
+      request.validate().responseJSON { (response) -> Void in
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        switch response.result {
+        case .success(let resultValue):
+          let json = JSON(resultValue)
+          var posts: [Post] = []
+          for (_, postJSON) in json {
+            guard let post = Post.createFromJSON(postJSON) else {
+              continue
+            }
+
+            posts.append(post)
+          }
+
+          completion?(posts, nil)
+        case .failure(let error):
+          completion?([], error)
+        }
+      }
+
+    } catch let error {
+      completion?([], error)
+    }
+  }
+
+
   func createNewHelpRequest(_ helpRequest: HelpRequest,
                             completion: ((_ helpRequest: HelpRequest?, _ error: Error?) -> Void)? = nil) -> Request? {
 

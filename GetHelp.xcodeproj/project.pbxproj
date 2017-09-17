@@ -88,6 +88,11 @@
 		8804EA4C1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8804EA4B1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib */; };
 		8804EA4F1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8804EA4E1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib */; };
 		8804EA511F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA501F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift */; };
+		8804EA531F6E1D680059FC78 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8804EA521F6E1D680059FC78 /* News.storyboard */; };
+		8804EA561F6E1F700059FC78 /* NewsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA551F6E1F700059FC78 /* NewsItemTableViewCell.swift */; };
+		8804EA591F6E205B0059FC78 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA581F6E205B0059FC78 /* NewsViewController.swift */; };
+		8804EA5B1F6E21E80059FC78 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA5A1F6E21E80059FC78 /* Post.swift */; };
+		8804EA5D1F6EAD5F0059FC78 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804EA5C1F6EAD5F0059FC78 /* PostViewController.swift */; };
 		88644CF11F6AADB200B2B253 /* HelpRequestSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */; };
 		88644CF31F6AADC300B2B253 /* HelpRequestSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */; };
 		88869EDD1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88869EDC1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift */; };
@@ -196,6 +201,11 @@
 		8804EA4B1F6DE4F50059FC78 /* HelpRequestAdditionalContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestAdditionalContentView.xib; sourceTree = "<group>"; };
 		8804EA4E1F6DF2D50059FC78 /* HelpRequestSegmentItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestSegmentItemView.xib; sourceTree = "<group>"; };
 		8804EA501F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestSegmentItemView.swift; sourceTree = "<group>"; };
+		8804EA521F6E1D680059FC78 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		8804EA551F6E1F700059FC78 /* NewsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemTableViewCell.swift; sourceTree = "<group>"; };
+		8804EA581F6E205B0059FC78 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		8804EA5A1F6E21E80059FC78 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		8804EA5C1F6EAD5F0059FC78 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		88644CF01F6AADB200B2B253 /* HelpRequestSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestSectionHeader.swift; sourceTree = "<group>"; };
 		88644CF21F6AADC300B2B253 /* HelpRequestSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpRequestSectionHeader.xib; sourceTree = "<group>"; };
 		88869EDC1F6DB19200CB2C94 /* CreateNewRequestContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewRequestContainerViewController.swift; sourceTree = "<group>"; };
@@ -356,6 +366,7 @@
 				37A7CB921C0CB467004CFB14 /* HelpRequestStatus.swift */,
 				37C952CD1C3B03E90006B721 /* MessagesQueue.swift */,
 				37D94DF01C3C01F00050ADAB /* ServerError.swift */,
+				8804EA5A1F6E21E80059FC78 /* Post.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -501,6 +512,7 @@
 		37F171BC1BFB6D020016433D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8804EA571F6E204F0059FC78 /* News */,
 				88FBACC11F65D5FE00B0293D /* Common */,
 				37EFF3FC1C1E0A71008D020F /* Login */,
 				37F5D9771C27126400938308 /* Home */,
@@ -513,6 +525,7 @@
 		37F171BE1BFB6D0F0016433D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8804EA541F6E1F620059FC78 /* News */,
 				3726C74B1C30905300487828 /* Home */,
 				3726C74C1C30905B00487828 /* Wallet */,
 				88FBACBF1F65BDFD00B0293D /* GoButton.swift */,
@@ -528,6 +541,7 @@
 				37ADE3451C061F2700CC3CE2 /* CreateNewRequest.storyboard */,
 				37C2C19B1C11A172000010F2 /* RequestDetails.storyboard */,
 				37CC9B7A1BFB60FF00B450E0 /* LaunchScreen.storyboard */,
+				8804EA521F6E1D680059FC78 /* News.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -596,6 +610,23 @@
 				8804EA501F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift */,
 			);
 			name = Segment;
+			sourceTree = "<group>";
+		};
+		8804EA541F6E1F620059FC78 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				8804EA551F6E1F700059FC78 /* NewsItemTableViewCell.swift */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		8804EA571F6E204F0059FC78 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				8804EA581F6E205B0059FC78 /* NewsViewController.swift */,
+				8804EA5C1F6EAD5F0059FC78 /* PostViewController.swift */,
+			);
+			name = News;
 			sourceTree = "<group>";
 		};
 		88644CEF1F6AAD9800B2B253 /* HelpRequestSectionHeader */ = {
@@ -738,6 +769,7 @@
 				37C952C81C39BF990006B721 /* UserImageMessageTableViewCell.xib in Resources */,
 				3726C7511C30954200487828 /* RequestTypeTableViewCell.xib in Resources */,
 				37C2C19C1C11A172000010F2 /* RequestDetails.storyboard in Resources */,
+				8804EA531F6E1D680059FC78 /* News.storyboard in Resources */,
 				37CC9B7C1BFB60FF00B450E0 /* LaunchScreen.storyboard in Resources */,
 				371DA86A1C1C8AFC007847ED /* WalletInfoTableViewCell.xib in Resources */,
 				88644CF31F6AADC300B2B253 /* HelpRequestSectionHeader.xib in Resources */,
@@ -878,8 +910,10 @@
 				37CFD50C1C10C4DB009F734B /* HelpRequestPresentable.swift in Sources */,
 				88FBACBE1F65BD8800B0293D /* UIView+UIExtensions.swift in Sources */,
 				37D94DF11C3C01F00050ADAB /* ServerError.swift in Sources */,
+				8804EA5B1F6E21E80059FC78 /* Post.swift in Sources */,
 				37CFD5061C10C434009F734B /* RequestPresentable.swift in Sources */,
 				3706949C1C2ECDEE00C5A689 /* UIView+ShakeAnimation.swift in Sources */,
+				8804EA561F6E1F700059FC78 /* NewsItemTableViewCell.swift in Sources */,
 				37B38ACF1C3C7C64002110CA /* UIView+AddConent.swift in Sources */,
 				372E6A241C3EF7BD00586949 /* UIViewController+PresentAlert.swift in Sources */,
 				370694981C2EBF8E00C5A689 /* PhoneNumbeInputViewController.swift in Sources */,
@@ -908,6 +942,7 @@
 				376C4D9D1C11B68400970316 /* ConversationViewController.swift in Sources */,
 				370694971C2EBF8E00C5A689 /* GreetingViewController.swift in Sources */,
 				37E6B31A1C1CC6F500DA19A8 /* Constants.swift in Sources */,
+				8804EA5D1F6EAD5F0059FC78 /* PostViewController.swift in Sources */,
 				37ADE33E1C0608CD00CC3CE2 /* HelpRequest.swift in Sources */,
 				3706949A1C2EBF8E00C5A689 /* LoginBaseViewController.swift in Sources */,
 				37EDF9471C0CEB1100927D68 /* TextFloatLabelCell.swift in Sources */,
@@ -928,6 +963,7 @@
 				37E083641C3FA503008E74C9 /* UIImage+WithNormalizedOrientation.swift in Sources */,
 				8804EA511F6DF42C0059FC78 /* HelpRequestSegmentItemView.swift in Sources */,
 				37C69DB51C146FCD009D7755 /* NSDateFormater+initWithDateFormat.swift in Sources */,
+				8804EA591F6E205B0059FC78 /* NewsViewController.swift in Sources */,
 				37CFD5011C10C2B7009F734B /* HelpRequestPresenter.swift in Sources */,
 				37C69DB11C146C7C009D7755 /* MessagePresenter.swift in Sources */,
 				37EDF94C1C0CEC6400927D68 /* FloatFieldRow.swift in Sources */,

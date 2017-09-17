@@ -38,7 +38,7 @@ class GetHelpNavigationController: UINavigationController, UINavigationControlle
     navigationBar.titleTextAttributes =
       [NSFontAttributeName: UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium), NSForegroundColorAttributeName: tintColor]
 
-    view.backgroundColor = viewController is LightContentViewController ? .clear : .white
+    view.backgroundColor = .white
 
     setNeedsStatusBarAppearanceUpdate()
   }

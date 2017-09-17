@@ -136,6 +136,33 @@
             </objects>
             <point key="canvasLocation" x="3297.5" y="-554"/>
         </scene>
+        <!--Новости-->
+        <scene sceneID="F0i-lp-wLL">
+            <objects>
+                <navigationController title="Новости" id="QYL-iD-I6f" customClass="GetHelpNavigationController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" image="icNews" selectedImage="icNewsActive" id="hQj-OY-A4U"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qyk-l1-Ul1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IKa-GQ-gsO" kind="relationship" relationship="rootViewController" id="u3n-kk-CFz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsw-t8-RHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1946" y="23"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="VrY-ix-QeH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="News" id="IKa-GQ-gsO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gXp-hw-3Bh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0AZ-9H-t36" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2604" y="22"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OYy-yQ-LAf">
             <objects>
@@ -158,6 +185,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="fiM-AE-6W3" kind="relationship" relationship="viewControllers" id="FlE-d2-zRw"/>
+                        <segue destination="QYL-iD-I6f" kind="relationship" relationship="viewControllers" id="WPH-xj-o6d"/>
                         <segue destination="7bY-Mu-yqP" kind="relationship" relationship="viewControllers" id="Sts-Vz-ZjF"/>
                     </connections>
                 </tabBarController>
@@ -206,11 +234,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaW-56-wM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2021" y="35"/>
+            <point key="canvasLocation" x="4262" y="194"/>
         </scene>
         <!--Кошелек-->
         <scene sceneID="RLc-6i-Rwz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WQk-FY-KVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="WalletTableViewController" id="Ts6-xr-xeT" customClass="WalletTableViewController" customModule="GetHelp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="zPK-Cs-ayU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -246,9 +275,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Кошелек" id="NeJ-04-FAT"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WQk-FY-KVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2773" y="35"/>
+            <point key="canvasLocation" x="5014" y="194"/>
         </scene>
         <!--Информация-->
         <scene sceneID="Ugn-WV-Ndw">
