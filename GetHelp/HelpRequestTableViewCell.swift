@@ -98,6 +98,8 @@ class HelpRequestTableViewCell: UITableViewCell {
     if isExpanded {
       additionalContentView.configure(presenter)
     }
+    layoutIfNeeded()
+    updateConstraints()
   }
 
   func stopAnimations() {
@@ -116,7 +118,7 @@ class HelpRequestTableViewCell: UITableViewCell {
   }
 
   func fireAnimation(_ sender: AnyObject) {
-    statusImageView.shakeWithDuration(0.065)
+    indicatorNewMessageView.shakeWithDuration(0.065)
   }
 
   fileprivate func setPayementSectionHidden(_ hidden: Bool) {

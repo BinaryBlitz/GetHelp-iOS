@@ -27,6 +27,8 @@ class PhoneNumbeInputViewController: UIViewController, LightContentViewControlle
   
   var loginRequest: Request?
 
+  var observers: [Any] = []
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -38,7 +40,15 @@ class PhoneNumbeInputViewController: UIViewController, LightContentViewControlle
   }
 
   override func viewWillAppear(_ animated: Bool) {
+    self.observers = bottomLayoutConstraint.addObserversUpdateWithKeyboard(view: view)
     phoneNumberTextField.becomeFirstResponder()
+
+  }
+
+
+  override func viewWillDisappear(_ animated: Bool) {
+    self.observers.forEach { NotificationCenter.default.removeObserver($0) }
+    self.observers = []
   }
 
   //MARK: - Set up methods

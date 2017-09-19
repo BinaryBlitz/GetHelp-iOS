@@ -78,7 +78,7 @@ class InfoTableViewController: UIViewController, UITableViewDelegate, UITableVie
       guard let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell") else {
         return UITableViewCell()
       }
-      cell.textLabel?.text = "Написать разработчикам"
+      cell.textLabel?.text = "Написать нам"
 
       return cell
     default:
@@ -97,7 +97,7 @@ class InfoTableViewController: UIViewController, UITableViewDelegate, UITableVie
 
       presentWebViewControllerWith(url, entersReaderIfAvailable: true)
     case 1:
-      let supportEmail = "support@getthelp.ru"
+      let supportEmail = "zakaz@gethelp24.ru"
       guard MFMailComposeViewController.canSendMail() else {
         let mailURL = URL(string: "mailto:\(supportEmail)")
         if let url = mailURL {
@@ -108,7 +108,6 @@ class InfoTableViewController: UIViewController, UITableViewDelegate, UITableVie
 
       let mailViewController = MFMailComposeViewController()
       mailViewController.setSubject("Getthelp")
-      mailViewController.navigationBar.tintColor = UIColor.white
       mailViewController.setToRecipients([supportEmail])
       mailViewController.mailComposeDelegate = self
       present(mailViewController, animated: true, completion: nil)

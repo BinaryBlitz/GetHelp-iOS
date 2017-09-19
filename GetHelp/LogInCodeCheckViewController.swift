@@ -17,7 +17,9 @@ class LogInCodeCheckViewController: UIViewController, LightContentViewController
   @IBOutlet weak var codeTextField: REFormattedNumberField!
   @IBOutlet weak var codeSentLabel: UILabel!
   @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
-  
+
+  var observers: [Any] = []
+
   var rawPhoneNumber: String!
   var displayPhoneNumber: String!
   var token: String!
@@ -43,10 +45,14 @@ class LogInCodeCheckViewController: UIViewController, LightContentViewController
 
   override func viewWillAppear(_ animated: Bool) {
     codeTextField.becomeFirstResponder()
+    self.observers = bottomLayoutConstraint.addObserversUpdateWithKeyboard(view: view)
+
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     codeTextField.text = ""
+    self.observers.forEach { NotificationCenter.default.removeObserver($0) }
+    self.observers = []
   }
 
   func codeChanged() {

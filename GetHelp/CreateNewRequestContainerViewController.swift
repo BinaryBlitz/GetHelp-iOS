@@ -42,6 +42,7 @@ class CreateNewRequestContainerViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     sendButton.backgroundColor = type?.presenter.color ?? UIColor.tealishTwo
+    sendButton.defaultBackgroundColor = type?.presenter.color ?? UIColor.tealishTwo
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -73,7 +73,7 @@ class HomeViewController: UIViewController {
     tableView.backgroundColor = UIColor.white
     tableView.register(helpRequestCellNib, forCellReuseIdentifier: "helpRequestCell")
     tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 80
+    tableView.estimatedRowHeight = 150
     tableView.addSubview(refreshControl)
     tableView.sendSubview(toBack: refreshControl)
     tableView.backgroundColor = UIColor.white
@@ -89,6 +89,9 @@ class HomeViewController: UIViewController {
       self.fetchHelpRequests()
       self.tableView.reloadData()
       self.refreshControl.endRefreshing()
+      self.tableView.layoutIfNeeded()
+      self.tableView.beginUpdates()
+      self.tableView.endUpdates()
     }
   }
 
@@ -176,11 +179,13 @@ extension HomeViewController: UITableViewDataSource {
     let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "helpRequestHeader") as! HelpRequestSectionHeader
     switch section {
     case 0 where normalRequests.count != 0:
+      header.contentView.backgroundColor = UIColor.white
       header.configure(presenter: HelpTypePresenter(type: .Normal))
     case 1 where expressRequests.count != 0:
+      header.contentView.backgroundColor = UIColor.white
       header.configure(presenter: HelpTypePresenter(type: .Express))
     default:
-      break
+      header.contentView.backgroundColor = UIColor.clear
     }
 
     return header
