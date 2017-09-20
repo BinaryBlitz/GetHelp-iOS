@@ -40,13 +40,14 @@ class PhoneNumbeInputViewController: UIViewController, LightContentViewControlle
   }
 
   override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     self.observers = bottomLayoutConstraint.addObserversUpdateWithKeyboard(view: view)
     phoneNumberTextField.becomeFirstResponder()
-
   }
 
 
   override func viewWillDisappear(_ animated: Bool) {
+    view.endEditing(true)
     self.observers.forEach { NotificationCenter.default.removeObserver($0) }
     self.observers = []
   }

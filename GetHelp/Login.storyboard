@@ -157,10 +157,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAz-V3-mfS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3tZ-1K-VmV">
-                                        <rect key="frame" x="20" y="213.5" width="335" height="240"/>
+                                        <rect key="frame" x="20" y="203.5" width="335" height="240"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvP-CD-eax">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="27"/>
@@ -201,7 +201,7 @@
                                                     <constraint firstItem="5gI-nj-C1P" firstAttribute="leading" secondItem="EnR-z0-dLN" secondAttribute="leading" id="oyQ-b2-Aef"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На номер +7 (999) 123-22-11 был отправлен код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrz-SX-xnV">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="999" text="На номер +7 (999) 123-22-11 был отправлен код" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrz-SX-xnV">
                                                 <rect key="frame" x="0.0" y="130" width="335" height="20"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                 <color key="textColor" white="1" alpha="0.69538439417177911" colorSpace="calibratedWhite"/>
@@ -234,7 +234,7 @@
                                         <constraints>
                                             <constraint firstItem="EnR-z0-dLN" firstAttribute="top" secondItem="rvP-CD-eax" secondAttribute="bottom" constant="30" id="4WI-EH-Ua4"/>
                                             <constraint firstAttribute="trailing" secondItem="rvP-CD-eax" secondAttribute="trailing" id="8gr-Wb-Svw"/>
-                                            <constraint firstItem="Q1f-w2-EbR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Vrz-SX-xnV" secondAttribute="bottom" id="AZx-4D-pbv"/>
+                                            <constraint firstItem="Q1f-w2-EbR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Vrz-SX-xnV" secondAttribute="bottom" constant="20" id="AZx-4D-pbv"/>
                                             <constraint firstAttribute="bottom" secondItem="Q1f-w2-EbR" secondAttribute="bottom" id="DmE-QZ-98s"/>
                                             <constraint firstItem="Vrz-SX-xnV" firstAttribute="top" secondItem="EnR-z0-dLN" secondAttribute="bottom" constant="30" id="QNt-WP-GLj"/>
                                             <constraint firstItem="EnR-z0-dLN" firstAttribute="leading" secondItem="3tZ-1K-VmV" secondAttribute="leading" constant="40" id="TYr-hy-hpd"/>
@@ -251,15 +251,16 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="3tZ-1K-VmV" secondAttribute="trailing" constant="20" id="Vy9-qx-G6K"/>
-                                    <constraint firstItem="3tZ-1K-VmV" firstAttribute="centerY" secondItem="JAz-V3-mfS" secondAttribute="centerY" id="cCB-qn-Bgh"/>
+                                    <constraint firstItem="3tZ-1K-VmV" firstAttribute="centerY" secondItem="JAz-V3-mfS" secondAttribute="centerY" priority="999" id="cCB-qn-Bgh"/>
                                     <constraint firstItem="3tZ-1K-VmV" firstAttribute="leading" secondItem="JAz-V3-mfS" secondAttribute="leading" constant="20" id="wN4-tw-zxj"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97738057369999998" green="0.5061407685" blue="0.21888479590000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3tZ-1K-VmV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="loz-4h-vC2" secondAttribute="bottom" constant="20" id="AlR-v9-WuW"/>
+                            <constraint firstItem="JAz-V3-mfS" firstAttribute="top" secondItem="loz-4h-vC2" secondAttribute="bottom" id="BZE-5k-Rjc"/>
                             <constraint firstItem="zaT-cu-wC1" firstAttribute="top" secondItem="JAz-V3-mfS" secondAttribute="bottom" id="DHB-Hi-PcK"/>
-                            <constraint firstItem="JAz-V3-mfS" firstAttribute="top" secondItem="zNk-wZ-FTD" secondAttribute="top" id="YbF-Vg-vOJ"/>
                             <constraint firstAttribute="trailing" secondItem="JAz-V3-mfS" secondAttribute="trailing" id="Zxo-ah-VEI"/>
                             <constraint firstItem="JAz-V3-mfS" firstAttribute="leading" secondItem="zNk-wZ-FTD" secondAttribute="leading" id="ckP-oG-CuF"/>
                         </constraints>

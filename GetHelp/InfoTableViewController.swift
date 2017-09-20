@@ -27,9 +27,9 @@ class InfoTableViewController: UIViewController, UITableViewDelegate, UITableVie
   @IBOutlet weak var signOutButton: GoButton!
 
   let infoData = [
-    InfoLink(name: "Пользовательское соглашение", urlString: "http://getthelp.ru/docs/Пользовательское соглашение.docx"),
-    InfoLink(name: "Политика конфиденциальности", urlString: "http://getthelp.ru/docs/Политика конфиденциальности.docx"),
-    InfoLink(name: "Как это работает?", urlString: "http://getthelp.ru/docs/FAQ.docx")
+    InfoLink(name: "Пользовательское соглашение", urlString: "https://gethelp24.ru/docs/Пользовательское соглашение.docx"),
+    InfoLink(name: "Политика конфиденциальности", urlString: "https://gethelp24.ru/docs/Политика конфиденциальности.docx"),
+    InfoLink(name: "Как это работает?", urlString: "https://gethelp24.ru/docs/FAQ.docx")
   ]
 
   override func viewDidLoad() {

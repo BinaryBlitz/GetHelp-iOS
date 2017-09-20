@@ -44,13 +44,15 @@ class LogInCodeCheckViewController: UIViewController, LightContentViewController
   }
 
   override func viewWillAppear(_ animated: Bool) {
-    codeTextField.becomeFirstResponder()
+    super.viewWillAppear(animated)
     self.observers = bottomLayoutConstraint.addObserversUpdateWithKeyboard(view: view)
-
+    codeTextField.becomeFirstResponder()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     codeTextField.text = ""
+    view.endEditing(true)
     self.observers.forEach { NotificationCenter.default.removeObserver($0) }
     self.observers = []
   }
