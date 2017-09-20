@@ -17,6 +17,7 @@ PODS:
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
+  - PKHUD (4.2.3)
   - Realm (2.10.0):
     - Realm/Headers (= 2.10.0)
   - Realm/Headers (2.10.0)
@@ -28,7 +29,6 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - SVWebViewController (1.0)
   - SwiftDate (4.1.11)
-  - SwiftSpinner (1.3.0)
   - SwiftyJSON (3.1.4)
   - TTTAttributedLabel (2.0.0)
 
@@ -41,12 +41,12 @@ DEPENDENCIES:
   - Fabric
   - Kingfisher
   - MWPhotoBrowser (~> 2.1)
+  - PKHUD (~> 4.0)
   - Realm (~> 2.10)
   - RealmSwift (~> 2.10)
   - REFormattedNumberField (~> 1.1)
   - SVWebViewController (~> 1.0)
   - SwiftDate (~> 4.1)
-  - SwiftSpinner (~> 1.3)
   - SwiftyJSON (~> 3.1)
   - TTTAttributedLabel (~> 2.0)
 
@@ -61,16 +61,16 @@ SPEC CHECKSUMS:
   Kingfisher: 320626678acadfcf47008b3c6841cd882050737b
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  PKHUD: c7692163a09875cbf15827dc581df3c5cf7f1015
   Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
   RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
   REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftDate: ab63a5f0299dbb57fc088c1a2e5314b4bc9c90bb
-  SwiftSpinner: c249fffed3e74b5f3e6492dcc05d6bc1525a8220
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 6ca1be9476b038dc30711aa6435ee009fa4676df
+PODFILE CHECKSUM: 3daf61a3586fcac453907de3078a22e853a6c42b
 
 COCOAPODS: 1.3.1

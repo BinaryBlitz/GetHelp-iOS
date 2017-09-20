@@ -17,7 +17,7 @@ target 'GetHelp' do
   pod 'SVWebViewController', '~> 1.0'
   pod 'Kingfisher'
   pod 'MWPhotoBrowser', '~> 2.1'
-  pod 'SwiftSpinner', '~> 1.3'
+  pod 'PKHUD', '~> 4.0'
   pod 'SwiftDate', '~> 4.1'
   
 end

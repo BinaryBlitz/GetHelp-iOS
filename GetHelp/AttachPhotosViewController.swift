@@ -8,7 +8,7 @@
 
 import UIKit
 import DKImagePickerController
-import SwiftSpinner
+import PKHUD
 import Alamofire
 import RealmSwift
 
@@ -28,6 +28,8 @@ class AttachPhotosViewController: UIViewController {
   }()
 
   var selectedAssets = [DKAsset]()
+
+  var hudTapGesture: UITapGestureRecognizer!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,6 +51,8 @@ class AttachPhotosViewController: UIViewController {
     attachButton.tintColor = reqTypeColor
     continueButton.backgroundColor = reqTypeColor
     continueButton.defaultBackgroundColor = reqTypeColor
+
+    hudTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hudTapCancel))
   }
 
   @IBAction func continueButtonAction(_ sender: AnyObject) {
@@ -106,7 +110,7 @@ class AttachPhotosViewController: UIViewController {
         let request = serverManager.sendMessageWithImage(image, toOrder: self.helpRequest) { [unowned self] success, error in
           self.finishedRequests += 1
           if self.numberOfAssets == self.finishedRequests {
-            SwiftSpinner.hide()
+            HUD.flash(.success)
             self.dismiss(animated: true, completion: nil)
           }
 
@@ -137,11 +141,24 @@ class AttachPhotosViewController: UIViewController {
       }
     }
 
-    SwiftSpinner.show("Отправка фотографий").addTapHandler( {
-        SwiftSpinner.hide()
-        self.imageSendRequests.forEach { request in
-          request?.cancel()
-        }
-    }, subtitle: "Нажмите для отмены")
+    HUD.show(.labeledProgress(title: "Отправка фотографий", subtitle: "Нажмите для отмены"))
   }
+
+  func hudTapCancel() {
+    HUD.flash(.labeledError(title: "Отправка отменена", subtitle: nil))
+    self.imageSendRequests.forEach { request in
+      request?.cancel()
+    }
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    PKHUD.sharedHUD.contentView.addGestureRecognizer(hudTapGesture)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    PKHUD.sharedHUD.contentView.removeGestureRecognizer(hudTapGesture)
+  }
+
 }

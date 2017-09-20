@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 import DKImagePickerController
-import SwiftSpinner
+import PKHUD
 import Alamofire
 import MWPhotoBrowser
 
@@ -21,6 +21,7 @@ class ConversationViewController: UIViewController {
   @IBOutlet weak var sendButton: UIButton!
   @IBOutlet weak var attachButton: UIButton!
   @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
+  var hudTapGesture: UITapGestureRecognizer!
 
   var helpRequest: HelpRequest!
 
@@ -39,6 +40,7 @@ class ConversationViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
+    PKHUD.sharedHUD.contentView.addGestureRecognizer(hudTapGesture)
     timer?.fire()
     refresh(self)
   }
@@ -77,6 +79,7 @@ class ConversationViewController: UIViewController {
 
     NotificationCenter.default.addObserver(self, selector: #selector(refresh(_:)),
             name: NSNotification.Name(rawValue: HelpRequestUpdatedNotification), object: nil)
+    hudTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hudTapCancel))
 
     self.timer = Timer.scheduledTimer(
       timeInterval: 10,
@@ -88,7 +91,9 @@ class ConversationViewController: UIViewController {
   }
 
   override func viewDidDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     timer?.invalidate()
+    PKHUD.sharedHUD.contentView.removeGestureRecognizer(hudTapGesture)
   }
 
   deinit {
@@ -242,7 +247,7 @@ class ConversationViewController: UIViewController {
         let request = serverManager.sendMessageWithImage(image, toOrder: self.helpRequest) { [unowned self] success, error in
           self.finishedRequests += 1
           if self.numberOfAssets == self.finishedRequests {
-            SwiftSpinner.hide()
+            HUD.flash(.success)
           }
 
           if success {
@@ -278,13 +283,18 @@ class ConversationViewController: UIViewController {
       }
     }
 
-    SwiftSpinner.show("Отправка фотографий").addTapHandler( {
-        SwiftSpinner.hide()
-        self.imageSendRequests.forEach { request in
-          request?.cancel()
-        }
-    }, subtitle: "Нажмите для отмены")
+    HUD.show(.labeledProgress(title: "Отправка фотографий", subtitle: "Нажмите для отмены"))
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.hudTapCancel))
+    PKHUD.sharedHUD.contentView.addGestureRecognizer(tapGesture)
   }
+
+  func hudTapCancel() {
+    HUD.flash(.labeledError(title: "Отправка фотографий отменена", subtitle: nil))
+    self.imageSendRequests.forEach { request in
+      request?.cancel()
+    }
+  }
+
 }
 
 //MARK: UITableViewDataSource
