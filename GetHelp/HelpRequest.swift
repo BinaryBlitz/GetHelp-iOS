@@ -19,6 +19,8 @@ class HelpRequest: Object {
   dynamic var school = ""
   dynamic var faculty = ""
   dynamic var helpDescription = ""
+  dynamic var messagesRead: Bool = false
+  dynamic var lastMessageCreatedAt: Date?
   dynamic var dueDate: Date?
   dynamic var startDate: Date?
   dynamic var createdAt: Date?
@@ -28,15 +30,6 @@ class HelpRequest: Object {
   dynamic var _status = HelpRequestStatus.InReview.rawValue
   dynamic var _type = HelpType.Normal.rawValue
   dynamic var sum = 0
-
-  
-  var filesCount: Int {
-    return 0
-  }
-
-  var commentsCount: Int {
-    return 0
-  }
 
   override class func primaryKey() -> String? {
     return "id"
@@ -85,7 +78,8 @@ extension HelpRequest: ServerModelPresentable {
       "university": school as AnyObject,
       "faculty": faculty as AnyObject,
       "email": email,
-      "description": helpDescription
+      "description": helpDescription,
+      "messages_read": messagesRead
     ]
 
     if let dueDate = dueDate {
@@ -125,6 +119,10 @@ extension HelpRequest: ServerModelPresentable {
 
     if let description = json["description"].string {
       helpRequest.helpDescription = description
+    }
+
+    if let messagesRead = json["messages_read"].bool {
+      helpRequest.messagesRead = messagesRead
     }
 
     helpRequest.faculty = faculty

@@ -7,5 +7,5 @@
 //
 
 protocol ConfigurableMessageCell {
-  func configure(_ presenter: MessagePresentable)
+  func configure(_ presenter: MessagePresentable, tableView: UITableView)
 }

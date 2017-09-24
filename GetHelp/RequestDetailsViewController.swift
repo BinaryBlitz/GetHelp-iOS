@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum RequestDetailsSegment: Int {
   case order = 0
@@ -29,7 +30,11 @@ class RequestDetailsViewController: UIViewController {
   @IBOutlet weak var conversationView: UIView!
   @IBOutlet weak var segmentsStackView: UIStackView!
 
+  var requestInfoViewController: RequestInfoTableViewController!
+
   var helpRequest: HelpRequest!
+
+  var token : NotificationToken?
 
   var currentSegment: RequestDetailsSegment = .order {
     didSet {
@@ -44,6 +49,7 @@ class RequestDetailsViewController: UIViewController {
       case .chat:
         requestInfoView.isHidden = true
         conversationView.isHidden = false
+        setMessagesReadIfNeeded()
       }
 
     }
@@ -54,6 +60,24 @@ class RequestDetailsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureSegments()
+
+    self.token = helpRequest.addNotificationBlock { [weak self] change in
+      guard let `self` = self else { return }
+      switch change {
+      case .change(let properties):
+        for property in properties {
+          guard property.name == "messagesRead" else { continue }
+          guard let newValue = property.newValue as? Bool else { continue }
+          self.segmentViews[RequestDetailsSegment.chat.rawValue].badgeView.isHidden = newValue
+          self.requestInfoViewController.setCommentSectionHidden(newValue)
+          if !newValue && self.currentSegment == .chat  {
+            ServerManager.sharedInstance.setRequest(self.helpRequest, messagesRead: true, completion: nil)
+          }
+        }
+      default:
+        break
+      }
+    }
   }
 
   func configureSegments() {
@@ -74,6 +98,16 @@ class RequestDetailsViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     self.tabBarController?.tabBar.isHidden = true
+    self.segmentViews[RequestDetailsSegment.chat.rawValue].badgeView.isHidden = helpRequest.messagesRead
+  }
+
+  func setMessagesReadIfNeeded() {
+    guard !helpRequest.messagesRead else { return }
+    ServerManager.sharedInstance.setRequest(self.helpRequest, messagesRead: true, completion: nil)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
   }
 
 
@@ -82,6 +116,7 @@ class RequestDetailsViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let infoViewController = segue.destination as? RequestInfoTableViewController {
       infoViewController.helpRequest = helpRequest
+      self.requestInfoViewController = infoViewController
     } else if let conversationViewController = segue.destination as? ConversationViewController {
       conversationViewController.helpRequest = helpRequest
     }

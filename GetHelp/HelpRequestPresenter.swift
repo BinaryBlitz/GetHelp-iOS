@@ -117,19 +117,19 @@ class HelpRequestPresenter: HelpRequestPresentable {
   }
 
   var filesCount: String {
-    return "\(helpRequest.filesCount)"
+    return "\(0)"
   }
 
   var commentsCount: String {
-    return "\(helpRequest.filesCount)"
+    return "\(0)"
   }
 
   var commentSectionVisible: Bool {
-    return helpRequest.commentsCount > 0
+    return !helpRequest.messagesRead
   }
 
   var filesSectionVisible: Bool {
-    return helpRequest.filesCount > 0
+    return false
   }
 
   var date: String {

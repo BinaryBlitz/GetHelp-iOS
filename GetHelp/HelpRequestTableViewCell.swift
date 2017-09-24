@@ -22,14 +22,10 @@ class HelpRequestTableViewCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var dateTimeLabel: UILabel!
 
-  @IBOutlet weak var filesCountLabel: UILabel!
-  @IBOutlet weak var messagesCountLabel: UILabel!
-
   @IBOutlet weak var statusImageView: UIImageView!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var payButton: UIButton!
   @IBOutlet weak var indicatorNewMessageView: UIView!
-  @IBOutlet var filesCountViews: [UIView]!
 
   @IBOutlet var messageCountViews: [UIView]!
 
@@ -81,11 +77,8 @@ class HelpRequestTableViewCell: UITableViewCell {
     nameLabel.text = presenter.name
     statusImageView.image = presenter.statusImage
     priceLabel.text = presenter.price
-    messagesCountLabel.text = presenter.commentsCount
-    filesCountLabel.text = presenter.filesCount
     statusImageView.image = presenter.statusImage
     messageCountViews.forEach { $0.isHidden = !presenter.commentSectionVisible }
-    filesCountViews.forEach { $0.isHidden = !presenter.filesSectionVisible }
     setPayementSectionHidden( !presenter.isPayable())
 
     if presenter.isViewed {
@@ -118,7 +111,11 @@ class HelpRequestTableViewCell: UITableViewCell {
   }
 
   func fireAnimation(_ sender: AnyObject) {
-    indicatorNewMessageView.shakeWithDuration(0.065)
+    messageCountViews.forEach { $0.shakeWithDuration(0.065) }
+  }
+
+  func setCommentSectionHidden(_ hidden: Bool) {
+    messageCountViews.forEach { $0.isHidden = hidden }
   }
 
   fileprivate func setPayementSectionHidden(_ hidden: Bool) {

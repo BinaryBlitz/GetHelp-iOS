@@ -21,7 +21,7 @@ class OperatorMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
     bubbleTipView.image = #imageLiteral(resourceName: "incomingBubbleTip").withRenderingMode(.alwaysTemplate)
   }
 
-  func configure(_ presenter: MessagePresentable) {
+  func configure(_ presenter: MessagePresentable, tableView: UITableView) {
     dateLabel.text = presenter.dateTime
     contentLabel.text = presenter.content
     cardView.backgroundColor = presenter.color ?? UIColor.tealishTwo

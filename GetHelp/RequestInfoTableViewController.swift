@@ -14,6 +14,10 @@ class RequestInfoTableViewController: UITableViewController {
 
   var helpRequest: HelpRequest!
 
+  func setCommentSectionHidden(_ hidden: Bool) {
+    cell.setCommentSectionHidden(hidden)
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.backgroundColor = UIColor.white

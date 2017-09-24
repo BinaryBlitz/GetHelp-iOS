@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import UserNotifications
 
 class PhoneTokenPair {
   var phoneNumber: String
@@ -135,7 +136,15 @@ class PhoneNumbeInputViewController: UIViewController, LightContentViewControlle
       .registerUserNotificationSettings(
         UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
     )
-
     UIApplication.shared.registerForRemoteNotifications()
+/*
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
+      })
+      UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    } else {
+    }
+*/
+
   }
 }

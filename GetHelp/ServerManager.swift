@@ -280,6 +280,36 @@ class ServerManager {
     return nil
   }
 
+  func setRequest(_ helpRequest: HelpRequest, messagesRead: Bool = false,
+                  completion: ((_ request: HelpRequest?, _ error: Error?) -> Void)? = nil) -> Void {
+
+    let parameters: [String: Any] = ["messages_read": messagesRead as Any]
+
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    let id = helpRequest.id
+    guard let request = try? patch("/orders/\(id)", params: parameters) else {
+      completion?(nil, ServerError.invalidData)
+      return
+    }
+
+    request.validate().response { response in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      if let error = response.error {
+        completion?(nil, error)
+      } else {
+        let realm = try! Realm()
+        let request = realm.object(ofType: HelpRequest.self, forPrimaryKey: helpRequest.id)
+        try? realm.write {
+          request?.messagesRead = messagesRead
+          realm.add(helpRequest, update: true)
+        }
+        completion?(request, nil)
+      }
+    }
+
+  }
+
+
   //MARK: - Messages
 
   func fetchAllMessagesForOrder(_ order: HelpRequest, completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {

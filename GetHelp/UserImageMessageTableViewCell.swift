@@ -22,13 +22,17 @@ class UserImageMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
     contentImageView.contentMode = .scaleAspectFill
   }
 
-  func configure(_ presenter: MessagePresentable) {
+  func configure(_ presenter: MessagePresentable, tableView: UITableView) {
     contentImageView.kf.cancelDownloadTask()
     contentImageView.image = nil
     dateLabel.text = presenter.dateTime
 
     if let imageURL = presenter.imageThumbURL {
-      contentImageView.kf.setImage(with: imageURL)
+      contentImageView.kf.setImage(with: imageURL) { [weak self] _, _, _, _ in
+        self?.layoutIfNeeded()
+        self?.updateConstraints()
+        tableView.reloadData()
+      }
     }
   }
 }

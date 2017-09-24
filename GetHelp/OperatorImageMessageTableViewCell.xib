@@ -31,6 +31,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SrG-LD-rtk">
                                 <rect key="frame" x="10" y="10" width="91" height="72"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="8Zy-t4-qZ9"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="agv-x8-TxJ"/>
                                     <constraint firstAttribute="width" secondItem="SrG-LD-rtk" secondAttribute="height" multiplier="315:250" id="hbR-Zf-rYJ"/>
                                 </constraints>
                             </imageView>

@@ -39,7 +39,7 @@ class ConversationViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-
+    
     PKHUD.sharedHUD.contentView.addGestureRecognizer(hudTapGesture)
     timer?.fire()
     refresh(self)
@@ -340,7 +340,7 @@ extension ConversationViewController: UITableViewDataSource {
     }
 
     if let configurableCell = cell as? ConfigurableMessageCell {
-      configurableCell.configure(MessagePresenter(message: message, color: color))
+      configurableCell.configure(MessagePresenter(message: message, color: color), tableView: tableView)
     }
 
     return cell

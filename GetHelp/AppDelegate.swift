@@ -11,9 +11,10 @@ import Fabric
 import Crashlytics
 import RealmSwift
 import AudioToolbox
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
   var window: UIWindow?
 
@@ -28,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     checkArguments()
 
     application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self
+    }
 
     return true
   }
@@ -49,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-      schemaVersion: 16,
+      schemaVersion: 17,
       migrationBlock: { migration, oldSchemaVersion in
         if oldSchemaVersion < 16 {
           migration.deleteData(forType: Message.className())
@@ -105,6 +110,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
   }
 
+  
+
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    NotificationCenter.default
+      .post(name: Notification.Name(rawValue: HelpRequestUpdatedNotification), object: nil)
+
+    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    completionHandler(.noData)
+  }
+
+  @available(iOS 10.0, *)
+  func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    completionHandler([.alert, .sound, .badge])
+  }
+
   func application(
     _ application: UIApplication,
     performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -112,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ServerManager.sharedInstance.fetchHelpRequests { success, error in
       do {
         let realm = try Realm()
-        let results = realm.objects(HelpRequest.self).filter("viewed == false")
+        let results = realm.objects(HelpRequest.self).filter("messagesRead == false")
         UIApplication.shared.applicationIconBadgeNumber = results.count
       } catch {
         return

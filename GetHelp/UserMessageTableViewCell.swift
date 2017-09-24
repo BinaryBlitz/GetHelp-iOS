@@ -20,7 +20,7 @@ class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
 
   }
 
-  func configure(_ presenter: MessagePresentable) {
+  func configure(_ presenter: MessagePresentable, tableView: UITableView) {
     dateLabel.text = presenter.dateTime
     contentLabel.text = presenter.content
   }
