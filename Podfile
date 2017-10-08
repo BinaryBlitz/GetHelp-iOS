@@ -9,8 +9,8 @@ target 'GetHelp' do
   pod 'Crashlytics'
   pod 'Realm', '~> 2.10'
   pod 'RealmSwift', '~> 2.10'
-  pod 'Eureka', '~> 3.1'
-  pod 'CCGrowingTextView', '~> 0.7'
+  pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'feature/Xcode9-Swift3_2'
+  pod 'GrowingTextView'
   pod 'DKImagePickerController', '~> 3.6'
   pod 'REFormattedNumberField', '~> 1.1'
   pod 'TTTAttributedLabel', '~> 2.0'
@@ -18,6 +18,6 @@ target 'GetHelp' do
   pod 'Kingfisher'
   pod 'MWPhotoBrowser', '~> 2.1'
   pod 'PKHUD', '~> 4.0'
-  pod 'SwiftDate', '~> 4.1'
+  pod 'SwiftDate', '~> 4.3'
   
 end

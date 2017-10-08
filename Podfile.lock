@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.5.1)
-  - CCGrowingTextView (0.7)
   - Crashlytics (3.8.6):
     - Fabric (~> 1.6.3)
   - DACircularProgress (2.3.1)
@@ -9,36 +8,37 @@ PODS:
     - DKImagePickerController/ImageManager (= 3.6.1)
   - DKImagePickerController/Camera (3.6.1)
   - DKImagePickerController/ImageManager (3.6.1)
-  - Eureka (3.1.0)
+  - Eureka (3.0.0)
   - Fabric (1.6.13)
-  - Kingfisher (3.12.2)
+  - GrowingTextView (0.3.0)
+  - Kingfisher (4.1.0)
   - MBProgressHUD (0.9.2)
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
   - PKHUD (4.2.3)
-  - Realm (2.10.0):
-    - Realm/Headers (= 2.10.0)
-  - Realm/Headers (2.10.0)
-  - RealmSwift (2.10.0):
-    - Realm (= 2.10.0)
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
   - REFormattedNumberField (1.1.6)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SVWebViewController (1.0)
-  - SwiftDate (4.1.11)
+  - SwiftDate (4.3.0)
   - SwiftyJSON (3.1.4)
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
-  - CCGrowingTextView (~> 0.7)
   - Crashlytics
   - DKImagePickerController (~> 3.6)
-  - Eureka (~> 3.1)
+  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `feature/Xcode9-Swift3_2`)
   - Fabric
+  - GrowingTextView
   - Kingfisher
   - MWPhotoBrowser (~> 2.1)
   - PKHUD (~> 4.0)
@@ -46,31 +46,41 @@ DEPENDENCIES:
   - RealmSwift (~> 2.10)
   - REFormattedNumberField (~> 1.1)
   - SVWebViewController (~> 1.0)
-  - SwiftDate (~> 4.1)
+  - SwiftDate (~> 4.3)
   - SwiftyJSON (~> 3.1)
   - TTTAttributedLabel (~> 2.0)
 
+EXTERNAL SOURCES:
+  Eureka:
+    :branch: feature/Xcode9-Swift3_2
+    :git: https://github.com/xmartlabs/Eureka.git
+
+CHECKOUT OPTIONS:
+  Eureka:
+    :commit: 05acfb04c24a480f1868e671d19b39e0f22fc265
+    :git: https://github.com/xmartlabs/Eureka.git
+
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  CCGrowingTextView: cd7e27d7f92e54de43fc607e146c16b3a3bb3950
   Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DKImagePickerController: 4f8072aed44119a33955c9583273ea7c8739c0f4
-  Eureka: d6725c38d0dcdceaa331d1468f75e76315715ae0
+  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
   Fabric: 2fb5676bc811af011a04513451f463dac6803206
-  Kingfisher: 320626678acadfcf47008b3c6841cd882050737b
+  GrowingTextView: 0f9ce07af8dbbb2946f24d4fa617b9ea0844268e
+  Kingfisher: f14df8cbe576bf55f211fa589e9869bceb4ea87d
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   PKHUD: c7692163a09875cbf15827dc581df3c5cf7f1015
-  Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
-  RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
-  SwiftDate: ab63a5f0299dbb57fc088c1a2e5314b4bc9c90bb
+  SwiftDate: 64e2312711c5c506f7b51794308ce91f19eb494a
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 3daf61a3586fcac453907de3078a22e853a6c42b
+PODFILE CHECKSUM: 93ff7c640c0b322a169ef3b62747ebbd4b395b1f
 
 COCOAPODS: 1.3.1

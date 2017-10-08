@@ -104,7 +104,8 @@ class HomeViewController: UIViewController {
 
       do {
         let realm = try Realm()
-        let results = realm.objects(HelpRequest.self).filter("viewed == false")
+        let results = realm.objects(HelpRequest.self).filter("messagesRead == false")
+
         UIApplication.shared.applicationIconBadgeNumber = results.count
       } catch {
         return

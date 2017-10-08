@@ -12,12 +12,12 @@ import DKImagePickerController
 import PKHUD
 import Alamofire
 import MWPhotoBrowser
-
+import GrowingTextView
 class ConversationViewController: UIViewController {
 
   @IBOutlet weak var chatContentView: UIView!
   @IBOutlet weak var tableView: UITableView?
-  @IBOutlet weak var textView: CCGrowingTextView!
+  @IBOutlet weak var textView: GrowingTextView!
   @IBOutlet weak var sendButton: UIButton!
   @IBOutlet weak var attachButton: UIButton!
   @IBOutlet weak var textViewContainerBottomConstraint: NSLayoutConstraint!
@@ -139,9 +139,9 @@ class ConversationViewController: UIViewController {
   }
 
   func setUpTextView() {
-    textView.maxNumberOfLine = 5
+    textView.maxLength = 140
     textView.text = ""
-    textView.placeholder = "Ваше сообщение"
+    textView.placeHolder = "Ваше сообщение"
   }
 
   func setUpKeyboard() {
