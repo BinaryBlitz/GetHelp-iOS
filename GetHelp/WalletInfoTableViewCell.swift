@@ -17,27 +17,27 @@ class WalletInfoTableViewCell: UITableViewCell {
     super.awakeFromNib()
 
     layer.borderWidth = 0.5
-    layer.borderColor = UIColor.orangeSecondaryColor().CGColor
-    addFundsButton.tintColor = UIColor.blackColor()
-    addFundsButton.layer.borderColor = UIColor.orangeColor().CGColor
+    layer.borderColor = UIColor.orangeSecondaryColor().cgColor
+    addFundsButton.tintColor = UIColor.black
+    addFundsButton.layer.borderColor = UIColor.orange.cgColor
     addFundsButton.layer.borderWidth = 2
     addFundsButton.layer.cornerRadius = 5
   }
 
-  private func updateWalletBalance(balance: Int) {
-    let numberFormatter = NSNumberFormatter()
-    numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-    let formattedNumber = numberFormatter.stringFromNumber(NSNumber(long:  balance)) ?? ""
+  fileprivate func updateWalletBalance(_ balance: Int) {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = NumberFormatter.Style.decimal
+    let formattedNumber = numberFormatter.string(from: NSNumber(value: balance as Int)) ?? ""
     walletBalanceLabel.text = formattedNumber + "\(rubleSign)"
   }
 
-  func configure(presenter: WalletInfoPresentable) {
+  func configure(_ presenter: WalletInfoPresentable) {
     updateWalletBalance(presenter.balance)
   }
 
   //MARK: - IBActions
 
-  @IBAction func addFundsAction(sender: AnyObject) {
+  @IBAction func addFundsAction(_ sender: AnyObject) {
     print("Yo! Add funds action!")
   }
 }

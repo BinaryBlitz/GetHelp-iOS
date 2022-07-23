@@ -18,8 +18,7 @@ class ServerManager {
 
   //MARK: - Fields
 
-  private var manager = Manager.sharedInstance
-  private let baseURL = "https://gethelp-production.herokuapp.com"
+  let baseURL = "https://gethelp-staging.herokuapp.com"
 
   var apiToken: String? {
     didSet {
@@ -37,152 +36,148 @@ class ServerManager {
 
   var authenticated: Bool { return apiToken != nil }
 
-  // MARK: - Basic private methods
 
-  private func request(method: Alamofire.Method, path: String,
-                       parameters: [String : AnyObject]?,
-                       encoding: ParameterEncoding) throws -> Request {
+  func request(_ method: HTTPMethod, _ path: String,
+                       parameters: [String : Any]?,
+                       encoding: ParameterEncoding) throws -> DataRequest {
 
     let url = baseURL + path
     var parameters = parameters
 
-    guard let token = apiToken else { throw ServerError.Unauthorized }
+    guard let token = apiToken else { throw ServerError.unauthorized }
 
     if parameters != nil {
-      parameters!["api_token"] = token
+      parameters!["api_token"] = token as Any
     } else {
-      parameters = ["api_token": token]
+      parameters = ["api_token": token as Any]
     }
 
-    return manager.request(method, url, parameters: parameters, encoding: encoding)
+    return Alamofire.request(url, method: method, parameters: parameters, encoding: encoding, headers: nil).responseDebugPrint()
   }
 
-  private func get(path: String, params: [String: AnyObject]? = nil) throws -> Request {
-    return try request(.GET, path: path, parameters: params, encoding: .URL)
+  func get(_ path: String, params: [String: Any]? = nil) throws -> DataRequest {
+    return try request(.get, path, parameters: params, encoding: URLEncoding.default)
   }
 
-  private func post(path: String, params: [String: AnyObject]? = nil) throws -> Request {
-    return try request(.POST, path: path, parameters: params, encoding: .JSON)
+  func post(_ path: String, params: [String: Any]? = nil) throws -> DataRequest {
+    return try request(.post, path, parameters: params, encoding: JSONEncoding.default)
   }
 
-  private func patch(path: String, params: [String: AnyObject]? = nil) throws -> Request {
-    return try request(.PATCH, path: path, parameters: params, encoding: .JSON)
+  func patch(_ path: String, params: [String: Any]? = nil) throws -> DataRequest {
+    return try request(.patch, path, parameters: params, encoding: JSONEncoding.default)
   }
 
   // MARK: - Login
 
-  func createVerificationTokenFor(phoneNumber: String,
-                                  completion: ((token: String?, error: ErrorType?) -> Void)? = nil) -> Request {
+  func createVerificationTokenFor(_ phoneNumber: String,
+                                  completion: ((_ token: String?, _ error: Error?) -> Void)? = nil) -> Request? {
 
     let parameters = ["phone_number" : phoneNumber]
-    let request = manager.request(.POST, baseURL + "/verification_tokens", parameters: parameters, encoding: .JSON)
+    let request = Alamofire.request(baseURL + "/verification_tokens", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
 
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
     request.responseJSON { (response) -> Void in
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
       guard let resultValue = response.result.value else {
-        completion?(token: nil, error: ServerError.InvalidData)
+        completion?(nil, ServerError.invalidData)
         return
       }
 
       let json = JSON(resultValue)
 
       guard let token = json["token"].string else {
-        completion?(token: nil, error: ServerError.InvalidData)
+        completion?(nil, ServerError.invalidData)
         return
       }
 
-      completion?(token: token, error: nil)
+      completion?(token, nil)
     }
 
     return request
   }
 
-  func verifyPhoneNumberWith(code: String,
+  func verifyPhoneNumberWith(_ code: String,
                              forPhoneNumber phoneNumber: String,
                              andToken token: String,
-                             completion: ((error: ErrorType?) -> Void)? = nil) -> Request {
+                             completion: ((_ error: Error?) -> Void)? = nil) -> Request {
 
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
     let parameters = ["phone_number": phoneNumber, "code": code]
-    let request = manager.request(.PATCH, baseURL + "/verification_tokens/\(token)", parameters: parameters, encoding: .JSON)
+    let request = Alamofire.request(baseURL + "/verification_tokens/\(token)", method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
 
     request.validate().responseJSON { response in
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
       switch response.result {
-      case .Success(let resultValue):
+      case .success(let resultValue):
         let json = JSON(resultValue)
 
         // Create new user if api_token is nil
         if let apiToken = json["api_token"].string {
           self.apiToken = apiToken
           UserDefaultsHelper.save(false, forKey: .DeviceTokenUploadStatus)
-          completion?(error: nil)
+          completion?(nil)
         } else {
           self.createNewUserWith(phoneNumber, andVerificationToken: token) { error in
-            completion?(error: error)
+            completion?(error)
           }
         }
-      case .Failure(let error):
+      case .failure(let error):
         print("Error: \(error)")
-        completion?(error: error)
+        completion?(error)
       }
     }
-
     return request
   }
 
-  func createNewUserWith(phoneNumber: String,
+  func createNewUserWith(_ phoneNumber: String,
                          andVerificationToken token: String,
-                         completion: ((error: ErrorType?) -> Void)?) -> Request {
+                         completion: ((_ error: Error?) -> Void)?) -> Void {
 
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    let parameters: [String: AnyObject] = [
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    let parameters: [String: Any] = [
       "user": [
         "phone_number": phoneNumber,
         "verification_token": token,
-        "device_token": ServerManager.sharedInstance.deviceToken ?? NSNull(),
+        "device_token": ServerManager.sharedInstance.deviceToken ?? nil,
         "platform": "ios"
       ]
     ]
 
-    let req = manager.request(.POST, baseURL + "/user", parameters: parameters, encoding: .JSON)
+    let req = Alamofire.request(baseURL + "/user", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
     req.validate().responseJSON { (response) -> Void in
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
       switch response.result {
-      case .Success(let resultValue):
+      case .success(let resultValue):
         let json = JSON(resultValue)
 
         if let apiToken = json["api_token"].string {
           self.apiToken = apiToken
-          completion?(error: nil)
+          completion?(nil)
         } else {
-          completion?(error: ServerError.InvalidData)
+          completion?(ServerError.invalidData)
         }
-      case .Failure(let error):
-        completion?(error: error)
+      case .failure(let error):
+        completion?(error)
       }
     }
-
-    return req
   }
 
   // MARK: - HelpRequests
 
-  func fetchHelpRequests(completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func fetchHelpRequests(_ completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) -> Void {
 
     do {
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
       let request = try get("/orders")
 
       request.validate().responseJSON { (response) -> Void in
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch response.result {
-        case .Success(let resultValue):
+        case .success(let resultValue):
           let json = JSON(resultValue)
 
           do {
@@ -200,34 +195,63 @@ class ServerManager {
             print("Error: \(error)")
           }
 
-          completion?(success: true, error: nil)
-        case .Failure(let error):
-          completion?(success: false, error: error)
+          completion?(true, nil)
+        case .failure(let error):
+          completion?(false, error)
         }
       }
 
-      return request
     } catch let error {
-      completion?(success: false, error: error)
+      completion?(false, error)
     }
-
-    return nil
   }
 
-  func createNewHelpRequest(helpRequest: HelpRequest,
-                            completion: ((helpRequest: HelpRequest?, error: ErrorType?) -> Void)? = nil) -> Request? {
-
-    let order = helpRequest.convertToDict()
-    let parameters: [String: AnyObject] = ["order": order]
+  func fetchNews(_ completion: ((_ news: [Post], _ error: Error?) -> Void)? = nil) -> Void {
 
     do {
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
+      let request = try get("/posts")
+
+      request.validate().responseJSON { (response) -> Void in
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        switch response.result {
+        case .success(let resultValue):
+          let json = JSON(resultValue)
+          var posts: [Post] = []
+          for (_, postJSON) in json {
+            guard let post = Post.createFromJSON(postJSON) else {
+              continue
+            }
+
+            posts.append(post)
+          }
+
+          completion?(posts, nil)
+        case .failure(let error):
+          completion?([], error)
+        }
+      }
+
+    } catch let error {
+      completion?([], error)
+    }
+  }
+
+
+  func createNewHelpRequest(_ helpRequest: HelpRequest,
+                            completion: ((_ helpRequest: HelpRequest?, _ error: Error?) -> Void)? = nil) -> Request? {
+
+    let order = helpRequest.convertToDict()
+    let parameters: [String: AnyObject] = ["order": order as AnyObject]
+
+    do {
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
       let request = try post("/orders", params: parameters)
 
       request.validate().responseJSON { (response) -> Void in
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch response.result {
-        case .Success(let resultValue):
+        case .success(let resultValue):
           let json = JSON(resultValue)
 
           if let helpRequest = HelpRequest.createFromJSON(json) {
@@ -236,38 +260,68 @@ class ServerManager {
               try realm.write { () -> Void in
                 realm.add(helpRequest)
               }
-              completion?(helpRequest: helpRequest, error: nil)
+              completion?(helpRequest, nil)
             } catch let error {
-              completion?(helpRequest: nil, error: error)
+              completion?(nil, error)
             }
           } else {
-            completion?(helpRequest: nil, error: ServerError.InvalidData)
+            completion?(nil, ServerError.invalidData)
           }
-        case .Failure(let error):
-          completion?(helpRequest: nil, error: error)
+        case .failure(let error):
+          completion?(nil, error)
         }
       }
 
       return request
     } catch let error {
-      completion?(helpRequest: nil, error: error)
+      completion?(nil, error)
     }
 
     return nil
   }
 
+  func setRequest(_ helpRequest: HelpRequest, messagesRead: Bool = false,
+                  completion: ((_ request: HelpRequest?, _ error: Error?) -> Void)? = nil) -> Void {
+
+    let parameters: [String: Any] = ["messages_read": messagesRead as Any]
+
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    let id = helpRequest.id
+    guard let request = try? patch("/orders/\(id)", params: parameters) else {
+      completion?(nil, ServerError.invalidData)
+      return
+    }
+
+    request.validate().response { response in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      if let error = response.error {
+        completion?(nil, error)
+      } else {
+        let realm = try! Realm()
+        let request = realm.object(ofType: HelpRequest.self, forPrimaryKey: helpRequest.id)
+        try? realm.write {
+          request?.messagesRead = messagesRead
+          realm.add(helpRequest, update: true)
+        }
+        completion?(request, nil)
+      }
+    }
+
+  }
+
+
   //MARK: - Messages
 
-  func fetchAllMessagesForOrder(order: HelpRequest, completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func fetchAllMessagesForOrder(_ order: HelpRequest, completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
 
     do {
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
       let request = try get("/orders/\(order.id)/messages")
       request.validate().responseJSON { (response) -> Void in
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch response.result {
-        case .Success(let resultValue):
+        case .success(let resultValue):
           let json = JSON(resultValue)
 
           var messages = [Message]()
@@ -282,38 +336,35 @@ class ServerManager {
             try realm.write {
               realm.add(messages, update: true)
             }
-            completion?(success: true, error: nil)
+            completion?(true, nil)
           } catch let error {
-            completion?(success: false, error: error)
+            completion?(false, error)
           }
-        case .Failure(let error):
-          completion?(success: false, error: error)
+        case .failure(let error):
+          completion?(false, error)
         }
       }
 
-      return request
     } catch let error {
-      completion?(success: false, error: error)
+      completion?(false, error)
     }
-
-    return nil
   }
 
-  func sendMessageWithText(content: String, toOrder order: HelpRequest, completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func sendMessageWithText(_ content: String, toOrder order: HelpRequest, completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) -> Request? {
 
     do {
-      let parameters: [String: AnyObject] = ["message": ["content": content]]
+      let parameters: [String: Any] = ["message": ["content": content]]
 
       let request = try post("/orders/\(order.id)/messages", params: parameters)
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+      UIApplication.shared.isNetworkActivityIndicatorVisible = true
       request.validate().responseJSON { response in
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         switch response.result {
-        case .Success(let resultValue):
+        case .success(let resultValue):
           let json = JSON(resultValue)
 
           guard let message = Message.createFromJSON(json) else {
-            completion?(success: false, error: ServerError.InvalidData)
+            completion?(false, ServerError.invalidData)
             return
           }
 
@@ -323,38 +374,38 @@ class ServerManager {
               realm.add(message, update: true)
             }
 
-            completion?(success: true, error: nil)
+            completion?(true, nil)
           } catch let error {
-            completion?(success: false, error: error)
+            completion?(false, error)
           }
-        case .Failure(let error):
-          completion?(success: false, error: error)
+        case .failure(let error):
+          completion?(false, error)
         }
       }
 
       return request
     } catch let error {
-      completion?(success: false, error: error)
+      completion?(false, error)
     }
     return nil
   }
 
-  func sendMessageWithImage(image: UIImage, toOrder order: HelpRequest, completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func sendMessageWithImage(_ image: UIImage, toOrder order: HelpRequest, completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) -> Request? {
 
     do {
       let imageData = UIImageJPEGRepresentation(image, 0.7)
-      let base64ImageString = imageData?.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-      let formattedImage = "data:image/gif;base64,\(base64ImageString ?? NSNull())"
-      let parameters: [String: AnyObject] = ["message": ["image": formattedImage]]
+      let base64ImageString = imageData?.base64EncodedString(options: .lineLength64Characters) ?? ""
+      let formattedImage = "data:image/gif;base64,\(base64ImageString)"
+      let parameters: [String: Any] = ["message": ["image": formattedImage]]
 
       let request = try post("/orders/\(order.id)/messages", params: parameters)
       request.validate().responseJSON { response in
         switch response.result {
-        case .Success(let resultValue):
+        case .success(let resultValue):
           let json = JSON(resultValue)
 
           guard let message = Message.createFromJSON(json) else {
-            completion?(success: false, error: ServerError.InvalidData)
+            completion?(false, ServerError.invalidData)
             return
           }
 
@@ -364,87 +415,99 @@ class ServerManager {
               realm.add(message, update: true)
             }
 
-            completion?(success: true, error: nil)
+            completion?(true, nil)
           } catch let error {
-            completion?(success: false, error: error)
+            completion?(false, error)
           }
-        case .Failure(let error):
-          completion?(success: false, error: error)
+        case .failure(let error):
+          completion?(false, error)
         }
       }
 
       return request
     } catch let error {
-      completion?(success: false, error: error)
+      completion?(false, error)
     }
     return nil
   }
 
   // MARK: - Payments
 
-  func paymentsURLForOrderID(orderID: Int, completion: ((paymentURL: NSURL?, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func paymentsURLForOrderID(_ orderID: Int, completion: ((_ paymentURL: URL?, _ error: Error?) -> Void)? = nil) {
 
     do {
       let request = try post("/orders/\(orderID)/payments")
       request.validate().responseJSON { response in
         switch response.result {
-        case .Success(let resultValue):
+        case .success(let resultValue):
           let json = JSON(resultValue)
           guard let paymentURLString = json["url"].string else {
-            completion?(paymentURL: nil, error: ServerError.InvalidData)
+            completion?(nil, ServerError.invalidData)
             return
           }
 
-          guard let paymentURL = NSURL(string: paymentURLString) else {
-            completion?(paymentURL: nil, error: ServerError.InvalidData)
+          guard let paymentURL = URL(string: paymentURLString) else {
+            completion?(nil, ServerError.invalidData)
             return
           }
 
-          completion?(paymentURL: paymentURL, error: nil)
+          completion?(paymentURL, nil)
 
-        case .Failure(let error):
-          completion?(paymentURL: nil, error: error)
+        case .failure(let error):
+          completion?(nil, error)
         }
       }
 
-      return request
     } catch let error {
       print("Error: \(error)")
-      completion?(paymentURL: nil, error: error)
+      completion?(nil, error)
     }
 
-    return nil
   }
 
   // MARK: - Device token
 
-  func updateDeviceTokenIfNeeded(completion: ((success: Bool, error: ErrorType?) -> Void)? = nil) -> Request? {
+  func updateDeviceTokenIfNeeded(_ completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
 
-    if let uploadStatus = UserDefaultsHelper.loadObjectForKey(.DeviceTokenUploadStatus) as? Bool
-        where uploadStatus == true {
-      return nil
+    if let uploadStatus = UserDefaultsHelper.loadObjectForKey(.DeviceTokenUploadStatus) as? Bool, uploadStatus == true {
+      return
     }
 
-    guard let deviceToken = deviceToken else { return nil }
+    guard let deviceToken = deviceToken else { return }
 
     do {
-      let parameters: [String: AnyObject] = ["user": ["device_token": deviceToken]]
+      let parameters: [String: Any] = ["user": ["device_token": deviceToken]]
       let request = try patch("/user", params: parameters)
 
-      request.validate().response { (_, response, data, error) -> Void in
-        if let error = error {
-          completion?(success: false, error: error)
+      request.validate().response { response in
+        if let error = response.error {
+          completion?(false, error)
         } else {
           UserDefaultsHelper.save(true, forKey: .DeviceTokenUploadStatus)
-          completion?(success: true, error: nil)
+          completion?(true, nil)
         }
+
       }
 
-      return request
     } catch let error {
-      completion?(success: false, error: error)
+      completion?(false, error)
     }
 
-    return nil
+  }
+}
+
+extension Alamofire.DataRequest {
+  func responseDebugPrint() -> Self {
+    return responseJSON() {
+      response in
+      if let  JSON = response.result.value,
+        let JSONData = try? JSONSerialization.data(withJSONObject: JSON, options: .prettyPrinted),
+        let prettyString = NSString(data: JSONData, encoding: String.Encoding.utf8.rawValue) {
+        print(prettyString)
+      } else if let error = response.result.error {
+        print("Error Debug Print: \(error.localizedDescription)")
+      }
+    }
+
   }
 }

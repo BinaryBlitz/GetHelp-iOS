@@ -21,7 +21,7 @@ class RequestInfoTableViewCell: UITableViewCell {
     super.awakeFromNib()
   }
 
-  func configure(presenter: HelpRequestPresentable) {
+  func configure(_ presenter: HelpRequestPresentable) {
     dateTimeLabel.text = "Дата: " + presenter.dateTime
     subjectLabel.text = presenter.name
     helpTypeLabel.text = presenter.type

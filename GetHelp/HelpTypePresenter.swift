@@ -12,9 +12,9 @@ struct HelpTypePresenter {
   var image: UIImage? {
     switch type {
     case .Normal:
-      return UIImage(named: "NormalRequest")
+      return #imageLiteral(resourceName: "icAnyjob")
     case .Express:
-      return UIImage(named: "ExpressRequest")
+      return #imageLiteral(resourceName: "icOnlinehelp")
     }
   }
 
@@ -33,6 +33,15 @@ struct HelpTypePresenter {
       return "Помощь с домашними заданиями, докладами, презентациями"
     case .Express:
       return "Срочная помощь к контрольной или экзамену"
+    }
+  }
+
+  var color: UIColor {
+    switch type {
+    case .Normal:
+      return UIColor.tealishTwo
+    case .Express:
+      return UIColor.perrywinkle
     }
   }
 }

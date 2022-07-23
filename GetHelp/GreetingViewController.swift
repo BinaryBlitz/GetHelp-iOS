@@ -8,51 +8,40 @@
 
 import UIKit
 
-class GreetingViewController: UIViewController {
+class GreetingViewController: UIViewController, LightContentViewController {
 
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var userAgreement: TTTAttributedLabel!
 
-  var delegate: LoginNavigationDelegate?
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    signUpButton.backgroundColor = UIColor.orangeSecondaryColor()
-    signUpButton.tintColor = UIColor.whiteColor()
-    signUpButton.layer.cornerRadius = 4
-
+    userAgreement.attributedText = NSAttributedString(string: "Нажимая кнопку «Начать», вы принимаете\nпользовательское соглашение", attributes: [NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7)])
     userAgreement.enabledTextCheckingTypes = NSTextCheckingAllTypes
     userAgreement.delegate = self
-    let linkRange = (userAgreement.text! as NSString).rangeOfString("пользовательское соглашение")
+    let linkRange = (userAgreement.text! as NSString).range(of: "пользовательское соглашение")
     let urlString = "http://getthelp.ru/docs/Пользовательское соглашение.docx"
-    if let encodedURLString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()),
-          url = NSURL(string: encodedURLString) {
-      userAgreement.addLinkToURL(url, withRange: linkRange)
+    if let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+          let url = URL(string: encodedURLString) {
+
+      var linkAttributes: [AnyHashable: Any] = [:]
+      linkAttributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue
+      linkAttributes[NSForegroundColorAttributeName] = UIColor.white
+      linkAttributes[NSBackgroundColorAttributeName] = UIColor.clear
+      self.userAgreement.linkAttributes = linkAttributes
+      
+      userAgreement.addLink(to: url, with: linkRange)
+      self.setNeedsStatusBarAppearanceUpdate()
     }
   }
 
-  @IBAction func signUpButtonAction(sender: AnyObject) {
-    delegate?.moveForward(nil)
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 }
 
 extension GreetingViewController: TTTAttributedLabelDelegate {
-  func attributedLabel(label: TTTAttributedLabel, didSelectLinkWithURL url: NSURL) {
+  func attributedLabel(_ label: TTTAttributedLabel, didSelectLinkWith url: URL) {
     self.presentWebViewControllerWith(url)
-  }
-}
-
-extension GreetingViewController: ContainerPresentable {
-  var viewController: UIViewController {
-    return self
-  }
-
-  func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
-    self.delegate = delegate
-  }
-
-  func setData(data: AnyObject?) {
-    // stuff
   }
 }

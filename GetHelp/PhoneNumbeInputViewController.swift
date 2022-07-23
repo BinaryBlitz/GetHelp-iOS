@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import UserNotifications
 
 class PhoneTokenPair {
   var phoneNumber: String
@@ -19,45 +20,48 @@ class PhoneTokenPair {
   }
 }
 
-class PhoneNumbeInputViewController: UIViewController {
+class PhoneNumbeInputViewController: UIViewController, LightContentViewController {
 
   @IBOutlet weak var okButton: UIButton!
-  @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var phoneNumberTextField: REFormattedNumberField!
-
-  var delegate: LoginNavigationDelegate?
+  @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
+  
   var loginRequest: Request?
+
+  var observers: [Any] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logoGethelpNavbar1"))
     setUpButtons()
-    view.backgroundColor = UIColor.clearColor()
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:))))
     phoneNumberTextField.format = "+X (XXX) XXX-XX-XX"
     phoneNumberTextField.placeholder = "+7 (123) 456-78-90"
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.observers = bottomLayoutConstraint.addObserversUpdateWithKeyboard(view: view)
     phoneNumberTextField.becomeFirstResponder()
+  }
+
+
+  override func viewWillDisappear(_ animated: Bool) {
+    view.endEditing(true)
+    self.observers.forEach { NotificationCenter.default.removeObserver($0) }
+    self.observers = []
   }
 
   //MARK: - Set up methods
 
   func setUpButtons() {
-    okButton.backgroundColor = UIColor.orangeSecondaryColor()
-    backButton.backgroundColor = UIColor.orangeSecondaryColor()
 
-    okButton.tintColor = UIColor.whiteColor()
-    backButton.tintColor = UIColor.whiteColor()
-
-    okButton.layer.cornerRadius = 4
-    backButton.layer.cornerRadius = 4
   }
 
   //MARK: - IBActions
 
-  @IBAction func okButtonAction(sender: AnyObject) {
+  @IBAction func okButtonAction(_ sender: AnyObject) {
 
     if let request = loginRequest {
       request.cancel()
@@ -69,7 +73,7 @@ class PhoneNumbeInputViewController: UIViewController {
       return
     }
 
-    let numberLength = phoneNumber.characters.count ?? 0
+    let numberLength = phoneNumber.characters.count
     if numberLength != "+7 (123) 456-78-90".characters.count {
       phoneNumberTextField.shakeWithDuration(0.07)
       phoneNumberTextField.becomeFirstResponder()
@@ -79,21 +83,26 @@ class PhoneNumbeInputViewController: UIViewController {
     registerForPushNotifications()
 
     let rawPhoneNumber = formatPhoneNumberToRaw(phoneNumber)
-    okButton.userInteractionEnabled = false
+    okButton.isUserInteractionEnabled = false
     let request = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
-      print(token)
-      self?.okButton.userInteractionEnabled = true
+      print(token ?? "No token")
+      self?.okButton.isUserInteractionEnabled = true
       if let token = token {
-        self?.delegate?.moveForward(PhoneTokenPair(phoneNumber: rawPhoneNumber, token: token))
+        let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let codeCheckViewController = loginStoryboard.instantiateViewController(withIdentifier: "CodeViewController") as! LogInCodeCheckViewController
+        codeCheckViewController.token = token
+        codeCheckViewController.rawPhoneNumber = rawPhoneNumber
+        codeCheckViewController.displayPhoneNumber = phoneNumber
+        self?.navigationController?.pushViewController(codeCheckViewController, animated: true)
       } else if let error = error {
-        guard let error = error as? NSURLError else {
+        guard let error = error as? URLError else {
           return
         }
 
-        switch error {
-        case .NotConnectedToInternet, .NetworkConnectionLost:
+        switch error.code {
+        case .notConnectedToInternet, .networkConnectionLost:
           self?.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
-        case .Cancelled:
+        case URLError.cancelled:
           return
         default:
           self?.presentAlertWithTitle("Ошбика", andMessage: "Что-то пошло не так. Попробуйте позже.")
@@ -104,51 +113,38 @@ class PhoneNumbeInputViewController: UIViewController {
     loginRequest = request
   }
 
-  @IBAction func backButtonAction(sender: AnyObject) {
-    delegate?.moveBackward(nil)
-  }
-
   //MARK: - Keyboard stuff
 
-  func dismissKeyboard(sender: AnyObject) {
+  func dismissKeyboard(_ sender: AnyObject) {
     view.endEditing(true)
   }
 
   //MARK: - Support methods
 
-  func formatPhoneNumberToRaw(phoneNumber: String) -> String {
+  func formatPhoneNumberToRaw(_ phoneNumber: String) -> String {
     var rawPhoneNumber = phoneNumber
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString("(", withString: "")
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString(")", withString: "")
-    rawPhoneNumber = rawPhoneNumber.stringByReplacingOccurrencesOfString("-", withString: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: " ", with: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: "(", with: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: ")", with: "")
+    rawPhoneNumber = rawPhoneNumber.replacingOccurrences(of: "-", with: "")
 
     return rawPhoneNumber
   }
 
   func registerForPushNotifications() {
-    UIApplication.sharedApplication()
+    UIApplication.shared
       .registerUserNotificationSettings(
-        UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
     )
+    UIApplication.shared.registerForRemoteNotifications()
+/*
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
+      })
+      UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    } else {
+    }
+*/
 
-    UIApplication.sharedApplication().registerForRemoteNotifications()
-  }
-}
-
-//MARK: - ContainerPresentable
-
-extension PhoneNumbeInputViewController: ContainerPresentable {
-
-  var viewController: UIViewController {
-    return self
-  }
-
-  func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
-    self.delegate = delegate
-  }
-
-  func setData(data: AnyObject?) {
-    // stuff
   }
 }

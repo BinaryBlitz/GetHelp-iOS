@@ -32,9 +32,9 @@ platform :ios do
     # Increment the build number (not the version number)
     increment_build_number
     # Manage code signing
-    match(type: 'development')
+    match(type: 'adhoc')
     # Build your app - more options available
-    gym(scheme: 'GetHelp')
+    gym(export_method: "ad-hoc", scheme: 'GetHelp')
     # Upload to Crashlytics
     crashlytics
   end

@@ -9,9 +9,10 @@
 struct MessagePresenter: MessagePresentable {
 
   let message: Message
+  var color: UIColor?
 
-  private let dateFormatter = NSDateFormatter(dateFormat: "dd.MM.yy")
-  private let timeFormatter = NSDateFormatter(dateFormat: "HH:mm")
+  fileprivate let dateFormatter = DateFormatter(dateFormat: "dd.MM.yy")
+  fileprivate let timeFormatter = DateFormatter(dateFormat: "HH:mm")
 
   //MARK : - MessageContentPresentable
 
@@ -19,36 +20,36 @@ struct MessagePresenter: MessagePresentable {
     return message.content
   }
 
-  var imageURL: NSURL? {
+  var imageURL: URL? {
     return urlFromString(message.imageURLString)
   }
 
-  var imageThumbURL: NSURL? {
+  var imageThumbURL: URL? {
     return urlFromString(message.imageThumbURLString)
   }
 
-  private func urlFromString(urlString: String?) -> NSURL? {
+  fileprivate func urlFromString(_ urlString: String?) -> URL? {
     guard let urlString = urlString else {
       return nil
     }
 
-    return NSURL(string: urlString)
+    return URL(string: urlString)
   }
 
   //MARK: - DateTimePresentable
 
   var date: String {
-    return dateFormatter.stringFromDate(message.dateCreated)
+    return dateFormatter.string(from: message.dateCreated)
   }
 
   var time: String {
-    return timeFormatter.stringFromDate(message.dateCreated)
+    return timeFormatter.string(from: message.dateCreated)
   }
 
   var dateTime: String {
-    let calendar = NSCalendar.currentCalendar()
-    let messageDateComponents = calendar.components([.Day, .Month, .Year], fromDate: message.dateCreated)
-    let currentDate = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+    let calendar = Calendar.current
+    let messageDateComponents = (calendar as NSCalendar).components([.day, .month, .year], from: message.dateCreated as Date)
+    let currentDate = (calendar as NSCalendar).components([.day, .month, .year], from: Date())
     if messageDateComponents.day == currentDate.day &&
         messageDateComponents.month == currentDate.month &&
       messageDateComponents.year == currentDate.year {

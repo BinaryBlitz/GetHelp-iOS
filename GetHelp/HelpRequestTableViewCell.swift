@@ -9,72 +9,99 @@
 import UIKit
 
 protocol HelpRequestCellDelegate: class {
-  func didTouchPayButtonInCell(cell: HelpRequestTableViewCell)
+  func didTouchPayButtonInCell(_ cell: HelpRequestTableViewCell)
 }
 
 class HelpRequestTableViewCell: UITableViewCell {
 
   @IBOutlet weak var cardView: UIView!
-  @IBOutlet weak var updateMarkerImageView: UIImageView!
 
   @IBOutlet weak var orderNumberLabel: UILabel!
   @IBOutlet weak var statusLabel: UILabel!
-  @IBOutlet weak var separatorView: UIView!
 
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var typeLabel: UILabel!
   @IBOutlet weak var dateTimeLabel: UILabel!
 
+  @IBOutlet weak var statusImageView: UIImageView!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var payButton: UIButton!
+  @IBOutlet weak var indicatorNewMessageView: UIView!
+
+  @IBOutlet var messageCountViews: [UIView]!
+
+  @IBOutlet weak var additionalContentContainerView: UIView!
+  @IBOutlet weak var additionalContentHeightConstraint: NSLayoutConstraint!
 
   weak var delegate: HelpRequestCellDelegate?
-  var timer: NSTimer?
+
+  lazy var additionalContentView: HelpRequestAdditionalContentView! = {
+    let nib = UINib(nibName: "HelpRequestAdditionalContentView", bundle: nil)
+    return nib.instantiate(withOwner: nil, options: nil)[0] as! HelpRequestAdditionalContentView
+  }()
+
+  var timer: Timer?
+
+  var isExpanded: Bool = false {
+    didSet {
+      guard isExpanded != oldValue else { return }
+      additionalContentContainerView.subviews.forEach { $0.removeFromSuperview() }
+      if isExpanded {
+        additionalContentContainerView.addSubview(additionalContentView)
+        additionalContentView.translatesAutoresizingMaskIntoConstraints = false
+        additionalContentView.topAnchor.constraint(equalTo: additionalContentContainerView.topAnchor).isActive = true
+        additionalContentView.bottomAnchor.constraint(equalTo: additionalContentContainerView.bottomAnchor).isActive = true
+        additionalContentView.leftAnchor.constraint(equalTo: additionalContentContainerView.leftAnchor).isActive = true
+        additionalContentView.rightAnchor.constraint(equalTo: additionalContentContainerView.rightAnchor).isActive = true
+      }
+      additionalContentHeightConstraint.isActive = !isExpanded
+      updateConstraints()
+      layoutIfNeeded()
+    }
+  }
 
   override func awakeFromNib() {
     super.awakeFromNib()
-
-    updateMarkerImageView.image = UIImage(named: "Message")!.imageWithRenderingMode(.AlwaysTemplate)
-    updateMarkerImageView.tintColor = UIColor.lightGrayColor()
-    cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
-    cardView.layer.borderWidth = 1.4
-    cardView.layer.cornerRadius = 10
-
-    setUpButtons()
   }
 
   deinit {
     stopAnimations()
   }
 
-  func configure(presenter: HelpRequestPresentable) {
+  func configure(_ presenter: HelpRequestPresentable) {
     timer?.invalidate()
 
+    cardView.backgroundColor = presenter.typeColor
     orderNumberLabel.text = presenter.id
-    dateTimeLabel.text = presenter.dateTime
+    dateTimeLabel.text = presenter.date
     statusLabel.text = presenter.status
-    statusLabel.textColor = presenter.indicatorColor
-    typeLabel.text = presenter.type
     nameLabel.text = presenter.name
+    statusImageView.image = presenter.statusImage
     priceLabel.text = presenter.price
-
+    statusImageView.image = presenter.statusImage
+    messageCountViews.forEach { $0.isHidden = !presenter.commentSectionVisible }
     setPayementSectionHidden( !presenter.isPayable())
 
     if presenter.isViewed {
-      updateMarkerImageView.tintColor = UIColor.lightGrayColor()
+      indicatorNewMessageView.tintColor = UIColor.clear
     } else {
-      updateMarkerImageView.tintColor = UIColor.newMessageIndicatorColor()
+      indicatorNewMessageView.tintColor = UIColor.red
       setUpAnimationTimer()
     }
+
+    if isExpanded {
+      additionalContentView.configure(presenter)
+    }
+    layoutIfNeeded()
+    updateConstraints()
   }
 
   func stopAnimations() {
     timer?.invalidate()
   }
 
-  private func setUpAnimationTimer() {
-    timer = NSTimer.scheduledTimerWithTimeInterval(
-      2,
+  fileprivate func setUpAnimationTimer() {
+    timer = Timer.scheduledTimer(
+      timeInterval: 2,
       target: self,
       selector: #selector(fireAnimation(_:)),
       userInfo: nil,
@@ -83,22 +110,21 @@ class HelpRequestTableViewCell: UITableViewCell {
     timer?.fire()
   }
 
-  func fireAnimation(sender: AnyObject) {
-    updateMarkerImageView.shakeWithDuration(0.065)
+  func fireAnimation(_ sender: AnyObject) {
+    messageCountViews.forEach { $0.shakeWithDuration(0.065) }
   }
 
-  private func setPayementSectionHidden(hidden: Bool) {
+  func setCommentSectionHidden(_ hidden: Bool) {
+    messageCountViews.forEach { $0.isHidden = hidden }
+  }
+
+  fileprivate func setPayementSectionHidden(_ hidden: Bool) {
     if hidden { priceLabel.text = nil }
-    priceLabel.hidden = hidden
-    payButton.hidden = hidden
+    priceLabel.isHidden = hidden
+    payButton.isHidden = hidden
   }
 
-  private func setUpButtons() {
-    payButton.layer.cornerRadius = (payButton.frame.height / 2) - 1
-    payButton.backgroundColor = UIColor.yellowAccentColor()
-  }
-
-  @IBAction func payButtonAction(sender: AnyObject) {
+  @IBAction func payButtonAction(_ sender: AnyObject) {
     delegate?.didTouchPayButtonInCell(self)
   }
 }

@@ -13,19 +13,18 @@ class OperatorMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var contentLabel: UILabel!
   @IBOutlet weak var cardView: UIView!
-  @IBOutlet weak var indicatorView: UIView!
+  @IBOutlet weak var bubbleTipView: UIImageView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
-
-    cardView.layer.cornerRadius = 10
-    cardView.layer.borderWidth = 2
-    cardView.layer.borderColor = UIColor(white: 0.93, alpha: 1).CGColor
-    cardView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+    contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+    bubbleTipView.image = #imageLiteral(resourceName: "incomingBubbleTip").withRenderingMode(.alwaysTemplate)
   }
 
-  func configure(presenter: MessagePresentable) {
+  func configure(_ presenter: MessagePresentable, tableView: UITableView) {
     dateLabel.text = presenter.dateTime
     contentLabel.text = presenter.content
+    cardView.backgroundColor = presenter.color ?? UIColor.tealishTwo
+    bubbleTipView.tintColor = presenter.color ?? UIColor.tealishTwo
   }
 }

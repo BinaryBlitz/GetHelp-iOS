@@ -17,8 +17,8 @@ class Message: Object {
   dynamic var content: String?
   dynamic var imageURLString: String?
   dynamic var imageThumbURLString: String?
-  private dynamic var _sender: String = MessageSender.User.rawValue
-  dynamic var dateCreated: NSDate = NSDate()
+  fileprivate dynamic var _sender: String = MessageSender.User.rawValue
+  dynamic var dateCreated: Date = Date()
 
   var sender: MessageSender {
     get {
@@ -39,11 +39,11 @@ class Message: Object {
 extension Message: ServerModelPresentable {
 
   //TODO: implement protocol
-  static func createFromJSON(json: JSON) -> Message? {
+  static func createFromJSON(_ json: JSON) -> Message? {
     guard let id = json["id"].int,
-        createdDateString = json["created_at"].string,
-        sender = json["category"].string,
-        orderId = json["order_id"].int
+        let createdDateString = json["created_at"].string,
+        let sender = json["category"].string,
+        let orderId = json["order_id"].int
     else {
       return nil
     }
@@ -53,7 +53,7 @@ extension Message: ServerModelPresentable {
     message.orderId = orderId
     message._sender = sender
 
-    if let dateCreated = createdDateString.toDateFromISO8601() {
+    if let dateCreated = DateInRegion(string: createdDateString, format: .iso8601(options: .withInternetDateTimeExtended))?.absoluteDate {
       message.dateCreated = dateCreated
     }
 
@@ -72,8 +72,8 @@ extension Message: ServerModelPresentable {
     return message
   }
 
-  func convertToDict() -> [String : AnyObject] {
-    return ["": ""]
+  func convertToDict() -> [String : Any] {
+    return ["": "" as Any]
   }
 
 }

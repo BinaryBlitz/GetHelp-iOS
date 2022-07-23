@@ -13,18 +13,14 @@ class UserMessageTableViewCell: UITableViewCell, ConfigurableMessageCell {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var contentLabel: UILabel!
   @IBOutlet weak var cardView: UIView!
-  @IBOutlet weak var indicatorView: UIView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
+    contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
 
-    cardView.layer.cornerRadius = 10
-    cardView.layer.borderWidth = 2
-    cardView.layer.borderColor = UIColor(white: 0.86, alpha: 1).CGColor
-    cardView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
   }
 
-  func configure(presenter: MessagePresentable) {
+  func configure(_ presenter: MessagePresentable, tableView: UITableView) {
     dateLabel.text = presenter.dateTime
     contentLabel.text = presenter.content
   }

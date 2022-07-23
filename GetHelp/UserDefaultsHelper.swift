@@ -15,15 +15,15 @@ enum UserDefaultsKey: String {
 
 struct UserDefaultsHelper {
 
-  private static var userDefaults: NSUserDefaults {
-    return NSUserDefaults.standardUserDefaults()
+  fileprivate static var userDefaults: UserDefaults {
+    return UserDefaults.standard
   }
 
-  static func loadObjectForKey(key: UserDefaultsKey) -> AnyObject? {
-    return userDefaults.objectForKey(key.rawValue)
+  static func loadObjectForKey(_ key: UserDefaultsKey) -> Any? {
+    return userDefaults.object(forKey: key.rawValue) as Any
   }
 
-  static func save(object: AnyObject?, forKey key: UserDefaultsKey) {
-    userDefaults.setObject(object, forKey: key.rawValue)
+  static func save(_ object: Any?, forKey key: UserDefaultsKey) {
+    userDefaults.set(object, forKey: key.rawValue)
   }
 }

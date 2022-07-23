@@ -7,34 +7,37 @@
 //
 
 import UIKit
-import Haneke
+import Kingfisher
 
 class OperatorImageMessageTabelViewCell: UITableViewCell, ConfigurableMessageCell {
 
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var cardView: UIView!
-  @IBOutlet weak var indicatorView: UIView!
   @IBOutlet weak var contentImageView: UIImageView!
+  @IBOutlet weak var bubbleTipView: UIImageView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
-
-    cardView.layer.cornerRadius = 10
-    cardView.layer.borderWidth = 2
-    cardView.layer.borderColor = UIColor(white: 0.93, alpha: 1).CGColor
-    cardView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-
+    contentView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
     contentImageView.clipsToBounds = true
-    contentImageView.contentMode = .ScaleAspectFill
+    contentImageView.contentMode = .scaleAspectFill
+    bubbleTipView.image = #imageLiteral(resourceName: "incomingBubbleTip").withRenderingMode(.alwaysTemplate)
   }
 
-  func configure(presenter: MessagePresentable) {
-    contentImageView.hnk_cancelSetImage()
+  func configure(_ presenter: MessagePresentable, tableView: UITableView) {
+    contentImageView.kf.cancelDownloadTask()
     contentImageView.image = nil
     dateLabel.text = presenter.dateTime
 
     if let imageURL = presenter.imageThumbURL {
-      contentImageView.hnk_setImageFromURL(imageURL)
+      contentImageView.kf.setImage(with: imageURL) { [weak self] _, _, _, _ in
+        self?.layoutIfNeeded()
+        self?.updateConstraints()
+        tableView.reloadData()
+      }
     }
+
+    cardView.backgroundColor = presenter.color ?? UIColor.tealishTwo
+    bubbleTipView.tintColor = presenter.color ?? UIColor.tealishTwo
   }
 }

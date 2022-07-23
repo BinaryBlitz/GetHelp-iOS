@@ -36,4 +36,37 @@ extension UIColor {
   static func newMessageIndicatorColor() -> UIColor {
     return UIColor(r: 46, g: 170, b: 60)
   }
+
+  class var lightPeach40: UIColor {
+    return UIColor(red: 253.0 / 255.0, green: 215.0 / 255.0, blue: 205.0 / 255.0, alpha: 0.4)
+  }
+
+  class var perrywinkle: UIColor {
+    return UIColor(red: 142.0 / 255.0, green: 142.0 / 255.0, blue: 228.0 / 255.0, alpha: 1.0)
+  }
+
+  class var tealishTwo: UIColor {
+    return UIColor(red: 47.0 / 255.0, green: 197.0 / 255.0, blue: 194.0 / 255.0, alpha: 1.0)
+  }
+
+  func lighter(percentage: CGFloat = 0.1) -> UIColor {
+    return self.colorWithBrightness(factor: 1 + abs(percentage))
+  }
+
+  func darker(percentage: CGFloat = 0.1) -> UIColor {
+    return self.colorWithBrightness(factor: 1 - abs(percentage))
+  }
+
+  func colorWithBrightness(factor: CGFloat) -> UIColor {
+    var hue: CGFloat = 0
+    var saturation: CGFloat = 0
+    var brightness: CGFloat = 0
+    var alpha: CGFloat = 0
+
+    if getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
+      return UIColor(hue: hue, saturation: saturation, brightness: brightness * factor, alpha: alpha)
+    } else {
+      return self
+    }
+  }
 }

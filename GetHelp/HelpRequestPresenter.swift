@@ -8,10 +8,10 @@
 
 class HelpRequestPresenter: HelpRequestPresentable {
 
-  private var helpRequest: HelpRequest
-  private var helpTypePresenter: HelpTypePresenter!
-  private lazy var dateFormatter = NSDateFormatter(dateFormat: "dd.MM.yyyy")
-  private lazy var timeFormatter = NSDateFormatter(dateFormat: "hh:mm")
+  fileprivate var helpRequest: HelpRequest
+  fileprivate var helpTypePresenter: HelpTypePresenter!
+  fileprivate lazy var dateFormatter = DateFormatter(dateFormat: "EE dd MMM")
+  fileprivate lazy var timeFormatter = DateFormatter(dateFormat: "hh:mm")
 
   init(helpRequest: HelpRequest) {
     self.helpRequest = helpRequest
@@ -26,12 +26,32 @@ class HelpRequestPresenter: HelpRequestPresentable {
     return helpTypePresenter.name
   }
 
+  var typeColor: UIColor {
+    return helpTypePresenter.color
+  }
+
   var name: String {
     return helpRequest.subject
   }
 
   var schoolInfo: String {
     return "\(helpRequest.school), \(helpRequest.faculty), \(helpRequest.course) курс"
+  }
+
+  var school: String {
+    return helpRequest.school
+  }
+
+  var faculty: String {
+    return helpRequest.faculty
+  }
+
+  var course: String {
+    return helpRequest.course
+  }
+
+  var requestDescription: String {
+    return helpRequest.helpDescription
   }
 
   var email: String {
@@ -41,17 +61,33 @@ class HelpRequestPresenter: HelpRequestPresentable {
   var status: String {
     switch helpRequest.status {
     case .Accepted:
-      return "Принят"
+      return "Принято"
     case .InReview:
       return "Рассматривается"
     case .Rejected:
-      return "Отклонен"
+      return "Отклонено"
     case .WaitingForPayment:
       return "Ожидает оплаты"
     case .Refunded:
       return "Возвращен"
     }
   }
+
+  var statusImage: UIImage {
+    switch helpRequest.status {
+    case .Accepted:
+      return #imageLiteral(resourceName: "icAccepted")
+    case .InReview:
+      return #imageLiteral(resourceName: "icPending")
+    case .Rejected:
+      return #imageLiteral(resourceName: "icDeclined")
+    case .WaitingForPayment:
+      return #imageLiteral(resourceName: "icPendingpay")
+    case .Refunded:
+      return #imageLiteral(resourceName: "icPendingpay")
+    }
+  }
+
 
   func isPayable() -> Bool {
     return helpRequest.status == .WaitingForPayment
@@ -80,21 +116,36 @@ class HelpRequestPresenter: HelpRequestPresentable {
     }
   }
 
+  var filesCount: String {
+    return "\(0)"
+  }
+
+  var commentsCount: String {
+    return "\(0)"
+  }
+
+  var commentSectionVisible: Bool {
+    return !helpRequest.messagesRead
+  }
+
+  var filesSectionVisible: Bool {
+    return false
+  }
+
   var date: String {
     if let startDate = helpRequest.startDate {
-      return dateFormatter.stringFromDate(startDate)
+      return dateFormatter.string(from: startDate)
     } else if let dueDate = helpRequest.dueDate {
-      return dateFormatter.stringFromDate(dueDate)
+      return dateFormatter.string(from: dueDate)
     }
-
     return ""
   }
 
   var time: String {
     if let startDate = helpRequest.startDate {
-      return timeFormatter.stringFromDate(startDate)
+      return timeFormatter.string(from: startDate)
     } else if let dueDate = helpRequest.dueDate {
-      return timeFormatter.stringFromDate(dueDate)
+      return timeFormatter.string(from: dueDate)
     }
 
     return ""

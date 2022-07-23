@@ -7,95 +7,115 @@
 //
 
 import UIKit
+import Alamofire
 
-class LogInCodeCheckViewController: UIViewController {
+class LogInCodeCheckViewController: UIViewController, LightContentViewController {
 
-  @IBOutlet weak var okButton: UIButton!
-  @IBOutlet weak var backButton: UIButton!
-  @IBOutlet weak var codeTextField: UITextField!
+  var loginRequest: Request?
 
-  var phoneNumber: String!
+  @IBOutlet weak var sendAgainButton: UIButton!
+  @IBOutlet weak var codeTextField: REFormattedNumberField!
+  @IBOutlet weak var codeSentLabel: UILabel!
+  @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
+
+  var observers: [Any] = []
+
+  var rawPhoneNumber: String!
+  var displayPhoneNumber: String!
   var token: String!
 
-  var delegate: LoginNavigationDelegate?
+  func resetButton() {
+    sendAgainButton.isEnabled = false
+    DispatchQueue.main.asyncAfter(deadline: .now() + 60.0, execute: { [weak self] in
+      self?.sendAgainButton.isEnabled = true
+    })
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    setUpButtons()
+    resetButton()
+    codeTextField.format = "X  X  X  X"
+    navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logoGethelpNavbar1"))
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:))))
+
+    codeSentLabel.text = "На номер \(displayPhoneNumber!) был отправлен код"
+    codeTextField.addTarget(self, action: #selector(self.codeChanged), for: .editingChanged)
   }
 
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.observers = bottomLayoutConstraint.addObserversUpdateWithKeyboard(view: view)
     codeTextField.becomeFirstResponder()
   }
 
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
     codeTextField.text = ""
+    view.endEditing(true)
+    self.observers.forEach { NotificationCenter.default.removeObserver($0) }
+    self.observers = []
   }
 
-  //MARK: - Set up methods
-
-  func setUpButtons() {
-    okButton.backgroundColor = UIColor.orangeSecondaryColor()
-    backButton.backgroundColor = UIColor.orangeSecondaryColor()
-
-    okButton.tintColor = UIColor.whiteColor()
-    backButton.tintColor = UIColor.whiteColor()
-
-    okButton.layer.cornerRadius = 4
-    backButton.layer.cornerRadius = 4
-  }
-
-  //MARK: - IBActions
-
-  @IBAction func backButtonAction(sender: AnyObject) {
-    delegate?.moveBackward(nil)
-  }
-
-  @IBAction func okButtonAction(sender: AnyObject) {
-    guard let code = codeTextField.text else {
+  func codeChanged() {
+    let code = codeTextField.unformattedText.onlyDigits
+    guard loginRequest == nil && code.characters.count == 4 else {
       return
     }
 
-    ServerManager.sharedInstance.verifyPhoneNumberWith(code, forPhoneNumber: phoneNumber, andToken: token) { (error) -> Void in
+    view.endEditing(true)
+    view.isUserInteractionEnabled = false
 
+    loginRequest = ServerManager.sharedInstance.verifyPhoneNumberWith(code, forPhoneNumber: rawPhoneNumber, andToken: token) { [weak self] (error) -> Void in
+      self?.loginRequest = nil
+      self?.view.isUserInteractionEnabled = true
       if error == nil {
         let token = ServerManager.sharedInstance.apiToken
         UserDefaultsHelper.save(token, forKey: .ApiToken)
         ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
 
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self?.dismiss(animated: true, completion: nil)
       } else {
-        self.codeTextField.shakeWithDuration(0.07)
-        self.codeTextField.text = ""
-        self.codeTextField.becomeFirstResponder()
+        self?.codeTextField.shakeWithDuration(0.07)
+        self?.codeTextField.text = ""
+        self?.codeTextField.becomeFirstResponder()
       }
     }
   }
 
+  @IBAction func sendAgainButtonAction(_ sender: Any) {
+
+    sendAgainButton.isEnabled = false
+    _ = ServerManager.sharedInstance.createVerificationTokenFor(rawPhoneNumber) { [weak self] (token, error) -> Void in
+      print(token ?? "No token")
+      if let token = token {
+        self?.token = token
+        self?.resetButton()
+        self?.presentAlertWithMessage("Код был отправлен повторно")
+      } else if let error = error {
+        self?.sendAgainButton.isEnabled = true
+        guard let error = error as? URLError else {
+          self?.presentAlertWithMessage("Ошибка!")
+          return
+        }
+
+        switch error.code {
+        case .notConnectedToInternet, .networkConnectionLost:
+          self?.presentAlertWithTitle("Ошибка", andMessage: "Нет подключения к интерету")
+        case URLError.cancelled:
+          return
+        default:
+          self?.presentAlertWithTitle("Ошбика", andMessage: "Что-то пошло не так. Попробуйте позже.")
+        }
+      }
+    }
+
+  }
+  
+
   //MARK: - Keyboard stuff
 
-  func dismissKeyboard(sender: AnyObject) {
+  func dismissKeyboard(_ sender: AnyObject) {
     view.endEditing(true)
-  }
-}
-
-//MARK: - ContainerPresentable
-
-extension LogInCodeCheckViewController: ContainerPresentable {
-  var viewController: UIViewController {
-    return self
-  }
-
-  func updateNavigationDelegate(delegate: LoginNavigationDelegate) {
-    self.delegate = delegate
-  }
-
-  func setData(data: AnyObject?) {
-    if let pair = data as? PhoneTokenPair {
-      self.phoneNumber = pair.phoneNumber
-      self.token =  pair.token
-    }
   }
 }

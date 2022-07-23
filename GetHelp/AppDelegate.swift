@@ -11,33 +11,36 @@ import Fabric
 import Crashlytics
 import RealmSwift
 import AudioToolbox
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
     Fabric.with([Crashlytics.self])
 
     configureRealm()
-    configureNavigationBar()
-    configureTabBar()
     configureServerManager()
 
     checkArguments()
 
     application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
 
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self
+    }
+
     return true
   }
 
   // MARK: - Launch arguments
 
-  private func checkArguments() {
-    for argument in Process.arguments {
+  fileprivate func checkArguments() {
+    for argument in CommandLine.arguments {
       switch argument {
       case "--dont-login":
         ServerManager.sharedInstance.apiToken = "foobar"
@@ -51,10 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func configureRealm() {
     let realmDefaultConfig = Realm.Configuration(
-      schemaVersion: 16,
+      schemaVersion: 17,
       migrationBlock: { migration, oldSchemaVersion in
         if oldSchemaVersion < 16 {
-          migration.deleteData(Message.className())
+          migration.deleteData(forType: Message.className())
         }
       }
     )
@@ -76,35 +79,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ServerManager.sharedInstance.updateDeviceTokenIfNeeded()
   }
 
-  func configureNavigationBar() {
-    let appearance = UINavigationBar.appearance()
-
-    appearance.barTintColor = UIColor.orangeSecondaryColor()
-    appearance.translucent = false
-    appearance.tintColor = UIColor.whiteColor()
-    appearance.titleTextAttributes = [
-      NSForegroundColorAttributeName: UIColor.whiteColor(),
-      NSFontAttributeName: UIFont.systemFontOfSize(18)
-    ]
-
-    UIApplication
-      .sharedApplication()
-      .setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-  }
-
-  func configureTabBar() {
-    UITabBar.appearance().tintColor = UIColor.orangeSecondaryColor()
-  }
-
   // MARK - Push notifications
 
-  func application(application: UIApplication,
-                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+  func application(_ application: UIApplication,
+                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
-    let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+    let tokenChars = (deviceToken as NSData).bytes.bindMemory(to: CChar.self, capacity: deviceToken.count)
     var token = ""
 
-    for i in 0 ..< deviceToken.length {
+    for i in 0 ..< deviceToken.count {
       token += String(format: "%02.2hhx", arguments: [tokenChars[i]])
     }
 
@@ -112,36 +95,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ServerManager.sharedInstance.deviceToken = token
   }
 
-  func application(application: UIApplication,
-                   didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+  func application(_ application: UIApplication,
+                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
     print("didFailToRegisterForRemoteNotificationsWithError")
   }
 
-  func application(application: UIApplication,
-                   didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+  func application(_ application: UIApplication,
+                   didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
 
-    NSNotificationCenter
-      .defaultCenter()
-      .postNotificationName(HelpRequestUpdatedNotification, object: nil)
+    NotificationCenter.default
+      .post(name: Notification.Name(rawValue: HelpRequestUpdatedNotification), object: nil)
 
     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
   }
 
+  
+
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    NotificationCenter.default
+      .post(name: Notification.Name(rawValue: HelpRequestUpdatedNotification), object: nil)
+
+    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    completionHandler(.noData)
+  }
+
+  @available(iOS 10.0, *)
+  func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    completionHandler([.alert, .sound, .badge])
+  }
+
   func application(
-    application: UIApplication,
-    performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    _ application: UIApplication,
+    performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
     ServerManager.sharedInstance.fetchHelpRequests { success, error in
       do {
         let realm = try Realm()
-        let results = realm.objects(HelpRequest).filter("viewed == false")
-        UIApplication.sharedApplication().applicationIconBadgeNumber = results.count
+        let results = realm.objects(HelpRequest.self).filter("messagesRead == false")
+        UIApplication.shared.applicationIconBadgeNumber = results.count
       } catch {
         return
       }
 
-      let backgroundFetchResult: UIBackgroundFetchResult = (error == nil ? .NewData : .Failed)
+      let backgroundFetchResult: UIBackgroundFetchResult = (error == nil ? .newData : .failed)
       completionHandler(backgroundFetchResult)
     }
   }

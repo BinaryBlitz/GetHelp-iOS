@@ -8,16 +8,21 @@
 
 import Eureka
 
-public class TextFloatLabelCell : _FloatLabelCell<String>, CellType {
+open class TextFloatLabelCell : _FloatLabelCell<String>, CellType {
 
-    required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
+  required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+  }
 
-    public override func setup() {
-        super.setup()
-        textField.autocorrectionType = .Default
-        textField.autocapitalizationType = .Sentences
-        textField.keyboardType = .Default
-    }
+  required public init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  open override func setup() {
+    super.setup()
+    textField?.autocorrectionType = .default
+    textField?.autocapitalizationType = .sentences
+    textField?.keyboardType = .default
+  }
+
 }
